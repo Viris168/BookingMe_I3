@@ -1,0 +1,177 @@
+[
+    {
+        "id": 1,
+        "category": "campus",
+        "type": "Private Room",
+        "title": "Toul Kork Modern Student Studio",
+        "rating": 4.9,
+        "price": 145,
+        "image": "./assets/images/Image.png",
+        "features": [
+            { "icon": "wifi",      "label": "Fiber Internet" },
+            { "icon": "desk",      "label": "Study Desk"     },
+            { "icon": "security",  "label": "24/7 Guard"     }
+        ]
+    },
+    {
+        "id": 2,
+        "category": "campus",
+        "type": "Shared Room",
+        "title": "Techno District Student Dorm",
+        "rating": 4.5,
+        "price": 65,
+        "image": "./assets/images/Ima.png",
+        "features": [
+            { "icon": "restaurant",      "label": "Shared Kitchen" },
+            { "icon": "local_laundry_service",      "label": "Free Laundry"     },
+            { "icon": "wifi",  "label": "Wi-Fi"     }
+        ]
+    },
+    {
+        "id": 3,
+        "category": "campus",
+        "type": "Private Room",
+        "title": "Riverside Student House",
+        "rating": 4.7,
+        "price": 110,
+        "image": "./assets/images/imaa.png",
+        "features": [
+            { "icon": "wifi",      "label": "High Speed" },
+            { "icon": "ac_unit",      "label": "Air Conditioning"     }
+        ]
+    },
+    {
+        "id": 4,
+        "category": "campus",
+        "type": "Private Room",
+        "title": "Toul Kork Contemporary Studio",
+        "rating": 4.8,
+        "reviews": 19,
+        "price": 135,
+        "image": "./assets/images/ToulKork_3.png",
+        "features": [
+            { "icon": "wifi", "label": "Fiber Internet" },
+            { "icon": "ac_unit", "label": "AC Included" },
+            { "icon": "security", "label": "Parking" }
+        ]
+    },
+    {
+        "id": 5,
+        "category": "campus",
+        "type": "Shared Room",
+        "title": "BKK Efficient Micro-Unit",
+        "rating": 4.6,
+        "reviews": 31,
+        "price": 85,
+        "image": "./assets/images/Techno_2.png",
+        "features": [
+            { "icon": "desk", "label": "Smart Desk" },
+            { "icon": "restaurant", "label": "Kitchenette" },
+            { "icon": "wifi", "label": "Fiber" }
+        ]
+    },
+    {
+        "id": 6,
+        "category": "campus",
+        "type": "Private Room",
+        "title": "Riverside Traditional Townhouse",
+        "rating": 4.3,
+        "reviews": 11,
+        "price": 125,
+        "image": "./assets/images/Riverside_3.png",
+        "features": [
+            { "icon": "ac_unit", "label": "AC Included" },
+            { "icon": "balcony", "label": "Private Balcony" }
+        ]
+    },
+    {
+        "id": 7,
+        "category": "hotel",
+        "type": "Private Room",
+        "title": "Sen Sok Modernist Studio",
+        "rating": 4.9,
+        "reviews": 15,
+        "price": 140,
+        "image": "./images/SenSok_1.png",
+        "features": [
+            { "icon": "wifi", "label": "Fiber Internet" },
+            { "icon": "desk", "label": "Modern Desk" },
+            { "icon": "security", "label": "Card Access" }
+        ]
+    },
+    {
+        "id": 8,
+        "category": "hotel",
+        "type": "Shared Room",
+        "title": "Toul Kork Attic-Style Dorm",
+        "rating": 4.4,
+        "reviews": 38,
+        "price": 75,
+        "image": "./images/ToulKork_2.png",
+        "features": [
+            { "icon": "restaurant", "label": "Common Area" },
+            { "icon": "local_laundry_service", "label": "Laundry" },
+            { "icon": "wifi", "label": "Wi-Fi" }
+        ]
+    },
+    {
+        "id": 9,
+        "category": "hotel",
+        "type": "Shared Room",
+        "title": "Riverside Industrial Loft",
+        "rating": 4.2,
+        "reviews": 22,
+        "price": 95,
+        "image": "./images/Riverside_2.png",
+        "features": [
+            { "icon": "desk", "label": "Work Station" },
+            { "icon": "ac_unit", "label": "AC Included" },
+            { "icon": "sports_esports", "label": "Game Area" }
+        ]
+    },
+    {
+        "id": 10,
+        "category": "hotel",
+        "type": "Private Room",
+        "title": "BKK Vintage Room",
+        "rating": 4.6,
+        "reviews": 25,
+        "price": 120,
+        "image": "./images/Techno_3.png",
+        "features": [
+            { "icon": "menu_book", "label": "Book Shelf" },
+            { "icon": "wifi", "label": "Wi-Fi" },
+            { "icon": "security", "label": "Secure Access" }
+        ]
+    },
+    {
+        "id": 11,
+        "category": "hotel",
+        "type": "Shared Room",
+        "title": "Chroy Changvar Premium Apartment",
+        "rating": 4.7,
+        "reviews": 14,
+        "price": 105,
+        "image": "./images/Chroy_1.png",
+        "features": [
+            { "icon": "pool", "label": "Common Pool" },
+            { "icon": "fitness_center", "label": "Gym Access" },
+            { "icon": "wifi", "label": "Fiber" }
+        ]
+    },
+    {
+        "id": 12,
+        "category": "hotel",
+        "type": "Private Room",
+        "title": "Chroy Changvar Smart Studio",
+        "rating": 4.9,
+        "reviews": 18,
+        "price": 155,
+        "image": "./images/Chroy_2.png",
+        "features": [
+            { "icon": "wifi", "label": "Smart Features" },
+            { "icon": "ac_unit", "label": "AC Included" },
+            { "icon": "security", "label": "24/7 Tech Support" }
+        ]
+    }
+]
