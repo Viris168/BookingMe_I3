@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Student Rentals</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <section class="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
+        <header class="mb-6 flex flex-col gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">University Student Rentals</h1>
+                <p id="property-count" class="mt-1 text-sm text-gray-500">0 rooms available near Phnom Penh campuses</p>
+            </div>
+            <div class="flex items-center gap-2.5">
+                <label for="property-sort" class="text-sm font-medium text-gray-700">Booking:</label>
+                <select id="property-sort" name="sort" class="text-sm rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500  cursor-pointer">
+                    <option value="campus">Campus</option>
+                    <option value="hotel">Hotel</option>
+                </select>
+            </div>
+        </header>
+        <div id="ListProduct" class="flex flex-col gap-5"></div>
+        
+        <!-- Pagination Controls -->
+        <div id="pagination-controls" class="mt-8 flex items-center justify-center gap-2"></div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
