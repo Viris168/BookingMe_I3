@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#FFB800",
+            "background-light": "#F0F4F8",
+            "background-dark": "#0B1120",
+            "mekong-blue": "#1E3A8A",
+            "mekong-blue-light": "#3B82F6",
+          },
+          fontFamily: { display: ["Kantumruy Pro", "sans-serif"] },
+          borderRadius: { DEFAULT: "0.5rem", lg: "0.75rem", xl: "1rem", "2xl": "1.5rem", full: "9999px" },
+          boxShadow: {
+            "soft-multi": "0 4px 6px -1px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.05), 0 20px 25px -5px rgba(0,0,0,0.05)",
+            glow: "0 0 15px -3px rgba(255,184,0,0.5)",
+            "glow-blue": "0 0 15px -3px rgba(59,130,246,0.5)",
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    body { font-family: "Kantumruy Pro", sans-serif; }
+    .glass-panel { @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-700/50 shadow-soft-multi; }
+    .dashboard-shell { @apply max-w-[1720px] mx-auto w-full px-4 py-5 md:px-6 xl:px-8 2xl:px-10 gap-5 xl:gap-9 items-start; }
+    .dashboard-sidebar { @apply w-[280px] xl:w-[320px] rounded-[2rem] hidden md:flex shrink-0 min-h-[calc(100vh-40px)] py-10 px-6 xl:px-7 sticky top-5; }
+    .dashboard-main { @apply flex-1 min-w-0 min-h-[calc(100vh-40px)] rounded-[2rem] pb-10 xl:pb-14 pt-2; }
+    .dashboard-content-wide { @apply w-full max-w-[1220px] 2xl:max-w-[1280px] mx-auto; }
+    .dashboard-nav-link { @apply flex items-center gap-4 px-5 py-4 rounded-2xl text-slate-500 dark:text-slate-400 hover:bg-white/70 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white transition-all; }
+    .dashboard-nav-link-active { @apply bg-white/85 dark:bg-slate-800/85 text-mekong-blue dark:text-white border-l-4 border-mekong-blue shadow-md; }
+    .dashboard-logout { @apply flex items-center justify-center gap-3 py-4 px-5 rounded-2xl bg-red-50/80 dark:bg-red-900/20 text-red-500 hover:text-red-600 border border-red-100 dark:border-red-900/40 transition-all font-semibold shadow-sm; }
+    .custom-checkbox {
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid #cbd5e1;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .custom-checkbox:checked {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display min-h-screen bg-gradient-to-br from-background-light to-[#E2E8F0] dark:from-background-dark dark:to-slate-900">
+  <div class="dashboard-shell flex flex-1 overflow-visible">
+
+    <!-- SIDEBAR - SAME AS ALL OTHER PAGES -->
+    <aside class="dashboard-sidebar glass-panel flex-col relative z-10 overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+      <div class="absolute bottom-0 left-0 w-40 h-40 bg-mekong-blue-light/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
+
+      <div class="flex flex-col gap-5 items-center mb-12 relative z-10">
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary to-mekong-blue-light rounded-full blur opacity-50 group-hover:opacity-75 transition-opacity"></div>
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24 border-4 border-white dark:border-slate-800 shadow-xl relative z-10"
+               style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');">
+          </div>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <h1 class="text-slate-900 dark:text-white text-xl font-bold leading-normal mb-1">Sokha Chea</h1>
+          <div class="inline-flex items-center gap-1.5 bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+            <span class="material-symbols-outlined text-[16px]">stars</span>
+            Gold Member
+          </div>
+        </div>
+      </div>
+
+      <nav class="flex flex-col gap-3 flex-1 relative z-10">
+        <a href="/component/dashboard/profile.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined text-xl">person</span>
+          <span class="text-base font-medium leading-normal">Profile Detail</span>
+        </a>
+        <a href="/component/dashboard/Booking-status.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined">today</span>
+          <span class="text-base font-medium leading-normal">Booking Status</span>
+        </a>
+        <a href="/component/dashboard/Booking-history.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined text-xl">history</span>
+          <span class="text-base font-medium leading-normal">Booking History</span>
+        </a>
+        <a href="/component/dashboard/favorite.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined text-xl">favorite</span>
+          <span class="text-base font-medium leading-normal">Favorites</span>
+        </a>
+        <a href="/component/dashboard/account-setting.html" class="dashboard-nav-link dashboard-nav-link-active">
+          <span class="material-symbols-outlined text-xl">settings</span>
+          <span class="text-base font-semibold leading-normal">Settings</span>
+        </a>
+      </nav>
+
+      <div class="mt-auto pt-6 relative z-10 border-t border-slate-200/50 dark:border-slate-700/50">
+        <a href="#" class="dashboard-logout">
+          <span class="material-symbols-outlined">logout</span>
+          <span class="text-base leading-normal">Log Out</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT - Matches your latest Figma -->
+    <main class="dashboard-main overflow-y-auto">
+      <div class="dashboard-content-wide">
+        <h1 class="text-4xl font-bold tracking-tight">Settings</h1>
+        <p class="text-slate-500 mt-1 mb-10">Manage your app preferences and security.</p>
+
+        <!-- Notification Preferences -->
+        <div class="glass-panel rounded-3xl p-8 mb-8">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-symbols-outlined text-3xl text-blue-600">notifications</span>
+            <h2 class="text-2xl font-semibold">Notification Preferences</h2>
+          </div>
+
+          <div class="space-y-6">
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="font-semibold">Email Notifications</p>
+                <p class="text-sm text-slate-500">Receive booking confirmations and updates via email.</p>
+              </div>
+              <input type="checkbox" checked class="custom-checkbox">
+            </div>
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="font-semibold">SMS Alerts</p>
+                <p class="text-sm text-slate-500">Get text messages for important security alerts.</p>
+              </div>
+              <input type="checkbox" class="custom-checkbox">
+            </div>
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="font-semibold">Promotional Offers</p>
+                <p class="text-sm text-slate-500">Receive exclusive deals and discounts from homestays.</p>
+              </div>
+              <input type="checkbox" checked class="custom-checkbox">
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Security Settings -->
+          <div class="glass-panel rounded-3xl p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="material-symbols-outlined text-3xl text-blue-600">lock</span>
+              <h2 class="text-2xl font-semibold">Security Settings</h2>
+            </div>
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium text-slate-500 mb-2">Current Password</label>
+                <input type="password" value="••••••••" class="w-full px-5 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:border-blue-500 bg-slate-50">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-500 mb-2">New Password</label>
+                <input type="password" placeholder="••••••••" class="w-full px-5 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:border-blue-500">
+              </div>
+              <button class="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl hover:brightness-110 transition-all">
+                Update Password
+              </button>
+            </div>
+          </div>
+
+          <!-- Preferences -->
+          <div class="glass-panel rounded-3xl p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="material-symbols-outlined text-3xl text-blue-600">language</span>
+              <h2 class="text-2xl font-semibold">Preferences</h2>
+            </div>
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium text-slate-500 mb-2">Language</label>
+                <select class="w-full px-5 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:border-blue-500 bg-white">
+                  <option>English (US)</option>
+                  <option>Khmer (ភាសាខ្មែរ)</option>
+                  <option>French (Français)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-500 mb-2">Currency</label>
+                <select class="w-full px-5 py-3.5 border-2 border-blue-500 rounded-2xl focus:outline-none focus:border-blue-600 bg-white">
+                  <option>USD ($)</option>
+                  <option>KHR (៛)</option>
+                </select>
+              </div>
+              <button class="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl hover:brightness-110 transition-all">
+                Save Preferences
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#FFB800",
+            "background-light": "#F0F4F8",
+            "background-dark": "#0B1120",
+            "mekong-blue": "#1E3A8A",
+            "mekong-blue-light": "#3B82F6",
+          },
+          fontFamily: { display: ["Kantumruy Pro", "sans-serif"] },
+          borderRadius: { DEFAULT: "0.5rem", lg: "0.75rem", xl: "1rem", "2xl": "1.5rem", full: "9999px" },
+          boxShadow: {
+            "soft-multi": "0 4px 6px -1px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.05), 0 20px 25px -5px rgba(0,0,0,0.05)",
+            glow: "0 0 15px -3px rgba(255,184,0,0.5)",
+            "glow-blue": "0 0 15px -3px rgba(59,130,246,0.5)",
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    body { font-family: "Kantumruy Pro", sans-serif; }
+    .glass-panel { @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-700/50 shadow-soft-multi; }
+    .dashboard-shell { @apply max-w-[1720px] mx-auto w-full px-4 py-5 md:px-6 xl:px-8 2xl:px-10 gap-5 xl:gap-9 items-start; }
+    .dashboard-sidebar { @apply w-[280px] xl:w-[320px] rounded-[2rem] hidden md:flex shrink-0 min-h-[calc(100vh-40px)] py-10 px-6 xl:px-7 sticky top-5; }
+    .dashboard-main { @apply flex-1 min-w-0 min-h-[calc(100vh-40px)] rounded-[2rem] pb-10 xl:pb-14 pt-2; }
+    .dashboard-content-wide { @apply w-full max-w-[1220px] 2xl:max-w-[1280px] mx-auto; }
+    .dashboard-nav-link { @apply flex items-center gap-4 px-5 py-4 rounded-2xl text-slate-500 dark:text-slate-400 hover:bg-white/70 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white transition-all; }
+    .dashboard-nav-link-active { @apply bg-white/85 dark:bg-slate-800/85 text-mekong-blue dark:text-white border-l-4 border-mekong-blue shadow-md; }
+    .dashboard-logout { @apply flex items-center justify-center gap-3 py-4 px-5 rounded-2xl bg-red-50/80 dark:bg-red-900/20 text-red-500 hover:text-red-600 border border-red-100 dark:border-red-900/40 transition-all font-semibold shadow-sm; }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display min-h-screen bg-gradient-to-br from-background-light to-[#E2E8F0] dark:from-background-dark dark:to-slate-900">
+  <div class="dashboard-shell flex flex-1 overflow-visible">
+
+    <!-- SIDEBAR - SAME AS ALL OTHER PAGES -->
+    <aside class="dashboard-sidebar glass-panel flex-col relative z-10 overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+      <div class="absolute bottom-0 left-0 w-40 h-40 bg-mekong-blue-light/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
+
+      <div class="flex flex-col gap-5 items-center mb-12 relative z-10">
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary to-mekong-blue-light rounded-full blur opacity-50 group-hover:opacity-75 transition-opacity"></div>
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24 border-4 border-white dark:border-slate-800 shadow-xl relative z-10"
+               style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');">
+          </div>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <h1 class="text-slate-900 dark:text-white text-xl font-bold leading-normal mb-1">Sokha Chea</h1>
+          <div class="inline-flex items-center gap-1.5 bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+            <span class="material-symbols-outlined text-[16px]">stars</span>
+            Gold Member
+          </div>
+        </div>
+      </div>
+
+      <nav class="flex flex-col gap-3 flex-1 relative z-10">
+        <a href="/component/dashboard/profile.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined text-xl">person</span>
+          <span class="text-base font-medium leading-normal">Profile Detail</span>
+        </a>
+        <a href="/component/dashboard/Booking-status.html" class="dashboard-nav-link dashboard-nav-link-active">
+          <span class="material-symbols-outlined">today</span>
+          <span class="text-base font-semibold leading-normal">Booking Status</span>
+        </a>
+        <a href="/component/dashboard/Booking-history.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined text-xl">history</span>
+          <span class="text-base font-medium leading-normal">Booking History</span>
+        </a>
+        <a href="/component/dashboard/favorite.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined text-xl">favorite</span>
+          <span class="text-base font-medium leading-normal">Favorites</span>
+        </a>
+        <a href="/component/dashboard/account-setting.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined text-xl">settings</span>
+          <span class="text-base font-medium leading-normal">Settings</span>
+        </a>
+      </nav>
+
+      <div class="mt-auto pt-6 relative z-10 border-t border-slate-200/50 dark:border-slate-700/50">
+        <a href="#" class="dashboard-logout">
+          <span class="material-symbols-outlined">logout</span>
+          <span class="text-base leading-normal">Log Out</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main overflow-y-auto">
+      <div class="dashboard-content-wide">
+        <div class="mb-10 px-2 lg:px-4 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+          <div>
+            <h1 class="text-slate-900 dark:text-white tracking-tight text-4xl font-extrabold leading-tight mb-2">Booking Status</h1>
+            <p class="text-slate-500 dark:text-slate-400 text-lg">View and manage your upcoming and past stays.</p>
+          </div>
+          <div class="flex gap-4">
+            <button class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 text-mekong-blue dark:text-mekong-blue-light font-semibold shadow-sm border border-slate-200 dark:border-slate-700">Upcoming</button>
+            <button class="px-5 py-2 rounded-full text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-medium transition-all">Past Stays</button>
+            <button class="px-5 py-2 rounded-full text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-medium transition-all">Cancelled</button>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-8 @container">
+          <!-- Booking Card 1 -->
+          <div class="glass-panel rounded-3xl p-6 flex flex-col @[800px]:flex-row gap-8 items-start @[800px]:items-center relative overflow-hidden group hover:shadow-lg transition-all duration-300">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/60 to-transparent dark:from-slate-800/60 pointer-events-none"></div>
+            <div class="w-full @[800px]:w-1/3 aspect-[4/3] rounded-2xl bg-cover bg-center shadow-inner relative z-10 overflow-hidden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBDCkT_VK6he2QIqrTu0YgKqq3U4UV05LedrfM0xubGNaQ5t29jKJJh1lZKAkw2HnH7pBuA_TPvQKV-klHOPtdHMWHlmK3xUQoN1uKOrrcLGCw8REEzlR3asbXNBLpKOGTDhk456xXU13vkLL-gW-CXkP6xSo_PfJ66oVRsfLhj4TxOWkezKIwcZKkCvcLSd5UiXN2US-hPBMDB_zLAhXD-_eal5YcRjmu7RhoawOlnPHt_SPJXUIaVeAEZ1lcNUGkdQ433IHWWc481');"></div>
+            <div class="flex-1 flex flex-col gap-4 relative z-10">
+              <div class="flex justify-between items-start w-full">
+                <div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">event_available</span>
+                      Confirmed
+                    </span>
+                    <span class="text-slate-400 text-sm font-medium">Booking ID: #HK-84729</span>
+                  </div>
+                  <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Meng River Villa</h2>
+                  <p class="text-slate-500 dark:text-slate-400 flex items-center gap-1 text-sm font-medium">
+                    <span class="material-symbols-outlined text-[18px]">location_on</span>
+                    Phnom Penh, Cambodia
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-200/50 dark:border-slate-700/50">
+                <div>
+                  <p class="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">Check-in</p>
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold">15 Nov 2023</p>
+                  <p class="text-sm text-slate-500">2:00 PM</p>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">Check-out</p>
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold">18 Nov 2023</p>
+                  <p class="text-sm text-slate-500">11:00 AM</p>
+                </div>
+              </div>
+              <div class="flex justify-between items-center pt-2">
+                <div class="flex items-center gap-3">
+                  <div class="bg-cover bg-center size-10 rounded-full border-2 border-white shadow-sm" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtTjbVxd_Qqb6H_wKpWIaGuL2OE10CtuJrvn0-Wjj7maRpHIsXvQOL2scD3KNNz2fcnz9AvlK6DG2H2BzyIqIaMOrvmgNnW_WQHNAnl90VAKlnRyX6gIWIZRLtH6MI-NTmlZvigxjGaIfzxrfoC6fPOIQ7v8NEyT0XlLPsF5RVgBVnLCuCB_wUbsnx1KM4rJPpILCYtPoZXWo6SqmnPkMoZ-AyB2IKPu_x7i76Y7oPgoLaR6KbMGDIrUKHlRlCgfOIuZMklQp8LxUK');"></div>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Hosted by Dara</p>
+                    <p class="text-xs text-slate-500">Superhost</p>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <button class="px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm text-sm flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">chat</span>
+                    Contact
+                  </button>
+                  <button class="px-6 py-2.5 rounded-full bg-gradient-to-r from-mekong-blue to-mekong-blue-light text-white font-semibold hover:shadow-glow-blue transition-all hover:-translate-y-0.5 text-sm flex items-center gap-2 shadow-md">
+                    Manage
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Booking Card 2 -->
+          <div class="glass-panel rounded-3xl p-6 flex flex-col @[800px]:flex-row gap-8 items-start @[800px]:items-center relative overflow-hidden group hover:shadow-lg transition-all duration-300 opacity-80 hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/60 to-transparent dark:from-slate-800/60 pointer-events-none"></div>
+            <div class="w-full @[800px]:w-1/3 aspect-[4/3] rounded-2xl bg-cover bg-center shadow-inner relative z-10 overflow-hidden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6IkugcSV9wp2MXdy6-z9U_hm3kRGUw3l-5JhRcbcUKPt7lb6I4YFTZAm89vFQB4ufegshoSE1YLcFtXS1cZrL-X2vEDI8eYP48jb_-xgG-Cs1fBA3COTqDjxu9hciI_0VG7FVas2k77fX0AQi8xLWewKOrF-FsQ5mKcq59vt9b20Hq5rY3l5_CinYXTUnVCUYsc-F3kxtzQqZOCgYbe5MDmfEe7gJYDVz1BHoav8F1yrWfncRBPLXGZhjmPCwHu8urLcbveDCyumS');"></div>
+            <div class="flex-1 flex flex-col gap-4 relative z-10">
+              <div class="flex justify-between items-start w-full">
+                <div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">pending_actions</span>
+                      Upcoming
+                    </span>
+                    <span class="text-slate-400 text-sm font-medium">Booking ID: #HK-91204</span>
+                  </div>
+                  <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Angkor Heritage Resort</h2>
+                  <p class="text-slate-500 dark:text-slate-400 flex items-center gap-1 text-sm font-medium">
+                    <span class="material-symbols-outlined text-[18px]">location_on</span>
+                    Siem Reap, Cambodia
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-200/50 dark:border-slate-700/50">
+                <div>
+                  <p class="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">Check-in</p>
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold">10 Dec 2023</p>
+                  <p class="text-sm text-slate-500">3:00 PM</p>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">Check-out</p>
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold">14 Dec 2023</p>
+                  <p class="text-sm text-slate-500">12:00 PM</p>
+                </div>
+              </div>
+              <div class="flex justify-between items-center pt-2">
+                <div class="flex items-center gap-3">
+                  <div class="bg-cover bg-center size-10 rounded-full border-2 border-white shadow-sm" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCXLUJCxqVwIFakVQ2buwCfRbxDug8YduNAdV12d1g1chLgx2GcQJp66xGh62dc1_LUlZB-KO2iLCMzht6tYRo0hG9JO-orIg3C0GvLoE7eJtZnJ2gVvj2COg6FfdFU2BGS4oNbAXVjEY0ibTED-R4hwTBX7b8eNtVW_sAfzzQ3i1xWfpHdTusByzKFvTZqbRj1AowuiycTV2fYqmrhVZm6tBkbfylmVuDN19IAt8JvA7qgUzhLCzv1_zWtx6AnAuq8OiMjGHkI1Vcc');"></div>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Hosted by Bopha</p>
+                    <p class="text-xs text-slate-500">Premium Host</p>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <button class="px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm text-sm flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">chat</span>
+                    Contact
+                  </button>
+                  <button class="px-6 py-2.5 rounded-full bg-gradient-to-r from-mekong-blue to-mekong-blue-light text-white font-semibold hover:shadow-glow-blue transition-all hover:-translate-y-0.5 text-sm flex items-center gap-2 shadow-md">
+                    Manage
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
