@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Traditional Wooden Villa – Siem Reap</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/Property-Detail.css">
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: { primary: "#2b8dee" },
+                fontFamily: { sans: ["Inter", "sans-serif"] },
+            },
+        },
+    };
+</script>
+
+</head>
+<body class="bg-slate-50">
+
+<!-- Header (loaded dynamically) -->
+<div id="header"></div>
+
+<div class="page-wrapper" style="padding-top: 90px;">
+
+  <!-- Back Button -->
+  <a href="/index.html" class="back-btn">
+    <span class="material-symbols-outlined" style="font-size:21px">arrow_back</span>
+  </a>
+
+  <!-- ═══ Image Gallery ═══ -->
+  <div class="gallery">
+    <div class="card big">
+      <img src="/assets/images/Ima.png" alt="Main room" />
+    </div>
+    <div class="card"><img src="/assets/images/Image.png" alt="Bedroom" /></div>
+    <div class="card"><img src="/assets/images/Techno_2.png" alt="Bathroom" /></div>
+    <div class="card"><img src="/assets/images/ToulKork_3.png" alt="Corner" /></div>
+    <div class="card"><img src="/assets/images/ToulKork_3.png" alt="Garden" /></div>
+  </div>
+
+  <!-- ═══ Two-Column Layout ═══ -->
+  <div class="two-col">
+
+    <!-- LEFT COLUMN -->
+    <div class="left-col">
+
+      <h1 class="prop-title" id="title"></h1>
+      <div class="title-accent"></div>
+      <p class="prop-sub" id="type"></p>
+
+      <hr class="divider">
+
+      <!-- Host -->
+      <div class="host-row">
+        <div class="host-avatar">
+          <img src="/assets/icons/icon.png" alt="Host" />
+        </div>
+        <div>
+          <p class="host-name">Hosted by Sothea</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Features -->
+      <div class="features">
+        <div class="feature-row">
+          <span class="material-symbols-outlined feature-icon">workspace_premium</span>
+          <div>
+            <p class="feature-title">Sothea is a Superhost</p>
+            <p class="feature-desc">Superhosts are experienced, highly rated hosts.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <span class="material-symbols-outlined feature-icon">location_on</span>
+          <div>
+            <p class="feature-title">Great location</p>
+            <p class="feature-desc">100% of recent guests gave the location a 5-star rating.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- About -->
+      <h2 class="section-title">About this place</h2>
+      <p class="about-text">Experience the authentic charm of Cambodia in our traditional wooden villa. Nestled in a quiet neighborhood just 10 minutes from the bustling Pub Street and 15 minutes from the majestic Angkor Wat temples.</p>
+      <p class="about-text">The villa features hand-carved wooden details, high ceilings for natural ventilation, and a private garden oasis perfect for morning coffee or evening relaxation. We offer bicycles for free use to explore the local area.</p>
+      <a href="#" class="reviews-link">
+        Reviews <span class="material-symbols-outlined" style="font-size:15px">chevron_right</span>
+      </a>
+
+      <hr class="divider">
+
+      <!-- Amenities -->
+      <h2 class="section-title">What this place offers</h2>
+      <div class="amenities-grid">
+        <div class="amenity-item">
+          <span class="material-symbols-outlined">wifi</span>
+          <span>Fast WiFi (100 Mbps)</span>
+        </div>
+        <div class="amenity-item">
+          <span class="material-symbols-outlined">ac_unit</span>
+          <span>Air conditioning</span>
+        </div>
+        <div class="amenity-item">
+          <span class="material-symbols-outlined">local_parking</span>
+          <span>Free parking on premises</span>
+        </div>
+        <div class="amenity-item">
+          <span class="material-symbols-outlined">kitchen</span>
+          <span>Full kitchen</span>
+        </div>
+        <div class="amenity-item">
+          <span class="material-symbols-outlined">yard</span>
+          <span>Private garden</span>
+        </div>
+        <div class="amenity-item">
+          <span class="material-symbols-outlined">local_laundry_service</span>
+          <span>Washer</span>
+        </div>
+        <div class="amenity-item">
+          <span class="material-symbols-outlined">pool</span>
+          <span>Pool access</span>
+        </div>
+        <div class="amenity-item">
+          <span class="material-symbols-outlined">detector_smoke</span>
+          <span>Smoke alarm</span>
+        </div>
+      </div>
+
+      <button class="amenities-btn">Show all amenities</button>
+
+      <hr class="divider">
+
+      <!-- Map -->
+      <h2 class="section-title">Where you'll be</h2>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.7!2d104.9!3d11.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDMzJzAwLjAiTiAxMDTCsDU0JzAwLjAiRQ!5e0!3m2!1sen!2s!4v1234567890"
+          width="100%" height="290"
+          style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+      <p class="map-location-title">Siem Reap, Siem Reap Province, Cambodia</p>
+      <p class="map-location-desc">Quiet residential neighborhood. 5 mins tuk-tuk ride to Old Market. Safe and friendly locals.</p>
+
+    </div>
+
+    <!-- RIGHT COLUMN — Booking Card -->
+    <div class="right-col">
+      <div class="booking-card">
+
+        <!-- Price & Rating -->
+        <div class="price-row">
+          <div>
+            <span class="price-amount" id="priceAmount"></span>
+            <span class="price-unit">/ night</span>
+          </div>
+          <div class="rating-row">
+            <span class="rating-star">★</span>
+            <span class="rating-score" id="ratingScore">4.92</span>
+            <span class="rating-reviews" id="ratingReviews">128 reviews</span>
+          </div>
+        </div>
+
+        <!-- Dates -->
+        <div class="dates-box">
+          <div class="dates-grid" style="display:grid;grid-template-columns:1fr 1fr;">
+            <div class="date-cell">
+              <label class="date-label">Check-in</label>
+              <input type="date" placeholder="Add date" class="date-input" id="checkInDate" />
+            </div>
+            <div class="date-cell" style="border-left:1.5px solid #b0aba3;">
+              <label class="date-label">Checkout</label>
+              <input type="date" placeholder="Add date" class="date-input" id="checkOutDate" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Guests -->
+        <div class="guests-box" id="guestsBox" onclick="toggleGuestsDropdown()">
+          <div style="flex:1;">
+            <span class="guests-label">GUESTS</span>
+            <span class="guests-value" id="guestsValue">1 guest</span>
+          </div>
+          <span class="material-symbols-outlined guests-chevron" id="guestsChevron">expand_more</span>
+          <!-- Custom dropdown -->
+          <ul class="guests-dropdown" id="guestsDropdown">
+            <li class="guests-option selected" data-value="1" onclick="selectGuest(event, this)">1 guest</li>
+            <li class="guests-option" data-value="2" onclick="selectGuest(event, this)">2 guests</li>
+            <li class="guests-option" data-value="3" onclick="selectGuest(event, this)">3 guests</li>
+            <li class="guests-option" data-value="4" onclick="selectGuest(event, this)">4 guests</li>
+            <li class="guests-option" data-value="5" onclick="selectGuest(event, this)">5 guests</li>
+          </ul>
+        </div>
+
+        <!-- Reserve -->
+        <button class="reserve-btn" id="reserveBtn">Reserve Now</button>
+        <p class="not-charged">You won't be charged yet</p>
+
+        <!-- Breakdown -->
+        <div class="breakdown">
+          <div class="breakdown-row">
+            <span class="breakdown-label" id="nightsLabel"></span>
+            <span class="breakdown-val" id="nightsVal"></span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Cleaning fee</span>
+            <span class="breakdown-val" id="cleaningVal"></span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Service fee</span>
+            <span class="breakdown-val" id="serviceVal"></span>
+          </div>
+        </div>
+
+        <hr class="total-divider">
+
+        <div class="total-row">
+          <span class="total-label">Total before taxes</span>
+          <span class="total-val" id="totalVal"></span>
+        </div>
+      </div>
+
+      <!-- Report -->
+      <div class="report-wrap">
+        <a href="#" class="report-link">
+          <span class="material-symbols-outlined">flag</span>
+          Report this listing
+        </a>
+      </div>
+    </div>
+
+  </div><!-- end two-col -->
+</div><!-- end page-wrapper -->
+
+<!-- Footer (loaded dynamically) -->
+<div id="footer"></div>
+
+<script src="../js/components/Pro-Detail.js"></script>
+<script src="/js/components/layout.js"></script>
+
+
+</body>
+</html>

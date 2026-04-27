@@ -1,31 +1,71 @@
 [
     {
-        "id": 1,
-        "category": "campus",
-        "type": "Private Room",
-        "title": "Toul Kork Modern Student Studio",
-        "rating": 4.9,
-        "price": 145,
-        "image": "./assets/images/Image.png",
-        "features": [
-            { "icon": "wifi",      "label": "Fiber Internet" },
-            { "icon": "desk",      "label": "Study Desk"     },
-            { "icon": "security",  "label": "24/7 Guard"     }
-        ]
+    "id": 1,
+    "category": "campus",
+    "type": "Private Room",
+    "title": "Toul Kork Modern Student Studio",
+    "rating": 4.9,
+    "reviews": 19,
+    "price": 145,
+    "image": "./assets/images/Image.png",
+    "images": [
+        "./assets/images/Image.png",
+        "./assets/images/Ima.png",
+        "./assets/images/Techno_2.png",
+        "./assets/images/ToulKork_3.png",
+        "./assets/images/ToulKork_3.png"
+    ],
+    "features": [
+        { "icon": "wifi", "label": "Fiber Internet" },
+        { "icon": "desk", "label": "Study Desk" },
+        { "icon": "security", "label": "24/7 Guard" }
+    ],
+    "location": "Phnom Penh, Cambodia",
+    "host": "Sothea",
+    "hostImage": "./assets/icons/icon.png",
+    "description": "Experience the authentic charm...",
+    "guests": 4,
+    "bedrooms": 2,
+    "beds": 2,
+    "baths": 2,
+    "cleaningFee": 15,
+    "serviceFee": 32,
+    "maxGuests": 5,
+    "mapEmbed": "https://www.google.com/maps/embed?pb=..."
     },
-    {
+   {
         "id": 2,
         "category": "campus",
         "type": "Shared Room",
         "title": "Techno District Student Dorm",
         "rating": 4.5,
+        "reviews": 34,
         "price": 65,
         "image": "./assets/images/Ima.png",
+        "images": [
+            "./assets/images/(1).png",
+            "./assets/images/(2).png",
+            "./assets/images/(3).png",
+            "./assets/images/(4).png",
+            "./assets/images/5.png"
+        ],
         "features": [
-            { "icon": "restaurant",      "label": "Shared Kitchen" },
-            { "icon": "local_laundry_service",      "label": "Free Laundry"     },
-            { "icon": "wifi",  "label": "Wi-Fi"     }
-        ]
+            { "icon": "restaurant", "label": "Shared Kitchen" },
+            { "icon": "local_laundry_service", "label": "Free Laundry" },
+            { "icon": "wifi", "label": "Wi-Fi" }
+        ],
+        "location": "Phnom Penh, Cambodia",
+        "host": "Vireak",
+        "hostImage": "./assets/icons/icon2.png",
+        "description": "A lively and affordable shared dorm perfectly suited for university students...",
+        "guests": 2,
+        "bedrooms": 1,
+        "beds": 2,
+        "baths": 1,
+        "cleaningFee": 10,
+        "serviceFee": 15,
+        "maxGuests": 2,
+        "mapEmbed": "http://googleusercontent.com/maps.google.com/1..."
     },
     {
         "id": 3,
@@ -33,12 +73,33 @@
         "type": "Private Room",
         "title": "Riverside Student House",
         "rating": 4.7,
+        "reviews": 28,
         "price": 110,
         "image": "./assets/images/imaa.png",
+        "images": [
+            "./assets/images/imaa.png",
+            "./assets/images/imaa_2.png",
+            "./assets/images/imaa_3.png",
+            "./assets/images/imaa_4.png",
+            "./assets/images/imaa_5.png"
+        ],
         "features": [
-            { "icon": "wifi",      "label": "High Speed" },
-            { "icon": "ac_unit",      "label": "Air Conditioning"     }
-        ]
+            { "icon": "wifi", "label": "High Speed" },
+            { "icon": "ac_unit", "label": "Air Conditioning" },
+            { "icon": "balcony", "label": "River View" }
+        ],
+        "location": "Phnom Penh, Cambodia",
+        "host": "Nita",
+        "hostImage": "./assets/icons/icon3.png",
+        "description": "Peaceful riverside student housing offering a quiet atmosphere for studying and relaxing...",
+        "guests": 1,
+        "bedrooms": 1,
+        "beds": 1,
+        "baths": 1,
+        "cleaningFee": 12,
+        "serviceFee": 25,
+        "maxGuests": 2,
+        "mapEmbed": "http://googleusercontent.com/maps.google.com/2..."
     },
     {
         "id": 4,

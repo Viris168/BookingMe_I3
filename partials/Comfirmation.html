@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed – BookingME</title>
+    <meta name="description" content="Your booking has been confirmed. View your reservation details and download your receipt.">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../css/confirmation.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+    <!-- Tailwind (needed for header & footer partials) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+        theme: {
+            extend: {
+            colors: { primary: "#2b8dee" },
+            fontFamily: { sans: ["Inter", "sans-serif"] },
+            },
+        },
+    };
+    </script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Main Content -->
+  <main class="confirmation-main">
+
+    <!-- Success Header -->
+    <div class="success-header">
+      <div class="success-icon-wrap">
+        <span class="material-symbols-outlined">check</span>
+      </div>
+      <h1 class="success-title">Booking Confirmed!</h1>
+      <p class="success-subtitle">Your reservation is all set. We've sent the details to your email.</p>
+    </div>
+
+    <!-- Booking Detail Card -->
+    <div class="booking-card">
+      <div class="booking-card-top">
+        <img src="../assets/images/Ima.png" alt="Lakeside Serenity Villa" class="booking-card-image">
+        <div class="booking-card-info">
+          <div class="booking-info-header">
+            <div>
+              <span class="confirmed-badge">Confirmed</span>
+              <h2 class="booking-property-name">Lakeside Serenity Villa</h2>
+            </div>
+            <div class="booking-id-wrap">
+              <span class="booking-id-label">Booking ID</span>
+              <p class="booking-id-value">#BK-88291</p>
+            </div>
+          </div>
+
+          <!-- Details Grid: Check-in, Check-out, Room Type, Guests -->
+          <div class="booking-details-grid">
+            <div class="detail-item">
+              <span class="material-symbols-outlined">calendar_today</span>
+              <div>
+                <span class="detail-item-label">Check-in</span>
+                <p class="detail-item-value">Oct 12, 2023</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <span class="material-symbols-outlined">exit_to_app</span>
+              <div>
+                <span class="detail-item-label">Check-out</span>
+                <p class="detail-item-value">Oct 15, 2023</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <span class="material-symbols-outlined">bed</span>
+              <div>
+                <span class="detail-item-label">Room Type</span>
+                <p class="detail-item-value">Deluxe King Suite</p>
+              </div>
+            </div>
+            <div class="detail-item">
+              <span class="material-symbols-outlined">group</span>
+              <div>
+                <span class="detail-item-label">Guests</span>
+                <p class="detail-item-value">2 Adults</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-Column: Payment Summary + Location -->
+    <div class="confirmation-columns">
+
+      <!-- Payment Summary -->
+      <div class="payment-summary-card">
+        <h3 class="payment-summary-title">Payment Summary</h3>
+        <div class="summary-row">
+          <span class="summary-row-label">3 Nights x $250.00</span>
+          <span class="summary-row-value">$750.00</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-row-label">Service Fee</span>
+          <span class="summary-row-value">$45.00</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-row-label">Occupancy Taxes</span>
+          <span class="summary-row-value">$32.50</span>
+        </div>
+        <hr class="summary-divider">
+        <div class="summary-total-row">
+          <span class="summary-total-label">Total Paid</span>
+          <span class="summary-total-value">$827.50</span>
+        </div>
+        <div class="payment-method">
+          <span class="material-symbols-outlined">credit_card</span>
+          <div>
+            <span class="payment-method-text">Paid via Visa</span><br>
+            <span class="payment-method-sub">Ending in **** 4242</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Location / Map Card -->
+      <div class="location-card">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.7!2d104.9!3d11.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDMzJzAwLjAiTiAxMDTCsDU0JzAwLjAiRQ!5e0!3m2!1sen!2s!4v1234567890"
+          width="100%" height="290"
+          style="border:0; border-radius: 14px 14px 0 0;" allowfullscreen="" loading="lazy">
+        </iframe>
+        <div class="location-info">
+          <h4 class="location-title">Location</h4>
+          <p class="location-address">R 42, Toul Kuk, Phnom Penh, Cambodia</p>
+          <a href="#" class="location-link">
+            Get Directions
+            <span class="material-symbols-outlined">open_in_new</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="confirmation-actions">
+      <button class="btn-download" id="download-receipt-btn">
+        <span class="material-symbols-outlined">download</span>
+        Download Receipt
+      </button>
+      <button class="btn-home" id="return-home-btn" onclick="window.location.href='../index.html'">
+        <span class="material-symbols-outlined">home</span>
+        Return to Home
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="../js/components/Payment.js"></script>
+  <script src="/js/components/layout.js"></script>
+
+</body>
+</html>

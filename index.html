@@ -117,44 +117,32 @@
     }
   </style>
 </head>
-</head>
+
 <body class="bg-slate-50">
 
   <div id="header"></div>
 
-  <!-- Your page content goes here -->
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 pt-24 pb-8 flex gap-6 items-start">
+  <!-- Main listing view -->
+  <div id="listing-view" class="mx-auto max-w-7xl px-4 sm:px-6 pt-24 pb-8 flex gap-6 items-start">
  
     <!-- Aside injected here -->
     <div id="aside" class="sticky top-24 w-60 shrink-0"></div>
  
-    <!-- Page content -->
-    <main class="flex-1">
-      <header class="mb-6 flex flex-col gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 id="section-title" class="text-2xl font-bold text-gray-800">University Student Rentals</h1>
-          <p id="property-count" class="mt-1 text-sm text-gray-500">Loading rentals...</p>
-        </div>
-        <div class="flex items-center gap-2.5">
-          <label for="property-sort" class="text-sm font-medium text-gray-700">Booking:</label>
-          <select id="property-sort" name="sort" class="text-sm rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary cursor-pointer">
-            <option value="campus">Campus</option>
-            <option value="hotel">Hotel</option>
-          </select>
-        </div>
-      </header>
-      
-      <!-- Products List -->
-      <div id="ListProduct" class="flex flex-col gap-4"></div>
-      
-      <!-- Pagination Controls -->
-      <div id="pagination-controls" class="mt-8 flex items-center justify-center gap-2"></div>
-    </main>
+    <!-- Section injected here -->
+    <div id="section" class="contents"></div>
  
   </div>
 
+  <!-- Property detail view (hidden by default) -->
+  <div id="detail-view" class="hidden mx-auto max-w-7xl px-4 sm:px-6 pt-24 pb-8"></div>
+
   <div id="footer"></div>
   <script src="./js/components/script.js"></script>
-  <script src="./js/components/app.js"></script>
+  <script src="/js/components/layout.js"></script>
+
 </body>
 </html>
+
+
+
+

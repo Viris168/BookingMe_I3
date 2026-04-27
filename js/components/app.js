@@ -67,14 +67,14 @@ const addDataToHTML = () => {
     paginatedItems.forEach(product => {
         const newProduct = document.createElement('article');
         newProduct.className = 'w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm sm:flex transition-shadow hover:shadow-md';
-
+        newProduct.dataset.productId = product.id;
         const featuresHTML = createFeaturesHTML(product.features);
 
         newProduct.innerHTML = `
             <div class="relative h-36 shrink-0 sm:w-44">
                 <img src="${product.image}" alt="${product.title}" class="h-full w-full object-cover" loading="lazy" />
-                <button type="button" class="wishlistBtn absolute right-2 top-2 rounded-full bg-white p-1 shadow-sm transition-transform hover:scale-105">
-                    <span class="wishlistIcon material-symbols-outlined text-[16px] text-gray-400">favorite</span>
+                <button type="button" class="wishlistBtn absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-sm transition-transform hover:scale-105">
+                    <span class="wishlistIcon material-symbols-outlined text-[14px] leading-none text-gray-400">favorite</span>
                 </button>
             </div>
 
@@ -101,7 +101,7 @@ const addDataToHTML = () => {
                     <p class="text-lg font-bold text-gray-800">
                         $${product.price} <span class="text-[10px] font-normal text-gray-400">/ month</span>
                     </p>
-                    <button type="button" class="rounded-lg bg-slate-800 px-3 py-1.5 text-[11px] font-semibold text-white transition-colors hover:bg-primary">
+                    <button id="btn_detail" type="button" class="rounded-lg bg-slate-800 px-3 py-1.5 text-[11px] font-semibold text-white transition-colors hover:bg-primary">
                         View Detail
                     </button>
                 </div>
@@ -169,7 +169,7 @@ const showLoadError = () => {
 
 const initApp = async () => {
     try {
-        const response = await fetch('./data/product.json');
+        const response = await fetch('/data/product.json');
         if (!response.ok) {
             throw new Error(`Request failed with status ${response.status}`);
         }
