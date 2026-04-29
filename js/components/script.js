@@ -1,6 +1,6 @@
 // Load aside dynamically
 function loadAside(type) {
-  const filename = type === "hotel" ? "/partials/aside-hotel.html" : "/partials/aside.html";
+  const filename = type === "hotel" ? "/component/partials/aside-hotel.html" : "/component/partials/aside.html";
   
   fetch(filename)
     .then(res => res.text())
@@ -81,7 +81,7 @@ function loadAside(type) {
 }
 
 // Load section dynamically
-fetch("/partials/section.html")
+fetch("/component/partials/section.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("section").innerHTML = html;
@@ -104,7 +104,7 @@ fetch("/partials/section.html")
         const btn = e.target.closest("#btn_detail");
         if (btn) {
           const productId = btn.closest("article").dataset.productId;
-          window.location.href = `/partials/Property-Detai.html?id=${productId}`;
+          window.location.href = `/component/partials/Property-Detai.html?id=${productId}`;
         }
     });
 

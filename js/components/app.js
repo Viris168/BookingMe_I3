@@ -7,6 +7,14 @@ let listProduct = [];
 const itemsPerPage = 3;
 let currentPage = 1;
 
+const normalizeAssetPath = (path, fallback = '/assets/images/Image.png') => {
+    if (!path) {
+        return fallback;
+    }
+
+    return path.startsWith('./') ? path.replace('./', '/') : path;
+};
+
 const updatePropertyCount = (count) => {
     if (!propertyCount) {
         return;
@@ -69,10 +77,11 @@ const addDataToHTML = () => {
         newProduct.className = 'w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm sm:flex transition-shadow hover:shadow-md';
         newProduct.dataset.productId = product.id;
         const featuresHTML = createFeaturesHTML(product.features);
+        const imageSrc = normalizeAssetPath(product.image);
 
         newProduct.innerHTML = `
             <div class="relative h-36 shrink-0 sm:w-44">
-                <img src="${product.image}" alt="${product.title}" class="h-full w-full object-cover" loading="lazy" />
+                <img src="${imageSrc}" alt="${product.title}" class="h-full w-full object-cover" loading="lazy" />
                 <button type="button" class="wishlistBtn absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-sm transition-transform hover:scale-105">
                     <span class="wishlistIcon material-symbols-outlined text-[14px] leading-none text-gray-400">favorite</span>
                 </button>

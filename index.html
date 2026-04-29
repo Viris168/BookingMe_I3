@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BookingME</title>
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookingME</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+     
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
@@ -117,32 +120,260 @@
     }
   </style>
 </head>
-
-<body class="bg-slate-50">
-
-  <div id="header"></div>
-
-  <!-- Main listing view -->
-  <div id="listing-view" class="mx-auto max-w-7xl px-4 sm:px-6 pt-24 pb-8 flex gap-6 items-start">
- 
-    <!-- Aside injected here -->
-    <div id="aside" class="sticky top-24 w-60 shrink-0"></div>
- 
-    <!-- Section injected here -->
-    <div id="section" class="contents"></div>
- 
-  </div>
-
-  <!-- Property detail view (hidden by default) -->
-  <div id="detail-view" class="hidden mx-auto max-w-7xl px-4 sm:px-6 pt-24 pb-8"></div>
-
-  <div id="footer"></div>
-  <script src="./js/components/script.js"></script>
-  <script src="/js/components/layout.js"></script>
+<body>
+    <div id="header"></div>
+    <main>
+        <!-- Interface section  -->
+        <section class="InterfacePage">
+                <h1 class="title">Discover Cambodia's Best Stays</h1>
+                <p>Experience the warmth of Khmer hospitality, from riverfront villas on Kompot to ancient temple retreats in Siem Reab</p>
+            <div class="ForSearch">
+                    <input type="text", placeholder="WHERE Search Destination or Hotel">
+            </div>
+        </section>
+    
+    
+        <!-- Featured Destination  -->
+        <section class="Destination-place">
+            <div class="destination-continer">
+                <h2>Featured Destinations</h2>
+                <p>Popular places reccomended for you</p>
+                <span class="SeeAll">See All</span>
+                <div class="place-continer">
+                    <!-- siem reab -->
+                    <div class="siemreab">
+                        <img src="/img/angkorwat.jpg" alt="" height="140">
+                        <h3>Siem Reab</h3>
+                        <p>Gateway to Angkor Wat</p>
+                    </div>
+                    <!-- kampot -->
+                    <div class="kampot">
+                        <img src="/img/kompot.jpg" alt="" height="140">
+                        <h3>Kampot</h3>
+                        <p>Riverside & Mountains</p>
+                    </div>
+                    <!-- phnom penh -->
+                    <div class="phnompenh">
+                        <img src="/img/phnompenh.jpg" alt="" height="140">
+                        <h3>Phnom Penh</h3>
+                        <p>Cultural & Capital City</p>
+                    </div>
+                    <!-- koh rong -->
+                    <div class="koh-rong">
+                        <img src="/img/kohrong.jpg" alt="" height="140">
+                        <h3>Koh Rong</h3>
+                        <p>Island Paradise</p>
+                    </div>
+                    <!-- sihanoukville -->
+                    <div class="sihanoukville">
+                        <img src="/img/sihanoukville.jpg" alt="" height="140">
+                        <h3>Sihanoukville</h3>
+                        <p>Island Paradise</p>
+                    </div>
+                    <!-- Koh-ker -->
+                    <div class="koh-ker">
+                        <img src="/img/Koh-Ker.jpg" alt="" height="140">
+                        <h3>Koh Ker Temple</h3>
+                        <p>Historic Temple</p>
+                    </div>
+                    <!-- koh kong -->
+                    <div class="koh-kong">
+                        <img src="/img/Koh-Kong.jpg" alt="" height="140">
+                        <h3>Koh Kong</h3>
+                        <p>Riverside Retreat & Beach </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    
+        <!-- student house section -->
+        <section class="student-house">
+            <h2>Featured Student Housing</h2>
+            <p>View All Listings</p>
+            <span class="SeeAll">See All</span>
+            <div class="student-room">
+                <!-- room1 -->
+                <div class="room1">
+                    <img src="/img/room1.jpg" alt="" height="200">
+                    <div class="room1-info">
+                        <div class="room1-line1">
+                            <h3>The Mekong Scholars</h3> 
+                            <br>
+                            <p>$200/month</p>
+                        </div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Toul Kork, Phnom Penh</span>
+                        <hr>
+                        <div>
+                            <i class="fa-solid fa-wifi"></i> 
+                            <span>Gigabit wifi</span>
+                            <hr>
+                        </div>
+                        <button class="btn">View Details</button>
+                    </div>
+                </div>
+                <!-- room2 -->
+                <div class="room2">
+                    <img src="/img/room2.jpg" alt="" height="200">
+                    <div class="room2-info">
+                        <div class="room2-line1">
+                            <h3>Student Residence A</h3>
+                            <br>
+                            <p>$180/month</p>
+                        </div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>BKK1, Phnom Penh</span>
+                        <hr>
+                        <div class="Icon2">
+                            <i class="fa-solid fa-dumbbell"></i>
+                            <span>Rooftop Gym</span>
+                            <i class="fa-solid fa-person-swimming"></i>
+                            <span>Pool Access</span>
+                            <hr>
+                        </div>
+                        <button class="btn">View Details</button>
+                    </div>
+                </div>
+                <!-- room3 -->
+                <div class="room3">
+                    <img src="/img/room3.jpg" alt="" height="200">
+                    <div class="room3-info">
+                        <div class="room3-line1">
+                            <h3>Student Residence C</h3>
+                            <br>
+                            <p>$220/month</p>
+                        </div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>BKK3, Phnom Penh</span>
+                        <hr>
+                        <div class="Icon3">
+                            <i class="fa-solid fa-dumbbell"></i>
+                            <span>Rooftop Gym</span>
+                            <i class="fa-solid fa-person-swimming"></i>
+                            <span>Pool Access</span>
+                            <hr>
+                        </div>
+                        <button class="btn">View Details</button>
+                    </div>
+                </div>
+                <!-- room4 -->
+                <div>
+                    <img src="/img/room4.jpg" alt="" height="200">
+                    <div class="room4-info">
+                        <div class="room4-line1">
+                            <h3>Student Residence D</h3>
+                            <br>
+                            <p>$250/month</p>
+                        </div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>BKK4, Phnom Penh</span>
+                        <hr>
+                        <div class="Icon4">
+                            <i class="fa-solid fa-dumbbell"></i>
+                            <span>Rooftop Gym</span>
+                            <i class="fa-solid fa-person-swimming"></i>
+                            <span>Pool Access</span>
+                            <hr>
+                        </div>
+                        <button class="btn">View Details</button>
+                    </div>
+                </div>
+                <!-- room5 -->
+                <div>
+                    <img src="/img/room5.jpg" alt="" height="200">
+                    <div class="room5-info">
+                        <div class="room5-line1">
+                            <h3>Student Residence E</h3>
+                            <br>
+                            <p>$230/month</p>
+                        </div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>BKK5, Phnom Penh</span>
+                        <hr>
+                        <div class="Icon5">
+                            <i class="fa-solid fa-dumbbell"></i>
+                            <span>Rooftop Gym</span>
+                            <i class="fa-solid fa-person-swimming"></i>
+                            <span>Pool Access</span>
+                            <hr>
+                        </div>
+                        <button class="btn">View Details</button>
+                    </div>
+                </div>
+                <!-- room6 -->
+                <div>
+                    <img src="/img/room6.jpg" alt="" height="200">
+                    <div class="room6-info">
+                        <div class="room6-line1">
+                            <h3>Student Residence F</h3>
+                            <br>
+                            <p>$260/month</p>
+                        </div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>BKK6, Phnom Penh</span>
+                        <hr>
+                        <div class="Icon6">
+                            <i class="fa-solid fa-dumbbell"></i>
+                            <span>Rooftop Gym</span>
+                            <i class="fa-solid fa-person-swimming"></i>
+                            <span>Pool Access</span>
+                            <hr>
+                        </div>
+                        <button class="btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    
+        <section class="Top-Destination">
+            <div class="header-TopDestination">
+                <h2>Top Destinations in Cambodia</h2>
+                <p>Immerese yourself in the most sought-after locations</p>
+                <span class="SeeAll">View All Destinations</span>
+            </div>
+    
+            <div class="Top-Destination-List">
+                <div class="Top1">
+                    <img src="/img/siemreapTop.jpg" alt="" height="200">
+                    <p>Siem Reap Province</p>
+                </div>
+                <div class="Top2">
+                    <img src="/img/PhnompenhTop.jpg" alt="" height="200">
+                    <p>Phnom Penh City</p>
+                </div>
+                <div class="Top3">
+                    <img src="/img/kampotTop.jpg" alt="" height="200">
+                    <p>Kampot Province</p>
+            </div>
+        </section>
+    
+        <section class="Reason-Choose-Us">
+            <h3>Why Choose Us?</h3>
+            <div class="Help">
+                <div class="Local-Expertise">
+                    <i class="fa-regular fa-compass"></i>
+                    <h4>Local Expertise</h4>
+                    <p>Authentic experiences and hand-picked <br> accommodations curated by Cambodia <br> local experts.</p>
+                </div>
+    
+                <div class="Secure-Payments">
+                    <i class="fa-solid fa-money-bills"></i>
+                    <h4>Secure Payments</h4>
+                    <p>Effortless and safe transaction processes <br> with integrated bank Pay and KHQR support.</p>
+                </div>
+                <div class="24/7-Support">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <h4>24/7 Support</h4>
+                    <p>Our dedicated support team is always ready <br> to assist you with any questions or concerns.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer"></div>
+    
+    <script src="/js/components/layout.js"></script>
 
 </body>
 </html>
-
-
-
-
