@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Property - Basic Info | BookingME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/host.css">
+</head>
+<body class="host-page">
+  <header class="host-header">
+    <div class="host-header-inner">
+      <a class="host-brand" href="host-dashboard.html">
+        <img src="../../assets/icons/BookingME-logo-3.png" alt="BookingME">
+        <span>Host</span>
+      </a>
+      <nav class="host-nav" aria-label="Host navigation">
+        <a href="host-dashboard.html">Dashboard</a>
+        <a class="is-active" href="add-property-step-1.html">Add Property</a>
+        <a href="host-properties.html">Listings</a>
+      </nav>
+      <div class="host-actions">
+        <a class="icon-button" href="host-dashboard.html" aria-label="Back to dashboard">
+          <span class="material-symbols-outlined">close</span>
+        </a>
+        <span class="avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="host-shell">
+    <section class="wizard-title">
+      <p class="eyebrow">Step 1 of 4</p>
+      <h1>Basic Information</h1>
+      <p>Choose the property type and add the details guests will see first.</p>
+      <div class="wizard-step-grid">
+        <div class="wizard-step is-active"><strong>1</strong><span>Basic Info</span></div>
+        <div class="wizard-step"><strong>2</strong><span>Location & Photos</span></div>
+        <div class="wizard-step"><strong>3</strong><span>Pricing</span></div>
+        <div class="wizard-step"><strong>4</strong><span>Review</span></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Property identity</span><span>25%</span></div>
+        <div class="progress-bar"><span style="width:25%"></span></div>
+      </div>
+    </section>
+
+    <div class="wizard-layout">
+      <form class="wizard-card" action="add-property-step-2.html">
+        <div class="section-title">
+          <span class="material-symbols-outlined">category</span>
+          <h2>Select Property Category</h2>
+        </div>
+        <div class="choice-grid">
+          <label class="choice-card category-card">
+            <input type="radio" name="category" value="homestay" hidden>
+            <img src="../../assets/images/Ima.png" alt="Homestay">
+            <span>Homestay</span>
+          </label>
+          <label class="choice-card category-card is-selected">
+            <input type="radio" name="category" value="hotel" checked hidden>
+            <img src="../../assets/images/Image.png" alt="Hotel">
+            <span>Hotel</span>
+          </label>
+          <label class="choice-card category-card">
+            <input type="radio" name="category" value="villa" hidden>
+            <img src="../../assets/images/Riverside_3.png" alt="Villa">
+            <span>Villa</span>
+          </label>
+          <label class="choice-card category-card">
+            <input type="radio" name="category" value="apartment" hidden>
+            <img src="../../assets/images/ToulKork_3.png" alt="Apartment">
+            <span>Apartment</span>
+          </label>
+        </div>
+
+        <div class="section-title">
+          <span class="material-symbols-outlined">edit_note</span>
+          <h2>Property Details</h2>
+        </div>
+        <div class="form-grid">
+          <div class="field full">
+            <label for="property-name">Property Name</label>
+            <input id="property-name" name="property-name" type="text" placeholder="Mekong Riverside Apartment">
+          </div>
+          <div class="field">
+            <label for="property-type">Listing Type</label>
+            <select id="property-type" name="property-type">
+              <option>Entire place</option>
+              <option>Private room</option>
+              <option>Shared room</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="guests">Maximum Guests</label>
+            <input id="guests" name="guests" type="number" min="1" value="4">
+          </div>
+          <div class="field">
+            <label for="bedrooms">Bedrooms</label>
+            <input id="bedrooms" name="bedrooms" type="number" min="1" value="2">
+          </div>
+          <div class="field">
+            <label for="bathrooms">Bathrooms</label>
+            <input id="bathrooms" name="bathrooms" type="number" min="1" value="1">
+          </div>
+          <div class="field full">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Describe what makes your property special for guests."></textarea>
+          </div>
+        </div>
+        <div class="form-note">
+          <span class="material-symbols-outlined">tips_and_updates</span>
+          <span>Use a clear name, accurate capacity, and a real description. Guests decide faster when the first screen answers the basic questions.</span>
+        </div>
+
+        <div class="wizard-footer">
+          <a class="btn btn-secondary" href="host-dashboard.html"><span class="material-symbols-outlined">arrow_back</span>Back to Dashboard</a>
+          <button class="btn btn-primary" type="submit">Next: Location & Media<span class="material-symbols-outlined">arrow_forward</span></button>
+        </div>
+      </form>
+
+      <aside class="wizard-aside">
+        <div class="wizard-card">
+          <h2>Listing Preview</h2>
+          <div class="preview-card">
+            <img src="../../assets/images/Riverside_3.png" alt="Property preview">
+            <div>
+              <span class="pill">Hotel</span>
+              <h3>Property Name Preview</h3>
+              <p>Short description will appear here for guests browsing BookingME.</p>
+              <strong>$0 / night</strong>
+              <div class="preview-metrics">
+                <div class="preview-metric"><small>Guests</small><strong>4</strong></div>
+                <div class="preview-metric"><small>Beds</small><strong>2</strong></div>
+                <div class="preview-metric"><small>Bath</small><strong>1</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tip-card">
+          <strong>Tip:</strong> clear property names and complete descriptions help guests trust the listing faster.
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

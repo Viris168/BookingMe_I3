@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Bookings | BookingME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/host.css">
+</head>
+<body class="host-page">
+  <div class="host-dashboard-shell">
+    <aside class="host-sidebar">
+      <a class="host-sidebar-brand" href="../../index.html"><img src="../../assets/icons/BookingME-logo-3.png" alt="BookingME"></a>
+      <div class="host-card-profile"><div class="host-avatar-lg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');"></div><div><h2>Sokha Chea</h2><span class="pill pill-success">Verified Host</span></div></div>
+      <nav class="host-side-nav" aria-label="Host dashboard navigation">
+        <a href="host-dashboard.html"><span class="material-symbols-outlined">dashboard</span>Overview</a>
+        <a href="host-properties.html"><span class="material-symbols-outlined">apartment</span>Properties</a>
+        <a class="is-active" href="host-bookings.html"><span class="material-symbols-outlined">event_available</span>Bookings</a>
+        <a href="add-property-step-1.html"><span class="material-symbols-outlined">add_home</span>Add Property</a>
+        <a href="../dashboard/profile.html"><span class="material-symbols-outlined">person</span>User Dashboard</a>
+      </nav>
+      <div class="host-role-card">
+        <strong>Guest Requests</strong>
+        <p>Approve quickly and message guests to keep your response rate strong.</p>
+        <a class="btn" href="host-properties.html">Check Listings</a>
+      </div>
+    </aside>
+
+    <main class="host-dashboard-main">
+      <section class="host-hero">
+        <div>
+          <p class="eyebrow">Booking management</p>
+          <h1>Booking Requests</h1>
+          <p>Approve guests, check arrival dates, and keep upcoming stays organized.</p>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Booking statistics">
+        <article class="stat-card"><span class="material-symbols-outlined">pending_actions</span><span>Pending</span><strong>4</strong></article>
+        <article class="stat-card"><span class="material-symbols-outlined">event_available</span><span>Confirmed</span><strong>18</strong></article>
+        <article class="stat-card"><span class="material-symbols-outlined">login</span><span>Check-ins Today</span><strong>2</strong></article>
+        <article class="stat-card"><span class="material-symbols-outlined">account_balance_wallet</span><span>Revenue Pending</span><strong>$617</strong></article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Recent Requests</h2>
+          <span class="pill">Needs Action</span>
+        </div>
+        <div class="booking-card-list">
+          <article class="booking-card">
+            <div>
+              <span class="pill pill-warning">Pending</span>
+              <h3>Dara Vann</h3>
+              <small>Mekong Riverside Apartment - Apr 30 to May 03 - 3 nights - $255 total</small>
+            </div>
+            <div class="card-actions"><a class="btn btn-primary" href="#">Approve</a><a class="btn btn-secondary" href="#">Message</a><a class="btn btn-danger" href="#">Decline</a></div>
+          </article>
+          <article class="booking-card">
+            <div>
+              <span class="pill pill-warning">Pending</span>
+              <h3>Sophea Lim</h3>
+              <small>Techno Student Studio - May 08 to May 12 - 4 nights - $152 total</small>
+            </div>
+            <div class="card-actions"><a class="btn btn-primary" href="#">Approve</a><a class="btn btn-secondary" href="#">Message</a><a class="btn btn-danger" href="#">Decline</a></div>
+          </article>
+          <article class="booking-card">
+            <div>
+              <span class="pill pill-success">Confirmed</span>
+              <h3>Heng Chenda</h3>
+              <small>Toul Kork Residence - May 18 to May 21 - 3 nights - $210 total</small>
+            </div>
+            <div class="card-actions"><a class="btn btn-secondary" href="#">Message</a><a class="btn btn-secondary" href="#">View Stay</a></div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
