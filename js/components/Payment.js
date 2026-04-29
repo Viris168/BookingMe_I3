@@ -14,9 +14,8 @@ fetch("/data/product.json")
 const bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
 
 function pay(data) {
-    // data.image is a string like "./assets/images/Image.png"
-    // Since Payment.html is in partials/, we replace "./" with "../"
-    document.getElementById("property-image").src = data.image.replace("./", "../");
+    // data.image is a string like "./assets/images/Image.png"; load it from the project root.
+    document.getElementById("property-image").src = data.image.replace("./", "/");
     document.getElementById("property-type").textContent = data.type;
     document.getElementById("property-name").textContent = data.title;
     document.getElementById("rating-score").textContent = data.rating;

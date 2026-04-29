@@ -1,39 +1,50 @@
 [
     {
-    "id": 1,
-    "category": "campus",
-    "type": "Private Room",
-    "title": "Toul Kork Modern Student Studio",
-    "rating": 4.9,
-    "reviews": 19,
-    "price": 145,
-    "image": "./assets/images/Image.png",
-    "images": [
-        "./assets/images/Image.png",
-        "./assets/images/Ima.png",
-        "./assets/images/Techno_2.png",
-        "./assets/images/ToulKork_3.png",
-        "./assets/images/ToulKork_3.png"
-    ],
-    "features": [
-        { "icon": "wifi", "label": "Fiber Internet" },
-        { "icon": "desk", "label": "Study Desk" },
-        { "icon": "security", "label": "24/7 Guard" }
-    ],
-    "location": "Phnom Penh, Cambodia",
-    "host": "Sothea",
-    "hostImage": "./assets/icons/icon.png",
-    "description": "Experience the authentic charm...",
-    "guests": 4,
-    "bedrooms": 2,
-    "beds": 2,
-    "baths": 2,
-    "cleaningFee": 15,
-    "serviceFee": 32,
-    "maxGuests": 5,
-    "mapEmbed": "https://www.google.com/maps/embed?pb=..."
+        "id": 1,
+        "category": "campus",
+        "type": "Private Room",
+        "title": "Toul Kork Modern Student Studio",
+        "rating": 4.9,
+        "reviews": 19,
+        "price": 145,
+        "image": "./assets/images/Image.png",
+        "images": [
+            "./assets/images/Image.png",
+            "./assets/images/Ima.png",
+            "./assets/images/Techno_2.png",
+            "./assets/images/ToulKork_3.png",
+            "./assets/images/ToulKork_3.png"
+        ],
+        "features": [
+            {
+                "icon": "wifi",
+                "label": "Fiber Internet"
+            },
+            {
+                "icon": "desk",
+                "label": "Study Desk"
+            },
+            {
+                "icon": "security",
+                "label": "24/7 Guard"
+            }
+        ],
+        "location": "Phnom Penh, Cambodia",
+        "host": "Sothea",
+        "hostImage": "./assets/icons/icon.png",
+        "description": "Experience the authentic charm...",
+        "guests": 4,
+        "bedrooms": 2,
+        "beds": 2,
+        "baths": 2,
+        "cleaningFee": 15,
+        "serviceFee": 32,
+        "maxGuests": 5,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=...",
+        "lat": 11.5564,
+        "lng": 104.9282
     },
-   {
+    {
         "id": 2,
         "category": "campus",
         "type": "Shared Room",
@@ -47,16 +58,25 @@
             "./assets/images/(2).png",
             "./assets/images/(3).png",
             "./assets/images/(4).png",
-            "./assets/images/5.png"
+            "./assets/images/Ima.png"
         ],
         "features": [
-            { "icon": "restaurant", "label": "Shared Kitchen" },
-            { "icon": "local_laundry_service", "label": "Free Laundry" },
-            { "icon": "wifi", "label": "Wi-Fi" }
+            {
+                "icon": "restaurant",
+                "label": "Shared Kitchen"
+            },
+            {
+                "icon": "local_laundry_service",
+                "label": "Free Laundry"
+            },
+            {
+                "icon": "wifi",
+                "label": "Wi-Fi"
+            }
         ],
         "location": "Phnom Penh, Cambodia",
         "host": "Vireak",
-        "hostImage": "./assets/icons/icon2.png",
+        "hostImage": "./assets/icons/icon.png",
         "description": "A lively and affordable shared dorm perfectly suited for university students...",
         "guests": 2,
         "bedrooms": 1,
@@ -65,7 +85,9 @@
         "cleaningFee": 10,
         "serviceFee": 15,
         "maxGuests": 2,
-        "mapEmbed": "http://googleusercontent.com/maps.google.com/1..."
+        "mapEmbed": "http://googleusercontent.com/maps.google.com/1...",
+        "lat": 11.5797,
+        "lng": 104.9170
     },
     {
         "id": 3,
@@ -78,19 +100,28 @@
         "image": "./assets/images/imaa.png",
         "images": [
             "./assets/images/imaa.png",
-            "./assets/images/imaa_2.png",
-            "./assets/images/imaa_3.png",
-            "./assets/images/imaa_4.png",
-            "./assets/images/imaa_5.png"
+            "./assets/images/Image.png",
+            "./assets/images/Techno_2.png",
+            "./assets/images/Riverside_3.png",
+            "./assets/images/ToulKork_3.png"
         ],
         "features": [
-            { "icon": "wifi", "label": "High Speed" },
-            { "icon": "ac_unit", "label": "Air Conditioning" },
-            { "icon": "balcony", "label": "River View" }
+            {
+                "icon": "wifi",
+                "label": "High Speed"
+            },
+            {
+                "icon": "ac_unit",
+                "label": "Air Conditioning"
+            },
+            {
+                "icon": "balcony",
+                "label": "River View"
+            }
         ],
         "location": "Phnom Penh, Cambodia",
         "host": "Nita",
-        "hostImage": "./assets/icons/icon3.png",
+        "hostImage": "./assets/icons/icon.png",
         "description": "Peaceful riverside student housing offering a quiet atmosphere for studying and relaxing...",
         "guests": 1,
         "bedrooms": 1,
@@ -111,9 +142,18 @@
         "price": 135,
         "image": "./assets/images/ToulKork_3.png",
         "features": [
-            { "icon": "wifi", "label": "Fiber Internet" },
-            { "icon": "ac_unit", "label": "AC Included" },
-            { "icon": "security", "label": "Parking" }
+            {
+                "icon": "wifi",
+                "label": "Fiber Internet"
+            },
+            {
+                "icon": "ac_unit",
+                "label": "AC Included"
+            },
+            {
+                "icon": "security",
+                "label": "Parking"
+            }
         ]
     },
     {
@@ -126,9 +166,18 @@
         "price": 85,
         "image": "./assets/images/Techno_2.png",
         "features": [
-            { "icon": "desk", "label": "Smart Desk" },
-            { "icon": "restaurant", "label": "Kitchenette" },
-            { "icon": "wifi", "label": "Fiber" }
+            {
+                "icon": "desk",
+                "label": "Smart Desk"
+            },
+            {
+                "icon": "restaurant",
+                "label": "Kitchenette"
+            },
+            {
+                "icon": "wifi",
+                "label": "Fiber"
+            }
         ]
     },
     {
@@ -141,8 +190,14 @@
         "price": 125,
         "image": "./assets/images/Riverside_3.png",
         "features": [
-            { "icon": "ac_unit", "label": "AC Included" },
-            { "icon": "balcony", "label": "Private Balcony" }
+            {
+                "icon": "ac_unit",
+                "label": "AC Included"
+            },
+            {
+                "icon": "balcony",
+                "label": "Private Balcony"
+            }
         ]
     },
     {
@@ -153,11 +208,20 @@
         "rating": 4.9,
         "reviews": 15,
         "price": 140,
-        "image": "./images/SenSok_1.png",
+        "image": "./assets/images/(1).png",
         "features": [
-            { "icon": "wifi", "label": "Fiber Internet" },
-            { "icon": "desk", "label": "Modern Desk" },
-            { "icon": "security", "label": "Card Access" }
+            {
+                "icon": "wifi",
+                "label": "Fiber Internet"
+            },
+            {
+                "icon": "desk",
+                "label": "Modern Desk"
+            },
+            {
+                "icon": "security",
+                "label": "Card Access"
+            }
         ]
     },
     {
@@ -168,11 +232,20 @@
         "rating": 4.4,
         "reviews": 38,
         "price": 75,
-        "image": "./images/ToulKork_2.png",
+        "image": "./assets/images/(2).png",
         "features": [
-            { "icon": "restaurant", "label": "Common Area" },
-            { "icon": "local_laundry_service", "label": "Laundry" },
-            { "icon": "wifi", "label": "Wi-Fi" }
+            {
+                "icon": "restaurant",
+                "label": "Common Area"
+            },
+            {
+                "icon": "local_laundry_service",
+                "label": "Laundry"
+            },
+            {
+                "icon": "wifi",
+                "label": "Wi-Fi"
+            }
         ]
     },
     {
@@ -183,11 +256,20 @@
         "rating": 4.2,
         "reviews": 22,
         "price": 95,
-        "image": "./images/Riverside_2.png",
+        "image": "./assets/images/Riverside_3.png",
         "features": [
-            { "icon": "desk", "label": "Work Station" },
-            { "icon": "ac_unit", "label": "AC Included" },
-            { "icon": "sports_esports", "label": "Game Area" }
+            {
+                "icon": "desk",
+                "label": "Work Station"
+            },
+            {
+                "icon": "ac_unit",
+                "label": "AC Included"
+            },
+            {
+                "icon": "sports_esports",
+                "label": "Game Area"
+            }
         ]
     },
     {
@@ -198,11 +280,20 @@
         "rating": 4.6,
         "reviews": 25,
         "price": 120,
-        "image": "./images/Techno_3.png",
+        "image": "./assets/images/(3).png",
         "features": [
-            { "icon": "menu_book", "label": "Book Shelf" },
-            { "icon": "wifi", "label": "Wi-Fi" },
-            { "icon": "security", "label": "Secure Access" }
+            {
+                "icon": "menu_book",
+                "label": "Book Shelf"
+            },
+            {
+                "icon": "wifi",
+                "label": "Wi-Fi"
+            },
+            {
+                "icon": "security",
+                "label": "Secure Access"
+            }
         ]
     },
     {
@@ -213,11 +304,20 @@
         "rating": 4.7,
         "reviews": 14,
         "price": 105,
-        "image": "./images/Chroy_1.png",
+        "image": "./assets/images/(4).png",
         "features": [
-            { "icon": "pool", "label": "Common Pool" },
-            { "icon": "fitness_center", "label": "Gym Access" },
-            { "icon": "wifi", "label": "Fiber" }
+            {
+                "icon": "pool",
+                "label": "Common Pool"
+            },
+            {
+                "icon": "fitness_center",
+                "label": "Gym Access"
+            },
+            {
+                "icon": "wifi",
+                "label": "Fiber"
+            }
         ]
     },
     {
@@ -228,11 +328,20 @@
         "rating": 4.9,
         "reviews": 18,
         "price": 155,
-        "image": "./images/Chroy_2.png",
+        "image": "./assets/images/Ima.png",
         "features": [
-            { "icon": "wifi", "label": "Smart Features" },
-            { "icon": "ac_unit", "label": "AC Included" },
-            { "icon": "security", "label": "24/7 Tech Support" }
+            {
+                "icon": "wifi",
+                "label": "Smart Features"
+            },
+            {
+                "icon": "ac_unit",
+                "label": "AC Included"
+            },
+            {
+                "icon": "security",
+                "label": "24/7 Tech Support"
+            }
         ]
     }
 ]

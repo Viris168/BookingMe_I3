@@ -2,9 +2,9 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Load Header using absolute path
-    // By starting the path with "/", it will always look for the "partials" folder at the root of your project,
+    // By starting the path with "/", it will always look for the shared partials from the project root,
     // regardless of whether this script is loaded from the root folder, a subfolder, or a deeply nested folder.
-    fetch("/partials/header.html")
+    fetch("/component/partials/header.html")
         .then(res => res.text())
         .then(html => {
             const headerContainer = document.getElementById("header");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => console.error("Error loading header:", err));
 
     // 2. Load Footer using absolute path
-    fetch("/partials/footer.html")
+    fetch("/component/partials/footer.html")
         .then(res => res.text())
         .then(html => {
             const footerContainer = document.getElementById("footer");
