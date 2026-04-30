@@ -1,5 +1,5 @@
 * {
-    margin: 0;
+    margin-top: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,6 +17,7 @@ body{
     align-items: center;
     color: white;
     padding: 0 20px;
+    margin-top: 60px;
 }
 
 .InterfacePage h1 {
@@ -144,6 +145,41 @@ input::placeholder{
     box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
     /* transform: rotate(-0.2deg); */
 }
+/* Button Styling */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.ctrl-btn {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.ctrl-btn:hover {
+    background-color: #007BFF;
+    color: white;
+    border-color: #007BFF;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Ensure the scroll container doesn't have extra margins now */
+.place-continer {
+    margin-top: 0;
+}
 
 /* --- STUDENT HOUSE SECTION --- */
 .student-house {
@@ -242,7 +278,7 @@ input::placeholder{
 /* --- TOP DESTINATIONS SECTION --- */
 .Top-Destination {
     padding: 40px 20px;
-    margin: 20px 300px; 
+    margin: 20px 300px;
     text-align: left;
     background-color: #ffffff;
 }
