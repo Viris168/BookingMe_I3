@@ -131,57 +131,104 @@ body {
   border-color: #1e293b;
 }
 
-/* ── Place selector (styled native select) ───────── */
-.place-selector {
+/* ── Custom Place selector (mirrors guest dropdown) ───────── */
+.custom-place-box {
+  border: 1.5px solid #b0aba3;
+  border-radius: 12px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  border: 1.5px solid #d4d2cd;
-  border-radius: 12px;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.15s;
+  position: relative;
+  min-width: 180px;
   background: #fff;
-  cursor: pointer;
-  transition: background .15s, border-color .2s, box-shadow .2s;
-  min-width: 155px;
 }
 
-.place-selector:hover {
+.custom-place-box:hover {
   background: #f8f7f5;
-  border-color: #b0aba3;
 }
 
-.place-selector:focus-within {
-  border-color: #1a73e8;
-  box-shadow: 0 0 0 3px rgba(26, 115, 232, .1);
+.custom-place-label {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1c1a17;
+  margin-bottom: 3px;
 }
 
-.place-selector-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: #e8f0fe;
-  color: #1a73e8;
-  font-size: 18px !important;
-  flex-shrink: 0;
-  line-height: 32px !important;
-  text-align: center;
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-.place-selector select {
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  outline: none;
-  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2364748b'/%3E%3C/svg%3E") no-repeat right center;
-  padding-right: 18px;
+.custom-place-value {
+  display: block;
+  font-size: 13px;
+  color: #4a4641;
   font-family: 'Inter', sans-serif;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #1e293b;
+}
+
+.custom-place-chevron {
+  color: #7a7670;
+  font-size: 20px;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.custom-place-chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Custom dropdown menu */
+.custom-place-dropdown {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1.5px solid #e5e2dc;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(26,34,51,0.14);
+  padding: 6px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s cubic-bezier(.4,0,.2,1),
+              transform 0.25s cubic-bezier(.4,0,.2,1),
+              visibility 0.25s;
+  z-index: 100;
+  overflow: hidden;
+  margin: 0;
+}
+
+.custom-place-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.custom-place-option {
+  padding: 10px 16px;
+  font-size: 13.5px;
+  font-family: 'Inter', sans-serif;
+  color: #4a4641;
   cursor: pointer;
-  width: 100%;
-  line-height: 1.3;
+  transition: background 0.15s, color 0.15s;
+}
+
+.custom-place-option:hover {
+  background: #f0ede8;
+  color: #1c1a17;
+}
+
+.custom-place-option.selected {
+  background: #1e293b;
+  color: #fff;
+  font-weight: 600;
+}
+
+.custom-place-option.selected:hover {
+  background: #334155;
+  color: #fff;
 }
 
 /* ── Product cards (compact horizontal style) ────── */

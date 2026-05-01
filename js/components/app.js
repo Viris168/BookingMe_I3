@@ -82,7 +82,7 @@ const addDataToHTML = () => {
         newProduct.innerHTML = `
             <div class="relative h-36 shrink-0 sm:w-44">
                 <img src="${imageSrc}" alt="${product.title}" class="h-full w-full object-cover" loading="lazy" />
-                <button type="button" class="wishlistBtn absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-sm transition-transform hover:scale-105">
+                <button type="button" class="wishlistBtn absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full transition-transform hover:scale-105">
                     <span class="wishlistIcon material-symbols-outlined text-[14px] leading-none text-gray-400">favorite</span>
                 </button>
             </div>
@@ -196,11 +196,74 @@ if (sortSelect) {
         const sectionTitle = document.getElementById('section-title');
         if (sectionTitle) {
             sectionTitle.textContent = e.target.value === 'hotel' 
-                ? 'Hotel Accommodations' 
+                ? 'Premium Hotel Stays' 
                 : 'University Student Rentals';
         }
+
+
+        const placeSelector = document.getElementById('hotel-place-selector');
+        if (placeSelector) {
+            if (e.target.value === 'hotel') {
+                placeSelector.classList.remove('hidden');
+            } else {
+                placeSelector.classList.add('hidden');
+            }
+        }
+
         addDataToHTML();
     });
 }
 
 initApp();
+
+// --- Global functions for Custom Dropdown in section.html ---
+window.toggleHotelPlaceDropdown = function(event) {
+    const dropdown = document.getElementById("hotelPlaceDropdown");
+    const chevron = document.getElementById("hotelPlaceChevron");
+    if (dropdown) {
+        dropdown.classList.toggle("opacity-0");
+        dropdown.classList.toggle("invisible");
+        dropdown.classList.toggle("-translate-y-2");
+    }
+    if (chevron) chevron.classList.toggle("rotate-180");
+}
+
+window.selectHotelPlace = function(event, el) {
+    event.stopPropagation();
+    const value = el.getAttribute("data-value");
+    const text = el.innerText;
+    
+    document.getElementById("hotelPlaceValue").innerText = text;
+    
+    document.querySelectorAll(".hotel-place-option").forEach(opt => {
+        opt.classList.remove("bg-[#1e293b]", "text-white", "font-semibold");
+        opt.classList.add("text-[#4a4641]");
+    });
+    el.classList.remove("text-[#4a4641]");
+    el.classList.add("bg-[#1e293b]", "text-white", "font-semibold");
+    
+    const dropdown = document.getElementById("hotelPlaceDropdown");
+    const chevron = document.getElementById("hotelPlaceChevron");
+    if (dropdown) {
+        dropdown.classList.add("opacity-0", "invisible", "-translate-y-2");
+    }
+    if (chevron) {
+        chevron.classList.remove("rotate-180");
+    }
+    
+    const nativeSelect = document.getElementById("place-select");
+    if (nativeSelect) {
+        nativeSelect.value = value;
+        nativeSelect.dispatchEvent(new Event('change'));
+    }
+}
+
+document.addEventListener("click", function(event) {
+    const box = document.getElementById("hotelPlaceBox");
+    if (box && !box.contains(event.target)) {
+        const dropdown = document.getElementById("hotelPlaceDropdown");
+        const chevron = document.getElementById("hotelPlaceChevron");
+        if (dropdown) dropdown.classList.add("opacity-0", "invisible", "-translate-y-2");
+        if (chevron) chevron.classList.remove("rotate-180");
+    }
+});
