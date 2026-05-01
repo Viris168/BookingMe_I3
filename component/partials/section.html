@@ -1,16 +1,48 @@
     <!-- Page content -->
     <main class="flex-1" id="main-section">
-      <header class="mb-6 flex flex-col gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 id="section-title" class="text-2xl font-bold text-gray-800">University Student Rentals</h1>
-          <p id="property-count" class="mt-1 text-sm text-gray-500">Loading rentals...</p>
+      <header class="mb-6 flex flex-col gap-4 border-b border-gray-200 pb-5">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h1 id="section-title" class="text-2xl font-bold text-gray-800">University Student Rentals</h1>
+            <p id="property-count" class="mt-1 text-sm text-gray-500">Loading rentals...</p>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <label for="property-sort" class="text-sm font-medium text-gray-700">Sort by:</label>
+            <select id="property-sort" name="sort" class="text-sm rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary cursor-pointer">
+              <option value="campus">Campus</option>
+              <option value="hotel">Hotel</option>
+            </select>
+          </div>
         </div>
-        <div class="flex items-center gap-2.5">
-          <label for="property-sort" class="text-sm font-medium text-gray-700">Booking:</label>
-          <select id="property-sort" name="sort" class="text-sm rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary cursor-pointer">
-            <option value="campus">Campus</option>
-            <option value="hotel">Hotel</option>
-          </select>
+        
+        <!-- Select Place Dropdown (Hidden initially, shown for hotels) -->
+        <div id="hotel-place-selector" class="hidden mt-2">
+          <div id="hotelPlaceBox" class="border-[1.5px] border-[#b0aba3] rounded-xl px-[14px] py-[10px] bg-white hover:bg-[#f8f7f5] cursor-pointer flex items-center justify-between transition-colors relative min-w-[180px] w-max" onclick="toggleHotelPlaceDropdown(event)">
+            <div class="flex-1 text-left pr-4">
+              <span id="hotelPlaceValue" class="block text-[13px] text-[#4a4641] font-sans">Select Place</span>
+            </div>
+            <span id="hotelPlaceChevron" class="material-symbols-outlined text-[#7a7670] text-[20px] transition-transform duration-300">expand_more</span>
+            
+            <!-- Custom dropdown -->
+            <ul id="hotelPlaceDropdown" class="absolute top-[calc(100%+6px)] left-0 right-0 bg-white border-[1.5px] border-[#e5e2dc] rounded-xl shadow-[0_8px_32px_rgba(26,34,51,0.14)] py-1.5 opacity-0 invisible -translate-y-2 transition-all duration-250 z-[100] overflow-hidden m-0">
+              <li class="hotel-place-option px-4 py-2.5 text-[13.5px] text-white bg-[#1e293b] font-semibold cursor-pointer hover:bg-[#334155]" data-value="" onclick="selectHotelPlace(event, this)">Select Place</li>
+              <li class="hotel-place-option px-4 py-2.5 text-[13.5px] text-[#4a4641] cursor-pointer hover:bg-[#f0ede8] hover:text-[#1c1a17]" data-value="phnom-penh" onclick="selectPlace(event, this)">Phnom Penh</li>
+              <li class="hotel-place-option px-4 py-2.5 text-[13.5px] text-[#4a4641] cursor-pointer hover:bg-[#f0ede8] hover:text-[#1c1a17]" data-value="siem-reap" onclick="selectPlace(event, this)">Siem Reap</li>
+              <li class="hotel-place-option px-4 py-2.5 text-[13.5px] text-[#4a4641] cursor-pointer hover:bg-[#f0ede8] hover:text-[#1c1a17]" data-value="kampot" onclick="selectPlace(event, this)">Kampot</li>
+              <li class="hotel-place-option px-4 py-2.5 text-[13.5px] text-[#4a4641] cursor-pointer hover:bg-[#f0ede8] hover:text-[#1c1a17]" data-value="kampong-cham" onclick="selectPlace(event, this)">KamPong Cham</li>
+              <li class="hotel-place-option px-4 py-2.5 text-[13.5px] text-[#4a4641] cursor-pointer hover:bg-[#f0ede8] hover:text-[#1c1a17]" data-value="kep" onclick="selectPlace(event, this)">Kep</li>
+            </ul>
+            
+            <!-- Hidden native select to trigger app.js filtering (if hooked up) -->
+            <select id="place-select" style="display: none;">
+              <option value="">Select Place</option>
+              <option value="toul-kork">Toul Kork</option>
+              <option value="bkk">BKK</option>
+              <option value="riverside">Riverside</option>
+              <option value="sen-sok">Sen Sok</option>
+              <option value="chroy-changvar">Chroy Changvar</option>
+            </select>
+          </div>
         </div>
       </header>
       
