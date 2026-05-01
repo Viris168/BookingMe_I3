@@ -1,0 +1,277 @@
+/* support.css */
+
+/* Reset and basic body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #F8F9FA;
+    color: #212529;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Centered main container */
+main {
+    width: 100%;
+    max-width: 1100px;
+    padding: 40px 20px;
+}
+
+/* Header Section styling */
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header-continer h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.header-continer p.search-p {
+    font-size: 1rem;
+    color: #495057;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.header-continer .search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header-continer .search-input {
+    width: 100%;
+    padding: 15px 15px 15px 50px;
+    border: 1px solid #E9ECEF;
+    border-radius: 50px;
+    font-size: 1rem;
+    background-color: #FFFFFF;
+    outline: none;
+}
+
+/* Search icon placeholder */
+.search-container::before {
+    content: "\1F50D"; /* Magnifying glass emoji */
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ADB5BD;
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+/* Support Section grid layout */
+.support-continer {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.main-column {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.contact-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card styling */
+.card {
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #E9ECEF;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Icon wrapper inside card */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+}
+
+/* Unique icon colors for each card */
+.icon-students {
+    background-color: #E7F5FF;
+    color: #228BE6;
+}
+
+.icon-hosts {
+    background-color: #E6FCF5;
+    color: #0CA678;
+}
+
+.icon-privacy {
+    background-color: #F3F0FF;
+    color: #845EF7;
+}
+
+.icon-payments {
+    background-color: #FFF4E6;
+    color: #FF922B;
+}
+
+/* Card header text styling */
+.card-header h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+/* Paragraph text within card */
+.card p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    position: relative;
+    padding-left: 15px;
+}
+
+/* Use pseudo-element for chevron */
+.card p::before {
+    content: "\203A"; /* Right single quotation mark, often used as a chevron */
+    position: absolute;
+    left: 0;
+    color: #adb5bd;
+    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+/* Contact Support card styling */
+.support-card {
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #E9ECEF;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.support-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.support-card p.contact-p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Buttons styling */
+.start-chat, .email-us {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+/* Blue button (Start Live Chat) */
+.start-chat {
+    background-color: #3b82f6;
+    color: #FFFFFF;
+}
+
+.start-chat:hover {
+    background-color: #2563eb;
+}
+
+/* Gray button (Email Us) */
+.email-us {
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #e9ecef;
+}
+
+.email-us:hover {
+    background-color: #e9ecef;
+}
+
+/* Small span with response time */
+.support-card .response-time {
+    display: block;
+    font-size: 0.8rem;
+    color: #adb5bd;
+    text-align: center;
+}
+
+/* Bold strong tag within the span */
+.support-card .response-time strong {
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Styling for the hr inside the support card */
+.support-card hr {
+    border: none;
+    border-top: 1px solid #E9ECEF;
+    margin: 10px 0;
+}
+
+/* Icon wrapper inside buttons */
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+/* Placeholder content for icons */
+.btn-icon-chat::before {
+    content: "\1F4AC"; /* Speech bubble emoji */
+}
+
+.btn-icon-email::before {
+    content: "\2709"; /* Envelope emoji */
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .main-column {
+        grid-template-columns: 1fr;
+    }
+    .support-continer {
+        flex-direction: column;
+    }
+}

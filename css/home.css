@@ -1,0 +1,466 @@
+* {
+    margin-top: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    background-color: #f4f4f4;
+}
+.InterfacePage{
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('/img/background-interface.jpg') center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 0 20px;
+    margin-top: 60px;
+}
+
+.InterfacePage h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+.InterfacePage p {
+    font-size: 1.2em;
+    max-width: 600px;
+    text-align: center;
+}
+
+.search-pill {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding: 8px 10px 8px 30px;
+    width: 100%;
+    max-width: 650px;
+    margin-top: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: outline 0.2s ease, outline-offset 0.2s ease;
+}
+
+.search-pill:focus-within {
+    outline: 2px solid #2b8dee; /* Primary blue focus ring */
+    outline-offset: 3px;
+}
+
+.search-text-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10px;
+}
+
+.search-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #1e3a8a;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #1e293b;
+    padding: 0;
+}
+
+.search-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.search-input::placeholder {
+    color: #94a3b8;
+    text-align: center;
+}
+
+.search-submit {
+    background-color: #f59e0b; /* Bright Orange */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+}
+
+.search-submit:hover {
+    background-color: #d97706;
+    transform: scale(1.05);
+}
+
+
+.Destination-place {
+    padding: 40px 20px;
+    text-align: left;
+    background-color: #ffffff;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+
+.SeeAll {
+    display: inline-block;
+    margin-left: auto;
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.siemreab {
+    
+    cursor: pointer;
+}
+.kampot {
+    cursor: pointer;
+}
+.phnompenh {
+    cursor: pointer;
+}
+.koh-rong {
+    cursor: pointer;
+}
+.sihanoukville {
+    cursor: pointer;
+}
+.koh-ker {
+    cursor: pointer;
+}
+.koh-kong {
+    cursor: pointer;
+}
+.destination-continer h2, 
+.destination-continer > p {
+    margin-bottom: 10px;
+}
+
+.place-continer {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    text-align: left;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+.place-continer::-webkit-scrollbar {
+    display: none;
+}
+
+.place-continer {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.place-continer > div {
+    flex: 0 0 auto;
+    width: 300px;
+    border-radius: 12px;
+    background: #fff;
+    scroll-snap-align: start;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding-bottom: 15px;
+    border: 1px solid #eaeaea;
+}
+
+.place-continer img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 10px;
+}
+
+.place-continer h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    padding: 0 15px;
+    justify-content: flex-start;
+}
+
+.place-continer > div p {
+    font-size: 0.9em;
+    color: #666;
+    padding: 0 15px;
+}
+.place-continer > div:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+    /* transform: rotate(-0.2deg); */
+}
+/* Button Styling */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.ctrl-btn {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.ctrl-btn:hover {
+    background-color: #007BFF;
+    color: white;
+    border-color: #007BFF;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Ensure the scroll container doesn't have extra margins now */
+.place-continer {
+    margin-top: 0;
+}
+
+/* --- STUDENT HOUSE SECTION --- */
+.student-house {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.student-house h2,
+.student-house > p {
+    margin-bottom: 10px;
+}
+
+.student-room {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar */
+.student-room::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Student Room Cards */
+.student-room > div {
+    flex: 0 0 auto;
+    width: 300px; /* Made this slightly wider since room details need more space */
+    border-radius: 12px;
+    background: #fff;
+    scroll-snap-align: start;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding-bottom: 15px;
+    border: 1px solid #eaeaea;
+}
+
+.student-room img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 10px;
+}
+
+.student-room > div:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+}
+.room1-info, .room2-info, .room3-info, .room4-info, .room5-info, .room6-info {
+    padding: 15px 15px;
+}
+
+.room1{
+    cursor: pointer;
+}
+.room2{
+    cursor: pointer;
+}
+.room3{
+    cursor: pointer;
+}
+.room4{
+    cursor: pointer;
+}
+.room5{
+    cursor: pointer;
+}
+.room6{
+    cursor: pointer;
+}
+
+.btn{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* --- TOP DESTINATIONS SECTION --- */
+.Top-Destination {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.header-TopDestination {
+    margin-bottom: 20px;
+}
+
+.Top-Destination-List {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.Top-Destination-List > div:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+}
+
+/* Hide scrollbar */
+.Top-Destination-List::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Top Destination Cards */
+.Top-Destination-List > div {
+    flex: 0 0 auto;
+    width: 250px;
+    border-radius: 12px;
+    background: #fff;
+    scroll-snap-align: start;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding-bottom: 15px;
+    border: 1px solid #eaeaea;
+}
+
+.Top-Destination-List img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 10px;
+}
+
+.Top-Destination-List p {
+    padding: 0 15px;
+    font-weight: bold;
+    text-align: left;
+}
+.Top1{
+    cursor: pointer;
+}
+.Top2{
+    cursor: pointer;
+}
+.Top3{
+    cursor: pointer;
+}
+
+h3{
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.Help{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.Help > div {
+    flex: 1 1 300px;
+    text-align: center;
+    padding: 20px;
+}
+.Help i {
+    font-size: 2.5em;
+    color: #2b8dee;
+    margin-bottom: 15px;
+}
+.Help h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .InterfacePage {
+        text-align: center;
+        padding: 0 15px;
+    }
+    .InterfacePage h1 {
+        font-size: 2em;
+    }
+    .InterfacePage p {
+        font-size: 1em;
+    }
+    .Destination-place,
+    .student-house,
+    .Top-Destination {
+        padding: 20px 15px;
+    }
+    .place-continer > div,
+    .student-room > div,
+    .Top-Destination-List > div {
+        width: 85vw; /* Almost full width on mobile */
+    }
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm and Pay – BookingME</title>
+  <meta name="description" content="Complete your booking securely on BookingME. Enter guest information and payment details.">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/payment.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind (needed for header & footer partials) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#2b8dee" },
+          fontFamily: { sans: ["Inter", "sans-serif"] },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Main Content -->
+  <main class="payment-main">
+
+    <!-- Back Button -->
+    <a href="/component/partials/Property-Detai.html" class="back-btn">
+      <span class="material-symbols-outlined" style="font-size: 20px;">chevron_left</span>
+    </a>
+
+    <!-- Page Title -->
+    <div class="page-header">
+      <h1 class="page-title">Confirm and Pay</h1>
+      <p class="page-subtitle">Complete your booking securely.</p>
+    </div>
+
+    <!-- Two-Column Layout -->
+    <div class="payment-grid">
+
+      <!-- LEFT COLUMN: Form -->
+      <div class="payment-form-col">
+
+        <!-- Step 1: Guest Information -->
+        <section class="card">
+          <div class="step-header">
+            <span class="step-number">1</span>
+            <h2 class="step-title">Guest Information</h2>
+          </div>
+
+          <!-- Name Fields -->
+          <div class="form-row">
+            <div>
+              <label for="firstname" class="form-label">First Name</label>
+              <input type="text" id="firstname" name="firstname" placeholder="Enter first name" class="form-input">
+            </div>
+            <div>
+              <label for="lastname" class="form-label">Last Name</label>
+              <input type="text" id="lastname" name="lastname" placeholder="Enter last name" class="form-input">
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com" class="form-input">
+            <p class="form-hint">Your confirmation will be sent here.</p>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone Number (Optional)</label>
+            <div class="phone-group">
+              <span class="phone-prefix">+855</span>
+              <input type="tel" id="phone" name="phone" placeholder="12 345 678" class="form-input phone-input">
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 2: Payment Method -->
+        <section class="card">
+          <div class="step-header">
+            <span class="step-number">2</span>
+            <h2 class="step-title">Payment Method</h2>
+          </div>
+
+          <!-- Credit Card Option -->
+          <div id="card-option" class="payment-option active" onclick="selectPayment('card')">
+            <label class="payment-option-label">
+              <input type="radio" name="payment" id="card" value="card" class="payment-radio" checked>
+              <div class="payment-option-info">
+                <span class="payment-option-title">Credit or Debit Card</span>
+                <p class="payment-option-desc">Visa, Mastercard, UnionPay</p>
+              </div>
+              <div class="payment-option-icons">
+                <span class="material-symbols-outlined" style="font-size: 28px; color: #1a1f71;">credit_card</span>
+                <span class="material-symbols-outlined" style="font-size: 28px; color: #eb001b;">credit_card</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Card Details (shown when credit card is selected) -->
+          <div id="card-details" class="card-details">
+            <div>
+              <label for="cardnum" class="form-label">Card Number</label>
+              <div class="input-icon-wrap">
+                <span class="input-icon-left">
+                  <span class="material-symbols-outlined" style="font-size: 18px;">credit_card</span>
+                </span>
+                <input type="text" id="cardnum" name="cardnum" placeholder="0000 0000 0000 0000" class="form-input">
+              </div>
+            </div>
+            <div class="card-details-row">
+              <div>
+                <label for="carddate" class="form-label">Expiration</label>
+                <input type="text" id="carddate" name="carddate" placeholder="MM/YY" class="form-input">
+              </div>
+              <div>
+                <label for="cardcvv" class="form-label">CVV</label>
+                <div class="input-icon-wrap">
+                  <input type="text" id="cardcvv" name="cardcvv" placeholder="123" maxlength="4" class="form-input" style="padding-left: 16px;">
+                  <span class="input-icon-right" title="3 or 4 digit security code on the back of your card">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">help_outline</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ABA Pay / KHQR Option -->
+          <div id="qr-option" class="payment-option" onclick="selectPayment('qr')">
+            <label class="payment-option-label">
+              <input type="radio" name="payment" id="qrcode" value="qrcode" class="payment-radio">
+              <div class="payment-option-info">
+                <span class="payment-option-title">ABA Pay / KHQR</span>
+                <p class="payment-option-desc">Scan to pay with any Cambodian banking app</p>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <!-- Terms -->
+        <p class="terms-text">
+          By selecting the button below, I agree to the <a href="#">House Rules</a>,
+          <a href="#">Safety Disclosures</a>, and
+          <a href="#">Cancellation Policy</a>.
+        </p>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Booking Summary -->
+      <div class="booking-summary-col">
+      <div class="summary-card">
+      <div class="property-info">
+        <img id="property-image" src="" alt="Property" class="property-thumb">
+        <div class="property-meta">
+          <p id="property-type" class="property-type"></p>
+          <h3 id="property-name" class="property-name"></h3>
+          <div class="property-rating">
+            <span class="material-symbols-outlined">star</span>
+            <span id="rating-score" class="rating-score"></span>
+            <span id="rating-count" class="rating-count"></span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <h4 class="trip-section-title">Your Trip</h4>
+
+      <div class="trip-row">
+        <div class="trip-row-content">
+          <p class="trip-row-label">Dates</p>
+          <p id="trip-dates" class="trip-row-value"></p>
+        </div>
+        <a href="Property-Detai.html" class="edit-link">Edit</a>
+      </div>
+
+      <div class="trip-row">
+        <div class="trip-row-content">
+          <p class="trip-row-label">Guests</p>
+          <p id="trip-guests" class="trip-row-value"></p>
+        </div>
+        <a href="Property-Detai.html" class="edit-link">Edit</a>
+      </div>
+
+
+      <hr class="divider">
+
+      <h4 class="price-section-title">Price Details</h4>
+
+      <div class="price-rows">
+        <div class="price-row">
+          <span id="price-per-stay" class="price-row-label"></span>
+          <span id="price-stay-total" class="price-row-value"></span>
+        </div>
+        <div class="price-row">
+          <span class="price-row-label">Cleaning fee</span>
+          <span id="cleaning-fee" class="price-row-value"></span>
+        </div>
+        <div class="price-row">
+          <span class="price-row-label">Service fee</span>
+          <span id="service-fee" class="price-row-value"></span>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="total-row">
+        <span class="total-label">Total (USD)</span>
+        <span id="total-amount" class="total-amount"></span>
+      </div>
+
+      <!-- CTA Button -->
+      <button id="confirm-pay-btn" class="btn-confirm">
+        Confirm and Pay
+        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+      </button>
+
+      <!-- Secure Badge -->
+      <div class="secure-badge">
+        <span class="material-symbols-outlined">lock</span>
+        <span>SSL Secure Payment</span>
+      </div>
+
+    </div> <!-- /.summary-card -->
+
+      </div> <!-- /.booking-summary-col -->
+
+    </div> <!-- /.payment-grid -->
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="/js/components/Payment.js"></script>
+  <script src="/js/components/layout.js"></script>
+
+
+</body>
+
+</html>

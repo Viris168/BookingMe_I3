@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student-Friendly Neighborhoods — BookingME</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2b8dee",
+            "primary-dark": "#1a6fcc",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "sans": ["Inter", "sans-serif"],
+            "display": ["Inter"],
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="/css/places.css">
+</head>
+
+<body>
+  <!-- Header Container -->
+  <div id="header"></div>
+
+
+  <!-- ═══ Two-Column Layout ═══ -->
+  <div class="places-layout">
+
+    <!-- LEFT COLUMN — listings -->
+    <div class="places-left">
+      <!-- Back Button -->
+      <a href="/index.html" class="back-btn">
+        <span class="material-symbols-outlined" style="font-size: 20px;">chevron_left</span>
+      </a>
+
+      <div class="places-heading-row">
+        <h1 class="places-heading">Student-Friendly<br>Neighborhoods</h1>
+        <div class="custom-place-box" id="placeBox" onclick="togglePlaceDropdown()">
+          <div style="flex:1;">
+            <span class="custom-place-value" id="placeValue">Select Place</span>
+          </div>
+          <span class="material-symbols-outlined custom-place-chevron" id="placeChevron">expand_more</span>
+          <ul class="custom-place-dropdown" id="placeDropdown">
+            <li class="custom-place-option selected" data-value="" onclick="selectPlace(event, this)">Select Place</li>
+            <li class="custom-place-option" data-value="phnom-penh" onclick="selectPlace(event, this)">Phnom Penh</li>
+            <li class="custom-place-option" data-value="siem-reap" onclick="selectPlace(event, this)">Siem Reap</li>
+            <li class="custom-place-option" data-value="kampot" onclick="selectPlace(event, this)">Kampot</li>
+            <li class="custom-place-option" data-value="kampong-cham" onclick="selectPlace(event, this)">KamPong Cham</li>
+            <li class="custom-place-option" data-value="kep" onclick="selectPlace(event, this)">Kep</li>
+          </ul>
+          <!-- Hidden select so productList.js still works without refactoring -->
+          <select id="place-select" style="display: none;">
+            <option value="">Select Place</option>
+            <option value="toul-kork">Toul Kork</option>
+            <option value="bkk">BKK</option>
+            <option value="riverside">Riverside</option>
+            <option value="sen-sok">Sen Sok</option>
+            <option value="chroy-changvar">Chroy Changvar</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <nav class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Areas</button>
+        <button class="filter-tab" data-filter="affordable">Most Affordable</button>
+        <button class="filter-tab" data-filter="campus">Close to Campus</button>
+      </nav>
+
+      <!-- Product List (rendered by productList.js) -->
+      <div id="ListProduct"></div>
+
+      <!-- Pagination -->
+      <div id="pagination-controls"></div>
+    </div>
+
+    <div id="map"></div>
+
+  </div>
+
+  <!-- Footer Container -->
+  <div id="footer"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="/js/components/productList.js"></script>
+  <script src="/js/components/layout.js"></script>
+
+  <script>
+    function togglePlaceDropdown() {
+      const dropdown = document.getElementById("placeDropdown");
+      const chevron = document.getElementById("placeChevron");
+      dropdown.classList.toggle("show");
+      chevron.classList.toggle("open");
+    }
+
+    function selectPlace(event, el) {
+      event.stopPropagation();
+      const value = el.getAttribute("data-value");
+      const text = el.innerText;
+      
+      // Update UI
+      document.getElementById("placeValue").innerText = text;
+      
+      // Update selected class
+      document.querySelectorAll(".custom-place-option").forEach(opt => opt.classList.remove("selected"));
+      el.classList.add("selected");
+      
+      // Close dropdown
+      document.getElementById("placeDropdown").classList.remove("show");
+      document.getElementById("placeChevron").classList.remove("open");
+      
+      // Update native hidden select and trigger change for productList.js
+      const nativeSelect = document.getElementById("place-select");
+      if (nativeSelect) {
+        nativeSelect.value = value;
+        nativeSelect.dispatchEvent(new Event('change'));
+      }
+    }
+
+    // Close when clicking outside
+    document.addEventListener("click", function(event) {
+      const box = document.getElementById("placeBox");
+      if (box && !box.contains(event.target)) {
+        const dropdown = document.getElementById("placeDropdown");
+        const chevron = document.getElementById("placeChevron");
+        if (dropdown) dropdown.classList.remove("show");
+        if (chevron) chevron.classList.remove("open");
+      }
+    });
+  </script>
+</body>
+
+</html>

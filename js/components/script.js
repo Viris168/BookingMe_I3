@@ -1,27 +1,6 @@
-// Load header
-fetch("partials/header.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("header").innerHTML = html;
-
-    // Init hamburger AFTER header is injected into the DOM
-    const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("mobile-menu");
-
-    if (toggle && menu) {
-      toggle.addEventListener("click", () => {
-        const isOpen = menu.style.maxHeight && menu.style.maxHeight !== "0px";
-        menu.style.maxHeight = isOpen ? "0px" : "400px";
-        const icon = toggle.querySelector(".material-symbols-outlined");
-        if (icon) icon.textContent = isOpen ? "menu" : "close";
-      });
-    }
-  })
-  .catch(err => console.error("Error loading header:", err));
-
 // Load aside dynamically
 function loadAside(type) {
-  const filename = type === "hotel" ? "partials/aside-hotel.html" : "partials/aside.html";
+  const filename = type === "hotel" ? "/component/partials/aside-hotel.html" : "/component/partials/aside.html";
   
   fetch(filename)
     .then(res => res.text())
@@ -101,25 +80,38 @@ function loadAside(type) {
     .catch(err => console.error("Error loading aside:", err));
 }
 
-// Initial load
-const sortSelectEl = document.getElementById("property-sort");
-if (sortSelectEl) {
-    loadAside(sortSelectEl.value);
-    
-    // Add event listener to dynamically switch aside when selection changes
-    sortSelectEl.addEventListener("change", (e) => {
-        loadAside(e.target.value);
-    });
-} else {
-    loadAside("campus");
-}
-
-
-
-// Load footer
-fetch("partials/footer.html")
+// Load section dynamically
+fetch("/component/partials/section.html")
   .then(res => res.text())
   .then(html => {
-    document.getElementById("footer").innerHTML = html;
+    document.getElementById("section").innerHTML = html;
+
+    // Initial aside load based on section's sort dropdown
+    const sortSelectEl = document.getElementById("property-sort");
+    if (sortSelectEl) {
+        loadAside(sortSelectEl.value);
+        
+        // Add event listener to dynamically switch aside when selection changes
+        sortSelectEl.addEventListener("change", (e) => {
+            loadAside(e.target.value);
+        });
+    } else {
+        loadAside("campus");
+    }
+
+    // Use event delegation — works for buttons created later by app.js
+    document.getElementById("section").addEventListener("click", function(e) {
+        const btn = e.target.closest("#btn_detail");
+        if (btn) {
+          const productId = btn.closest("article").dataset.productId;
+          window.location.href = `/component/partials/Property-Detai.html?id=${productId}`;
+        }
+    });
+
+    // Now dynamically load app.js so it can bind to the elements in section
+    const script = document.createElement("script");
+    script.src = "/js/components/app.js";
+    document.body.appendChild(script);
   })
-  .catch(err => console.error("Error loading footer:", err));
+  .catch(err => console.error("Error loading section:", err));
+
