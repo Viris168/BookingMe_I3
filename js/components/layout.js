@@ -1,6 +1,11 @@
 // js/components/layout.js
 
 document.addEventListener("DOMContentLoaded", () => {
+    const extractPartial = (html, selector) => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        return doc.querySelector(selector)?.outerHTML || html;
+    };
+
     // 1. Load Header using absolute path
     // By starting the path with "/", it will always look for the shared partials from the project root,
     // regardless of whether this script is loaded from the root folder, a subfolder, or a deeply nested folder.
@@ -10,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const headerContainer = document.getElementById("header");
             if (headerContainer) {
                 // Inject the header HTML into the container
-                headerContainer.innerHTML = html;
+                headerContainer.innerHTML = extractPartial(html, "header");
 
                 // Initialize mobile menu toggle logic
                 const toggle = document.getElementById("menu-toggle");
@@ -23,6 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (icon) icon.textContent = isOpen ? "menu" : "close";
                     });
                 }
+
+                if (window.BookingMEI18n) {
+                    window.BookingMEI18n.apply(headerContainer);
+                }
             }
         })
         .catch(err => console.error("Error loading header:", err));
@@ -34,7 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const footerContainer = document.getElementById("footer");
             if (footerContainer) {
                 // Inject the footer HTML into the container
-                footerContainer.innerHTML = html;
+                footerContainer.innerHTML = extractPartial(html, "footer");
+                if (window.BookingMEI18n) {
+                    window.BookingMEI18n.apply(footerContainer);
+                }
             }
         })
         .catch(err => console.error("Error loading footer:", err));

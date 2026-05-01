@@ -16,9 +16,18 @@
       "./assets/images/ToulKork_3.png"
     ],
     "features": [
-      { "icon": "wifi", "label": "Fiber Internet" },
-      { "icon": "desk", "label": "Study Desk" },
-      { "icon": "security", "label": "24/7 Guard" }
+      {
+        "icon": "wifi",
+        "label": "Fiber Internet"
+      },
+      {
+        "icon": "desk",
+        "label": "Study Desk"
+      },
+      {
+        "icon": "security",
+        "label": "24/7 Guard"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Sothea",
@@ -51,9 +60,18 @@
       "./assets/images/Ima.png"
     ],
     "features": [
-      { "icon": "restaurant", "label": "Shared Kitchen" },
-      { "icon": "local_laundry_service", "label": "Free Laundry" },
-      { "icon": "wifi", "label": "Wi-Fi" }
+      {
+        "icon": "restaurant",
+        "label": "Shared Kitchen"
+      },
+      {
+        "icon": "local_laundry_service",
+        "label": "Free Laundry"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Vireak",
@@ -86,9 +104,18 @@
       "./assets/images/ToulKork_3.png"
     ],
     "features": [
-      { "icon": "wifi", "label": "High Speed" },
-      { "icon": "ac_unit", "label": "Air Conditioning" },
-      { "icon": "balcony", "label": "River View" }
+      {
+        "icon": "wifi",
+        "label": "High Speed"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "Air Conditioning"
+      },
+      {
+        "icon": "balcony",
+        "label": "River View"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Nita",
@@ -119,9 +146,18 @@
       "./assets/images/(2).png"
     ],
     "features": [
-      { "icon": "wifi", "label": "Fiber Internet" },
-      { "icon": "ac_unit", "label": "AC Included" },
-      { "icon": "security", "label": "Parking" }
+      {
+        "icon": "wifi",
+        "label": "Fiber Internet"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      },
+      {
+        "icon": "security",
+        "label": "Parking"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Nita",
@@ -152,9 +188,18 @@
       "./assets/images/Ima.png"
     ],
     "features": [
-      { "icon": "desk", "label": "Smart Desk" },
-      { "icon": "restaurant", "label": "Kitchenette" },
-      { "icon": "wifi", "label": "Fiber" }
+      {
+        "icon": "desk",
+        "label": "Smart Desk"
+      },
+      {
+        "icon": "restaurant",
+        "label": "Kitchenette"
+      },
+      {
+        "icon": "wifi",
+        "label": "Fiber"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Dara",
@@ -185,8 +230,14 @@
       "./assets/images/(4).png"
     ],
     "features": [
-      { "icon": "ac_unit", "label": "AC Included" },
-      { "icon": "balcony", "label": "Private Balcony" }
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      },
+      {
+        "icon": "balcony",
+        "label": "Private Balcony"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Sokha",
@@ -217,9 +268,18 @@
       "./assets/images/(2).png"
     ],
     "features": [
-      { "icon": "wifi", "label": "Fiber Internet" },
-      { "icon": "desk", "label": "Modern Desk" },
-      { "icon": "security", "label": "Card Access" }
+      {
+        "icon": "wifi",
+        "label": "Fiber Internet"
+      },
+      {
+        "icon": "desk",
+        "label": "Modern Desk"
+      },
+      {
+        "icon": "security",
+        "label": "Card Access"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Chea",
@@ -250,9 +310,18 @@
       "./assets/images/(3).png"
     ],
     "features": [
-      { "icon": "restaurant", "label": "Common Area" },
-      { "icon": "local_laundry_service", "label": "Laundry" },
-      { "icon": "wifi", "label": "Wi-Fi" }
+      {
+        "icon": "restaurant",
+        "label": "Common Area"
+      },
+      {
+        "icon": "local_laundry_service",
+        "label": "Laundry"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Bopha",
@@ -283,9 +352,18 @@
       "./assets/images/(1).png"
     ],
     "features": [
-      { "icon": "desk", "label": "Work Station" },
-      { "icon": "ac_unit", "label": "AC Included" },
-      { "icon": "sports_esports", "label": "Game Area" }
+      {
+        "icon": "desk",
+        "label": "Work Station"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      },
+      {
+        "icon": "sports_esports",
+        "label": "Game Area"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Rithy",
@@ -316,9 +394,18 @@
       "./assets/images/Techno_2.png"
     ],
     "features": [
-      { "icon": "menu_book", "label": "Book Shelf" },
-      { "icon": "wifi", "label": "Wi-Fi" },
-      { "icon": "security", "label": "Secure Access" }
+      {
+        "icon": "menu_book",
+        "label": "Book Shelf"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      },
+      {
+        "icon": "security",
+        "label": "Secure Access"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Sophea",
@@ -349,9 +436,18 @@
       "./assets/images/(1).png"
     ],
     "features": [
-      { "icon": "pool", "label": "Common Pool" },
-      { "icon": "fitness_center", "label": "Gym Access" },
-      { "icon": "wifi", "label": "Fiber" }
+      {
+        "icon": "pool",
+        "label": "Common Pool"
+      },
+      {
+        "icon": "fitness_center",
+        "label": "Gym Access"
+      },
+      {
+        "icon": "wifi",
+        "label": "Fiber"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Kosal",
@@ -382,9 +478,18 @@
       "./assets/images/(3).png"
     ],
     "features": [
-      { "icon": "wifi", "label": "Smart Features" },
-      { "icon": "ac_unit", "label": "AC Included" },
-      { "icon": "security", "label": "24/7 Tech Support" }
+      {
+        "icon": "wifi",
+        "label": "Smart Features"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      },
+      {
+        "icon": "security",
+        "label": "24/7 Tech Support"
+      }
     ],
     "location": "Phnom Penh",
     "host": "Vichea",
@@ -400,7 +505,6 @@
     "lat": 11.5932,
     "lng": 104.9405
   },
-
   {
     "id": 13,
     "category": "hotel",
@@ -411,16 +515,25 @@
     "price": 110,
     "image": "./assets/images/33105752.jpg",
     "images": [
+      "./assets/images/33105752.jpg",
       "./assets/images/33104092.jpg",
-      "./assets/images/33104080.jng",
+      "./assets/images/33104080.jpg",
       "./assets/images/408894962.jpg",
-      "./assets/images/408895964.jpg",
-      "./assets/images/33104080.jng"
+      "./assets/images/408895964.jpg"
     ],
     "features": [
-      { "icon": "pool", "label": "Swimming Pool" },
-      { "icon": "wifi", "label": "Fast Wi-Fi" },
-      { "icon": "ac_unit", "label": "Air Conditioning" }
+      {
+        "icon": "pool",
+        "label": "Swimming Pool"
+      },
+      {
+        "icon": "wifi",
+        "label": "Fast Wi-Fi"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "Air Conditioning"
+      }
     ],
     "location": "Siem Reap",
     "host": "Panha",
@@ -444,16 +557,25 @@
     "rating": 4.5,
     "reviews": 28,
     "price": 60,
-    "image": "./assets/images/SR_2.png",
+    "image": "./assets/images/siemreapTop.jpg",
     "images": [
-      "./assets/images/SR_2.png",
-      "./assets/images/(1).png",
-      "./assets/images/(3).png"
+      "./assets/images/siemreapTop.jpg",
+      "./assets/images/angkorwat.jpg",
+      "./assets/images/33104092.jpg"
     ],
     "features": [
-      { "icon": "desk", "label": "Study Area" },
-      { "icon": "directions_bike", "label": "Free Bicycles" },
-      { "icon": "wifi", "label": "Fiber Internet" }
+      {
+        "icon": "desk",
+        "label": "Study Area"
+      },
+      {
+        "icon": "directions_bike",
+        "label": "Free Bicycles"
+      },
+      {
+        "icon": "wifi",
+        "label": "Fiber Internet"
+      }
     ],
     "location": "Siem Reap",
     "host": "Chanthea",
@@ -477,16 +599,25 @@
     "rating": 4.6,
     "reviews": 62,
     "price": 85,
-    "image": "./assets/images/SR_3.png",
+    "image": "./assets/images/angkorwat.jpg",
     "images": [
-      "./assets/images/SR_3.png",
-      "./assets/images/(4).png",
-      "./assets/images/Image.png"
+      "./assets/images/angkorwat.jpg",
+      "./assets/images/33105752.jpg",
+      "./assets/images/408895964.jpg"
     ],
     "features": [
-      { "icon": "local_bar", "label": "Near Nightlife" },
-      { "icon": "ac_unit", "label": "AC Included" },
-      { "icon": "security", "label": "Keycard Access" }
+      {
+        "icon": "local_bar",
+        "label": "Near Nightlife"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      },
+      {
+        "icon": "security",
+        "label": "Keycard Access"
+      }
     ],
     "location": "Siem Reap",
     "host": "Makara",
@@ -510,16 +641,25 @@
     "rating": 4.9,
     "reviews": 17,
     "price": 130,
-    "image": "./assets/images/SR_4.png",
+    "image": "./assets/images/33104092.jpg",
     "images": [
-      "./assets/images/SR_4.png",
-      "./assets/images/Ima.png",
-      "./assets/images/Techno_2.png"
+      "./assets/images/33104092.jpg",
+      "./assets/images/408894962.jpg",
+      "./assets/images/33104080.jpg"
     ],
     "features": [
-      { "icon": "wifi", "label": "High Speed" },
-      { "icon": "kitchen", "label": "Private Kitchen" },
-      { "icon": "nature", "label": "Garden View" }
+      {
+        "icon": "wifi",
+        "label": "High Speed"
+      },
+      {
+        "icon": "kitchen",
+        "label": "Private Kitchen"
+      },
+      {
+        "icon": "nature",
+        "label": "Garden View"
+      }
     ],
     "location": "Siem Reap",
     "host": "Sreymom",
@@ -543,16 +683,25 @@
     "rating": 4.4,
     "reviews": 89,
     "price": 45,
-    "image": "./assets/images/SR_5.png",
+    "image": "./assets/images/siemreapTop.jpg",
     "images": [
-      "./assets/images/SR_5.png",
+      "./assets/images/siemreapTop.jpg",
       "./assets/images/(2).png",
       "./assets/images/(3).png"
     ],
     "features": [
-      { "icon": "restaurant", "label": "Rooftop Bar" },
-      { "icon": "local_laundry_service", "label": "Laundry" },
-      { "icon": "wifi", "label": "Wi-Fi" }
+      {
+        "icon": "restaurant",
+        "label": "Rooftop Bar"
+      },
+      {
+        "icon": "local_laundry_service",
+        "label": "Laundry"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      }
     ],
     "location": "Siem Reap",
     "host": "Visoth",
@@ -565,8 +714,8 @@
     "cleaningFee": 5,
     "serviceFee": 5,
     "maxGuests": 1,
-    "lat": 13.3570,
-    "lng": 103.8560
+    "lat": 13.357,
+    "lng": 103.856
   },
   {
     "id": 18,
@@ -576,16 +725,25 @@
     "rating": 4.9,
     "reviews": 34,
     "price": 160,
-    "image": "./assets/images/SR_6.png",
+    "image": "./assets/images/33105752.jpg",
     "images": [
-      "./assets/images/SR_6.png",
+      "./assets/images/33105752.jpg",
       "./assets/images/(1).png",
       "./assets/images/(4).png"
     ],
     "features": [
-      { "icon": "balcony", "label": "Balcony" },
-      { "icon": "spa", "label": "Spa Access" },
-      { "icon": "room_service", "label": "Daily Cleaning" }
+      {
+        "icon": "balcony",
+        "label": "Balcony"
+      },
+      {
+        "icon": "spa",
+        "label": "Spa Access"
+      },
+      {
+        "icon": "room_service",
+        "label": "Daily Cleaning"
+      }
     ],
     "location": "Siem Reap",
     "host": "Phalla",
@@ -609,16 +767,25 @@
     "rating": 4.2,
     "reviews": 15,
     "price": 55,
-    "image": "./assets/images/SR_7.png",
+    "image": "./assets/images/408894962.jpg",
     "images": [
-      "./assets/images/SR_7.png",
+      "./assets/images/408894962.jpg",
       "./assets/images/Image.png",
       "./assets/images/Ima.png"
     ],
     "features": [
-      { "icon": "wifi", "label": "Wi-Fi" },
-      { "icon": "local_dining", "label": "Canteen" },
-      { "icon": "security", "label": "Gated" }
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      },
+      {
+        "icon": "local_dining",
+        "label": "Canteen"
+      },
+      {
+        "icon": "security",
+        "label": "Gated"
+      }
     ],
     "location": "Siem Reap",
     "host": "Kiri",
@@ -642,16 +809,25 @@
     "rating": 4.7,
     "reviews": 51,
     "price": 95,
-    "image": "./assets/images/SR_8.png",
+    "image": "./assets/images/koh-sdach.jpg",
     "images": [
-      "./assets/images/SR_8.png",
+      "./assets/images/koh-sdach.jpg",
       "./assets/images/Techno_2.png",
       "./assets/images/(2).png"
     ],
     "features": [
-      { "icon": "eco", "label": "Eco-Friendly" },
-      { "icon": "ac_unit", "label": "AC Included" },
-      { "icon": "pool", "label": "Saltwater Pool" }
+      {
+        "icon": "eco",
+        "label": "Eco-Friendly"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      },
+      {
+        "icon": "pool",
+        "label": "Saltwater Pool"
+      }
     ],
     "location": "Siem Reap",
     "host": "Sambo",
@@ -665,7 +841,7 @@
     "serviceFee": 15,
     "maxGuests": 2,
     "lat": 13.3661,
-    "lng": 103.8340
+    "lng": 103.834
   },
   {
     "id": 21,
@@ -675,16 +851,25 @@
     "rating": 4.6,
     "reviews": 22,
     "price": 115,
-    "image": "./assets/images/SR_9.png",
+    "image": "./assets/images/33104080.jpg",
     "images": [
-      "./assets/images/SR_9.png",
+      "./assets/images/33104080.jpg",
       "./assets/images/(3).png",
       "./assets/images/(4).png"
     ],
     "features": [
-      { "icon": "desk", "label": "Ergonomic Setup" },
-      { "icon": "wifi", "label": "Fiber" },
-      { "icon": "local_cafe", "label": "Cafe Downstairs" }
+      {
+        "icon": "desk",
+        "label": "Ergonomic Setup"
+      },
+      {
+        "icon": "wifi",
+        "label": "Fiber"
+      },
+      {
+        "icon": "local_cafe",
+        "label": "Cafe Downstairs"
+      }
     ],
     "location": "Siem Reap",
     "host": "Rathana",
@@ -708,16 +893,25 @@
     "rating": 4.5,
     "reviews": 41,
     "price": 65,
-    "image": "./assets/images/SR_10.png",
+    "image": "./assets/images/408895964.jpg",
     "images": [
-      "./assets/images/SR_10.png",
+      "./assets/images/408895964.jpg",
       "./assets/images/Ima.png",
       "./assets/images/Image.png"
     ],
     "features": [
-      { "icon": "group", "label": "Co-Working Space" },
-      { "icon": "kitchen", "label": "Shared Kitchen" },
-      { "icon": "wifi", "label": "Fast Wi-Fi" }
+      {
+        "icon": "group",
+        "label": "Co-Working Space"
+      },
+      {
+        "icon": "kitchen",
+        "label": "Shared Kitchen"
+      },
+      {
+        "icon": "wifi",
+        "label": "Fast Wi-Fi"
+      }
     ],
     "location": "Siem Reap",
     "host": "Sina",
@@ -741,16 +935,25 @@
     "rating": 4.8,
     "reviews": 55,
     "price": 125,
-    "image": "./assets/images/KP_1.png",
+    "image": "./assets/images/kampotTop.jpg",
     "images": [
-      "./assets/images/KP_1.png",
-      "./assets/images/(1).png",
+      "./assets/images/kampotTop.jpg",
+      "./assets/images/kompot.jpg",
       "./assets/images/(2).png"
     ],
     "features": [
-      { "icon": "water", "label": "River View" },
-      { "icon": "kayaking", "label": "Free Kayaks" },
-      { "icon": "ac_unit", "label": "Air Conditioning" }
+      {
+        "icon": "water",
+        "label": "River View"
+      },
+      {
+        "icon": "kayaking",
+        "label": "Free Kayaks"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "Air Conditioning"
+      }
     ],
     "location": "Kampot",
     "host": "Veasna",
@@ -774,16 +977,25 @@
     "rating": 4.3,
     "reviews": 21,
     "price": 50,
-    "image": "./assets/images/KP_2.png",
+    "image": "./assets/images/kompot.jpg",
     "images": [
-      "./assets/images/KP_2.png",
+      "./assets/images/kompot.jpg",
       "./assets/images/(3).png",
       "./assets/images/(4).png"
     ],
     "features": [
-      { "icon": "wifi", "label": "Wi-Fi" },
-      { "icon": "storefront", "label": "Near Market" },
-      { "icon": "restaurant", "label": "Shared Kitchen" }
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      },
+      {
+        "icon": "storefront",
+        "label": "Near Market"
+      },
+      {
+        "icon": "restaurant",
+        "label": "Shared Kitchen"
+      }
     ],
     "location": "Kampot",
     "host": "Dalis",
@@ -807,16 +1019,25 @@
     "rating": 4.9,
     "reviews": 38,
     "price": 145,
-    "image": "./assets/images/KP_3.png",
+    "image": "./assets/images/kampotTop.jpg",
     "images": [
-      "./assets/images/KP_3.png",
+      "./assets/images/kampotTop.jpg",
       "./assets/images/Image.png",
       "./assets/images/Techno_2.png"
     ],
     "features": [
-      { "icon": "pool", "label": "Private Pool" },
-      { "icon": "nature", "label": "Garden Access" },
-      { "icon": "wifi", "label": "High Speed" }
+      {
+        "icon": "pool",
+        "label": "Private Pool"
+      },
+      {
+        "icon": "nature",
+        "label": "Garden Access"
+      },
+      {
+        "icon": "wifi",
+        "label": "High Speed"
+      }
     ],
     "location": "Kampot",
     "host": "Sophorn",
@@ -840,16 +1061,25 @@
     "rating": 4.7,
     "reviews": 19,
     "price": 110,
-    "image": "./assets/images/KP_4.png",
+    "image": "./assets/images/Koh-Ker.jpg",
     "images": [
-      "./assets/images/KP_4.png",
+      "./assets/images/Koh-Ker.jpg",
       "./assets/images/(1).png",
       "./assets/images/Ima.png"
     ],
     "features": [
-      { "icon": "desk", "label": "Writing Desk" },
-      { "icon": "ac_unit", "label": "AC Included" },
-      { "icon": "balcony", "label": "Bokor Mountain View" }
+      {
+        "icon": "desk",
+        "label": "Writing Desk"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      },
+      {
+        "icon": "balcony",
+        "label": "Bokor Mountain View"
+      }
     ],
     "location": "Kampot",
     "host": "Chenda",
@@ -862,7 +1092,7 @@
     "cleaningFee": 12,
     "serviceFee": 18,
     "maxGuests": 2,
-    "lat": 10.6180,
+    "lat": 10.618,
     "lng": 104.1852
   },
   {
@@ -873,16 +1103,25 @@
     "rating": 4.6,
     "reviews": 73,
     "price": 40,
-    "image": "./assets/images/KP_5.png",
+    "image": "./assets/images/Koh-Kong.jpg",
     "images": [
-      "./assets/images/KP_5.png",
+      "./assets/images/Koh-Kong.jpg",
       "./assets/images/(2).png",
       "./assets/images/(4).png"
     ],
     "features": [
-      { "icon": "local_cafe", "label": "On-site Cafe" },
-      { "icon": "wifi", "label": "Wi-Fi" },
-      { "icon": "lock", "label": "Secure Lockers" }
+      {
+        "icon": "local_cafe",
+        "label": "On-site Cafe"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      },
+      {
+        "icon": "lock",
+        "label": "Secure Lockers"
+      }
     ],
     "location": "Kampot",
     "host": "Pisal",
@@ -906,16 +1145,25 @@
     "rating": 4.5,
     "reviews": 29,
     "price": 90,
-    "image": "./assets/images/KP_6.png",
+    "image": "./assets/images/koh-sdach.jpg",
     "images": [
-      "./assets/images/KP_6.png",
+      "./assets/images/koh-sdach.jpg",
       "./assets/images/(3).png",
       "./assets/images/Image.png"
     ],
     "features": [
-      { "icon": "wb_sunny", "label": "Great Lighting" },
-      { "icon": "directions_bike", "label": "Bike Rental" },
-      { "icon": "ac_unit", "label": "AC Included" }
+      {
+        "icon": "wb_sunny",
+        "label": "Great Lighting"
+      },
+      {
+        "icon": "directions_bike",
+        "label": "Bike Rental"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      }
     ],
     "location": "Kampot",
     "host": "Sovann",
@@ -929,7 +1177,7 @@
     "serviceFee": 15,
     "maxGuests": 2,
     "lat": 10.5921,
-    "lng": 104.1910
+    "lng": 104.191
   },
   {
     "id": 29,
@@ -939,16 +1187,25 @@
     "rating": 4.4,
     "reviews": 14,
     "price": 60,
-    "image": "./assets/images/KP_7.png",
+    "image": "./assets/images/koh-sdach.jpg",
     "images": [
-      "./assets/images/KP_7.png",
+      "./assets/images/koh-sdach.jpg",
       "./assets/images/(1).png",
       "./assets/images/(2).png"
     ],
     "features": [
-      { "icon": "eco", "label": "Solar Powered" },
-      { "icon": "water", "label": "River Access" },
-      { "icon": "wifi", "label": "Wi-Fi" }
+      {
+        "icon": "eco",
+        "label": "Solar Powered"
+      },
+      {
+        "icon": "water",
+        "label": "River Access"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      }
     ],
     "location": "Kampot",
     "host": "Vireak",
@@ -961,7 +1218,7 @@
     "cleaningFee": 8,
     "serviceFee": 12,
     "maxGuests": 2,
-    "lat": 10.6450,
+    "lat": 10.645,
     "lng": 104.1523
   },
   {
@@ -972,16 +1229,25 @@
     "rating": 4.2,
     "reviews": 47,
     "price": 105,
-    "image": "./assets/images/KP_8.png",
+    "image": "./assets/images/kompot.jpg",
     "images": [
-      "./assets/images/KP_8.png",
+      "./assets/images/kompot.jpg",
       "./assets/images/Techno_2.png",
       "./assets/images/(4).png"
     ],
     "features": [
-      { "icon": "location_on", "label": "Central Location" },
-      { "icon": "kitchen", "label": "Full Kitchen" },
-      { "icon": "tv", "label": "Smart TV" }
+      {
+        "icon": "location_on",
+        "label": "Central Location"
+      },
+      {
+        "icon": "kitchen",
+        "label": "Full Kitchen"
+      },
+      {
+        "icon": "tv",
+        "label": "Smart TV"
+      }
     ],
     "location": "Kampot",
     "host": "Malis",
@@ -1005,16 +1271,25 @@
     "rating": 4.6,
     "reviews": 11,
     "price": 115,
-    "image": "./assets/images/KP_9.png",
+    "image": "./assets/images/Koh-Ker.jpg",
     "images": [
-      "./assets/images/KP_9.png",
+      "./assets/images/Koh-Ker.jpg",
       "./assets/images/Image.png",
       "./assets/images/(3).png"
     ],
     "features": [
-      { "icon": "hiking", "label": "Near Trailheads" },
-      { "icon": "wifi", "label": "Fiber Internet" },
-      { "icon": "security", "label": "Secure Parking" }
+      {
+        "icon": "hiking",
+        "label": "Near Trailheads"
+      },
+      {
+        "icon": "wifi",
+        "label": "Fiber Internet"
+      },
+      {
+        "icon": "security",
+        "label": "Secure Parking"
+      }
     ],
     "location": "Kampot",
     "host": "Samnang",
@@ -1028,7 +1303,7 @@
     "serviceFee": 20,
     "maxGuests": 2,
     "lat": 10.5985,
-    "lng": 104.1650
+    "lng": 104.165
   },
   {
     "id": 32,
@@ -1038,16 +1313,25 @@
     "rating": 4.8,
     "reviews": 33,
     "price": 75,
-    "image": "./assets/images/KP_10.png",
+    "image": "./assets/images/kampotTop.jpg",
     "images": [
-      "./assets/images/KP_10.png",
+      "./assets/images/kampotTop.jpg",
       "./assets/images/(1).png",
       "./assets/images/Ima.png"
     ],
     "features": [
-      { "icon": "spa", "label": "Yoga Deck" },
-      { "icon": "wifi", "label": "High Speed" },
-      { "icon": "restaurant", "label": "Vegan Cafe" }
+      {
+        "icon": "spa",
+        "label": "Yoga Deck"
+      },
+      {
+        "icon": "wifi",
+        "label": "High Speed"
+      },
+      {
+        "icon": "restaurant",
+        "label": "Vegan Cafe"
+      }
     ],
     "location": "Kampot",
     "host": "Nary",
@@ -1060,7 +1344,7 @@
     "cleaningFee": 10,
     "serviceFee": 15,
     "maxGuests": 1,
-    "lat": 10.6210,
+    "lat": 10.621,
     "lng": 104.1755
   }
 ]

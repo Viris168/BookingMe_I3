@@ -7,7 +7,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Kantumruy Pro", sans-serif;
   background: #f5f6f8;
   color: #1a1a2e;
   min-height: 100vh;
@@ -42,7 +42,7 @@ body {
 
 /* ---------- Page Title ---------- */
 .reviews-page-title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Kantumruy Pro", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: #0f172a;
