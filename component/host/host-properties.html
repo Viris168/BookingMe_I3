@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Properties | BookingME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/host.css">
+</head>
+<body class="host-page">
+  <div class="host-dashboard-shell">
+    <aside class="host-sidebar">
+      <a class="host-sidebar-brand" href="../../index.html"><img src="../../assets/icons/BookingME-logo-3.png" alt="BookingME"></a>
+      <div class="host-card-profile"><div class="host-avatar-lg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');"></div><div><h2>Sokha Chea</h2><span class="pill pill-success">Verified Host</span></div></div>
+      <nav class="host-side-nav" aria-label="Host dashboard navigation">
+        <a href="host-dashboard.html"><span class="material-symbols-outlined">dashboard</span>Overview</a>
+        <a class="is-active" href="host-properties.html"><span class="material-symbols-outlined">apartment</span>Properties</a>
+        <a href="host-bookings.html"><span class="material-symbols-outlined">event_available</span>Bookings</a>
+        <a href="add-property-step-1.html"><span class="material-symbols-outlined">add_home</span>Add Property</a>
+        <a href="../dashboard/profile.html"><span class="material-symbols-outlined">person</span>User Dashboard</a>
+      </nav>
+      <div class="host-role-card">
+        <strong>Property Tools</strong>
+        <p>Manage price, availability, status, and listing quality from this host area.</p>
+        <a class="btn" href="add-property-step-1.html">Add Property</a>
+      </div>
+    </aside>
+
+    <main class="host-dashboard-main">
+      <section class="host-hero">
+        <div>
+          <p class="eyebrow">Property management</p>
+          <h1>Your Properties</h1>
+          <p>Edit listings, update pricing, review status, and publish new rooms.</p>
+        </div>
+        <a class="btn btn-primary" href="add-property-step-1.html"><span class="material-symbols-outlined">add</span>New Property</a>
+      </section>
+
+      <section class="stats-grid" aria-label="Property statistics">
+        <article class="stat-card"><span class="material-symbols-outlined">published_with_changes</span><span>Published</span><strong>5</strong></article>
+        <article class="stat-card"><span class="material-symbols-outlined">rate_review</span><span>In Review</span><strong>1</strong></article>
+        <article class="stat-card"><span class="material-symbols-outlined">edit_calendar</span><span>Need Calendar</span><strong>2</strong></article>
+        <article class="stat-card"><span class="material-symbols-outlined">visibility</span><span>Views</span><strong>1.2k</strong></article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Listing Status</h2>
+          <span class="pill">3 properties</span>
+        </div>
+        <div class="property-list">
+          <article class="property-card">
+            <img src="../../assets/images/Riverside_3.png" alt="Riverside apartment">
+            <div>
+              <span class="pill pill-success">Active</span>
+              <h3>Mekong Riverside Apartment</h3>
+              <div class="property-meta"><span>Phnom Penh</span><span>$85 / night</span><span>12 bookings</span><span>4.9 rating</span></div>
+              <div class="property-health">
+                <div class="health-row"><span>Listing quality</span><div class="health-bar"><span style="width:92%"></span></div><span>92%</span></div>
+                <div class="health-row"><span>Availability</span><div class="health-bar"><span style="width:78%"></span></div><span>78%</span></div>
+              </div>
+              <div class="card-actions"><a class="btn btn-secondary" href="#">Edit</a><a class="btn btn-secondary" href="#">Calendar</a><a class="btn btn-secondary" href="#">Preview</a><a class="btn btn-danger" href="#">Pause</a></div>
+            </div>
+          </article>
+          <article class="property-card">
+            <img src="../../assets/images/Techno_2.png" alt="Techno studio">
+            <div>
+              <span class="pill pill-warning">In Review</span>
+              <h3>Techno Student Studio</h3>
+              <div class="property-meta"><span>Toul Kork</span><span>$38 / night</span><span>0 bookings</span><span>Needs review</span></div>
+              <div class="property-health">
+                <div class="health-row"><span>Listing quality</span><div class="health-bar"><span style="width:64%"></span></div><span>64%</span></div>
+                <div class="health-row"><span>Availability</span><div class="health-bar"><span style="width:25%"></span></div><span>25%</span></div>
+              </div>
+              <div class="card-actions"><a class="btn btn-primary" href="add-property-step-4.html">Finish Review</a><a class="btn btn-secondary" href="#">Edit</a><a class="btn btn-secondary" href="#">Photos</a></div>
+            </div>
+          </article>
+          <article class="property-card">
+            <img src="../../assets/images/ToulKork_3.png" alt="Toul Kork residence">
+            <div>
+              <span class="pill pill-muted">Draft</span>
+              <h3>Toul Kork Residence</h3>
+              <div class="property-meta"><span>Toul Kork</span><span>$70 / night</span><span>Not published</span><span>Missing photos</span></div>
+              <div class="property-health">
+                <div class="health-row"><span>Listing quality</span><div class="health-bar"><span style="width:48%"></span></div><span>48%</span></div>
+                <div class="health-row"><span>Availability</span><div class="health-bar"><span style="width:0%"></span></div><span>0%</span></div>
+              </div>
+              <div class="card-actions"><a class="btn btn-primary" href="add-property-step-1.html">Complete Draft</a><a class="btn btn-secondary" href="#">Preview</a><a class="btn btn-danger" href="#">Delete</a></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
