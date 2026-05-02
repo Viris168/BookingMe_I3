@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Property - Location & Media | BookingME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/host.css">
+</head>
+<body class="host-page">
+  <header class="host-header">
+    <div class="host-header-inner">
+      <a class="host-brand" href="host-dashboard.html">
+        <img src="../../assets/icons/BookingME-logo-3.png" alt="BookingME">
+        <span>Host</span>
+      </a>
+      <nav class="host-nav" aria-label="Host navigation">
+        <a href="host-dashboard.html">Dashboard</a>
+        <a class="is-active" href="add-property-step-1.html">Add Property</a>
+        <a href="host-properties.html">Listings</a>
+      </nav>
+      <div class="host-actions">
+        <a class="icon-button" href="host-dashboard.html" aria-label="Back to dashboard">
+          <span class="material-symbols-outlined">close</span>
+        </a>
+        <span class="avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="host-shell">
+    <section class="wizard-title">
+      <p class="eyebrow">Step 2 of 4</p>
+      <h1>Location & Media</h1>
+      <p>Show guests where they will stay and add strong photos for the listing gallery.</p>
+      <div class="wizard-step-grid">
+        <div class="wizard-step"><strong>1</strong><span>Basic Info</span></div>
+        <div class="wizard-step is-active"><strong>2</strong><span>Location & Photos</span></div>
+        <div class="wizard-step"><strong>3</strong><span>Pricing</span></div>
+        <div class="wizard-step"><strong>4</strong><span>Review</span></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Location and photos</span><span>50%</span></div>
+        <div class="progress-bar"><span style="width:50%"></span></div>
+      </div>
+    </section>
+
+    <form class="wizard-layout media-heavy" action="add-property-step-3.html">
+      <section class="wizard-card">
+        <div class="section-title">
+          <span class="material-symbols-outlined">location_on</span>
+          <h2>Property Location</h2>
+        </div>
+        <div class="location-layout">
+          <div>
+            <div class="form-grid">
+              <div class="field full">
+                <label for="street">Street Address</label>
+                <input id="street" name="street" type="text" value="Street 110, Riverside, Phnom Penh">
+              </div>
+              <div class="field">
+                <label for="city">City</label>
+                <input id="city" name="city" type="text" value="Phnom Penh">
+              </div>
+              <div class="field">
+                <label for="district">District</label>
+                <input id="district" name="district" type="text" value="Daun Penh">
+              </div>
+              <div class="field">
+                <label for="nearby">Nearby Landmark</label>
+                <input id="nearby" name="nearby" type="text" value="Riverside Night Market">
+              </div>
+              <div class="field">
+                <label for="area">Area Type</label>
+                <select id="area" name="area">
+                  <option>City center</option>
+                  <option>Near university</option>
+                  <option>Quiet residential</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-note">
+              <span class="material-symbols-outlined">location_searching</span>
+              <span>Use a recognizable nearby place. Guests often search by landmark before exact street name.</span>
+            </div>
+            <div class="address-summary">
+              <h3>Guest-facing location</h3>
+              <p>Guests will see the Riverside area before booking. Exact street details can be shared after confirmation.</p>
+            </div>
+            <div class="location-utility-grid">
+              <div class="location-utility">
+                <span class="material-symbols-outlined">verified</span>
+                <strong>High confidence</strong>
+                <small>Address and landmark are specific enough for search.</small>
+              </div>
+              <div class="location-utility">
+                <span class="material-symbols-outlined">directions_walk</span>
+                <strong>8 min walk</strong>
+                <small>Close to Riverside Night Market and cafes.</small>
+              </div>
+              <div class="location-utility">
+                <span class="material-symbols-outlined">local_taxi</span>
+                <strong>Easy pickup</strong>
+                <small>Good for taxi and tuk-tuk arrival instructions.</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-card" aria-label="Map preview">
+            <iframe
+              title="Google Map showing Riverside Night Market, Phnom Penh"
+              loading="lazy"
+              src="https://www.google.com/maps?q=Riverside%20Night%20Market%20Phnom%20Penh%20Cambodia&output=embed">
+            </iframe>
+            <div class="map-info">
+              <div>
+                <strong>Riverside Night Market</strong>
+                <small>Daun Penh, Phnom Penh</small>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Riverside%20Night%20Market%20Phnom%20Penh%20Cambodia">Open Map</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="wizard-footer">
+          <a class="btn btn-secondary" href="add-property-step-1.html"><span class="material-symbols-outlined">arrow_back</span>Back to Details</a>
+          <button class="btn btn-primary" type="submit">Next: Pricing<span class="material-symbols-outlined">arrow_forward</span></button>
+        </div>
+      </section>
+
+      <aside class="wizard-card">
+        <div class="section-title">
+          <span class="material-symbols-outlined">photo_library</span>
+          <h2>Photos & Media</h2>
+        </div>
+        <label class="upload-box">
+          <input type="file" name="photos" accept="image/*" hidden>
+          <span>
+            <span class="material-symbols-outlined" style="font-size:42px;color:var(--host-primary)">cloud_upload</span><br>
+            <strong>Upload or replace property photos</strong><br>
+            <small>Use bright landscape photos. Cover photo appears first in search results.</small>
+          </span>
+        </label>
+        <div class="photo-checklist">
+          <div class="photo-check"><span class="material-symbols-outlined">check_circle</span>Cover photo selected</div>
+          <div class="photo-check"><span class="material-symbols-outlined">check_circle</span>Living room and bedroom included</div>
+          <div class="photo-check"><span class="material-symbols-outlined">check_circle</span>Neighborhood photo added</div>
+        </div>
+        <div class="media-grid">
+          <div class="media-tile cover"><img src="../../assets/images/Riverside_3.png" alt="Cover room"></div>
+          <div class="media-tile"><img src="../../assets/images/Ima.png" alt="Room"></div>
+          <div class="media-tile"><img src="../../assets/images/imaa.png" alt="Kitchen"></div>
+          <div class="media-tile"><img src="../../assets/images/Image.png" alt="View"></div>
+          <div class="media-tile"><img src="../../assets/images/ToulKork_3.png" alt="Neighborhood"></div>
+        </div>
+      </aside>
+    </form>
+  </main>
+</body>
+</html>

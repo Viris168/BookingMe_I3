@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Property - Pricing & Amenities | BookingME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/host.css">
+</head>
+<body class="host-page">
+  <header class="host-header">
+    <div class="host-header-inner">
+      <a class="host-brand" href="host-dashboard.html">
+        <img src="../../assets/icons/BookingME-logo-3.png" alt="BookingME">
+        <span>Host</span>
+      </a>
+      <nav class="host-nav" aria-label="Host navigation">
+        <a href="host-dashboard.html">Dashboard</a>
+        <a class="is-active" href="add-property-step-1.html">Add Property</a>
+        <a href="host-properties.html">Listings</a>
+      </nav>
+      <div class="host-actions">
+        <a class="icon-button" href="host-dashboard.html" aria-label="Back to dashboard">
+          <span class="material-symbols-outlined">close</span>
+        </a>
+        <span class="avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="host-shell">
+    <section class="wizard-title">
+      <p class="eyebrow">Step 3 of 4</p>
+      <h1>Pricing & Amenities</h1>
+      <p>Set the nightly price and select the features guests can use during their stay.</p>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Rates and features</span><span>75%</span></div>
+        <div class="progress-bar"><span style="width:75%"></span></div>
+      </div>
+    </section>
+
+    <form class="wizard-layout" action="add-property-step-4.html">
+      <section class="wizard-card">
+        <div class="section-title">
+          <span class="material-symbols-outlined">payments</span>
+          <h2>Nightly Rates</h2>
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="usd">Base Price (USD)</label>
+            <input id="usd" name="usd" type="number" value="85">
+          </div>
+          <div class="field">
+            <label for="khr">Base Price (KHR)</label>
+            <input id="khr" name="khr" type="number" value="348500">
+          </div>
+          <div class="field">
+            <label for="cleaning">Cleaning Fee</label>
+            <input id="cleaning" name="cleaning" type="number" value="10">
+          </div>
+          <div class="field">
+            <label for="extra">Extra Guest Fee</label>
+            <input id="extra" name="extra" type="number" value="8">
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top:28px">
+          <span class="material-symbols-outlined">check_circle</span>
+          <h2>Property Amenities</h2>
+        </div>
+        <div class="amenity-grid">
+          <div class="check-list">
+            <strong>Essentials</strong>
+            <label><input type="checkbox" checked> WiFi</label>
+            <label><input type="checkbox" checked> Air Conditioning</label>
+            <label><input type="checkbox" checked> Hot Water</label>
+            <label><input type="checkbox"> Cable TV</label>
+          </div>
+          <div class="check-list">
+            <strong>Features</strong>
+            <label><input type="checkbox" checked> Free Parking</label>
+            <label><input type="checkbox" checked> Kitchen</label>
+            <label><input type="checkbox"> Swimming Pool</label>
+            <label><input type="checkbox"> Balcony</label>
+          </div>
+          <div class="check-list">
+            <strong>Safety</strong>
+            <label><input type="checkbox" checked> Smoke Alarm</label>
+            <label><input type="checkbox" checked> Security Camera</label>
+            <label><input type="checkbox"> First Aid Kit</label>
+            <label><input type="checkbox"> Fire Extinguisher</label>
+          </div>
+        </div>
+
+        <div class="wizard-footer">
+          <a class="btn btn-secondary" href="add-property-step-2.html"><span class="material-symbols-outlined">arrow_back</span>Back to Location</a>
+          <button class="btn btn-primary" type="submit">Review Listing<span class="material-symbols-outlined">arrow_forward</span></button>
+        </div>
+      </section>
+
+      <aside class="wizard-aside">
+        <div class="wizard-card">
+          <h2>Selected Highlights</h2>
+          <div class="tag-list">
+            <span class="pill">WiFi</span>
+            <span class="pill">Kitchen</span>
+            <span class="pill">Parking</span>
+            <span class="pill">Air Conditioning</span>
+            <span class="pill">Security</span>
+          </div>
+        </div>
+        <div class="tip-card">
+          <strong>Tip:</strong> make fees easy to understand. Guests compare total cost before clicking reserve.
+        </div>
+      </aside>
+    </form>
+  </main>
+</body>
+</html>
