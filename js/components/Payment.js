@@ -11,6 +11,11 @@ fetch("/data/product.json")
     });
 
 const bookingData = savedBookingData;
+const detailUrl = `/component/partials/Property-Detai.html?id=${productId}`;
+document.getElementById("payment-back-link")?.setAttribute("href", detailUrl);
+document.querySelectorAll("[data-property-edit]").forEach((link) => {
+    link.href = detailUrl;
+});
 
 function pay(data) {
 

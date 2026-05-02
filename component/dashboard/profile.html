@@ -63,7 +63,7 @@
       <div class="absolute bottom-0 left-0 w-40 h-40 bg-mekong-blue-light/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
 
       <a class="dashboard-sidebar-brand" href="/index.html" aria-label="BookingME home">
-        <img src="/assets/icons/BookingME-logo-3.png" alt="BookingME">
+        <img src="/assets/icons/BookingME-logo-transparent.png" alt="BookingME">
       </a>
 
       <div class="dashboard-profile-card">
@@ -102,10 +102,14 @@
           <span class="material-symbols-outlined text-xl">home_work</span>
           <span class="text-base font-medium leading-normal">Host Dashboard</span>
         </a>
+        <a href="/index.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined text-xl">home</span>
+          <span class="text-base font-medium leading-normal">Back to Home</span>
+        </a>
       </nav>
 
       <div class="mt-auto pt-6 relative z-10 border-t border-slate-200/50 dark:border-slate-700/50">
-        <a href="#" class="dashboard-logout">
+        <a href="#" class="dashboard-logout" data-logout>
           <span class="material-symbols-outlined">logout</span>
           <span class="text-base leading-normal">Log Out</span>
         </a>
@@ -152,6 +156,29 @@
               </button>
             </div>
           </div>
+
+          <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+            <article class="glass-panel rounded-3xl p-5">
+              <span class="material-symbols-outlined w-11 h-11 rounded-2xl bg-blue-50 text-mekong-blue grid place-items-center mb-4">event_available</span>
+              <p class="text-slate-500 dark:text-slate-400 font-bold text-sm mb-2">Upcoming Bookings</p>
+              <strong class="text-3xl text-slate-900 dark:text-white">2</strong>
+            </article>
+            <article class="glass-panel rounded-3xl p-5">
+              <span class="material-symbols-outlined w-11 h-11 rounded-2xl bg-rose-50 text-rose-600 grid place-items-center mb-4">favorite</span>
+              <p class="text-slate-500 dark:text-slate-400 font-bold text-sm mb-2">Saved Places</p>
+              <strong class="text-3xl text-slate-900 dark:text-white">8</strong>
+            </article>
+            <article class="glass-panel rounded-3xl p-5">
+              <span class="material-symbols-outlined w-11 h-11 rounded-2xl bg-amber-50 text-amber-600 grid place-items-center mb-4">hotel</span>
+              <p class="text-slate-500 dark:text-slate-400 font-bold text-sm mb-2">Completed Stays</p>
+              <strong class="text-3xl text-slate-900 dark:text-white">12</strong>
+            </article>
+            <article class="glass-panel rounded-3xl p-5">
+              <span class="material-symbols-outlined w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-600 grid place-items-center mb-4">verified_user</span>
+              <p class="text-slate-500 dark:text-slate-400 font-bold text-sm mb-2">Account Status</p>
+              <strong class="text-xl text-slate-900 dark:text-white">Verified</strong>
+            </article>
+          </section>
 
           <section class="glass-panel p-8 rounded-3xl relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-r from-mekong-blue/95 to-mekong-blue-light/90"></div>
@@ -236,7 +263,7 @@
                     <p class="text-base font-bold text-red-600 dark:text-red-400 mb-1">Delete Account</p>
                     <p class="text-sm text-slate-500 dark:text-slate-400">Permanently delete your data</p>
                   </div>
-                  <button class="px-5 py-2.5 text-red-600 dark:text-red-400 bg-white dark:bg-transparent border border-red-200 dark:border-red-800 rounded-xl text-sm font-semibold hover:bg-red-50 dark:hover:bg-red-900/40 transition-colors shadow-sm">Delete</button>
+                  <button class="px-5 py-2.5 text-red-600 dark:text-red-400 bg-white dark:bg-transparent border border-red-200 dark:border-red-800 rounded-xl text-sm font-semibold hover:bg-red-50 dark:hover:bg-red-900/40 transition-colors shadow-sm" data-delete-account>Delete</button>
                 </div>
               </div>
             </section>
@@ -245,6 +272,7 @@
       </div>
     </main>
   </div>
+  <script src="/js/dashboard.js"></script>
   <script src="/js/i18n.js"></script>
 </body>
 </html>

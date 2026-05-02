@@ -13,7 +13,7 @@
   <div class="host-dashboard-shell">
     <aside class="host-sidebar">
       <a class="host-sidebar-brand" href="../../index.html">
-        <img src="../../assets/icons/BookingME-logo-3.png" alt="BookingME">
+        <img src="../../assets/icons/BookingME-logo-transparent.png" alt="BookingME">
       </a>
       <div class="host-card-profile">
         <div class="host-avatar-lg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');"></div>
@@ -26,13 +26,13 @@
         <a class="is-active" href="host-dashboard.html"><span class="material-symbols-outlined">dashboard</span>Overview</a>
         <a href="host-properties.html"><span class="material-symbols-outlined">apartment</span>Properties</a>
         <a href="host-bookings.html"><span class="material-symbols-outlined">event_available</span>Bookings</a>
-        <a href="add-property-step-1.html"><span class="material-symbols-outlined">add_home</span>Add Property</a>
         <a href="../dashboard/profile.html"><span class="material-symbols-outlined">person</span>User Dashboard</a>
+        <a href="../../index.html"><span class="material-symbols-outlined">home</span>Back to Home</a>
       </nav>
+      <a href="#" class="host-logout" data-logout><span class="material-symbols-outlined">logout</span>Log Out</a>
       <div class="host-role-card">
         <strong>Host Mode</strong>
         <p>Your traveler account is upgraded with property tools and booking controls.</p>
-        <a class="btn" href="add-property-step-1.html">List New Stay</a>
       </div>
     </aside>
 
@@ -58,10 +58,10 @@
       </section>
 
       <section class="stats-grid" aria-label="Host statistics">
-        <article class="stat-card"><span class="material-symbols-outlined">apartment</span><span>Active Listings</span><strong>6</strong></article>
-        <article class="stat-card"><span class="material-symbols-outlined">pending_actions</span><span>Pending Requests</span><strong>4</strong></article>
-        <article class="stat-card"><span class="material-symbols-outlined">payments</span><span>Monthly Revenue</span><strong>$4.8k</strong></article>
-        <article class="stat-card"><span class="material-symbols-outlined">star</span><span>Average Rating</span><strong>4.9</strong></article>
+        <article class="stat-card"><span class="material-symbols-outlined">apartment</span><span>Active Listings</span><strong>6</strong><small class="trend-up">+2 this month</small></article>
+        <article class="stat-card"><span class="material-symbols-outlined">pending_actions</span><span>Pending Requests</span><strong>4</strong><small class="trend-up">Needs action today</small></article>
+        <article class="stat-card"><span class="material-symbols-outlined">payments</span><span>Monthly Revenue</span><strong>$4.8k</strong><small class="trend-up">+12% this month</small></article>
+        <article class="stat-card"><span class="material-symbols-outlined">star</span><span>Average Rating</span><strong>4.9</strong><small class="trend-up">Top rated host</small></article>
       </section>
 
       <div class="dashboard-grid">
@@ -82,27 +82,27 @@
           <div class="panel-head">
             <h2>Today</h2>
           </div>
-          <div class="booking-row">
+          <a class="booking-row" href="host-bookings.html">
             <div>
               <p>2 check-ins</p>
               <small>Mekong Riverside and Toul Kork Residence</small>
             </div>
             <span class="material-symbols-outlined">login</span>
-          </div>
-          <div class="booking-row">
+          </a>
+          <a class="booking-row" href="host-bookings.html">
             <div>
               <p>1 message waiting</p>
               <small>Guest asks about airport pickup</small>
             </div>
             <span class="material-symbols-outlined">chat</span>
-          </div>
-          <div class="booking-row">
+          </a>
+          <a class="booking-row" href="host-properties.html">
             <div>
               <p>Update availability</p>
               <small>Techno Student Studio calendar is empty</small>
             </div>
             <span class="material-symbols-outlined">calendar_month</span>
-          </div>
+          </a>
         </aside>
       </div>
 
@@ -128,6 +128,7 @@
       </section>
     </main>
   </div>
+  <script src="/js/dashboard.js"></script>
   <script src="/js/i18n.js"></script>
 </body>
 </html>

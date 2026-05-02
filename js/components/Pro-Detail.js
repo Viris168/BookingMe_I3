@@ -23,6 +23,10 @@ function populatePage(p) {
     document.getElementById("serviceVal").textContent = `$${p.serviceFee}`;
     document.getElementById("title").textContent = p.title;
     document.getElementById("type").textContent = p.type;
+    const reviewsLink = document.getElementById("reviewsLink");
+    if (reviewsLink) {
+        reviewsLink.href = `/component/partials/Reviews.html?id=${p.id}`;
+    }
 
 
     const galleryImages = document.querySelectorAll(".gallery img");

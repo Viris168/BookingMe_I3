@@ -23,8 +23,8 @@ const updatePropertyCount = (count) => {
         return;
     }
 
-    const roomLabel = count === 1 ? 'room' : 'rooms';
-    propertyCount.textContent = `${count} ${roomLabel} available near Phnom Penh campuses`;
+    const roomLabel = count === 1 ? 'stay' : 'stays';
+    propertyCount.textContent = `${count} ${roomLabel} available across Cambodia`;
 };
 
 const updateFilterResultCount = (count) => {

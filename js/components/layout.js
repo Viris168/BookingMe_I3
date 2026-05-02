@@ -23,11 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (toggle && menu) {
                     toggle.addEventListener("click", () => {
                         const isOpen = menu.style.maxHeight && menu.style.maxHeight !== "0px";
-                        menu.style.maxHeight = isOpen ? "0px" : "400px";
+                        menu.style.maxHeight = isOpen ? "0px" : "620px";
                         const icon = toggle.querySelector(".material-symbols-outlined");
                         if (icon) icon.textContent = isOpen ? "menu" : "close";
                     });
                 }
+
+                initProfileMenu(headerContainer);
+                initLanguageMenu(headerContainer);
+                headerContainer.addEventListener("click", handleLogout);
 
                 if (window.BookingMEI18n) {
                     window.BookingMEI18n.apply(headerContainer);

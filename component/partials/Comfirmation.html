@@ -141,7 +141,7 @@
         <div class="location-info">
           <h4 class="location-title">Location</h4>
           <p class="location-address">R 42, Toul Kuk, Phnom Penh, Cambodia</p>
-          <a href="#" class="location-link">
+          <a href="https://www.google.com/maps/search/?api=1&query=Siem%20Reap%20Cambodia" class="location-link" target="_blank" rel="noopener">
             Get Directions
             <span class="material-symbols-outlined">open_in_new</span>
           </a>
@@ -152,13 +152,17 @@
 
 
     <div class="confirmation-actions">
-      <button class="btn-download" id="download-receipt-btn">
+      <button class="btn-download" id="download-receipt-btn" type="button" onclick="window.print()">
         <span class="material-symbols-outlined">download</span>
         Download Receipt
       </button>
       <button class="btn-home" id="return-home-btn" onclick="window.location.href='/index.html'">
         <span class="material-symbols-outlined">home</span>
         Return to Home
+      </button>
+      <button class="btn-home" type="button" onclick="window.location.href='/component/dashboard/Booking-status.html'">
+        <span class="material-symbols-outlined">event_available</span>
+        View Booking Status
       </button>
     </div>
 

@@ -30,14 +30,13 @@
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 h-16">
     <div class="flex items-center gap-6">
       <a href="/index.html" class="flex h-12 w-32 flex-shrink-0 items-center sm:w-36">
-        <img src="/assets/icons/BookingME-logo-3.png" class="block h-full w-full object-contain mix-blend-multiply" alt="BookingME Logo" />
+        <img src="/assets/icons/BookingME-logo-transparent.png" class="block h-full w-full object-contain" alt="BookingME Logo" />
       </a>
       <nav class="hidden md:flex items-center gap-1">
         <a href="/index.html" class="px-3 py-1.5 text-sm font-semibold text-slate-500 rounded-md hover:bg-slate-100 transition-colors" data-i18n="nav.home">Home</a>
         <a href="/component/partials/booking.html" class="px-3 py-1.5 text-sm font-medium text-slate-500 rounded-md hover:bg-slate-100 hover:text-slate-800 transition-colors" data-i18n="nav.bookings">Bookings</a>
         <a href="/component/places/places.html" class="px-3 py-1.5 text-sm font-medium text-slate-500 rounded-md hover:bg-slate-100 hover:text-slate-800 transition-colors" data-i18n="nav.places">Places</a>
         <a href="/component/support/support.html" class="px-3 py-1.5 text-sm font-medium text-slate-500 rounded-md hover:bg-slate-100 hover:text-slate-800 transition-colors" data-i18n="nav.support">Support</a>
-        <a href="/component/host/host-dashboard.html" class="px-3 py-1.5 text-sm font-medium text-slate-500 rounded-md hover:bg-slate-100 hover:text-slate-800 transition-colors" data-i18n="nav.hostDashboard">Host Dashboard</a>
       </nav>
     </div>
 
@@ -50,17 +49,75 @@
           class="w-48 lg:w-60 rounded-lg bg-slate-100 py-2 pl-9 pr-4 text-sm placeholder:text-slate-400 focus:ring-2 focus:ring-primary focus:outline-none transition" />
       </label>
 
-      <button class="hidden sm:flex items-center gap-1.5 h-9 px-2.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors text-sm font-medium flex-shrink-0" data-language-toggle>
-        <span class="material-symbols-outlined" style="font-size:18px">language</span>
-        <span data-language-label data-i18n="nav.language">EN / KH</span>
-      </button>
+      <div class="relative hidden sm:block group" data-language-menu-root>
+        <button type="button" class="flex h-9 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 text-sm font-bold text-slate-600 shadow-sm transition hover:border-primary/40 hover:bg-slate-50" aria-label="Choose language" aria-expanded="false" data-language-menu-button>
+          <img src="/assets/flag/England.png" alt="English" class="h-5 w-7 rounded-sm object-cover shadow-sm" data-language-current-flag>
+          <span data-language-current-label>EN</span>
+          <span class="material-symbols-outlined text-[18px] text-slate-400 transition group-hover:rotate-180">expand_more</span>
+        </button>
+        <div class="absolute right-0 top-full z-[70] hidden w-52 overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl shadow-slate-900/12 group-hover:block" data-language-menu>
+          <button type="button" class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary" data-language="en">
+            <img src="/assets/flag/England.png" alt="English" class="h-5 w-7 rounded-sm object-cover shadow-sm">
+            <span>English</span>
+            <span class="material-symbols-outlined ml-auto hidden text-[18px]" data-language-check>check</span>
+          </button>
+          <button type="button" class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary" data-language="km">
+            <img src="/assets/flag/cambodia.png" alt="Khmer" class="h-5 w-7 rounded-sm object-cover shadow-sm">
+            <span>ខ្មែរ</span>
+            <span class="material-symbols-outlined ml-auto hidden text-[18px]" data-language-check>check</span>
+          </button>
+        </div>
+      </div>
 
       <button class="flex items-center justify-center h-9 w-9 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors">
         <span class="material-symbols-outlined" style="font-size:20px">notifications</span>
       </button>
 
-      <div class="h-8 w-8 rounded-full ring-2 ring-primary/30 overflow-hidden flex-shrink-0">
-        <img src="/assets/icons/icon.png" alt="User" class="h-full w-full object-cover" />
+      <div class="relative group" data-profile-menu-root>
+        <button type="button" class="flex h-9 items-center gap-2 rounded-full border border-slate-200 bg-white pl-1 pr-2 shadow-sm transition hover:border-primary/40 hover:shadow-md" aria-label="Open account menu" aria-expanded="false" data-profile-menu-button>
+          <span class="h-8 w-8 rounded-full ring-2 ring-primary/30 overflow-hidden flex-shrink-0">
+            <img src="/assets/icons/icon.png" alt="User" class="h-full w-full object-cover" />
+          </span>
+          <span class="material-symbols-outlined hidden sm:inline text-slate-400 text-[18px] transition group-hover:rotate-180">expand_more</span>
+        </button>
+
+        <div class="absolute right-0 top-full z-[70] hidden w-72 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/12 group-hover:block" data-profile-menu>
+          <div class="flex items-center gap-3 border-b border-slate-100 bg-slate-50 px-4 py-4">
+            <img src="/assets/icons/icon.png" alt="User" class="h-11 w-11 rounded-full object-cover ring-2 ring-primary/25">
+            <div class="min-w-0">
+              <p class="truncate text-sm font-extrabold text-slate-900">Sokha Chea</p>
+              <p class="truncate text-xs font-medium text-slate-500">sokha.chea@example.com</p>
+            </div>
+          </div>
+          <div class="grid gap-1 p-2">
+            <a href="/component/dashboard/profile.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+              <span class="material-symbols-outlined text-[20px]">dashboard</span>
+              <span data-i18n="account.dashboard">Dashboard</span>
+            </a>
+            <a href="/component/dashboard/Booking-history.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+              <span class="material-symbols-outlined text-[20px]">history</span>
+              <span data-i18n="account.orderHistory">Order History</span>
+            </a>
+            <a href="/component/dashboard/favorite.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+              <span data-i18n="account.favorites">Favorites</span>
+            </a>
+            <a href="/component/dashboard/account-setting.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+              <span class="material-symbols-outlined text-[20px]">settings</span>
+              <span data-i18n="account.settings">Settings</span>
+            </a>
+            <a href="/component/host/host-dashboard.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-amber-50 hover:text-amber-700">
+              <span class="material-symbols-outlined text-[20px]">home_work</span>
+              <span data-i18n="account.hostMode">Host Mode</span>
+            </a>
+          </div>
+          <div class="border-t border-slate-100 p-2">
+            <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-extrabold text-red-600 transition hover:bg-red-50" data-logout>
+              <span class="material-symbols-outlined text-[20px]">logout</span>
+              <span data-i18n="account.logout">Log Out</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       <button id="menu-toggle" class="flex md:hidden items-center justify-center h-9 w-9 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors">
@@ -82,11 +139,32 @@
       <a href="/component/partials/booking.html" class="px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100" data-i18n="nav.bookings">Bookings</a>
       <a href="/component/places/places.html" class="px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100" data-i18n="nav.places">Places</a>
       <a href="/component/support/support.html" class="px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100" data-i18n="nav.support">Support</a>
-      <a href="/component/host/host-dashboard.html" class="px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100" data-i18n="nav.hostDashboard">Host Dashboard</a>
+      <div class="mt-1 border-t border-slate-100 pt-2">
+        <p class="px-3 pb-1 text-[11px] font-extrabold uppercase tracking-widest text-slate-400" data-i18n="account.menu">Account</p>
+        <a href="/component/dashboard/profile.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
+          <span class="material-symbols-outlined text-[18px]">dashboard</span>
+          <span data-i18n="account.dashboard">Dashboard</span>
+        </a>
+        <a href="/component/dashboard/Booking-history.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
+          <span class="material-symbols-outlined text-[18px]">history</span>
+          <span data-i18n="account.orderHistory">Order History</span>
+        </a>
+        <a href="/component/host/host-dashboard.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
+          <span class="material-symbols-outlined text-[18px]">home_work</span>
+          <span data-i18n="account.hostMode">Host Mode</span>
+        </a>
+      </div>
       <div class="mt-1 pt-2 border-t border-slate-100">
-        <button class="flex items-center gap-2 px-3 py-2 w-full text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100" data-language-toggle>
-          <span class="material-symbols-outlined" style="font-size:18px">language</span>
-          <span data-language-label data-i18n="nav.language">EN / KH</span>
+        <p class="px-3 pb-1 text-[11px] font-extrabold uppercase tracking-widest text-slate-400">Language</p>
+        <button type="button" class="flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm font-medium text-slate-600 hover:bg-slate-100" data-language="en">
+          <img src="/assets/flag/England.png" alt="English" class="h-5 w-7 rounded-sm object-cover shadow-sm">
+          <span>English</span>
+          <span class="material-symbols-outlined ml-auto hidden text-[18px]" data-language-check>check</span>
+        </button>
+        <button type="button" class="flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm font-medium text-slate-600 hover:bg-slate-100" data-language="km">
+          <img src="/assets/flag/cambodia.png" alt="Khmer" class="h-5 w-7 rounded-sm object-cover shadow-sm">
+          <span>ខ្មែរ</span>
+          <span class="material-symbols-outlined ml-auto hidden text-[18px]" data-language-check>check</span>
         </button>
       </div>
     </div>

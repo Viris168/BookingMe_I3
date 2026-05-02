@@ -72,6 +72,26 @@
     return text.replace(/\s+/g, " ").trim();
   }
 
+  function interpolate(value, params = {}) {
+    return String(value).replace(/\{\{\s*([\w.-]+)\s*\}\}/g, (match, key) => {
+      return Object.prototype.hasOwnProperty.call(params, key) ? params[key] : match;
+    });
+  }
+
+  function lookup(dictionary, key, params = {}) {
+    if (!key) {
+      return "";
+    }
+
+    const value =
+      dictionary[key] ||
+      dictionary.key?.[key] ||
+      dictionary.attr?.[key] ||
+      dictionary.text?.[key];
+
+    return value ? interpolate(value, params) : "";
+  }
+
   async function loadDictionary(lang) {
     const safeLang = supported.has(lang) ? lang : DEFAULT_LANG;
     const response = await fetch(`/data/lang/${safeLang}.json`);
@@ -84,18 +104,21 @@
   function applyKeyTranslations(root, dictionary) {
     root.querySelectorAll("[data-i18n]").forEach((element) => {
       const key = element.getAttribute("data-i18n");
-      const value = dictionary.key?.[key] || dictionary.text?.[key];
+      const value = lookup(dictionary, key);
       if (value && element.textContent !== value) {
         element.textContent = value;
       }
     });
 
-    root.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
-      const key = element.getAttribute("data-i18n-placeholder");
-      const value = dictionary.key?.[key] || dictionary.attr?.[key];
-      if (value && element.getAttribute("placeholder") !== value) {
-        element.setAttribute("placeholder", value);
-      }
+    ["placeholder", "aria-label", "title", "alt"].forEach((attribute) => {
+      const selector = `[data-i18n-${attribute}]`;
+      root.querySelectorAll(selector).forEach((element) => {
+        const key = element.getAttribute(`data-i18n-${attribute}`);
+        const value = lookup(dictionary, key);
+        if (value && element.getAttribute(attribute) !== value) {
+          element.setAttribute(attribute, value);
+        }
+      });
     });
   }
 
@@ -186,7 +209,8 @@
           element.dataset[dataKey] = element.getAttribute(attribute);
         }
         const original = element.dataset[dataKey];
-        const translated = attrMap[original] || dictionary.text?.[original];
+        const stableKey = element.getAttribute(`data-i18n-${attribute}`);
+        const translated = lookup(dictionary, stableKey) || attrMap[original] || dictionary.text?.[original];
         if (translated && element.getAttribute(attribute) !== translated) {
           element.setAttribute(attribute, translated);
         }
@@ -201,8 +225,32 @@
       label.textContent = lang === "en" ? "EN / KH" : "KH / EN";
     });
 
+    const currentMeta = lang === "km"
+      ? { flag: "/assets/flag/cambodia.png", label: "KH", alt: "Khmer" }
+      : { flag: "/assets/flag/England.png", label: "EN", alt: "English" };
+
+    document.querySelectorAll("[data-language-current-flag]").forEach((element) => {
+      if (element.tagName === "IMG") {
+        element.src = currentMeta.flag;
+        element.alt = currentMeta.alt;
+      } else {
+        element.textContent = currentMeta.label;
+      }
+    });
+
+    document.querySelectorAll("[data-language-current-label]").forEach((element) => {
+      element.textContent = currentMeta.label;
+    });
+
     document.querySelectorAll("[data-language]").forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.language === lang);
+      const isActive = button.dataset.language === lang;
+      button.classList.toggle("is-active", isActive);
+      button.classList.toggle("bg-blue-50", isActive);
+      button.classList.toggle("text-primary", isActive);
+      button.classList.toggle("text-slate-600", !isActive);
+      button.querySelectorAll("[data-language-check]").forEach((check) => {
+        check.classList.toggle("hidden", !isActive);
+      });
     });
   }
 
@@ -238,6 +286,8 @@
       if (option) {
         event.preventDefault();
         setLanguage(option.dataset.language);
+        option.closest("[data-language-menu]")?.classList.add("hidden");
+        option.closest("[data-language-menu-root]")?.querySelector("[data-language-menu-button]")?.setAttribute("aria-expanded", "false");
       }
     });
   }
@@ -265,6 +315,7 @@
     apply,
     setLanguage,
     getLanguage: () => currentLang,
+    t: (key, params) => (currentDictionary ? lookup(currentDictionary, key, params) || key : key),
   };
 
   injectTypography();
