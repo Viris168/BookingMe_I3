@@ -39,6 +39,19 @@
     .dashboard-nav-link { @apply flex items-center gap-4 px-5 py-4 rounded-2xl text-slate-500 dark:text-slate-400 hover:bg-white/70 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white transition-all; }
     .dashboard-nav-link-active { @apply bg-white/85 dark:bg-slate-800/85 text-mekong-blue dark:text-white border-l-4 border-mekong-blue shadow-md; }
     .dashboard-logout { @apply flex items-center justify-center gap-3 py-4 px-5 rounded-2xl bg-red-50/80 dark:bg-red-900/20 text-red-500 hover:text-red-600 border border-red-100 dark:border-red-900/40 transition-all font-semibold shadow-sm; }
+    .dashboard-sidebar-brand { position: relative; z-index: 10; display: flex; align-items: center; width: 100%; padding: 0 0.25rem; margin-bottom: 1.5rem; }
+    .dashboard-sidebar-brand img { width: 124px; height: auto; object-fit: contain; }
+    .dashboard-profile-card { position: relative; z-index: 10; display: grid; place-items: center; gap: 12px; width: 100%; margin-bottom: 1.5rem; padding: 20px; border-radius: 26px; background: rgba(255,255,255,0.68); border: 1px solid rgba(255,255,255,0.62); text-align: center; box-shadow: 0 12px 30px rgba(15,23,42,0.08); overflow: hidden; }
+    .dashboard-profile-card::before { content: ""; position: absolute; width: 120px; height: 120px; top: -42px; right: -42px; border-radius: 999px; background: rgba(255,184,0,0.18); filter: blur(28px); pointer-events: none; }
+    .dashboard-profile-avatar-wrap { position: relative; z-index: 1; }
+    .dashboard-profile-avatar-wrap::before { content: none; }
+    .dashboard-profile-avatar { width: 76px; height: 76px; border-radius: 9999px; background-size: cover; background-position: center; border: 4px solid #fff; box-shadow: 0 12px 28px rgba(26,54,93,0.18); }
+    .dashboard-profile-name { position: relative; z-index: 1; color: #0f172a; font-size: 1.25rem; font-weight: 900; line-height: 1.1; margin: 0; }
+    .dashboard-member-pill { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 0.38rem; padding: 0.42rem 0.78rem; border-radius: 9999px; background: #dcfce7; border: 1px solid #bbf7d0; color: #047857; font-size: 0.72rem; font-weight: 900; }
+    .dashboard-member-pill .material-symbols-outlined { font-size: 15px; }
+    .dark .dashboard-profile-card { background: rgba(15,23,42,0.72); border-color: rgba(148,163,184,0.18); box-shadow: 0 16px 32px rgba(0,0,0,0.22); }
+    .dark .dashboard-profile-name { color: #ffffff; }
+    .dark .dashboard-member-pill { background: rgba(20,83,45,0.45); border-color: rgba(74,222,128,0.22); color: #86efac; }
     .listing-card { @apply p-6 xl:p-7 rounded-[2rem] flex flex-col lg:flex-row gap-6 xl:gap-8 items-center relative overflow-hidden; }
     .listing-card-media { @apply w-full lg:w-[250px] xl:w-[280px] h-40 xl:h-44 rounded-[1.6rem] bg-cover bg-center shrink-0 shadow-md; }
     .listing-card-actions { @apply flex flex-row lg:flex-col gap-3 w-full lg:w-auto mt-2 lg:mt-0 pt-4 lg:pt-0 border-t lg:border-t-0 lg:border-l border-slate-200/50 dark:border-slate-700/50 lg:pl-6 xl:pl-7 justify-center; }
@@ -51,19 +64,18 @@
       <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
       <div class="absolute bottom-0 left-0 w-40 h-40 bg-mekong-blue-light/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
 
-      <div class="flex flex-col gap-5 items-center mb-12 relative z-10">
-        <div class="relative group">
-          <div class="absolute inset-0 bg-gradient-to-tr from-primary to-mekong-blue-light rounded-full blur opacity-50 group-hover:opacity-75 transition-opacity"></div>
-          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24 border-4 border-white dark:border-slate-800 shadow-xl relative z-10"
-               style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');">
-          </div>
+      <a class="dashboard-sidebar-brand" href="/index.html" aria-label="BookingME home">
+        <img src="/assets/icons/BookingME-logo-3.png" alt="BookingME">
+      </a>
+
+      <div class="dashboard-profile-card">
+        <div class="dashboard-profile-avatar-wrap">
+          <div class="dashboard-profile-avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtokZu6fSynbfM_6fgvaFhpVAAM8TGSOQ5lPNngUcj2BK8jIfPgA7zrYdXioW4G6Q2UGnaBIoO4cGlJNuIWX1b89n_bMQpgyikRLfvc3N6cBZdiNfbUp1_OqO1muhhjDBOaSDWBJIzBEIasAq-mY9tKRqzn7x-CvOkVhF4z3q7TbBGmRBno5Il5iLsFvx_mlYMuBxaczU8CSq6Rv4WpA9SSI2kIUqAvaOgG9aKUM0kYQBYud6S7t_35naczOSvPLMc6lCKBwXkVTg');"></div>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <h1 class="text-slate-900 dark:text-white text-xl font-bold leading-normal mb-1">Sokha Chea</h1>
-          <div class="inline-flex items-center gap-1.5 bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
-            <span class="material-symbols-outlined text-[16px]">stars</span>
-            Gold Member
-          </div>
+        <h1 class="dashboard-profile-name">Sokha Chea</h1>
+        <div class="dashboard-member-pill">
+          <span class="material-symbols-outlined text-[16px]">stars</span>
+          Gold Member
         </div>
       </div>
 
