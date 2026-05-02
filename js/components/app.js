@@ -37,26 +37,26 @@ const getSortedProducts = () => {
     let products = [...listProduct];
     const filters = getFilters();
     products = products.filter(product => matchesFilters(product, filters));
-    
-    // 1. Get the current value from the dropdown
+
+
     const sortSelectValue = sortSelect ? sortSelect.value : 'campus';
-    
-    // 2. Filter the products using a JS condition
+
+
     products = products.filter(product => {
-        // Now that you have "category" in your product.json, we can filter by it!
-        // We ensure a default 'category' exists just in case it's missing for a product
+
+
         const productCategory = product.category || 'campus';
         return productCategory === sortSelectValue;
     });
 
-    // 3. Filter by location if one is selected
+
     if (l) {
         products = products.filter(product =>
             product.location.toLowerCase().replace(/\s/g, '-') === l.toLowerCase()
         );
     }
 
-    // 4. Sort them as usual
+
     return products.sort((a, b) => a.id - b.id);
 };
 
@@ -134,7 +134,7 @@ const addDataToHTML = () => {
                     </button>
                 </div>
             </div>
-            
+
         `;
 
         const wishlistBtn = newProduct.querySelector('.wishlistBtn');
@@ -145,7 +145,7 @@ const addDataToHTML = () => {
                 wishlistIcon.classList.toggle('text-gray-400');
             });
         }
-        
+
         listProductHTML.appendChild(newProduct);
     });
 
@@ -158,30 +158,30 @@ const addDataToHTML = () => {
 
 const renderPagination = (totalItems) => {
     if (!paginationControls) return;
-    
+
     paginationControls.innerHTML = '';
     const totalPages = Math.ceil(totalItems / itemsPerPage);
-    
+
     if (totalPages <= 1) return;
 
     for (let i = 1; i <= totalPages; i++) {
         const btn = document.createElement('button');
         btn.textContent = i;
         btn.className = `w-8 h-8 rounded-lg text-sm font-semibold transition-colors ${
-            i === currentPage 
-                ? 'bg-primary text-white cursor-default shadow-md shadow-primary/30' 
+            i === currentPage
+                ? 'bg-primary text-white cursor-default shadow-md shadow-primary/30'
                 : 'bg-white border border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-primary hover:border-gray-300'
         }`;
-        
+
         btn.addEventListener('click', () => {
             currentPage = i;
             addDataToHTML();
-            
-            // Optionally scroll up slightly when paging
+
+
             const listTop = document.getElementById('ListProduct').getBoundingClientRect().top + window.scrollY;
             window.scrollTo({ top: listTop - 150, behavior: 'smooth' });
         });
-        
+
         paginationControls.appendChild(btn);
     }
 };
@@ -211,6 +211,51 @@ const initApp = async () => {
 
         listProduct = await response.json();
         addDataToHTML();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const placeParam = urlParams.get('place');
+        if (placeParam) {
+            // Re-query sortSelect live (it's from section.html, injected before app.js)
+            const sortSelectLive = document.getElementById('property-sort');
+            if (sortSelectLive) {
+                sortSelectLive.value = 'hotel';
+                sortSelectLive.dispatchEvent(new Event('change'));
+            }
+
+            // Show the place selector immediately
+            const placeSelector = document.getElementById('hotel-place-selector');
+            if (placeSelector) {
+                placeSelector.classList.remove('hidden');
+            }
+
+            // Wait for DOM to settle, then select the place
+            setTimeout(() => {
+                const option = document.querySelector(
+                    `.hotel-place-option[data-value="${placeParam}"]`
+                );
+                if (option) {
+                    // Use textContent (not innerText) — works even on invisible elements
+                    const label = option.textContent.trim();
+
+                    // Update the display label
+                    const placeValueEl = document.getElementById('hotelPlaceValue');
+                    if (placeValueEl) placeValueEl.innerText = label;
+
+                    // Highlight the selected option
+                    document.querySelectorAll('.hotel-place-option').forEach(opt => {
+                        opt.classList.remove('bg-[#1e293b]', 'text-white', 'font-semibold');
+                        opt.classList.add('text-[#4a4641]');
+                    });
+                    option.classList.remove('text-[#4a4641]');
+                    option.classList.add('bg-[#1e293b]', 'text-white', 'font-semibold');
+
+                    // Apply location filter and re-render
+                    l = placeParam;
+                    currentPage = 1;
+                    addDataToHTML();
+                }
+            }, 500);
+        }
     } catch (error) {
         console.error('Failed to load products:', error);
         showLoadError();
@@ -221,8 +266,8 @@ if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
         const sectionTitle = document.getElementById('section-title');
         if (sectionTitle) {
-            sectionTitle.textContent = e.target.value === 'hotel' 
-                ? 'Premium Hotel Stays' 
+            sectionTitle.textContent = e.target.value === 'hotel'
+                ? 'Premium Hotel Stays'
                 : 'University Student Rentals';
         }
 
@@ -242,7 +287,7 @@ if (sortSelect) {
 
 initApp();
 
-// --- Global functions for Custom Dropdown in section.html ---
+
 window.toggleHotelPlaceDropdown = function(event) {
     const dropdown = document.getElementById("hotelPlaceDropdown");
     const chevron = document.getElementById("hotelPlaceChevron");
@@ -258,16 +303,16 @@ window.selectHotelPlace = function(event, el) {
     event.stopPropagation();
     const value = el.getAttribute("data-value");
     const text = el.innerText;
-    
+
     document.getElementById("hotelPlaceValue").innerText = text;
-    
+
     document.querySelectorAll(".hotel-place-option").forEach(opt => {
         opt.classList.remove("bg-[#1e293b]", "text-white", "font-semibold");
         opt.classList.add("text-[#4a4641]");
     });
     el.classList.remove("text-[#4a4641]");
     el.classList.add("bg-[#1e293b]", "text-white", "font-semibold");
-    
+
     const dropdown = document.getElementById("hotelPlaceDropdown");
     const chevron = document.getElementById("hotelPlaceChevron");
     if (dropdown) {
@@ -276,21 +321,21 @@ window.selectHotelPlace = function(event, el) {
     if (chevron) {
         chevron.classList.remove("rotate-180");
     }
-    
+
     const nativeSelect = document.getElementById("place-select");
     if (nativeSelect) {
         nativeSelect.value = value;
         nativeSelect.dispatchEvent(new Event('change'));
     }
 
-    // Update location filter and re-render the list
+
     l = value;
     currentPage = 1;
     addDataToHTML();
 }
 
 
-//aside
+
 document.addEventListener("click", function(event) {
     const box = document.getElementById("hotelPlaceBox");
     if (box && !box.contains(event.target)) {
@@ -301,7 +346,7 @@ document.addEventListener("click", function(event) {
     }
 });
 
-    // ─── Slider ───────────────────────────────────────────────
+
 const updatePriceSliderDisplay = (slider, display) => {
     if (!slider || !display) {
         return;
@@ -316,15 +361,15 @@ const updatePriceSliderDisplay = (slider, display) => {
     display.textContent = val >= 1000 ? '$1000+' : `$${val}`;
 };
 
-    // ─── Read filters ─────────────────────────────────────────
-    // Returns a clean object you can use anywhere in your app:
-    // {
-    //   price: 525,                          // number
-    //   university: ['itc', 'rupp'],         // string[]
-    //   roomType: ['private'],               // string[]
-    //   amenity: ['wifi'],                   // string[]
-    //   leaseTerm: ['semester'],             // string[]
-    // }
+
+
+
+
+
+
+
+
+
 function getFilters() {
     const slider = document.getElementById('price-range');
     const filters = {
@@ -346,9 +391,9 @@ function getFilters() {
     return filters;
 }
 
-    // ─── Match a single listing against filters ───────────────
-    // listing shape expected:
-    // { price, university, roomType, amenities: [], leaseTerm }
+
+
+
 function matchesFilters(product, filters) {
     if (product.price > filters.price && filters.price < 1000) {
         return false;
@@ -385,7 +430,7 @@ function matchesFilters(product, filters) {
 }
 
 
-    // ─── Apply filters (called on every change) ───────────────
+
 function applyFilters() {
     currentPage = 1;
     addDataToHTML();
@@ -427,7 +472,7 @@ function initFilterSheetControls() {
     });
 }
 
-    // ─── Checkbox listeners ───────────────────────────────────
+
 function initProductFilterControls() {
     const slider = document.getElementById('price-range');
     const display = document.getElementById('price-display');
@@ -450,7 +495,7 @@ function initProductFilterControls() {
         cb.addEventListener('change', applyFilters);
     });
 
-    // ─── Reset ────────────────────────────────────────────────
+
     const resetBtn = document.getElementById('reset-btn');
     if (resetBtn && !resetBtn.dataset.filterBound) {
         resetBtn.dataset.filterBound = 'true';

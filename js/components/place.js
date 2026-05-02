@@ -5,12 +5,12 @@ const paginationControls = document.querySelector('#pagination-controls');
 let listProduct = [];
 const itemsPerPage = 4;
 let currentPage = 1;
-let activeFilter = 'all'; // 'all' | 'affordable' | 'campus'
-let activeLocation = new URLSearchParams(window.location.search).get('place') || '';
+let activeFilter = 'all';
+let activeLocation = '';
 let activeId = null;
 let mapFlightToken = 0;
 
-/* Helpers */
+
 
 const slugifyLocation = (value = '') =>
     value.toLowerCase().trim().replace(/\s+/g, '-');
@@ -31,7 +31,7 @@ const getFilteredProducts = () => {
     return products;
 };
 
-/* Card renderer */
+
 
 const createProductCard = (product) => {
     const card = document.createElement('article');
@@ -68,7 +68,7 @@ const createProductCard = (product) => {
         </div>
     `;
 
-    // Wishlist toggle
+
     const wishBtn = card.querySelector('.wishlist-btn');
     if (wishBtn) {
         wishBtn.addEventListener('click', (e) => {
@@ -80,7 +80,7 @@ const createProductCard = (product) => {
         });
     }
 
-    // Trigger the master selection function on click
+
     card.addEventListener('click', () => {
         selectHotel(product.id);
     });
@@ -88,7 +88,7 @@ const createProductCard = (product) => {
     return card;
 };
 
-/* Render list */
+
 
 const addDataToHTML = () => {
     if (!listProductHTML) return;
@@ -120,7 +120,7 @@ const addDataToHTML = () => {
     }
 };
 
-/* Pagination */
+
 
 const renderPagination = (totalItems) => {
     if (!paginationControls) return;
@@ -145,7 +145,7 @@ const renderPagination = (totalItems) => {
     }
 };
 
-/* Filter tabs */
+
 
 const initFilterTabs = () => {
     const tabs = document.querySelectorAll('.filter-tab');
@@ -183,9 +183,9 @@ const initPlaceFilter = () => {
     });
 };
 
-/* Init */
 
-/* Map setup */
+
+
 const map = L.map('map').setView([11.5620, 104.9240], 14);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -349,27 +349,27 @@ function makeIcon(active) {
     });
 }
 
-/* Select a hotel: updates card and map */
+
 function selectHotel(id) {
     const hotel = listProduct.find(h => h.id === id);
     if (!hotel) return;
 
-    // Remove active from all cards
+
     document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
 
-    // Add active to clicked card
+
     const card = document.querySelector(`.product-card[data-product-id="${id}"]`);
     if (card) {
         card.classList.add('active');
         card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // Reset all markers to inactive
+
     Object.keys(markers).forEach(mid => {
         markers[mid].setIcon(makeIcon(false));
     });
 
-    // Set clicked marker to active & fly to it
+
     if (markers[id]) {
         markers[id].setIcon(makeIcon(true));
         markers[id].openPopup();
@@ -380,7 +380,7 @@ function selectHotel(id) {
     activeId = id;
 }
 
-/* Create map markers after data is loaded */
+
 const initMarkers = () => {
     listProduct.forEach(product => {
         if (!product.lat || !product.lng) return;
@@ -400,7 +400,7 @@ const initMarkers = () => {
     });
 };
 
-/* Fetch data, render cards, then add markers */
+
 const initProductList = async () => {
     try {
         const response = await fetch('/data/product.json');
@@ -441,32 +441,32 @@ function selectPlace(event, el) {
     const value = el.getAttribute("data-value");
     const text = el.innerText;
 
-    // Update UI
+
     document.getElementById("placeValue").innerText = text;
 
-    // Update selected class
+
     document.querySelectorAll(".custom-place-option").forEach(opt => opt.classList.remove("selected"));
     el.classList.add("selected");
 
-    // Close dropdown
+
     document.getElementById("placeDropdown").classList.remove("show");
     document.getElementById("placeChevron").classList.remove("open");
 
-    // Update native hidden select and trigger change for productList.js
+
     const nativeSelect = document.getElementById("place-select");
     if (nativeSelect) {
         nativeSelect.value = value;
         nativeSelect.dispatchEvent(new Event('change'));
     }
 
-    // Update location filter and re-render the list
+
     activeLocation = value;
     currentPage = 1;
     addDataToHTML();
     window.requestAnimationFrame(() => flyToPlace(value));
 }
 
-// Close when clicking outside
+
 document.addEventListener("click", function (event) {
     const box = document.getElementById("placeBox");
     if (box && !box.contains(event.target)) {

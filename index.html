@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookingME</title>
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-      <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
- 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookingME</title>
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Kantumruy+Pro:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -37,17 +42,18 @@
       },
     }
   </script>
- 
+
   <style>
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       font-size: 18px;
     }
+
     body {
       font-family: 'Inter', sans-serif;
     }
- 
-    /* Price slider styles (needed here since aside is injected, not a full page) */
+
+
     .price-slider {
       -webkit-appearance: none;
       appearance: none;
@@ -58,32 +64,40 @@
       cursor: pointer;
       width: 100%;
     }
+
     .price-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 18px; height: 18px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: #fff;
       border: 2.5px solid #2b8dee;
-      box-shadow: 0 2px 8px rgba(43,141,238,.3);
+      box-shadow: 0 2px 8px rgba(43, 141, 238, .3);
       cursor: grab;
       transition: box-shadow .2s;
     }
+
     .price-slider::-webkit-slider-thumb:active {
       cursor: grabbing;
-      box-shadow: 0 0 0 6px rgba(43,141,238,.15);
+      box-shadow: 0 0 0 6px rgba(43, 141, 238, .15);
     }
+
     .price-slider::-moz-range-thumb {
-      width: 18px; height: 18px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: #fff;
       border: 2.5px solid #2b8dee;
-      box-shadow: 0 2px 8px rgba(43,141,238,.3);
+      box-shadow: 0 2px 8px rgba(43, 141, 238, .3);
       cursor: grab;
     }
+
     input[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 15px; height: 15px; min-width: 15px;
+      width: 15px;
+      height: 15px;
+      min-width: 15px;
       border-radius: 4px;
       border: 2px solid #cbd5e1;
       background: #fff;
@@ -91,344 +105,249 @@
       transition: all .2s;
       position: relative;
     }
+
     input[type="checkbox"]:checked {
       background: #2b8dee;
       border-color: #2b8dee;
     }
+
     input[type="checkbox"]:checked::after {
       content: '';
       position: absolute;
-      left: 3.5px; top: 1px;
-      width: 5px; height: 8px;
+      left: 3.5px;
+      top: 1px;
+      width: 5px;
+      height: 8px;
       border: 2px solid #fff;
-      border-top: none; border-left: none;
+      border-top: none;
+      border-left: none;
       transform: rotate(45deg);
     }
+
     input[type="checkbox"]:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(43,141,238,.18);
+      box-shadow: 0 0 0 3px rgba(43, 141, 238, .18);
     }
-    
-    /* Hide scrollbar for aside */
+
+
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
+
     .no-scrollbar {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
+
 <body>
-    <div id="header"></div>
+  <div id="header"></div>
 
-    <main>
-        <!-- Interface section  -->
-        <section class="InterfacePage">
-                <h1 class="title">Discover Cambodia's Best Stays</h1>
-                <p>Experience the warmth of Khmer hospitality, from riverfront villas on Kompot to ancient temple retreats in Siem Reab</p>
-            <div class="search-pill">
-                <div class="search-text-wrapper">
-                    <label for="destination-search" class="search-label">WHERE</label>
-                    <input type="text" id="destination-search" placeholder="Search destinations" class="search-input">
-                </div>
-                <button class="search-submit" aria-label="Search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+  <main>
+
+    <section class="InterfacePage">
+      <h1 class="title" data-i18n="home.hero.title">Discover Cambodia's Best Stays</h1>
+      <p data-i18n="home.hero.subtitle">Experience the warmth of Khmer hospitality, from riverfront villas in Kampot to
+        ancient temple retreats in Siem Reap</p>
+      <div class="search-pill">
+        <div class="search-text-wrapper">
+          <label for="destination-search" class="search-label">WHERE</label>
+          <input type="text" id="destination-search" placeholder="Search destinations"
+            data-i18n-placeholder="common.searchDestinations" class="search-input">
+        </div>
+        <button class="search-submit" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </section>
+
+
+
+    <section class="Destination-place">
+      <div class="destination-continer">
+        <h2>Featured Destinations</h2>
+        <p>Popular places recommended for you</p>
+        <div class="nav-buttons">
+          <button class="ctrl-btn" id="dest-left"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="ctrl-btn" id="dest-right"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="place-continer" id="dest-container">
+
+          <a href="/component/partials/booking.html?place=siem-reap" class="dest-link">
+            <div class="siemreab">
+              <img src="/img/angkorwat.jpg" alt="">
+              <h3>Siem Reap</h3>
+              <p>Gateway to Angkor Wat</p>
             </div>
-        </section>
+          </a>
 
-    
-        <!-- Featured Destination  -->
-        <section class="Destination-place">
-            <div class="destination-continer">
-                <h2>Featured Destinations</h2>
-                <p>Popular places reccomended for you</p>
-                <div class="nav-buttons" >
-                <button class="ctrl-btn" id="dest-left"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="ctrl-btn" id="dest-right"><i class="fa-solid fa-chevron-right"></i></button>
+          <a href="/component/partials/booking.html?place=kampot" class="dest-link">
+            <div class="kampot">
+              <img src="/img/kompot.jpg" alt="">
+              <h3>Kampot</h3>
+              <p>Riverside & Mountains</p>
             </div>
-            <div class="place-continer" id="dest-container">
-                    <!-- siem reab -->
-                    <div class="siemreab">
-                        <img src="/assets/images/angkorwat.jpg" alt="">
-                        <h3>Siem Reab</h3>
-                        <p>Gateway to Angkor Wat</p>
-                    </div>
-                    <!-- kampot -->
-                    <div class="kampot">
-                        <img src="/assets/images/kompot.jpg" alt="" >
-                        <h3>Kampot</h3>
-                        <p>Riverside & Mountains</p>
-                    </div>
-                    <!-- phnom penh -->
-                    <div class="phnompenh">
-                        <img src="/assets/images/phnompenh.jpg" alt="">
-                        <h3>Phnom Penh</h3>
-                        <p>Cultural & Capital City</p>
-                    </div>
-                    <!-- koh rong -->
-                    <div class="koh-rong">
-                        <img src="/assets/images/kohrong.jpg" alt="">
-                        <h3>Koh Rong</h3>
-                        <p>Island Paradise</p>
-                    </div>
-                    <!-- sihanoukville -->
-                    <div class="sihanoukville">
-                        <img src="/assets/images/sihanoukville.jpg" alt="" >
-                        <h3>Sihanoukville</h3>
-                        <p>Island Paradise</p>
-                    </div>
-                    <!-- Koh-ker -->
-                    <div class="koh-ker">
-                        <img src="/assets/images/Koh-Ker.jpg" alt="">
-                        <h3>Koh Ker Temple</h3>
-                        <p>Historic Temple</p>
-                    </div>
-                    <!-- koh kong -->
-                    <div class="koh-kong">
-                        <img src="/assets/images/Koh-Kong.jpg" alt="" >
-                        <h3>Koh Kong</h3>
-                        <p>Riverside Retreat & Beach </p>
-                    </div>
-                   
-                </div>
+          </a>
+
+          <a href="/component/partials/booking.html?place=phnom-penh" class="dest-link">
+            <div class="phnompenh">
+              <img src="/img/phnompenh.jpg" alt="">
+              <h3>Phnom Penh</h3>
+              <p>Cultural & Capital City</p>
             </div>
-        </section>
+          </a>
 
-        <!-- student house section -->
-        <section class="student-house">
-            <h2>Featured Student Housing</h2>
-            <p>View All Listings</p>
-            <div class="nav-buttons">
-                <button class="ctrl-btn" id="student-left"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="ctrl-btn" id="student-right"><i class="fa-solid fa-chevron-right"></i></button>
+          <a href="/component/partials/booking.html" class="dest-link">
+            <div class="koh-rong">
+              <img src="/img/kohrong.jpg" alt="">
+              <h3>Koh Rong</h3>
+              <p>Island Paradise</p>
             </div>
-            <div class="student-room" id="student-container">
-                <!-- room1 -->
-                <div class="room1">
-                    <img src="/assets/images/room1.jpg" alt="" height="200">
-                    <div class="room1-info">
-                        <div class="room1-line1">
-                            <h3>The Mekong Scholars</h3> 
-                            <br>
-                            <p>$200/month</p>
-                        </div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Toul Kork, Phnom Penh</span>
-                        <hr>
-                        <div>
-                            <i class="fa-solid fa-wifi"></i> 
-                            <span>Gigabit wifi</span>
-                            <hr>
-                        </div>
-                        <button class="btn">View Details</button>
-                    </div>
-                </div>
-                <!-- room2 -->
-                <div class="room2">
-                    <img src="/assets/images/room2.jpg" alt="" height="200">
-                    <div class="room2-info">
-                        <div class="room2-line1">
-                            <h3>Student Residence A</h3>
-                            <br>
-                            <p>$180/month</p>
-                        </div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>BKK1, Phnom Penh</span>
-                        <hr>
-                        <div class="Icon2">
-                            <i class="fa-solid fa-dumbbell"></i>
-                            <span>Rooftop Gym</span>
-                            <i class="fa-solid fa-person-swimming"></i>
-                            <span>Pool Access</span>
-                            <hr>
-                        </div>
-                        <button class="btn">View Details</button>
-                    </div>
-                </div>
-                <!-- room3 -->
-                <div class="room3">
-                    <img src="/assets/images/room3.jpg" alt="" height="200">
-                    <div class="room3-info">
-                        <div class="room3-line1">
-                            <h3>Student Residence C</h3>
-                            <br>
-                            <p>$220/month</p>
-                        </div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>BKK3, Phnom Penh</span>
-                        <hr>
-                        <div class="Icon3">
-                            <i class="fa-solid fa-dumbbell"></i>
-                            <span>Rooftop Gym</span>
-                            <i class="fa-solid fa-person-swimming"></i>
-                            <span>Pool Access</span>
-                            <hr>
-                        </div>
-                        <button class="btn">View Details</button>
-                    </div>
-                </div>
-                <!-- room4 -->
-                <div class="room4">
-                    <img src="/assets/images/room4.jpg" alt="" height="200">
-                    <div class="room4-info">
-                        <div class="room4-line1">
-                            <h3>Student Residence D</h3>
-                            <br>
-                            <p>$250/month</p>
-                        </div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>BKK4, Phnom Penh</span>
-                        <hr>
-                        <div class="Icon4">
-                            <i class="fa-solid fa-dumbbell"></i>
-                            <span>Rooftop Gym</span>
-                            <i class="fa-solid fa-person-swimming"></i>
-                            <span>Pool Access</span>
-                            <hr>
-                        </div>
-                        <button class="btn">View Details</button>
-                    </div>
-                </div>
-                <!-- room5 -->
-                <div class="room5">
-                    <img src="/assets/images/room5.jpg" alt="" height="200">
-                    <div class="room5-info">
-                        <div class="room5-line1">
-                            <h3>Student Residence E</h3>
-                            <br>
-                            <p>$230/month</p>
-                        </div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>BKK5, Phnom Penh</span>
-                        <hr>
-                        <div class="Icon5">
-                            <i class="fa-solid fa-dumbbell"></i>
-                            <span>Rooftop Gym</span>
-                            <i class="fa-solid fa-person-swimming"></i>
-                            <span>Pool Access</span>
-                            <hr>
-                        </div>
-                        <button class="btn">View Details</button>
-                    </div>
-                </div>
-                <!-- room6 -->
-                <div class="room6">
-                    <img src="/assets/images/room6.jpg" alt="" height="200">
-                    <div class="room6-info">
-                        <div class="room6-line1">
-                            <h3>Student Residence F</h3>
-                            <br>
-                            <p>$260/month</p>
-                        </div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>BKK6, Phnom Penh</span>
-                        <hr>
-                        <div class="Icon6">
-                            <i class="fa-solid fa-dumbbell"></i>
-                            <span>Rooftop Gym</span>
-                            <i class="fa-solid fa-person-swimming"></i>
-                            <span>Pool Access</span>
-                            <hr>
-                        </div>
-                        <button class="btn">View Details</button>
-                    </div>
-                </div>
+          </a>
+
+          <a href="/component/partials/booking.html" class="dest-link">
+            <div class="sihanoukville">
+              <img src="/img/sihanoukville.jpg" alt="">
+              <h3>Sihanoukville</h3>
+              <p>Island Paradise</p>
             </div>
-        </section>
-    
-    
-        <section class="Top-Destination">
-            <div class="header-TopDestination">
-                <h2>Top Destinations in Cambodia</h2>
-                <p>Immerese yourself in the most sought-after locations</p>
-                
+          </a>
+
+          <a href="/component/partials/booking.html" class="dest-link">
+            <div class="koh-ker">
+              <img src="/img/Koh-Ker.jpg" alt="">
+              <h3>Koh Ker Temple</h3>
+              <p>Historic Temple</p>
             </div>
-    
-            <div class="nav-buttons">
-                <button class="ctrl-btn" id="top-left"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="ctrl-btn" id="top-right"><i class="fa-solid fa-chevron-right"></i></button>
+          </a>
+
+          <a href="/component/partials/booking.html" class="dest-link">
+            <div class="koh-kong">
+              <img src="/img/Koh-Kong.jpg" alt="">
+              <h3>Koh Kong</h3>
+              <p>Riverside Retreat & Beach</p>
             </div>
-            <div class="Top-Destination-List" id="top-container">
-                <div class="Top1">
-                    <img src="/assets/images/siemreapTop.jpg" alt="" height="200">
-                    <p>Siem Reap Province</p>
-                </div>
-                <div class="Top2">
-                    <img src="/assets/images/PhnompenhTop.jpg" alt="" height="200">
-                    <p>Phnom Penh City</p>
-                </div>
-                <div class="Top3">
-                    <img src="/assets/images/kampotTop.jpg" alt="" height="200">
-                    <p>Kampot Province</p>
-                </div>
-            </div>
-        </section>
-    
-        <section class="Reason-Choose-Us">
-            <h3>Why Choose Us?</h3>
-            <div class="Help">
-                <div class="Local-Expertise">
-                    <i class="fa-regular fa-compass"></i>
-                    <h4>Local Expertise</h4>
-                    <p>Authentic experiences and hand-picked <br> accommodations curated by Cambodia <br> local experts.</p>
-                </div>
-    
-                <div class="Secure-Payments">
-                    <i class="fa-solid fa-money-bills"></i>
-                    <h4>Secure Payments</h4>
-                    <p>Effortless and safe transaction processes <br> with integrated bank Pay and KHQR support.</p>
-                </div>
-                <div class="24/7-Support">
-                    <i class="fa-regular fa-circle-question"></i>
-                    <h4>24/7 Support</h4>
-                    <p>Our dedicated support team is always ready <br> to assist you with any questions or concerns.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-    <script>
-        const container = document.getElementById('dest-container');
-        const leftBtn = document.getElementById('dest-left');
-        const rightBtn = document.getElementById('dest-right');
-        const scrollStep = 320;
+          </a>
 
-        leftBtn.addEventListener('click', () => {
-            container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-        });
+        </div>
+      </div>
+    </section>
 
-        rightBtn.addEventListener('click', () => {
-            container.scrollBy({ left: scrollStep, behavior: 'smooth' });
-        });
 
-        const studentContainer = document.getElementById('student-container');
-        const studentLeftBtn = document.getElementById('student-left');
-        const studentRightBtn = document.getElementById('student-right');
+    <section class="Destination-place">
+      <div class="destination-continer">
+        <h2>Featured Student Housing</h2>
+        <p>View All Listings</p>
+        <div class="nav-buttons">
+          <button class="ctrl-btn" id="student-left"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="ctrl-btn" id="student-right"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="student-room" id="student-container">
 
-        studentLeftBtn.addEventListener('click', () => {
-            studentContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-        });
+        </div>
+      </div>
+    </section>
 
-        studentRightBtn.addEventListener('click', () => {
-            studentContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
-        });
+    <section class="Top-Destination">
+      <div class="header-TopDestination">
+        <h2>Top Destinations in Cambodia</h2>
+        <p>Immerse yourself in the most sought-after locations</p>
 
-        const topContainer = document.getElementById('top-container');
-        const topLeftBtn = document.getElementById('top-left');
-        const topRightBtn = document.getElementById('top-right');
+      </div>
 
-        topLeftBtn.addEventListener('click', () => {
-            topContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-        });
+      <div class="nav-buttons">
+        <button class="ctrl-btn" id="top-left"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="ctrl-btn" id="top-right"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div class="Top-Destination-List" id="top-container">
+        <a href="/component/partials/booking.html?place=siem-reap" class="dest-link">
+        <div class="Top1">
+          <img src="/img/siemreapTop.jpg" alt="" height="200">
+          <p>Siem Reap Province</p>
+        </div>
+        </a>
+        <a href="/component/partials/booking.html?place=phnom-penh" class="dest-link">
+        <div class="Top2">
+          <img src="/img/PhnompenhTop.jpg" alt="" height="200">
+          <p>Phnom Penh City</p>
+        </div>
+        </a>
+        <a href="/component/partials/booking.html?place=kampot" class="dest-link">
+        <div class="Top3">
+          <img src="/img/kampotTop.jpg" alt="" height="200">
+          <p>Kampot Province</p>
+        </div>
+        </a>
+      </div>
+    </section>
 
-        topRightBtn.addEventListener('click', () => {
-            topContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
-        });
-    </script>
+    <section class="Reason-Choose-Us">
+      <h3>Why Choose Us?</h3>
+      <div class="Help">
+        <div class="Local-Expertise">
+          <i class="fa-regular fa-compass"></i>
+          <h4>Local Expertise</h4>
+          <p>Authentic experiences and hand-picked <br> accommodations curated by Cambodia <br> local experts.</p>
+        </div>
 
-    <div id="footer"></div>
-    <script src="/js/i18n.js"></script>
-    <script src="/js/components/layout.js"></script>
+        <div class="Secure-Payments">
+          <i class="fa-solid fa-money-bills"></i>
+          <h4>Secure Payments</h4>
+          <p>Effortless and safe transaction processes <br> with integrated bank Pay and KHQR support.</p>
+        </div>
+        <div class="24/7-Support">
+          <i class="fa-regular fa-circle-question"></i>
+          <h4>24/7 Support</h4>
+          <p>Our dedicated support team is always ready <br> to assist you with any questions or concerns.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const container = document.getElementById('dest-container');
+    const leftBtn = document.getElementById('dest-left');
+    const rightBtn = document.getElementById('dest-right');
+    const scrollStep = 320;
+
+    leftBtn.addEventListener('click', () => {
+      container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    rightBtn.addEventListener('click', () => {
+      container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+
+    const studentContainer = document.getElementById('student-container');
+    const studentLeftBtn = document.getElementById('student-left');
+    const studentRightBtn = document.getElementById('student-right');
+
+    studentLeftBtn.addEventListener('click', () => {
+      studentContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    studentRightBtn.addEventListener('click', () => {
+      studentContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+
+    const topContainer = document.getElementById('top-container');
+    const topLeftBtn = document.getElementById('top-left');
+    const topRightBtn = document.getElementById('top-right');
+
+    topLeftBtn.addEventListener('click', () => {
+      topContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    topRightBtn.addEventListener('click', () => {
+      topContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+  </script>
+
+  <div id="footer"></div>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/components/layout.js"></script>
+  <script src="/js/components/home.js"></script>
+
 </body>
+
 </html>

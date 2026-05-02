@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BookingME</title>
- 
+
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Kantumruy+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
- 
+
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -35,7 +35,7 @@
       },
     }
   </script>
- 
+
   <style>
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -44,8 +44,8 @@
     body {
       font-family: 'Inter', 'Kantumruy Pro', sans-serif;
     }
- 
-    /* Price slider styles (needed here since aside is injected, not a full page) */
+
+
     .price-slider {
       -webkit-appearance: none;
       appearance: none;
@@ -106,14 +106,14 @@
       outline: none;
       box-shadow: 0 0 0 3px rgba(43,141,238,.18);
     }
-    
-    /* Hide scrollbar for aside */
+
+
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
     .no-scrollbar {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
@@ -122,18 +122,18 @@
 
   <div id="header"></div>
 
-  <!-- Main listing view -->
+
   <div id="listing-view" class="mx-auto max-w-7xl px-4 sm:px-6 pt-24 pb-8 flex flex-col lg:flex-row gap-4 lg:gap-6 items-stretch lg:items-start">
- 
-    <!-- Aside injected here -->
+
+
     <div id="aside" class="w-full lg:sticky lg:top-24 lg:w-60 shrink-0"></div>
- 
-    <!-- Section injected here -->
+
+
     <div id="section" class="contents"></div>
- 
+
   </div>
 
-  <!-- Property detail view (hidden by default) -->
+
   <div id="detail-view" class="hidden mx-auto max-w-7xl px-4 sm:px-6 pt-24 pb-8"></div>
 
   <div id="footer"></div>

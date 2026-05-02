@@ -1,8 +1,6 @@
-/* ============================================
-   Payment Page Styles
-   ============================================ */
 
-/* --- Base / Reset --- */
+
+
 *,
 *::before,
 *::after {
@@ -29,16 +27,14 @@ img {
   max-width: 100%;
 }
 
-/* --- Material Symbols --- */
+
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   font-size: 18px;
   vertical-align: middle;
 }
 
-/* ============================================
-   Layout
-   ============================================ */
+
 .payment-main {
   max-width: 1120px;
   margin: 0 auto;
@@ -52,7 +48,7 @@ img {
   }
 }
 
-/* --- Back Button --- */
+
 .back-btn {
   display: inline-flex;
   align-items: center;
@@ -72,7 +68,7 @@ img {
   background-color: #334155;
 }
 
-/* --- Page Header --- */
+
 .page-header {
   margin-bottom: 32px;
 }
@@ -89,7 +85,7 @@ img {
   color: #94a3b8;
 }
 
-/* --- Two-Column Grid --- */
+
 .payment-grid {
   display: flex;
   flex-direction: column;
@@ -103,7 +99,7 @@ img {
   }
 }
 
-/* Left column */
+
 .payment-form-col {
   flex: 1;
   min-width: 0;
@@ -112,7 +108,7 @@ img {
   gap: 32px;
 }
 
-/* Right column */
+
 .booking-summary-col {
   width: 100%;
   flex-shrink: 0;
@@ -126,9 +122,7 @@ img {
   }
 }
 
-/* ============================================
-   Cards / Sections
-   ============================================ */
+
 .card {
   background: #fff;
   border: 1px solid #e2e8f0;
@@ -136,7 +130,7 @@ img {
   padding: 24px;
 }
 
-/* --- Step Header --- */
+
 .step-header {
   display: flex;
   align-items: center;
@@ -163,11 +157,9 @@ img {
   color: #0f172a;
 }
 
-/* ============================================
-   Form Elements
-   ============================================ */
 
-/* --- Labels --- */
+
+
 .form-label {
   display: block;
   font-size: 0.875rem;
@@ -176,7 +168,7 @@ img {
   margin-bottom: 6px;
 }
 
-/* --- Inputs --- */
+
 .form-input {
   width: 100%;
   border: 1px solid #e2e8f0;
@@ -199,7 +191,7 @@ img {
   box-shadow: 0 0 0 3px rgba(43, 141, 238, 0.15);
 }
 
-/* --- Form Grid (2-col) --- */
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr;
@@ -213,7 +205,7 @@ img {
   }
 }
 
-/* --- Form Group --- */
+
 .form-group {
   margin-bottom: 16px;
 }
@@ -222,14 +214,14 @@ img {
   margin-bottom: 0;
 }
 
-/* --- Helper Text --- */
+
 .form-hint {
   font-size: 0.75rem;
   color: #94a3b8;
   margin-top: 6px;
 }
 
-/* --- Phone Input Group --- */
+
 .phone-group {
   display: flex;
 }
@@ -252,7 +244,7 @@ img {
   border-radius: 0 8px 8px 0;
 }
 
-/* --- Input with Icon --- */
+
 .input-icon-wrap {
   position: relative;
 }
@@ -281,9 +273,7 @@ img {
   display: flex;
 }
 
-/* ============================================
-   Payment Method Options
-   ============================================ */
+
 .payment-option {
   border: 1px solid #e2e8f0;
   border-radius: 12px;
@@ -338,7 +328,7 @@ img {
   background-color: #cbd5e1;
 }
 
-/* --- Custom Radio --- */
+
 .payment-radio {
   appearance: none;
   -webkit-appearance: none;
@@ -370,7 +360,7 @@ img {
   background: #1e293b;
 }
 
-/* --- Card Details Panel --- */
+
 .card-details {
   padding: 4px 8px 8px;
   display: flex;
@@ -385,9 +375,7 @@ img {
   gap: 16px;
 }
 
-/* ============================================
-   Booking Summary Card
-   ============================================ */
+
 .summary-card {
   background: #fff;
   border: 1px solid #e2e8f0;
@@ -395,7 +383,7 @@ img {
   padding: 24px;
 }
 
-/* --- Property Info --- */
+
 .property-info {
   display: flex;
   gap: 16px;
@@ -454,14 +442,14 @@ img {
   color: #94a3b8;
 }
 
-/* --- Divider --- */
+
 .divider {
   border: none;
   border-top: 1px solid #f1f5f9;
   margin-bottom: 20px;
 }
 
-/* --- Trip Info --- */
+
 .trip-section-title {
   font-size: 0.875rem;
   font-weight: 700;
@@ -505,7 +493,7 @@ img {
   opacity: 0.7;
 }
 
-/* --- Price Details --- */
+
 .price-section-title {
   font-size: 0.875rem;
   font-weight: 700;
@@ -535,7 +523,7 @@ img {
   font-weight: 500;
 }
 
-/* --- Total --- */
+
 .total-row {
   display: flex;
   justify-content: space-between;
@@ -555,7 +543,7 @@ img {
   color: #0f172a;
 }
 
-/* --- CTA Button --- */
+
 .btn-confirm {
   display: flex;
   align-items: center;
@@ -583,7 +571,7 @@ img {
   transform: scale(0.98);
 }
 
-/* --- Secure Badge --- */
+
 .secure-badge {
   display: flex;
   align-items: center;
@@ -602,9 +590,7 @@ img {
   color: #94a3b8;
 }
 
-/* ============================================
-   Terms
-   ============================================ */
+
 .terms-text {
   font-size: 0.75rem;
   color: #64748b;
@@ -621,9 +607,7 @@ img {
   color: #2b8dee;
 }
 
-/* ============================================
-   Hide number input spinners
-   ============================================ */
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;

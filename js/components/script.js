@@ -1,28 +1,28 @@
-// Load aside dynamically
+
 function loadAside(type) {
   const filename = type === "hotel" ? "/component/partials/aside-hotel.html" : "/component/partials/aside.html";
-  
+
   fetch(filename)
     .then(res => res.text())
     .then(html => {
-      // Parse the fetched HTML and extract just the <aside> element
+
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, "text/html");
       const newAside = doc.querySelector("aside");
-   
+
       const asideContainer = document.getElementById("aside");
       if (asideContainer && newAside) {
-        asideContainer.innerHTML = ''; // clear current aside
+        asideContainer.innerHTML = '';
         asideContainer.appendChild(newAside);
         if (window.BookingMEI18n) {
           window.BookingMEI18n.apply(asideContainer);
         }
       }
-   
-      // Init price slider
+
+
       const slider = document.getElementById("price-range");
       const display = document.getElementById("price-display");
-   
+
       if (slider && display) {
           function updateSlider() {
             const min = +slider.min, max = +slider.max, val = +slider.value;
@@ -33,8 +33,8 @@ function loadAside(type) {
           slider.addEventListener("input", updateSlider);
           updateSlider();
       }
-   
-      // Rating pills
+
+
       const ratingBtns = document.querySelectorAll(".rating-btn");
       if (ratingBtns.length > 0) {
           ratingBtns.forEach(btn => {
@@ -48,8 +48,8 @@ function loadAside(type) {
             });
           });
       }
-   
-      // Reset
+
+
       const resetBtn = document.getElementById("reset-btn");
       if (resetBtn) {
           function resetAll() {
@@ -65,7 +65,7 @@ function loadAside(type) {
           }
           resetBtn.addEventListener("click", resetAll);
       }
-   
+
       if (window.initProductFilterControls) {
         window.initProductFilterControls();
       }
@@ -76,7 +76,7 @@ function loadAside(type) {
     .catch(err => console.error("Error loading aside:", err));
 }
 
-// Load section dynamically
+
 fetch("/component/partials/section.html")
   .then(res => res.text())
   .then(html => {
@@ -85,12 +85,12 @@ fetch("/component/partials/section.html")
       window.BookingMEI18n.apply(document.getElementById("section"));
     }
 
-    // Initial aside load based on section's sort dropdown
+
     const sortSelectEl = document.getElementById("property-sort");
     if (sortSelectEl) {
         loadAside(sortSelectEl.value);
-        
-        // Add event listener to dynamically switch aside when selection changes
+
+
         sortSelectEl.addEventListener("change", (e) => {
             loadAside(e.target.value);
         });
@@ -98,7 +98,7 @@ fetch("/component/partials/section.html")
         loadAside("campus");
     }
 
-    // Use event delegation — works for buttons created later by app.js
+
     document.getElementById("section").addEventListener("click", function(e) {
         const btn = e.target.closest("#btn_detail");
         if (btn) {
@@ -107,7 +107,7 @@ fetch("/component/partials/section.html")
         }
     });
 
-    // Now dynamically load app.js so it can bind to the elements in section
+
     const script = document.createElement("script");
     script.src = "/js/components/app.js";
     document.body.appendChild(script);
