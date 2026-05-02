@@ -55,7 +55,7 @@ function loadAside(type) {
               b.className =
                 "rating-btn px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200 text-slate-500 bg-white hover:border-primary hover:text-primary transition-all";
             });
-            if (slider) {
+            if (slider && display) {
                 slider.value = 525;
                 updateSlider();
             }
@@ -63,18 +63,11 @@ function loadAside(type) {
           resetBtn.addEventListener("click", resetAll);
       }
    
-      // Apply
-      const applyBtn = document.getElementById("apply-btn");
-      if (applyBtn) {
-          applyBtn.addEventListener("click", () => {
-            const checked = [...document.querySelectorAll('input[type="checkbox"]:checked')]
-              .map(cb => cb.closest("label")?.querySelector("span:last-child")?.textContent)
-              .filter(Boolean);
-            const activeRating = document.querySelector(".rating-btn.bg-primary")?.dataset.rating;
-            alert(
-              `Filters applied!\nMax price: $${slider ? slider.value : 'N/A'}\nRating: ${activeRating ?? "any"}+\nSelected: ${checked.join(", ") || "none"}`
-            );
-          });
+      if (window.initProductFilterControls) {
+        window.initProductFilterControls();
+      }
+      if (window.applyProductFilters) {
+        window.applyProductFilters();
       }
     })
     .catch(err => console.error("Error loading aside:", err));
@@ -114,4 +107,3 @@ fetch("/component/partials/section.html")
     document.body.appendChild(script);
   })
   .catch(err => console.error("Error loading section:", err));
-

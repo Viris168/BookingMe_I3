@@ -46,7 +46,7 @@
 </head>
 
 <body>
-  <!-- Header Container -->
+
   <div id="header"></div>
 
 
@@ -78,11 +78,11 @@
           <!-- Hidden select so productList.js still works without refactoring -->
           <select id="place-select" style="display: none;">
             <option value="">Select Place</option>
-            <option value="toul-kork">Toul Kork</option>
-            <option value="bkk">BKK</option>
-            <option value="riverside">Riverside</option>
-            <option value="sen-sok">Sen Sok</option>
-            <option value="chroy-changvar">Chroy Changvar</option>
+            <option value="phnom-penh">Phnom Penh</option>
+            <option value="siem-reap">Siem Reap</option>
+            <option value="kampot">Kampot</option>
+            <option value="kampong-cham">KamPong Cham</option>
+            <option value="kep">Kep</option>
           </select>
         </div>
       </div>
@@ -101,60 +101,26 @@
       <div id="pagination-controls"></div>
     </div>
 
-    <div id="map"></div>
+    <div id="map-panel" class="map-panel">
+      <div id="map-frame" class="map-frame">
+        <div id="map"></div>
+      </div>
+      <button id="map-toggle" class="map-toggle" type="button" aria-expanded="true" aria-controls="map-frame">
+        <span class="material-symbols-outlined" data-map-toggle-icon>expand_less</span>
+        <span data-map-toggle-text>Hide map</span>
+      </button>
+    </div>
 
   </div>
 
-  <!-- Footer Container -->
+
   <div id="footer"></div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="/js/components/productList.js"></script>
+  <script src="/js/components/place.js"></script>
   <script src="/js/components/layout.js"></script>
-
   <script>
-    function togglePlaceDropdown() {
-      const dropdown = document.getElementById("placeDropdown");
-      const chevron = document.getElementById("placeChevron");
-      dropdown.classList.toggle("show");
-      chevron.classList.toggle("open");
-    }
 
-    function selectPlace(event, el) {
-      event.stopPropagation();
-      const value = el.getAttribute("data-value");
-      const text = el.innerText;
-      
-      // Update UI
-      document.getElementById("placeValue").innerText = text;
-      
-      // Update selected class
-      document.querySelectorAll(".custom-place-option").forEach(opt => opt.classList.remove("selected"));
-      el.classList.add("selected");
-      
-      // Close dropdown
-      document.getElementById("placeDropdown").classList.remove("show");
-      document.getElementById("placeChevron").classList.remove("open");
-      
-      // Update native hidden select and trigger change for productList.js
-      const nativeSelect = document.getElementById("place-select");
-      if (nativeSelect) {
-        nativeSelect.value = value;
-        nativeSelect.dispatchEvent(new Event('change'));
-      }
-    }
-
-    // Close when clicking outside
-    document.addEventListener("click", function(event) {
-      const box = document.getElementById("placeBox");
-      if (box && !box.contains(event.target)) {
-        const dropdown = document.getElementById("placeDropdown");
-        const chevron = document.getElementById("placeChevron");
-        if (dropdown) dropdown.classList.remove("show");
-        if (chevron) chevron.classList.remove("open");
-      }
-    });
   </script>
 </body>
-
 </html>
