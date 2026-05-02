@@ -72,6 +72,26 @@
     return text.replace(/\s+/g, " ").trim();
   }
 
+  function interpolate(value, params = {}) {
+    return String(value).replace(/\{\{\s*([\w.-]+)\s*\}\}/g, (match, key) => {
+      return Object.prototype.hasOwnProperty.call(params, key) ? params[key] : match;
+    });
+  }
+
+  function lookup(dictionary, key, params = {}) {
+    if (!key) {
+      return "";
+    }
+
+    const value =
+      dictionary[key] ||
+      dictionary.key?.[key] ||
+      dictionary.attr?.[key] ||
+      dictionary.text?.[key];
+
+    return value ? interpolate(value, params) : "";
+  }
+
   async function loadDictionary(lang) {
     const safeLang = supported.has(lang) ? lang : DEFAULT_LANG;
     const response = await fetch(`/data/lang/${safeLang}.json`);
@@ -84,18 +104,21 @@
   function applyKeyTranslations(root, dictionary) {
     root.querySelectorAll("[data-i18n]").forEach((element) => {
       const key = element.getAttribute("data-i18n");
-      const value = dictionary.key?.[key] || dictionary.text?.[key];
+      const value = lookup(dictionary, key);
       if (value && element.textContent !== value) {
         element.textContent = value;
       }
     });
 
-    root.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
-      const key = element.getAttribute("data-i18n-placeholder");
-      const value = dictionary.key?.[key] || dictionary.attr?.[key];
-      if (value && element.getAttribute("placeholder") !== value) {
-        element.setAttribute("placeholder", value);
-      }
+    ["placeholder", "aria-label", "title", "alt"].forEach((attribute) => {
+      const selector = `[data-i18n-${attribute}]`;
+      root.querySelectorAll(selector).forEach((element) => {
+        const key = element.getAttribute(`data-i18n-${attribute}`);
+        const value = lookup(dictionary, key);
+        if (value && element.getAttribute(attribute) !== value) {
+          element.setAttribute(attribute, value);
+        }
+      });
     });
   }
 
@@ -186,7 +209,8 @@
           element.dataset[dataKey] = element.getAttribute(attribute);
         }
         const original = element.dataset[dataKey];
-        const translated = attrMap[original] || dictionary.text?.[original];
+        const stableKey = element.getAttribute(`data-i18n-${attribute}`);
+        const translated = lookup(dictionary, stableKey) || attrMap[original] || dictionary.text?.[original];
         if (translated && element.getAttribute(attribute) !== translated) {
           element.setAttribute(attribute, translated);
         }
@@ -265,6 +289,7 @@
     apply,
     setLanguage,
     getLanguage: () => currentLang,
+    t: (key, params) => (currentDictionary ? lookup(currentDictionary, key, params) || key : key),
   };
 
   injectTypography();

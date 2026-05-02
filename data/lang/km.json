@@ -14,7 +14,25 @@
     "common.openHostMode": "បើករបៀបម្ចាស់ផ្ទះ",
     "common.addProperty": "បន្ថែមអចលនទ្រព្យ",
     "home.hero.title": "ស្វែងរកកន្លែងស្នាក់នៅល្អបំផុតនៅកម្ពុជា",
-    "home.hero.subtitle": "ទទួលបទពិសោធន៍ភាពកក់ក្តៅនៃបដិសណ្ឋារកិច្ចខ្មែរ ពីវីឡាមាត់ទន្លេនៅកំពត ដល់កន្លែងស្នាក់ក្បែរប្រាសាទបុរាណនៅសៀមរាប"
+    "home.hero.subtitle": "ទទួលបទពិសោធន៍ភាពកក់ក្តៅនៃបដិសណ្ឋារកិច្ចខ្មែរ ពីវីឡាមាត់ទន្លេនៅកំពត ដល់កន្លែងស្នាក់ក្បែរប្រាសាទបុរាណនៅសៀមរាប",
+    "common.bookNow": "កក់ឥឡូវនេះ",
+    "common.reserveNow": "កក់ឥឡូវនេះ",
+    "common.save": "រក្សាទុក",
+    "common.cancel": "បោះបង់",
+    "common.delete": "លុប",
+    "common.update": "កែប្រែ",
+    "common.search": "ស្វែងរក",
+    "booking.status": "ស្ថានភាពការកក់",
+    "booking.history": "ប្រវត្តិការកក់",
+    "booking.confirmed": "ការកក់បានបញ្ជាក់!",
+    "property.name": "ឈ្មោះអចលនទ្រព្យ",
+    "property.location": "ទីតាំងអចលនទ្រព្យ",
+    "property.amenities": "បរិក្ខារ",
+    "property.pricing": "តម្លៃ",
+    "auth.login": "ចូលគណនី",
+    "auth.register": "ចុះឈ្មោះ",
+    "auth.forgotPassword": "ភ្លេចពាក្យសម្ងាត់",
+    "auth.welcomeBack": "សូមស្វាគមន៍មកវិញ!"
   },
   "text": {
     "Home": "ទំព័រដើម",
@@ -869,6 +887,10 @@
     "common.searchDestinations": "ស្វែងរកគោលដៅ...",
     "Corner": "ជ្រុងបន្ទប់",
     "Garden": "សួន",
-    "Search": "ស្វែងរក"
+    "Search": "ស្វែងរក",
+    "attr.searchDestinations": "ស្វែងរកគោលដៅ...",
+    "attr.searchArticles": "ស្វែងរកអត្ថបទ មគ្គុទេសក៍ ឬពាក្យគន្លឹះ...",
+    "attr.bookingHome": "BookingME ទំព័រដើម",
+    "attr.hostNavigation": "របាររុករកម្ចាស់ផ្ទះ"
   }
 }
