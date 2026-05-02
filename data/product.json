@@ -1358,5 +1358,349 @@
     "maxGuests": 1,
     "lat": 10.621,
     "lng": 104.1755
+  },
+  {
+    "id": 33,
+    "category": "campus",
+    "type": "Private Room",
+    "title": "Battambang Riverside Study Loft",
+    "nearUniversity": "ubb",
+    "rating": 4.7,
+    "reviews": 26,
+    "price": 95,
+    "image": "./assets/images/cambodia-battambang-city.jpg",
+    "images": [
+      "./assets/images/cambodia-battambang-city.jpg",
+      "./assets/images/(1).png",
+      "./assets/images/Image.png"
+    ],
+    "features": [
+      {
+        "icon": "desk",
+        "label": "Quiet Study Loft"
+      },
+      {
+        "icon": "wifi",
+        "label": "Fast Wi-Fi"
+      },
+      {
+        "icon": "directions_bike",
+        "label": "Bike Friendly"
+      }
+    ],
+    "location": "Battambang",
+    "host": "Ratha",
+    "hostImage": "./assets/icons/icon.png",
+    "description": "A calm riverside loft in Battambang, close to cafes, colonial streets, and study-friendly neighborhoods.",
+    "guests": 1,
+    "bedrooms": 1,
+    "beds": 1,
+    "baths": 1,
+    "cleaningFee": 8,
+    "serviceFee": 15,
+    "maxGuests": 2,
+    "lat": 13.0957,
+    "lng": 103.2022
+  },
+  {
+    "id": 34,
+    "category": "campus",
+    "type": "Shared Room",
+    "title": "Kampong Cham Mekong Student House",
+    "nearUniversity": "kcu",
+    "rating": 4.4,
+    "reviews": 18,
+    "price": 58,
+    "image": "./assets/images/cambodia-kampong-cham-mekong.jpg",
+    "images": [
+      "./assets/images/cambodia-kampong-cham-mekong.jpg",
+      "./assets/images/(2).png",
+      "./assets/images/Ima.png"
+    ],
+    "features": [
+      {
+        "icon": "water",
+        "label": "Mekong Area"
+      },
+      {
+        "icon": "restaurant",
+        "label": "Shared Kitchen"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      }
+    ],
+    "location": "Kampong Cham",
+    "host": "Sokun",
+    "hostImage": "./assets/icons/icon.png",
+    "description": "Affordable shared living near the Mekong river, designed for students who want simple comfort and easy food access.",
+    "guests": 2,
+    "bedrooms": 1,
+    "beds": 2,
+    "baths": 1,
+    "cleaningFee": 5,
+    "serviceFee": 10,
+    "maxGuests": 2,
+    "lat": 11.9934,
+    "lng": 105.4635
+  },
+  {
+    "id": 35,
+    "category": "campus",
+    "type": "Private Room",
+    "title": "Kep Coastal Study Room",
+    "nearUniversity": "n/a",
+    "rating": 4.6,
+    "reviews": 23,
+    "price": 88,
+    "image": "./assets/images/cambodia-kep-crab-market.jpg",
+    "images": [
+      "./assets/images/cambodia-kep-crab-market.jpg",
+      "./assets/images/(3).png",
+      "./assets/images/Techno_2.png"
+    ],
+    "features": [
+      {
+        "icon": "beach_access",
+        "label": "Near Coast"
+      },
+      {
+        "icon": "desk",
+        "label": "Study Desk"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      }
+    ],
+    "location": "Kep",
+    "host": "Sreypov",
+    "hostImage": "./assets/icons/icon.png",
+    "description": "Compact private room in Kep for quiet study breaks, seafood evenings, and short coastal stays.",
+    "guests": 1,
+    "bedrooms": 1,
+    "beds": 1,
+    "baths": 1,
+    "cleaningFee": 8,
+    "serviceFee": 12,
+    "maxGuests": 2,
+    "lat": 10.4829,
+    "lng": 104.3167
+  },
+  {
+    "id": 36,
+    "category": "campus",
+    "type": "Private Room",
+    "title": "Mondulkiri Highlands Study Lodge",
+    "nearUniversity": "n/a",
+    "rating": 4.8,
+    "reviews": 31,
+    "price": 120,
+    "image": "./assets/images/cambodia-mondulkiri-waterfall.jpg",
+    "images": [
+      "./assets/images/cambodia-mondulkiri-waterfall.jpg",
+      "./assets/images/(4).png",
+      "./assets/images/Image.png"
+    ],
+    "features": [
+      {
+        "icon": "forest",
+        "label": "Highland Nature"
+      },
+      {
+        "icon": "eco",
+        "label": "Eco Stay"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      }
+    ],
+    "location": "Mondulkiri",
+    "host": "Kanha",
+    "hostImage": "./assets/icons/icon.png",
+    "description": "A peaceful lodge near Sen Monorom for focused reading, cool weather, and waterfall day trips.",
+    "guests": 2,
+    "bedrooms": 1,
+    "beds": 1,
+    "baths": 1,
+    "cleaningFee": 12,
+    "serviceFee": 18,
+    "maxGuests": 3,
+    "lat": 12.4558,
+    "lng": 107.1881
+  },
+  {
+    "id": 37,
+    "category": "campus",
+    "type": "Shared Room",
+    "title": "Ratanakiri Lakeside Dorm",
+    "nearUniversity": "n/a",
+    "rating": 4.5,
+    "reviews": 16,
+    "price": 62,
+    "image": "./assets/images/cambodia-ratanakiri-banlung.jpg",
+    "images": [
+      "./assets/images/cambodia-ratanakiri-banlung.jpg",
+      "./assets/images/Ima.png",
+      "./assets/images/(2).png"
+    ],
+    "features": [
+      {
+        "icon": "nature",
+        "label": "Lake Area"
+      },
+      {
+        "icon": "local_laundry_service",
+        "label": "Laundry"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi"
+      }
+    ],
+    "location": "Ratanakiri",
+    "host": "Dane",
+    "hostImage": "./assets/icons/icon.png",
+    "description": "Simple shared dorm in Banlung for students and explorers visiting lakes, hills, and local markets.",
+    "guests": 2,
+    "bedrooms": 1,
+    "beds": 2,
+    "baths": 1,
+    "cleaningFee": 6,
+    "serviceFee": 10,
+    "maxGuests": 2,
+    "lat": 13.7394,
+    "lng": 106.9873
+  },
+  {
+    "id": 38,
+    "category": "campus",
+    "type": "Private Room",
+    "title": "Preah Vihear Temple View Studio",
+    "nearUniversity": "n/a",
+    "rating": 4.3,
+    "reviews": 12,
+    "price": 82,
+    "image": "./assets/images/cambodia-preah-vihear-temple.jpg",
+    "images": [
+      "./assets/images/cambodia-preah-vihear-temple.jpg",
+      "./assets/images/(1).png",
+      "./assets/images/Techno_2.png"
+    ],
+    "features": [
+      {
+        "icon": "temple_buddhist",
+        "label": "Heritage Area"
+      },
+      {
+        "icon": "desk",
+        "label": "Work Desk"
+      },
+      {
+        "icon": "security",
+        "label": "Secure Stay"
+      }
+    ],
+    "location": "Preah Vihear",
+    "host": "Vuthy",
+    "hostImage": "./assets/icons/icon.png",
+    "description": "A basic, quiet studio for travelers studying Khmer history and visiting northern heritage routes.",
+    "guests": 1,
+    "bedrooms": 1,
+    "beds": 1,
+    "baths": 1,
+    "cleaningFee": 8,
+    "serviceFee": 12,
+    "maxGuests": 2,
+    "lat": 14.3904,
+    "lng": 104.6806
+  },
+  {
+    "id": 39,
+    "category": "hotel",
+    "type": "Private Room",
+    "title": "Phnom Penh Palace View Hotel",
+    "nearUniversity": "num",
+    "rating": 4.9,
+    "reviews": 74,
+    "price": 165,
+    "image": "./assets/images/cambodia-phnom-penh-royal-palace.jpg",
+    "images": [
+      "./assets/images/cambodia-phnom-penh-royal-palace.jpg",
+      "./assets/images/Luxury Hotel Suite.jpg",
+      "./assets/images/qw.png"
+    ],
+    "features": [
+      {
+        "icon": "apartment",
+        "label": "Central Hotel"
+      },
+      {
+        "icon": "room_service",
+        "label": "Daily Service"
+      },
+      {
+        "icon": "wifi",
+        "label": "Fast Wi-Fi"
+      }
+    ],
+    "location": "Phnom Penh",
+    "host": "Sotheary",
+    "hostImage": "./assets/icons/icon.png",
+    "description": "A polished city hotel near the Royal Palace area, ideal for guests who want walkable cultural sights.",
+    "guests": 2,
+    "bedrooms": 1,
+    "beds": 1,
+    "baths": 1,
+    "cleaningFee": 20,
+    "serviceFee": 30,
+    "maxGuests": 3,
+    "lat": 11.5636,
+    "lng": 104.9311
+  },
+  {
+    "id": 40,
+    "category": "hotel",
+    "type": "Private Room",
+    "title": "Battambang Heritage Boutique Stay",
+    "nearUniversity": "ubb",
+    "rating": 4.8,
+    "reviews": 49,
+    "price": 135,
+    "image": "./assets/images/cambodia-battambang-city.jpg",
+    "images": [
+      "./assets/images/cambodia-battambang-city.jpg",
+      "./assets/images/Urban Modern Hotel.jpg",
+      "./assets/images/(4).png"
+    ],
+    "features": [
+      {
+        "icon": "museum",
+        "label": "Heritage District"
+      },
+      {
+        "icon": "local_cafe",
+        "label": "Cafe Nearby"
+      },
+      {
+        "icon": "ac_unit",
+        "label": "AC Included"
+      }
+    ],
+    "location": "Battambang",
+    "host": "Borey",
+    "hostImage": "./assets/icons/icon.png",
+    "description": "Boutique-style stay close to Battambang colonial streets, local markets, and arts spaces.",
+    "guests": 2,
+    "bedrooms": 1,
+    "beds": 1,
+    "baths": 1,
+    "cleaningFee": 15,
+    "serviceFee": 24,
+    "maxGuests": 3,
+    "lat": 13.1027,
+    "lng": 103.1982
   }
 ]

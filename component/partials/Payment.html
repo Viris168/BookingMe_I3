@@ -40,7 +40,7 @@
   <main class="payment-main">
 
     <!-- Back Button -->
-    <a href="/component/partials/Property-Detai.html" class="back-btn">
+    <a href="/component/partials/Property-Detai.html" class="back-btn" id="payment-back-link">
       <span class="material-symbols-outlined" style="font-size: 20px;">chevron_left</span>
     </a>
 
@@ -67,18 +67,18 @@
           <div class="form-row">
             <div>
               <label for="firstname" class="form-label">First Name</label>
-              <input type="text" id="firstname" name="firstname" placeholder="Enter first name" class="form-input">
+              <input type="text" id="firstname" name="firstname" placeholder="Enter first name" class="form-input" autocomplete="given-name">
             </div>
             <div>
               <label for="lastname" class="form-label">Last Name</label>
-              <input type="text" id="lastname" name="lastname" placeholder="Enter last name" class="form-input">
+              <input type="text" id="lastname" name="lastname" placeholder="Enter last name" class="form-input" autocomplete="family-name">
             </div>
           </div>
 
           <!-- Email -->
           <div class="form-group">
             <label for="email" class="form-label">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="name@example.com" class="form-input">
+            <input type="email" id="email" name="email" placeholder="name@example.com" class="form-input" autocomplete="email" required>
             <p class="form-hint">Your confirmation will be sent here.</p>
           </div>
 
@@ -87,7 +87,7 @@
             <label for="phone" class="form-label">Phone Number (Optional)</label>
             <div class="phone-group">
               <span class="phone-prefix">+855</span>
-              <input type="tel" id="phone" name="phone" placeholder="12 345 678" class="form-input phone-input">
+              <input type="tel" id="phone" name="phone" placeholder="12 345 678" class="form-input phone-input" autocomplete="tel">
             </div>
           </div>
         </section>
@@ -122,18 +122,18 @@
                 <span class="input-icon-left">
                   <span class="material-symbols-outlined" style="font-size: 18px;">credit_card</span>
                 </span>
-                <input type="text" id="cardnum" name="cardnum" placeholder="0000 0000 0000 0000" class="form-input">
+                <input type="text" id="cardnum" name="cardnum" placeholder="0000 0000 0000 0000" class="form-input" autocomplete="cc-number" inputmode="numeric">
               </div>
             </div>
             <div class="card-details-row">
               <div>
                 <label for="carddate" class="form-label">Expiration</label>
-                <input type="text" id="carddate" name="carddate" placeholder="MM/YY" class="form-input">
+                <input type="text" id="carddate" name="carddate" placeholder="MM/YY" class="form-input" autocomplete="cc-exp" inputmode="numeric">
               </div>
               <div>
                 <label for="cardcvv" class="form-label">CVV</label>
                 <div class="input-icon-wrap">
-                  <input type="text" id="cardcvv" name="cardcvv" placeholder="123" maxlength="4" class="form-input" style="padding-left: 16px;">
+                  <input type="text" id="cardcvv" name="cardcvv" placeholder="123" maxlength="4" class="form-input" style="padding-left: 16px;" autocomplete="cc-csc" inputmode="numeric">
                   <span class="input-icon-right" title="3 or 4 digit security code on the back of your card">
                     <span class="material-symbols-outlined" style="font-size: 18px;">help_outline</span>
                   </span>
@@ -156,9 +156,9 @@
 
         <!-- Terms -->
         <p class="terms-text">
-          By selecting the button below, I agree to the <a href="#">House Rules</a>,
-          <a href="#">Safety Disclosures</a>, and
-          <a href="#">Cancellation Policy</a>.
+          By selecting the button below, I agree to the <a href="/component/support/support.html">House Rules</a>,
+          <a href="/component/support/support.html">Safety Disclosures</a>, and
+          <a href="/component/support/support.html">Cancellation Policy</a>.
         </p>
 
       </div>
@@ -188,7 +188,7 @@
           <p class="trip-row-label">Dates</p>
           <p id="trip-dates" class="trip-row-value"></p>
         </div>
-        <a href="Property-Detai.html" class="edit-link">Edit</a>
+        <a href="/component/partials/Property-Detai.html" class="edit-link" data-property-edit>Edit</a>
       </div>
 
       <div class="trip-row">
@@ -196,7 +196,7 @@
           <p class="trip-row-label">Guests</p>
           <p id="trip-guests" class="trip-row-value"></p>
         </div>
-        <a href="Property-Detai.html" class="edit-link">Edit</a>
+        <a href="/component/partials/Property-Detai.html" class="edit-link" data-property-edit>Edit</a>
       </div>
 
 
