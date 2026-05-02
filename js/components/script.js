@@ -14,6 +14,9 @@ function loadAside(type) {
       if (asideContainer && newAside) {
         asideContainer.innerHTML = ''; // clear current aside
         asideContainer.appendChild(newAside);
+        if (window.BookingMEI18n) {
+          window.BookingMEI18n.apply(asideContainer);
+        }
       }
    
       // Init price slider
@@ -78,6 +81,9 @@ fetch("/component/partials/section.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("section").innerHTML = html;
+    if (window.BookingMEI18n) {
+      window.BookingMEI18n.apply(document.getElementById("section"));
+    }
 
     // Initial aside load based on section's sort dropdown
     const sortSelectEl = document.getElementById("property-sort");

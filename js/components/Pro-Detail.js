@@ -1,6 +1,6 @@
 // 1. Get product ID from URL
 const urlParams = new URLSearchParams(window.location.search);
-const productId = parseInt(urlParams.get("id"));
+const productId = Number.parseInt(urlParams.get("id") || "1", 10);
 
 
 // 2. Fetch product.json and find matching product
@@ -31,11 +31,21 @@ function populatePage(p) {
             // Use the matching index image, or fallback to the first image if array is smaller than 5
             const imagePath = p.images[index] || p.images[0];
             // Replace './' with '/' to ensure it loads from the absolute root directory correctly
+            img.onerror = () => {
+                img.onerror = null;
+                img.src = "/assets/images/Image.png";
+            };
             img.src = imagePath.replace('./', '/'); 
         });
     } else if (p.image) {
         // Fallback if no "images" array exists yet
-        galleryImages.forEach(img => img.src = p.image.replace('./', '/'));
+        galleryImages.forEach(img => {
+            img.onerror = () => {
+                img.onerror = null;
+                img.src = "/assets/images/Image.png";
+            };
+            img.src = p.image.replace('./', '/');
+        });
     }
 
     const iin = document.getElementById('checkInDate');
@@ -78,7 +88,7 @@ function populatePage(p) {
         sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
 
         // Then navigate
-        window.location.href = 'Payment.html';
+        window.location.href = `Payment.html?id=${p.id}`;
     });
 
 }

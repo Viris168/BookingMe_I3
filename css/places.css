@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Kantumruy Pro', sans-serif;
   background: #f6f7f8;
   margin: 0;
   overflow-x: hidden;
@@ -194,7 +194,7 @@ body {
   display: block;
   font-size: 13px;
   color: #4a4641;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Kantumruy Pro', sans-serif;
 }
 
 .custom-place-chevron {
@@ -239,7 +239,7 @@ body {
 .custom-place-option {
   padding: 10px 16px;
   font-size: 13.5px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Kantumruy Pro', sans-serif;
   color: #4a4641;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;

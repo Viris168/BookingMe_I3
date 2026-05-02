@@ -16,6 +16,8 @@ const normalizeAssetPath = (path, fallback = '/assets/images/Image.png') => {
     return path.startsWith('./') ? path.replace('./', '/') : path;
 };
 
+const imageFallback = '/assets/images/Image.png';
+
 const updatePropertyCount = (count) => {
     if (!propertyCount) {
         return;
@@ -98,7 +100,7 @@ const addDataToHTML = () => {
 
         newProduct.innerHTML = `
             <div class="relative h-36 shrink-0 sm:w-44">
-                <img src="${imageSrc}" alt="${product.title}" class="h-full w-full object-cover" loading="lazy" />
+                <img src="${imageSrc}" alt="${product.title}" class="h-full w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${imageFallback}';" />
                 <button type="button" class="wishlistBtn absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full transition-transform hover:scale-105">
                     <span class="wishlistIcon material-symbols-outlined text-[14px] leading-none text-gray-400">favorite</span>
                 </button>
@@ -148,6 +150,10 @@ const addDataToHTML = () => {
     });
 
     renderPagination(productsToRender.length);
+    if (window.BookingMEI18n) {
+        window.BookingMEI18n.apply(listProductHTML);
+        if (paginationControls) window.BookingMEI18n.apply(paginationControls);
+    }
 };
 
 const renderPagination = (totalItems) => {
@@ -191,6 +197,9 @@ const showLoadError = () => {
             Unable to load rentals right now. Check product.json and try again.
         </p>
     `;
+    if (window.BookingMEI18n) {
+        window.BookingMEI18n.apply(listProductHTML);
+    }
 };
 
 const initApp = async () => {

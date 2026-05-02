@@ -5,8 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filters</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Kantumruy+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2b8dee",
+                        "primary-dark": "#1a6fcc",
+                    },
+                    fontFamily: { sans: ["Inter", "Kantumruy Pro", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Only things Tailwind can't do */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 18px;
+        }
+        /* Slider track fill */
+        .price-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 4px;
+            border-radius: 9999px;
+            background: linear-gradient(to right, #2b8dee var(--pct, 47%), #e2e8f0 var(--pct, 47%));
+            outline: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .price-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2.5px solid #2b8dee;
+            box-shadow: 0 2px 8px rgba(43,141,238,.3);
+            cursor: grab;
+            transition: box-shadow .2s;
+        }
+        .price-slider::-webkit-slider-thumb:active {
+            cursor: grabbing;
+            box-shadow: 0 0 0 6px rgba(43,141,238,.15);
+        }
+        .price-slider::-moz-range-thumb {
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2.5px solid #2b8dee;
+            box-shadow: 0 2px 8px rgba(43,141,238,.3);
+            cursor: grab;
+        }
+        /* Checkbox custom style (Tailwind forms plugin handles base) */
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px; height: 18px; min-width: 18px;
+            border-radius: 5px;
+            border: 2px solid #cbd5e1;
+            background: #fff;
+            cursor: pointer;
+            transition: all .2s;
+            position: relative;
+        }
+        input[type="checkbox"]:checked {
+            background: #2b8dee;
+            border-color: #2b8dee;
+        }
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 4px; top: 1px;
+            width: 6px; height: 10px;
+            border: 2px solid #fff;
+            border-top: none; border-left: none;
+            transform: rotate(45deg);
+        }
+        input[type="checkbox"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(43,141,238,.18);
+        }
+    </style>
 </head>
 <body>
 <aside class="w-full shrink-0" aria-label="Hotel filters">

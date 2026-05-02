@@ -10,7 +10,10 @@ let activeLocation = '';
 let activeId = null;
 let mapFlightToken = 0;
 
-/* ── helpers ─────────────────────────────────────────────────── */
+/* Helpers */
+
+const slugifyLocation = (value = '') =>
+    value.toLowerCase().trim().replace(/\s+/g, '-');
 
 const getFilteredProducts = () => {
     let products = [...listProduct];
@@ -28,10 +31,7 @@ const getFilteredProducts = () => {
     return products;
 };
 
-const slugifyLocation = (value = '') =>
-    value.toLowerCase().trim().replace(/\s+/g, '-');
-
-/* ── card renderer ───────────────────────────────────────────── */
+/* Card renderer */
 
 const createProductCard = (product) => {
     const card = document.createElement('article');
@@ -39,15 +39,16 @@ const createProductCard = (product) => {
     card.dataset.productId = product.id;
 
     const imageSrc = (product.image || '/assets/images/Image.png').replace('./', '/');
+    const fallbackSrc = '/assets/images/Image.png';
 
     card.innerHTML = `
         <div class="card-img">
-            <img src="${imageSrc}" alt="${product.title}" loading="lazy" />
+            <img src="${imageSrc}" alt="${product.title}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackSrc}';" />
         </div>
         <div class="card-body">
             <div class="card-header">
                 <div class="card-rating">
-                    <span class="star">★</span>
+                    <span class="star">&#9733;</span>
                     <span class="rating-value">${product.rating}</span>
                     <span class="review-count">(${product.reviews || 0} reviews)</span>
                 </div>
@@ -87,7 +88,7 @@ const createProductCard = (product) => {
     return card;
 };
 
-/* ── render list ─────────────────────────────────────────────── */
+/* Render list */
 
 const addDataToHTML = () => {
     if (!listProductHTML) return;
@@ -100,6 +101,7 @@ const addDataToHTML = () => {
             <p class="empty-state">No listings available right now.</p>
         `;
         if (paginationControls) paginationControls.innerHTML = '';
+        if (window.BookingMEI18n) window.BookingMEI18n.apply(listProductHTML);
         return;
     }
 
@@ -112,9 +114,13 @@ const addDataToHTML = () => {
     });
 
     renderPagination(products.length);
+    if (window.BookingMEI18n) {
+        window.BookingMEI18n.apply(listProductHTML);
+        if (paginationControls) window.BookingMEI18n.apply(paginationControls);
+    }
 };
 
-/* ── pagination ──────────────────────────────────────────────── */
+/* Pagination */
 
 const renderPagination = (totalItems) => {
     if (!paginationControls) return;
@@ -139,7 +145,7 @@ const renderPagination = (totalItems) => {
     }
 };
 
-/* ── filter tabs ─────────────────────────────────────────────── */
+/* Filter tabs */
 
 const initFilterTabs = () => {
     const tabs = document.querySelectorAll('.filter-tab');
@@ -154,13 +160,25 @@ const initFilterTabs = () => {
     });
 };
 
-/* ── init ─────────────────────────────────────────────────────── */
+const initPlaceFilter = () => {
+    const placeSelect = document.getElementById('place-select');
+    if (!placeSelect) return;
+
+    placeSelect.addEventListener('change', () => {
+        activeLocation = placeSelect.value;
+        currentPage = 1;
+        addDataToHTML();
+        flyToPlace(activeLocation);
+    });
+};
+
+/* Init */
 
 /* Map setup */
 const map = L.map('map').setView([11.5620, 104.9240], 14);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
+    attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
 const placeCameras = {
@@ -316,7 +334,7 @@ function makeIcon(active) {
     });
 }
 
-/* Select a hotel — updates card + map */
+/* Select a hotel: updates card and map */
 function selectHotel(id) {
     const hotel = listProduct.find(h => h.id === id);
     if (!hotel) return;
@@ -376,6 +394,7 @@ const initProductList = async () => {
         listProduct = await response.json();
         addDataToHTML();
         initFilterTabs();
+        initPlaceFilter();
         initMarkers();
     } catch (error) {
         console.error('Failed to load products:', error);
@@ -383,6 +402,7 @@ const initProductList = async () => {
             listProductHTML.innerHTML = `
                 <p class="error-state">Unable to load listings. Please try again later.</p>
             `;
+            if (window.BookingMEI18n) window.BookingMEI18n.apply(listProductHTML);
         }
     }
 

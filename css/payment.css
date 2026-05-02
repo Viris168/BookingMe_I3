@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Kantumruy Pro', sans-serif;
   background-color: #f8fafc;
   color: #0f172a;
   line-height: 1.5;
@@ -185,7 +185,7 @@ img {
   padding: 10px 16px;
   font-size: 0.875rem;
   color: #0f172a;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Kantumruy Pro', sans-serif;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -569,7 +569,7 @@ img {
   color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Kantumruy Pro', sans-serif;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
   box-shadow: 0 10px 15px -3px rgba(30, 41, 59, 0.2);
