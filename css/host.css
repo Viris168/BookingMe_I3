@@ -265,6 +265,27 @@ select {
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
+.host-logout {
+  position: relative;
+  z-index: 1;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #fecaca;
+  border-radius: 16px;
+  background: #fef2f2;
+  color: #dc2626;
+  font-weight: 850;
+  transition: 160ms ease;
+}
+
+.host-logout:hover {
+  transform: translateY(-1px);
+  background: #fee2e2;
+}
+
 .host-dashboard-main {
   flex: 1;
   min-width: 0;
@@ -418,6 +439,23 @@ p {
   line-height: 1;
 }
 
+.stat-card small {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.trend-up {
+  color: #059669;
+}
+
+.trend-down {
+  color: #dc2626;
+}
+
 .stat-card .material-symbols-outlined {
   width: 56px;
   height: 56px;
@@ -564,6 +602,19 @@ p {
   align-items: center;
   padding: 16px 0;
   border-top: 1px solid var(--host-line);
+  transition: 160ms ease;
+}
+
+a.booking-row {
+  margin: 0 -10px;
+  padding: 16px 10px;
+  border-radius: 16px;
+}
+
+a.booking-row:hover {
+  background: #f8fafc;
+  color: var(--host-primary);
+  transform: translateX(2px);
 }
 
 .action-grid {
@@ -677,6 +728,29 @@ p {
 .host-upgrade-banner p {
   margin-bottom: 0;
   color: rgba(255, 255, 255, 0.78);
+}
+
+.toast-root {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  display: grid;
+  gap: 10px;
+}
+
+.toast {
+  min-width: 260px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #0f172a;
+  color: #fff;
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.22);
+  font-weight: 800;
+}
+
+.toast-success {
+  background: #047857;
 }
 
 .booking-row:first-of-type {

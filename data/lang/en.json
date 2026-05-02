@@ -32,7 +32,14 @@
     "auth.login": "Login",
     "auth.register": "Register",
     "auth.forgotPassword": "Forgot Your Password",
-    "auth.welcomeBack": "Welcome Back!"
+    "auth.welcomeBack": "Welcome Back!",
+    "account.menu": "Account",
+    "account.dashboard": "Dashboard",
+    "account.orderHistory": "Order History",
+    "account.favorites": "Favorites",
+    "account.settings": "Settings",
+    "account.hostMode": "Host Mode",
+    "account.logout": "Log Out"
   },
   "text": {
     "Home": "Home",
@@ -832,7 +839,9 @@
     "/ month": "/ month",
     "/mo": "/mo",
     "/5": "/5",
-    "Experience the warmth of Khmer hospitality, from riverfront villas in Kampot to ancient temple retreats in Siem Reap": "Experience the warmth of Khmer hospitality, from riverfront villas in Kampot to ancient temple retreats in Siem Reap"
+    "Experience the warmth of Khmer hospitality, from riverfront villas in Kampot to ancient temple retreats in Siem Reap": "Experience the warmth of Khmer hospitality, from riverfront villas in Kampot to ancient temple retreats in Siem Reap",
+    "Account": "Account",
+    "Order History": "Order History"
   },
   "attr": {
     "Search destinations...": "Search destinations",

@@ -225,8 +225,32 @@
       label.textContent = lang === "en" ? "EN / KH" : "KH / EN";
     });
 
+    const currentMeta = lang === "km"
+      ? { flag: "/assets/flag/cambodia.png", label: "KH", alt: "Khmer" }
+      : { flag: "/assets/flag/England.png", label: "EN", alt: "English" };
+
+    document.querySelectorAll("[data-language-current-flag]").forEach((element) => {
+      if (element.tagName === "IMG") {
+        element.src = currentMeta.flag;
+        element.alt = currentMeta.alt;
+      } else {
+        element.textContent = currentMeta.label;
+      }
+    });
+
+    document.querySelectorAll("[data-language-current-label]").forEach((element) => {
+      element.textContent = currentMeta.label;
+    });
+
     document.querySelectorAll("[data-language]").forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.language === lang);
+      const isActive = button.dataset.language === lang;
+      button.classList.toggle("is-active", isActive);
+      button.classList.toggle("bg-blue-50", isActive);
+      button.classList.toggle("text-primary", isActive);
+      button.classList.toggle("text-slate-600", !isActive);
+      button.querySelectorAll("[data-language-check]").forEach((check) => {
+        check.classList.toggle("hidden", !isActive);
+      });
     });
   }
 
@@ -262,6 +286,8 @@
       if (option) {
         event.preventDefault();
         setLanguage(option.dataset.language);
+        option.closest("[data-language-menu]")?.classList.add("hidden");
+        option.closest("[data-language-menu-root]")?.querySelector("[data-language-menu-button]")?.setAttribute("aria-expanded", "false");
       }
     });
   }
