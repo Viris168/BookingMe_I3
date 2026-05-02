@@ -6,6 +6,92 @@ document.addEventListener("DOMContentLoaded", () => {
         return doc.querySelector(selector)?.outerHTML || html;
     };
 
+    const handleLogout = (event) => {
+        const logout = event.target.closest("[data-logout]");
+        if (!logout) return;
+
+        event.preventDefault();
+        const confirmed = window.confirm("Are you sure you want to log out?");
+        if (!confirmed) return;
+
+        localStorage.removeItem("bookingme_user");
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        sessionStorage.clear();
+        window.location.href = "/index.html";
+    };
+
+    const initProfileMenu = (root) => {
+        const menuRoot = root.querySelector("[data-profile-menu-root]");
+        const button = root.querySelector("[data-profile-menu-button]");
+        const menu = root.querySelector("[data-profile-menu]");
+        if (!menuRoot || !button || !menu) return;
+
+        const closeMenu = () => {
+            menu.classList.add("hidden");
+            button.setAttribute("aria-expanded", "false");
+        };
+
+        button.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const isOpen = !menu.classList.contains("hidden");
+            menu.classList.toggle("hidden", isOpen);
+            button.setAttribute("aria-expanded", String(!isOpen));
+        });
+
+        menu.addEventListener("click", (event) => {
+            event.stopPropagation();
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!menuRoot.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        });
+    };
+
+    const initLanguageMenu = (root) => {
+        const menuRoot = root.querySelector("[data-language-menu-root]");
+        const button = root.querySelector("[data-language-menu-button]");
+        const menu = root.querySelector("[data-language-menu]");
+        if (!menuRoot || !button || !menu) return;
+
+        const closeMenu = () => {
+            menu.classList.add("hidden");
+            button.setAttribute("aria-expanded", "false");
+        };
+
+        button.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const isOpen = !menu.classList.contains("hidden");
+            menu.classList.toggle("hidden", isOpen);
+            button.setAttribute("aria-expanded", String(!isOpen));
+        });
+
+        menu.addEventListener("click", (event) => {
+            const option = event.target.closest("[data-language]");
+            if (option) closeMenu();
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!menuRoot.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        });
+    };
+
     // 1. Load Header using absolute path
     // By starting the path with "/", it will always look for the shared partials from the project root,
     // regardless of whether this script is loaded from the root folder, a subfolder, or a deeply nested folder.
@@ -23,11 +109,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (toggle && menu) {
                     toggle.addEventListener("click", () => {
                         const isOpen = menu.style.maxHeight && menu.style.maxHeight !== "0px";
-                        menu.style.maxHeight = isOpen ? "0px" : "400px";
+                        menu.style.maxHeight = isOpen ? "0px" : "620px";
                         const icon = toggle.querySelector(".material-symbols-outlined");
                         if (icon) icon.textContent = isOpen ? "menu" : "close";
                     });
                 }
+
+                initProfileMenu(headerContainer);
+                initLanguageMenu(headerContainer);
+                headerContainer.addEventListener("click", handleLogout);
 
                 if (window.BookingMEI18n) {
                     window.BookingMEI18n.apply(headerContainer);

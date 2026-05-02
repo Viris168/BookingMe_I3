@@ -18,9 +18,10 @@
         <a href="host-dashboard.html"><span class="material-symbols-outlined">dashboard</span>Overview</a>
         <a href="host-properties.html"><span class="material-symbols-outlined">apartment</span>Properties</a>
         <a class="is-active" href="host-bookings.html"><span class="material-symbols-outlined">event_available</span>Bookings</a>
-        <a href="add-property-step-1.html"><span class="material-symbols-outlined">add_home</span>Add Property</a>
         <a href="../dashboard/profile.html"><span class="material-symbols-outlined">person</span>User Dashboard</a>
+        <a href="../../index.html"><span class="material-symbols-outlined">home</span>Back to Home</a>
       </nav>
+      <a href="#" class="host-logout" data-logout><span class="material-symbols-outlined">logout</span>Log Out</a>
       <div class="host-role-card">
         <strong>Guest Requests</strong>
         <p>Approve quickly and message guests to keep your response rate strong.</p>
@@ -56,7 +57,7 @@
               <h3>Dara Vann</h3>
               <small>Mekong Riverside Apartment - Apr 30 to May 03 - 3 nights - $255 total</small>
             </div>
-            <div class="card-actions"><a class="btn btn-primary" href="#">Approve</a><a class="btn btn-secondary" href="#">Message</a><a class="btn btn-danger" href="#">Decline</a></div>
+            <div class="card-actions"><button class="btn btn-primary" type="button" data-approve-request>Approve</button><button class="btn btn-secondary" type="button">Message</button><button class="btn btn-danger" type="button" data-decline-request>Decline</button></div>
           </article>
           <article class="booking-card">
             <div>
@@ -64,7 +65,7 @@
               <h3>Sophea Lim</h3>
               <small>Techno Student Studio - May 08 to May 12 - 4 nights - $152 total</small>
             </div>
-            <div class="card-actions"><a class="btn btn-primary" href="#">Approve</a><a class="btn btn-secondary" href="#">Message</a><a class="btn btn-danger" href="#">Decline</a></div>
+            <div class="card-actions"><button class="btn btn-primary" type="button" data-approve-request>Approve</button><button class="btn btn-secondary" type="button">Message</button><button class="btn btn-danger" type="button" data-decline-request>Decline</button></div>
           </article>
           <article class="booking-card">
             <div>
@@ -78,6 +79,7 @@
       </section>
     </main>
   </div>
+  <script src="/js/dashboard.js"></script>
   <script src="/js/i18n.js"></script>
 </body>
 </html>

@@ -117,10 +117,14 @@
           <span class="material-symbols-outlined text-xl">home_work</span>
           <span class="text-base font-medium leading-normal">Host Dashboard</span>
         </a>
+        <a href="/index.html" class="dashboard-nav-link">
+          <span class="material-symbols-outlined text-xl">home</span>
+          <span class="text-base font-medium leading-normal">Back to Home</span>
+        </a>
       </nav>
 
       <div class="mt-auto pt-6 relative z-10 border-t border-slate-200/50 dark:border-slate-700/50">
-        <a href="#" class="dashboard-logout">
+        <a href="#" class="dashboard-logout" data-logout>
           <span class="material-symbols-outlined">logout</span>
           <span class="text-base leading-normal">Log Out</span>
         </a>
@@ -146,21 +150,21 @@
                 <p class="font-semibold">Email Notifications</p>
                 <p class="text-sm text-slate-500">Receive booking confirmations and updates via email.</p>
               </div>
-              <input type="checkbox" checked class="custom-checkbox">
+              <input type="checkbox" checked class="custom-checkbox" data-setting="emailNotifications">
             </div>
             <div class="flex justify-between items-center">
               <div>
                 <p class="font-semibold">SMS Alerts</p>
                 <p class="text-sm text-slate-500">Get text messages for important security alerts.</p>
               </div>
-              <input type="checkbox" class="custom-checkbox">
+              <input type="checkbox" class="custom-checkbox" data-setting="smsAlerts">
             </div>
             <div class="flex justify-between items-center">
               <div>
                 <p class="font-semibold">Promotional Offers</p>
                 <p class="text-sm text-slate-500">Receive exclusive deals and discounts from homestays.</p>
               </div>
-              <input type="checkbox" checked class="custom-checkbox">
+              <input type="checkbox" checked class="custom-checkbox" data-setting="promotionalOffers">
             </div>
           </div>
         </div>
@@ -196,7 +200,7 @@
             <div class="space-y-6">
               <div>
                 <label class="block text-sm font-medium text-slate-500 mb-2">Language</label>
-                <select class="w-full px-5 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:border-blue-500 bg-white">
+                <select class="w-full px-5 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:border-blue-500 bg-white" data-setting="language">
                   <option>English (US)</option>
                   <option>Khmer (ភាសាខ្មែរ)</option>
                   <option>French (Français)</option>
@@ -204,12 +208,12 @@
               </div>
               <div>
                 <label class="block text-sm font-medium text-slate-500 mb-2">Currency</label>
-                <select class="w-full px-5 py-3.5 border-2 border-blue-500 rounded-2xl focus:outline-none focus:border-blue-600 bg-white">
+                <select class="w-full px-5 py-3.5 border-2 border-blue-500 rounded-2xl focus:outline-none focus:border-blue-600 bg-white" data-setting="currency">
                   <option>USD ($)</option>
                   <option>KHR (៛)</option>
                 </select>
               </div>
-              <button class="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl hover:brightness-110 transition-all">
+              <button class="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl hover:brightness-110 transition-all" data-save-preferences>
                 Save Preferences
               </button>
             </div>
@@ -218,6 +222,7 @@
       </div>
     </main>
   </div>
+  <script src="/js/dashboard.js"></script>
   <script src="/js/i18n.js"></script>
 </body>
 </html>
