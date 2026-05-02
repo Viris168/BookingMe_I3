@@ -1,114 +1,61 @@
 # BookingME
 
-BookingME is a responsive hotel, room rental, and property booking website for Cambodia. The project is built with HTML, CSS, and JavaScript, with shared partials for the header/footer, bilingual English/Khmer translation support, user dashboard pages, host dashboard pages, and a connected booking flow.
+BookingME is a hotel, room rental, and property booking website focused on stays in Cambodia. The website includes a guest booking experience, user dashboard, host dashboard, add-property flow, and English/Khmer language support.
 
-## Features
+## Project Overview
 
-- Home page with destination sections, featured stays, search, and connected property cards
-- Shared header and footer loaded dynamically across pages
-- English and Khmer language switching with JSON translation files
+BookingME helps users browse places to stay, view property details, make a booking, and manage their account. It also allows hosts to manage listings, review booking requests, and publish new properties.
+
+The project is built with:
+
+- HTML
+- CSS
+- JavaScript
+- Tailwind CSS CDN
+- JSON data
+
+## Main Features
+
+- Home page with search, Cambodia destinations, featured stays, and top destinations
+- Dynamic property data from `data/product.json`
+- Property listing page with filters and pagination
+- Places page with map and location-based property browsing
+- Property detail page with gallery, amenities, map, price summary, and booking action
+- Payment page and booking confirmation page
 - User dashboard for profile, booking status, booking history, favorites, and account settings
-- Host dashboard for overview, properties, booking requests, and property publishing
-- Add Property wizard with four connected steps
-- Property detail page with gallery, amenities, map, booking card, reviews link, and payment flow
-- Payment page with booking summary and secure checkout UI
-- Confirmation page with receipt action, booking status link, home link, and map directions
-- Support page for help, policies, and contact-style routing
+- Host dashboard for overview, properties, bookings, and property management
+- Add Property flow with four steps
+- English and Khmer language switching
+- Shared header and footer across pages
 
-## Main Page Flow
+## Website Flow
 
 ```text
 Home
-  -> Bookings / Listings
+  -> Listings
   -> Places
-  -> Support
   -> Property Detail
-       -> Reviews
-       -> Payment
-            -> Confirmation
-                 -> Booking Status
+  -> Payment
+  -> Confirmation
 
-User Account
+User
   -> Profile
   -> Booking Status
   -> Booking History
   -> Favorites
-  -> Settings
-  -> Host Mode
+  -> Account Settings
 
-Host Mode
+Host
   -> Host Dashboard
   -> Host Properties
   -> Host Bookings
-  -> Add Property Step 1
-       -> Step 2
-       -> Step 3
-       -> Step 4
-       -> Listing Success
+  -> Add Property
+  -> Listing Success
 ```
-
-## Project Structure
-
-```text
-BookingME/
-  assets/
-    flag/                 # Language flag images
-    icons/                # Logo and UI icons
-    images/               # Property and dashboard images
-  component/
-    dashboard/            # User dashboard pages
-    host/                 # Host dashboard and add-property pages
-    Login/                # Login/register page
-    partials/             # Header, footer, booking, payment, detail, reviews
-    places/               # Places/search page
-    support/              # Support page
-  css/
-    _design-tokens.css    # Shared colors, fonts, radius, shadow tokens
-    home.css
-    host.css
-    Property-Detail.css
-    payment.css
-    confirmation.css
-    places.css
-    reviews.css
-    style.css
-    support.css
-  data/
-    lang/                 # en.json and km.json translation dictionaries
-    product.json          # Property listing data
-  docs/
-    i18n-migration-plan.md
-  img/                    # Homepage destination/listing images
-  js/
-    components/           # Layout, listing, place, payment, property detail JS
-    dashboard.js
-    i18n.js
-  tools/
-    check-i18n.js         # Translation key checker
-  index.html
-```
-
-## How To Run Locally
-
-Because this project uses `fetch()` to load shared partials and JSON files, open it through a local web server instead of double-clicking `index.html`.
-
-From the project root:
-
-```powershell
-python -m http.server 5500
-```
-
-Then open:
-
-```text
-http://localhost:5500
-```
-
-If Python is not available, you can use any static server, for example the VS Code Live Server extension.
 
 ## Important Pages
 
-| Area | Page |
+| Page | File |
 | --- | --- |
 | Home | `index.html` |
 | Listings | `component/partials/booking.html` |
@@ -116,83 +63,62 @@ If Python is not available, you can use any static server, for example the VS Co
 | Property Detail | `component/partials/Property-Detai.html` |
 | Payment | `component/partials/Payment.html` |
 | Confirmation | `component/partials/Comfirmation.html` |
-| Support | `component/support/support.html` |
 | Login/Register | `component/Login/index-login.html` |
-| User Dashboard | `component/dashboard/profile.html` |
+| Support | `component/support/support.html` |
+| User Profile | `component/dashboard/profile.html` |
+| Booking Status | `component/dashboard/Booking-status.html` |
+| Booking History | `component/dashboard/Booking-history.html` |
+| Favorites | `component/dashboard/favorite.html` |
+| Account Settings | `component/dashboard/account-setting.html` |
 | Host Dashboard | `component/host/host-dashboard.html` |
+| Host Properties | `component/host/host-properties.html` |
+| Host Bookings | `component/host/host-bookings.html` |
 | Add Property | `component/host/add-property-step-1.html` |
 
-Note: Some filenames currently keep the original project spelling, such as `Property-Detai.html` and `Comfirmation.html`, so links should continue using those names unless the files are renamed across the whole project.
+## Main Folders
 
-## Translation System
-
-The bilingual system is powered by:
-
-- `js/i18n.js`
-- `data/lang/en.json`
-- `data/lang/km.json`
-
-Use these attributes in HTML when adding new translated text:
-
-```html
-<h1 data-i18n="home.hero.title">Discover Cambodia's Best Stays</h1>
-<input data-i18n-placeholder="common.searchDestinations" placeholder="Search destinations...">
-<img data-i18n-alt="property.imageAlt" alt="Property image">
+```text
+assets/      Images, icons, logo, and flags
+component/   Website pages and reusable partials
+css/         Stylesheets for each page section
+data/        Property data and language files
+img/         Homepage image assets
+js/          JavaScript for layout, data rendering, dashboard, booking, and translation
 ```
 
-When adding new UI text, update both language files. You can verify translation structure with:
+## Data
 
-```powershell
-node tools\check-i18n.js
+Property listings are stored in:
+
+```text
+data/product.json
 ```
 
-## Validation Commands
+The dataset includes Cambodia-only stays for both:
 
-Run these before pushing or merging:
+- Campus/student rooms
+- Hotels and private stays
 
-```powershell
-node tools\check-i18n.js
-node --check js\i18n.js
-node --check js\components\layout.js
-node --check js\components\Payment.js
-node --check js\components\Pro-Detail.js
+## Language Support
+
+BookingME supports:
+
+- English
+- Khmer
+
+Language files:
+
+```text
+data/lang/en.json
+data/lang/km.json
 ```
 
-Optional link check idea:
+The language switcher is handled by:
 
-```powershell
-Select-String -Path (Get-ChildItem -Recurse -File -Include *.html,*.js | ForEach-Object FullName) -Pattern '<<<<<<<|=======|>>>>>>>'
+```text
+js/i18n.js
 ```
-
-## Current Connected Processes
-
-- Header navigation connects to Home, Bookings, Places, Support, user account pages, and Host Mode.
-- Homepage listing cards connect to property detail pages.
-- Property detail pages connect to reviews and payment.
-- Payment connects to confirmation.
-- Confirmation connects back to home and booking status.
-- User dashboard sidebar connects all user dashboard pages.
-- Host dashboard/sidebar connects overview, properties, bookings, user dashboard, and home.
-- Add Property pages are connected from Step 1 through Listing Success.
-
-## Design Notes
-
-- Shared design tokens live in `css/_design-tokens.css`.
-- The main font stack is Inter for English and Kantumruy Pro for Khmer.
-- Use the shared blue brand color as the primary action color.
-- Use real links for page navigation and buttons only for in-page actions.
-- Add descriptive `alt` text and `loading="lazy"` for content images.
-
-## Team Workflow
-
-Before merging your branch:
-
-1. Pull or merge the latest `main` into your feature branch.
-2. Resolve conflicts carefully, especially shared files like `header.html`, `footer.html`, `i18n.js`, and language JSON files.
-3. Run the validation commands above.
-4. Click through the main flows in the browser.
-5. Push your branch and create/merge the pull request.
 
 ## Project Status
 
-BookingME is currently a static frontend project. It uses local JSON and browser storage for demo behavior. A future backend can replace the static data layer for authentication, real booking records, payments, host listings, and user profiles.
+BookingME is currently a static frontend project. It uses local JSON data and browser-side JavaScript to simulate booking, dashboard, host, and translation features.
