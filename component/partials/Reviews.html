@@ -6,17 +6,17 @@
   <title>Guest Reviews & Ratings – BookingME</title>
   <meta name="description" content="Read verified guest reviews and ratings. See what travelers loved about their stay.">
 
-  <!-- Fonts & Icons -->
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Kantumruy+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <!-- Stylesheet -->
+
   <link rel="stylesheet" href="/css/reviews.css">
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
-  <!-- Tailwind (needed for header & footer partials) -->
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -32,27 +32,27 @@
 
 <body>
 
-  <!-- Header -->
+
   <div id="header"></div>
 
-  <!-- Main Content -->
+
   <main class="reviews-main">
 
-    <!-- Back Button -->
+
     <a href="/index.html" class="back-btn">
       <span class="material-symbols-outlined" style="font-size: 20px;">chevron_left</span>
     </a>
 
-    <!-- Page Title -->
+
     <h1 class="reviews-page-title">Guest Reviews & Ratings</h1>
 
-    <!-- Two-Column Layout -->
+
     <div class="reviews-grid">
 
-      <!-- LEFT SIDEBAR -->
+
       <aside class="reviews-sidebar">
 
-        <!-- Overall Score Card -->
+
         <div class="score-card">
           <div style="display:flex; gap:16px; align-items:flex-start;">
             <div>
@@ -66,7 +66,7 @@
               </div>
               <span class="score-based">Based on 1,240 reviews</span>
             </div>
-            <!-- Rating Bars -->
+
             <div class="rating-bars" style="flex:1;">
               <div class="rating-bar-row">
                 <span class="rating-bar-label">5</span>
@@ -92,7 +92,7 @@
           </div>
         </div>
 
-        <!-- Category Scores -->
+
         <div class="category-scores">
           <div class="category-row">
             <div class="category-info">
@@ -117,7 +117,7 @@
           </div>
         </div>
 
-        <!-- Write Review CTA -->
+
         <div class="write-review-card">
           <h3 class="write-review-title">Stayed here before?</h3>
           <p class="write-review-desc">Share your experience with other travelers and help them make the right choice.</p>
@@ -129,10 +129,10 @@
 
       </aside>
 
-      <!-- RIGHT COLUMN: Reviews List -->
+
       <div class="reviews-list-col">
 
-        <!-- Review 1: Sarah Jenkins -->
+
         <article class="review-card">
           <div class="review-header">
             <div class="review-author">
@@ -156,12 +156,12 @@
 
           <h3 class="review-title">"An unforgettable weekend getaway"</h3>
           <p class="review-text">
-            The location couldn't be better – right in the heart of the historic district but tucked away on a 
-            quiet street. The staff went above and beyond to make our anniversary special, even leaving a 
+            The location couldn't be better – right in the heart of the historic district but tucked away on a
+            quiet street. The staff went above and beyond to make our anniversary special, even leaving a
             small gift in our room. The breakfast spread was delicious with plenty of local options.
           </p>
 
-          <!-- Review Photos -->
+
           <div class="review-photos">
             <img src="/assets/images/Ima.png" alt="Review photo 1" class="review-photo">
             <img src="/assets/images/imaa.png" alt="Review photo 2" class="review-photo">
@@ -177,7 +177,7 @@
           </div>
         </article>
 
-        <!-- Review 2: Michael Chen -->
+
         <article class="review-card">
           <div class="review-header">
             <div class="review-author">
@@ -201,13 +201,13 @@
 
           <h3 class="review-title">"Great service, slightly noisy street"</h3>
           <p class="review-text">
-            The service here is top-notch. From the concierge to the housekeeping, everyone was friendly 
-            and professional. The room was spotless and very modern. My only critique is that our room 
-            faced the main street and it was a bit noisy on Friday night. I'd recommend asking for a courtyard 
+            The service here is top-notch. From the concierge to the housekeeping, everyone was friendly
+            and professional. The room was spotless and very modern. My only critique is that our room
+            faced the main street and it was a bit noisy on Friday night. I'd recommend asking for a courtyard
             room.
           </p>
 
-          <!-- Manager Response -->
+
           <div class="manager-response">
             <div class="manager-response-header">
               <div class="manager-icon">
@@ -216,7 +216,7 @@
               <span class="manager-label">Response from Manager</span>
             </div>
             <p class="manager-response-text">
-              Thank you for your feedback, Michael. We are glad you enjoyed our service! For your next visit, 
+              Thank you for your feedback, Michael. We are glad you enjoyed our service! For your next visit,
               please do let us know your preference, and we will happily assign a quiet courtyard room for you.
             </p>
           </div>
@@ -230,7 +230,7 @@
           </div>
         </article>
 
-        <!-- Review 3: Eleanor Rigby -->
+
         <article class="review-card">
           <div class="review-header">
             <div class="review-author">
@@ -254,8 +254,8 @@
 
           <h3 class="review-title">"Pure luxury and comfort"</h3>
           <p class="review-text">
-            Everything was perfect. The linens were high quality, the bathroom amenities were luxurious, and 
-            the bed was incredibly comfortable. We slept like babies. The rooftop bar is a must-visit for 
+            Everything was perfect. The linens were high quality, the bathroom amenities were luxurious, and
+            the bed was incredibly comfortable. We slept like babies. The rooftop bar is a must-visit for
             sunset!
           </p>
 
@@ -268,7 +268,7 @@
           </div>
         </article>
 
-        <!-- Pagination -->
+
         <nav class="pagination">
           <button class="page-btn active">1</button>
           <button class="page-btn">2</button>
@@ -282,10 +282,10 @@
     </div>
   </main>
 
-  <!-- Footer -->
+
   <div id="footer"></div>
 
-  <!-- Scripts -->
+
   <script src="/js/components/layout.js"></script>
 
   <script src="/js/i18n.js"></script>

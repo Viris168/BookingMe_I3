@@ -1,4 +1,4 @@
-// js/components/layout.js
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const extractPartial = (html, selector) => {
@@ -6,18 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return doc.querySelector(selector)?.outerHTML || html;
     };
 
-    // 1. Load Header using absolute path
-    // By starting the path with "/", it will always look for the shared partials from the project root,
-    // regardless of whether this script is loaded from the root folder, a subfolder, or a deeply nested folder.
+
+
+
     fetch("/component/partials/header.html")
         .then(res => res.text())
         .then(html => {
             const headerContainer = document.getElementById("header");
             if (headerContainer) {
-                // Inject the header HTML into the container
+
                 headerContainer.innerHTML = extractPartial(html, "header");
 
-                // Initialize mobile menu toggle logic
+
                 const toggle = document.getElementById("menu-toggle");
                 const menu = document.getElementById("mobile-menu");
                 if (toggle && menu) {
@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(err => console.error("Error loading header:", err));
 
-    // 2. Load Footer using absolute path
+
     fetch("/component/partials/footer.html")
         .then(res => res.text())
         .then(html => {
             const footerContainer = document.getElementById("footer");
             if (footerContainer) {
-                // Inject the footer HTML into the container
+
                 footerContainer.innerHTML = extractPartial(html, "footer");
                 if (window.BookingMEI18n) {
                     window.BookingMEI18n.apply(footerContainer);

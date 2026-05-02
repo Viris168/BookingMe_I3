@@ -1,9 +1,9 @@
-// 1. Get product ID from URL
+
 const urlParams = new URLSearchParams(window.location.search);
 const productId = Number.parseInt(urlParams.get("id") || "1", 10);
 
 
-// 2. Fetch product.json and find matching product
+
 fetch("/data/product.json")
     .then(res => res.json())
     .then(products => {
@@ -13,7 +13,7 @@ fetch("/data/product.json")
 
 
 
-// 3. Fill the page with data
+
 function populatePage(p) {
 
     document.getElementById("priceAmount").textContent = `$${p.price}`;
@@ -24,21 +24,21 @@ function populatePage(p) {
     document.getElementById("title").textContent = p.title;
     document.getElementById("type").textContent = p.type;
 
-    // 4. Update the Gallery Images dynamically
+
     const galleryImages = document.querySelectorAll(".gallery img");
     if (p.images && p.images.length > 0) {
         galleryImages.forEach((img, index) => {
-            // Use the matching index image, or fallback to the first image if array is smaller than 5
+
             const imagePath = p.images[index] || p.images[0];
-            // Replace './' with '/' to ensure it loads from the absolute root directory correctly
+
             img.onerror = () => {
                 img.onerror = null;
                 img.src = "/assets/images/Image.png";
             };
-            img.src = imagePath.replace('./', '/'); 
+            img.src = imagePath.replace('./', '/');
         });
     } else if (p.image) {
-        // Fallback if no "images" array exists yet
+
         galleryImages.forEach(img => {
             img.onerror = () => {
                 img.onerror = null;
@@ -73,28 +73,28 @@ function populatePage(p) {
     out.addEventListener('change', update);
 
     document.getElementById('reserveBtn').addEventListener('click', () => {
-        // Save data first
+
         const bookingData = {
             productId: p.id,
             checkIn: document.getElementById('checkInDate').value,
             checkOut: document.getElementById('checkOutDate').value,
             guests: document.getElementById('guestsValue').textContent,
-            pricePerNight: p.price,  // from product data
-            nights: nights,          // calculated from dates
+            pricePerNight: p.price,
+            nights: nights,
             cleaningFee: p.cleaningFee,
             serviceFee: p.serviceFee,
             total: totals
         };
         sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
 
-        // Then navigate
+
         window.location.href = `Payment.html?id=${p.id}`;
     });
 
 }
 
 
-/* ── Custom Guests Dropdown ── */
+
 function toggleGuestsDropdown() {
     const dropdown = document.getElementById('guestsDropdown');
     const chevron = document.getElementById('guestsChevron');
@@ -107,16 +107,16 @@ function selectGuest(e, el) {
     const value = el.textContent;
     document.getElementById('guestsValue').textContent = value;
 
-    // Update selected state
+
     document.querySelectorAll('.guests-option').forEach(opt => opt.classList.remove('selected'));
     el.classList.add('selected');
 
-    // Close dropdown
+
     document.getElementById('guestsDropdown').classList.remove('show');
     document.getElementById('guestsChevron').classList.remove('open');
 }
 
-// Close dropdown when clicking outside
+
 document.addEventListener('click', function (e) {
     const box = document.getElementById('guestsBox');
     if (box && !box.contains(e.target)) {

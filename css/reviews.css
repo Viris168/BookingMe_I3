@@ -1,9 +1,6 @@
-/* ============================================================
-   reviews.css – Guest Reviews & Ratings Page
-   Matches the BookingME design screenshot exactly
-   ============================================================ */
 
-/* ---------- Reset / Base ---------- */
+
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -13,14 +10,14 @@ body {
   min-height: 100vh;
 }
 
-/* ---------- Main wrapper ---------- */
+
 .reviews-main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 100px 20px 60px;
 }
 
-/* ---------- Back Button ---------- */
+
 .back-btn {
   display: inline-flex;
   align-items: center;
@@ -40,7 +37,7 @@ body {
   background-color: #334155;
 }
 
-/* ---------- Page Title ---------- */
+
 .reviews-page-title {
   font-family: "Inter", "Kantumruy Pro", sans-serif;
   font-size: 1.5rem;
@@ -49,7 +46,7 @@ body {
   margin-bottom: 32px;
 }
 
-/* ---------- Two-Column Grid ---------- */
+
 .reviews-grid {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -57,16 +54,14 @@ body {
   align-items: start;
 }
 
-/* ============================================================
-   LEFT SIDEBAR
-   ============================================================ */
+
 .reviews-sidebar {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* --- Overall Score Card --- */
+
 .score-card {
   background: #ffffff;
   border-radius: 16px;
@@ -100,7 +95,7 @@ body {
   white-space: nowrap;
 }
 
-/* Rating Bars */
+
 .rating-bars {
   display: flex;
   flex-direction: column;
@@ -136,7 +131,7 @@ body {
   border-radius: 99px;
 }
 
-/* --- Category Scores --- */
+
 .category-scores {
   background: #ffffff;
   border-radius: 16px;
@@ -181,18 +176,18 @@ body {
   color: #0d1b2a;
 }
 
-/* Category score bars (decorative blue bar under value) */
+
 .category-row::after {
-  display: none; /* bars are implied in design by the score numbers */
+  display: none;
 }
 
-/* Full-width blue progress bars below each row (from screenshot) */
+
 .category-scores .category-row {
   flex-wrap: wrap;
   row-gap: 6px;
 }
 
-/* --- Write Review Card --- */
+
 .write-review-card {
   background: linear-gradient(135deg, #2b8dee 0%, #1a6fd8 100%);
   border-radius: 16px;
@@ -234,16 +229,14 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
-/* ============================================================
-   RIGHT COLUMN – Review Cards
-   ============================================================ */
+
 .reviews-list-col {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* --- Single Review Card --- */
+
 .review-card {
   background: #ffffff;
   border-radius: 16px;
@@ -256,7 +249,7 @@ body {
   box-shadow: 0 6px 24px rgba(0,0,0,0.10);
 }
 
-/* Review Header */
+
 .review-header {
   display: flex;
   align-items: flex-start;
@@ -270,7 +263,7 @@ body {
   gap: 12px;
 }
 
-/* Avatar circle with initial */
+
 .review-avatar-placeholder {
   width: 44px;
   height: 44px;
@@ -318,7 +311,7 @@ body {
   color: #9ca3af;
 }
 
-/* Score Badge */
+
 .review-score-badge {
   display: flex;
   align-items: center;
@@ -357,7 +350,7 @@ body {
   color: #d97706;
 }
 
-/* Review Body */
+
 .review-title {
   font-size: 16px;
   font-weight: 700;
@@ -373,7 +366,7 @@ body {
   margin-bottom: 16px;
 }
 
-/* Review Photos */
+
 .review-photos {
   display: flex;
   gap: 10px;
@@ -389,7 +382,7 @@ body {
   border: 1px solid #e5e7eb;
 }
 
-/* Manager Response */
+
 .manager-response {
   background: #f8fafc;
   border-left: 3px solid #2b8dee;
@@ -434,7 +427,7 @@ body {
   line-height: 1.65;
 }
 
-/* Review Footer */
+
 .review-footer {
   display: flex;
   align-items: center;
@@ -473,9 +466,7 @@ body {
   color: #9ca3af;
 }
 
-/* ============================================================
-   PAGINATION
-   ============================================================ */
+
 .pagination {
   display: flex;
   align-items: center;
@@ -519,9 +510,7 @@ body {
   padding: 0 4px;
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+
 @media (max-width: 860px) {
   .reviews-main {
     padding: 88px 16px 48px;

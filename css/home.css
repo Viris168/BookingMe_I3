@@ -4,16 +4,19 @@
     box-sizing: border-box;
     font-family: 'Inter', 'Kantumruy Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
-body{
+
+body {
     background-color: #f4f4f4;
     margin: 0;
 }
+
 main {
     padding-top: 64px;
 }
-.InterfacePage{
+
+.InterfacePage {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('/img/background-interface.jpg') center/cover no-repeat;
+        url('/img/background-interface.jpg') center/cover no-repeat;
     height: 60vh;
     display: flex;
     flex-direction: column;
@@ -28,6 +31,7 @@ main {
     font-size: 3em;
     margin-bottom: 20px;
 }
+
 .InterfacePage p {
     font-size: 1.2em;
     max-width: 600px;
@@ -48,7 +52,7 @@ main {
 }
 
 .search-pill:focus-within {
-    outline: 2px solid #2b8dee; /* Primary blue focus ring */
+    outline: 2px solid #2b8dee;
     outline-offset: 3px;
 }
 
@@ -91,7 +95,7 @@ main {
 }
 
 .search-submit {
-    background-color: #f59e0b; /* Bright Orange */
+    background-color: #f59e0b;
     color: white;
     border: none;
     border-radius: 50%;
@@ -131,29 +135,36 @@ main {
 }
 
 .siemreab {
-    
+
     cursor: pointer;
 }
+
 .kampot {
     cursor: pointer;
 }
+
 .phnompenh {
     cursor: pointer;
 }
+
 .koh-rong {
     cursor: pointer;
 }
+
 .sihanoukville {
     cursor: pointer;
 }
+
 .koh-ker {
     cursor: pointer;
 }
+
 .koh-kong {
     cursor: pointer;
 }
-.destination-continer h2, 
-.destination-continer > p {
+
+.destination-continer h2,
+.destination-continer>p {
     margin-bottom: 10px;
 }
 
@@ -177,15 +188,25 @@ main {
     scrollbar-width: none;
 }
 
-.place-continer > div {
+.place-continer > .dest-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
+.place-continer > div,
+.place-continer > .dest-link > div {
     flex: 0 0 auto;
     width: 300px;
     border-radius: 12px;
     background: #fff;
     scroll-snap-align: start;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     padding-bottom: 15px;
     border: 1px solid #eaeaea;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .place-continer img {
@@ -203,17 +224,19 @@ main {
     justify-content: flex-start;
 }
 
-.place-continer > div p {
+.place-continer > div p,
+.place-continer > .dest-link > div p {
     font-size: 0.9em;
     color: #666;
     padding: 0 15px;
 }
-.place-continer > div:hover {
-    transform: translateY(-10px); 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
-    /* transform: rotate(-0.2deg); */
+
+.place-continer > div:hover,
+.place-continer > .dest-link:hover > div {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-/* Button Styling */
+
 .nav-buttons {
     display: flex;
     gap: 10px;
@@ -241,15 +264,15 @@ main {
     background-color: #007BFF;
     color: white;
     border-color: #007BFF;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Ensure the scroll container doesn't have extra margins now */
+
 .place-continer {
     margin-top: 0;
 }
 
-/* --- STUDENT HOUSE SECTION --- */
+
 .student-house {
     padding: 40px 20px;
     max-width: 1200px;
@@ -259,7 +282,7 @@ main {
 }
 
 .student-house h2,
-.student-house > p {
+.student-house>p {
     margin-bottom: 10px;
 }
 
@@ -271,23 +294,23 @@ main {
     overflow-y: hidden;
     padding-bottom: 20px;
     scroll-snap-type: x mandatory;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* Hide scrollbar */
+
 .student-room::-webkit-scrollbar {
     display: none;
 }
 
-/* Individual Student Room Cards */
-.student-room > div {
+
+.student-room>div {
     flex: 0 0 auto;
-    width: 300px; /* Made this slightly wider since room details need more space */
+    width: 300px;
     border-radius: 12px;
     background: #fff;
     scroll-snap-align: start;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     padding-bottom: 15px;
     border: 1px solid #eaeaea;
 }
@@ -300,34 +323,45 @@ main {
     margin-bottom: 10px;
 }
 
-.student-room > div:hover {
-    transform: translateY(-10px); 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+.student-room>div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-.room1-info, .room2-info, .room3-info, .room4-info, .room5-info, .room6-info {
+
+.room1-info,
+.room2-info,
+.room3-info,
+.room4-info,
+.room5-info,
+.room6-info {
     padding: 15px 15px;
 }
 
-.room1{
-    cursor: pointer;
-}
-.room2{
-    cursor: pointer;
-}
-.room3{
-    cursor: pointer;
-}
-.room4{
-    cursor: pointer;
-}
-.room5{
-    cursor: pointer;
-}
-.room6{
+.room1 {
     cursor: pointer;
 }
 
-.btn{
+.room2 {
+    cursor: pointer;
+}
+
+.room3 {
+    cursor: pointer;
+}
+
+.room4 {
+    cursor: pointer;
+}
+
+.room5 {
+    cursor: pointer;
+}
+
+.room6 {
+    cursor: pointer;
+}
+
+.btn {
     display: block;
     width: 100%;
     padding: 10px;
@@ -339,12 +373,13 @@ main {
     font-size: 0.9em;
     margin-top: 10px;
 }
+
 .btn:hover {
     background-color: #0056b3;
 }
 
 
-/* --- TOP DESTINATIONS SECTION --- */
+
 .Top-Destination {
     padding: 40px 20px;
     max-width: 1200px;
@@ -364,30 +399,41 @@ main {
     overflow-y: hidden;
     padding-bottom: 20px;
     scroll-snap-type: x mandatory;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.Top-Destination-List > div:hover {
-    transform: translateY(-10px); 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+.Top-Destination-List > div:hover,
+.Top-Destination-List > .dest-link:hover > div {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Hide scrollbar */
+
 .Top-Destination-List::-webkit-scrollbar {
     display: none;
 }
 
-/* Individual Top Destination Cards */
-.Top-Destination-List > div {
+
+.Top-Destination-List > .dest-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
+.Top-Destination-List > div,
+.Top-Destination-List > .dest-link > div {
     flex: 0 0 auto;
     width: 250px;
     border-radius: 12px;
     background: #fff;
     scroll-snap-align: start;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     padding-bottom: 15px;
     border: 1px solid #eaeaea;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .Top-Destination-List img {
@@ -403,17 +449,20 @@ main {
     font-weight: bold;
     text-align: left;
 }
-.Top1{
-    cursor: pointer;
-}
-.Top2{
-    cursor: pointer;
-}
-.Top3{
+
+.Top1 {
     cursor: pointer;
 }
 
-h3{
+.Top2 {
+    cursor: pointer;
+}
+
+.Top3 {
+    cursor: pointer;
+}
+
+h3 {
     font-size: 1.5em;
     display: flex;
     justify-content: center;
@@ -423,29 +472,32 @@ h3{
     margin-bottom: 20px;
 }
 
-.Help{
+.Help {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
     margin-bottom: 40px;
 }
-.Help > div {
+
+.Help>div {
     flex: 1 1 300px;
     text-align: center;
     padding: 20px;
 }
+
 .Help i {
     font-size: 2.5em;
     color: #2b8dee;
     margin-bottom: 15px;
 }
+
 .Help h4 {
     margin-bottom: 10px;
     font-size: 1.2em;
 }
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
+
 @media (max-width: 768px) {
     .InterfacePage {
         text-align: center;
@@ -455,36 +507,42 @@ h3{
         padding: 34px 18px 32px;
         background-position: center top;
     }
+
     .InterfacePage h1 {
         max-width: 340px;
         font-size: clamp(1.85rem, 8vw, 2.1rem);
         line-height: 1.25;
         margin-bottom: 22px;
     }
+
     .InterfacePage p {
         max-width: 330px;
         font-size: 0.92rem;
         font-weight: 600;
         line-height: 1.55;
     }
+
     .search-pill {
         max-width: 335px;
         margin-top: 22px;
         padding: 8px 8px 8px 20px;
     }
+
     .search-submit {
         width: 44px;
         height: 44px;
         font-size: 1rem;
     }
+
     .Destination-place,
     .student-house,
     .Top-Destination {
         padding: 20px 15px;
     }
-    .place-continer > div,
-    .student-room > div,
-    .Top-Destination-List > div {
-        width: 85vw; /* Almost full width on mobile */
+
+    .place-continer>div,
+    .student-room>div,
+    .Top-Destination-List>div {
+        width: 85vw;
     }
 }

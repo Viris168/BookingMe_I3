@@ -24,17 +24,17 @@
 </head>
 <body class="bg-slate-50">
 
-<!-- Header (loaded dynamically) -->
+
 <div id="header"></div>
 
 <div class="page-wrapper" style="padding-top: 90px;">
 
-  <!-- Back Button -->
+
   <a href="/component/partials/booking.html" class="back-btn">
     <span class="material-symbols-outlined" style="font-size:21px">arrow_back</span>
   </a>
 
-  <!-- ═══ Image Gallery ═══ -->
+
   <div class="gallery">
     <div class="card big">
       <img src="/assets/images/Ima.png" alt="Main room" />
@@ -45,10 +45,10 @@
     <div class="card"><img src="/assets/images/ToulKork_3.png" alt="Garden" /></div>
   </div>
 
-  <!-- ═══ Two-Column Layout ═══ -->
+
   <div class="two-col">
 
-    <!-- LEFT COLUMN -->
+
     <div class="left-col">
 
       <h1 class="prop-title" id="title"></h1>
@@ -57,7 +57,7 @@
 
       <hr class="divider">
 
-      <!-- Host -->
+
       <div class="host-row">
         <div class="host-avatar">
           <img src="/assets/icons/icon.png" alt="Host" />
@@ -69,7 +69,7 @@
 
       <hr class="divider">
 
-      <!-- Features -->
+
       <div class="features">
         <div class="feature-row">
           <span class="material-symbols-outlined feature-icon">workspace_premium</span>
@@ -89,7 +89,7 @@
 
       <hr class="divider">
 
-      <!-- About -->
+
       <h2 class="section-title">About this place</h2>
       <p class="about-text">Experience the authentic charm of Cambodia in our traditional wooden villa. Nestled in a quiet neighborhood just 10 minutes from the bustling Pub Street and 15 minutes from the majestic Angkor Wat temples.</p>
       <p class="about-text">The villa features hand-carved wooden details, high ceilings for natural ventilation, and a private garden oasis perfect for morning coffee or evening relaxation. We offer bicycles for free use to explore the local area.</p>
@@ -99,7 +99,7 @@
 
       <hr class="divider">
 
-      <!-- Amenities -->
+
       <h2 class="section-title">What this place offers</h2>
       <div class="amenities-grid">
         <div class="amenity-item">
@@ -140,7 +140,7 @@
 
       <hr class="divider">
 
-      <!-- Map -->
+
       <h2 class="section-title">Where you'll be</h2>
       <div class="map-wrap">
         <iframe
@@ -154,11 +154,11 @@
 
     </div>
 
-    <!-- RIGHT COLUMN — Booking Card -->
+
     <div class="right-col">
       <div class="booking-card">
 
-        <!-- Price & Rating -->
+
         <div class="price-row">
           <div>
             <span class="price-amount" id="priceAmount"></span>
@@ -171,7 +171,7 @@
           </div>
         </div>
 
-        <!-- Dates -->
+
         <div class="dates-box">
           <div class="dates-grid" style="display:grid;grid-template-columns:1fr 1fr;">
             <div class="date-cell">
@@ -185,14 +185,14 @@
           </div>
         </div>
 
-        <!-- Guests -->
+
         <div class="guests-box" id="guestsBox" onclick="toggleGuestsDropdown()">
           <div style="flex:1;">
             <span class="guests-label">GUESTS</span>
             <span class="guests-value" id="guestsValue">1 guest</span>
           </div>
           <span class="material-symbols-outlined guests-chevron" id="guestsChevron">expand_more</span>
-          <!-- Custom dropdown -->
+
           <ul class="guests-dropdown" id="guestsDropdown">
             <li class="guests-option selected" data-value="1" onclick="selectGuest(event, this)">1 guest</li>
             <li class="guests-option" data-value="2" onclick="selectGuest(event, this)">2 guests</li>
@@ -202,11 +202,11 @@
           </ul>
         </div>
 
-        <!-- Reserve -->
+
         <button class="reserve-btn" id="reserveBtn">Reserve Now</button>
         <p class="not-charged">You won't be charged yet</p>
 
-        <!-- Breakdown -->
+
         <div class="breakdown">
           <div class="breakdown-row">
             <span class="breakdown-label" id="nightsLabel"></span>
@@ -230,7 +230,7 @@
         </div>
       </div>
 
-      <!-- Report -->
+
       <div class="report-wrap">
         <a href="#" class="report-link">
           <span class="material-symbols-outlined">flag</span>
@@ -239,10 +239,10 @@
       </div>
     </div>
 
-  </div><!-- end two-col -->
-</div><!-- end page-wrapper -->
+  </div>
+</div>
 
-<!-- Footer (loaded dynamically) -->
+
 <div id="footer"></div>
 
 <script src="/js/components/Pro-Detail.js"></script>

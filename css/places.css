@@ -1,6 +1,4 @@
-/* ═══════════════════════════════════════════════════════
-   places.css — Styles for Student-Friendly Neighborhoods
-   ═══════════════════════════════════════════════════════ */
+
 
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -22,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Back button ─────────────────────────────────── */
+
 .back-btn {
   display: inline-flex;
   align-items: center;
@@ -43,7 +41,7 @@ body {
   transform: translateX(-2px);
 }
 
-/* ── Two-column layout ───────────────────────────── */
+
 .places-layout {
   display: grid;
   grid-template-columns: 30% 70%;
@@ -90,7 +88,7 @@ body {
   transition: height 0.3s ease;
 }
 
-/* Leaflet map container */
+
 #map {
   position: relative;
   width: 100%;
@@ -102,7 +100,7 @@ body {
   display: none;
 }
 
-/* Hide scrollbar on left panel */
+
 .places-left::-webkit-scrollbar {
   width: 0;
 }
@@ -112,7 +110,7 @@ body {
   scrollbar-width: none;
 }
 
-/* ── Section heading row ─────────────────────────── */
+
 .places-heading-row {
   display: flex;
   align-items: flex-end;
@@ -129,7 +127,7 @@ body {
   margin: 0;
 }
 
-/* ── Filter tabs ─────────────────────────────────── */
+
 .filter-tabs {
   display: flex;
   gap: 6px;
@@ -161,7 +159,7 @@ body {
   border-color: #1e293b;
 }
 
-/* ── Custom Place selector (mirrors guest dropdown) ───────── */
+
 .custom-place-box {
   border: 1.5px solid #b0aba3;
   border-radius: 12px;
@@ -207,7 +205,7 @@ body {
   transform: rotate(180deg);
 }
 
-/* Custom dropdown menu */
+
 .custom-place-dropdown {
   list-style: none;
   position: absolute;
@@ -261,7 +259,7 @@ body {
   color: #fff;
 }
 
-/* ── Product cards (compact horizontal style) ────── */
+
 .product-card {
   background: #fff;
   border: 1.5px solid #e8e8e4;
@@ -284,7 +282,7 @@ body {
   box-shadow: 0 2px 14px rgba(26, 115, 232, .18);
 }
 
-/* Card image */
+
 .card-img {
   width: 110px;
   min-height: 100px;
@@ -300,7 +298,7 @@ body {
   display: block;
 }
 
-/* Card body */
+
 .card-body {
   padding: 10px 12px;
   flex: 1;
@@ -310,7 +308,7 @@ body {
   min-width: 0;
 }
 
-/* Card header (rating + heart) */
+
 .card-header {
   display: flex;
   align-items: center;
@@ -340,7 +338,7 @@ body {
   font-weight: 400;
 }
 
-/* Wishlist heart */
+
 .wishlist-btn {
   background: none;
   border: none;
@@ -360,7 +358,7 @@ body {
   color: #ef4444;
 }
 
-/* Card name */
+
 .card-name {
   font-size: 0.82rem;
   font-weight: 700;
@@ -372,7 +370,7 @@ body {
   text-overflow: ellipsis;
 }
 
-/* Card pricing section */
+
 .card-pricing {
   margin-top: auto;
 }
@@ -425,7 +423,7 @@ body {
   background: #2b8dee;
 }
 
-/* ── Product list container ───────────────────────── */
+
 #ListProduct {
   display: flex;
   flex-direction: column;
@@ -433,7 +431,7 @@ body {
   padding: 4px 0;
 }
 
-/* ── Pagination ───────────────────────────────────── */
+
 #pagination-controls {
   display: flex;
   align-items: center;
@@ -470,7 +468,7 @@ body {
   box-shadow: 0 2px 8px rgba(43, 141, 238, 0.3);
 }
 
-/* ── Empty / error states ─────────────────────────── */
+
 .empty-state,
 .error-state {
   padding: 28px 16px;
@@ -491,7 +489,7 @@ body {
   color: #be123c;
 }
 
-/* ── Responsive ───────────────────────────────────── */
+
 @media (max-width: 900px) {
   .places-layout {
     grid-template-columns: 1fr;
@@ -609,7 +607,7 @@ body {
   }
 }
 
-/* ── Form controls (slider, checkbox) ─────────────── */
+
 .price-slider {
   -webkit-appearance: none;
   appearance: none;
@@ -685,7 +683,7 @@ input[type="checkbox"]:focus {
   box-shadow: 0 0 0 3px rgba(43, 141, 238, .18);
 }
 
-/* Hide scrollbar utility */
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -695,12 +693,12 @@ input[type="checkbox"]:focus {
   scrollbar-width: none;
 }
 
-/* ── MAP ── */
+
     .places-layout > .map-panel {
       z-index: 0;
     }
 
-    /* Custom popup */
+
     .leaflet-popup-content-wrapper {
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0,0,0,.15);

@@ -1,6 +1,6 @@
-/* support.css */
 
-/* Reset and basic body styling */
+
+
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
 }
 
-/* Centered main container */
+
 main {
     width: 100%;
     max-width: 1100px;
@@ -29,7 +29,7 @@ main {
     clear: both;
 }
 
-/* Header Section styling */
+
 .header {
     text-align: center;
     margin-bottom: 50px;
@@ -64,9 +64,9 @@ main {
     outline: none;
 }
 
-/* Search icon placeholder */
+
 .search-container::before {
-    content: "\1F50D"; /* Magnifying glass emoji */
+    content: "\1F50D";
     position: absolute;
     left: 20px;
     top: 50%;
@@ -76,7 +76,7 @@ main {
     pointer-events: none;
 }
 
-/* Support Section grid layout */
+
 .support-continer {
     display: flex;
     gap: 20px;
@@ -96,7 +96,7 @@ main {
     flex-direction: column;
 }
 
-/* Card styling */
+
 .card {
     background-color: #FFFFFF;
     padding: 30px;
@@ -116,7 +116,7 @@ main {
     box-shadow: 0 14px 30px rgba(30, 64, 175, 0.08);
 }
 
-/* Icon wrapper inside card */
+
 .card-header {
     display: flex;
     align-items: center;
@@ -133,7 +133,7 @@ main {
     font-size: 1.2rem;
 }
 
-/* Unique icon colors for each card */
+
 .icon-students {
     background-color: #E7F5FF;
     color: #228BE6;
@@ -154,14 +154,14 @@ main {
     color: #FF922B;
 }
 
-/* Card header text styling */
+
 .card-header h4 {
     font-size: 1.2rem;
     font-weight: 600;
     color: #212529;
 }
 
-/* Paragraph text within card */
+
 .card p {
     font-size: 0.9rem;
     color: #6c757d;
@@ -169,9 +169,9 @@ main {
     padding-left: 15px;
 }
 
-/* Use pseudo-element for chevron */
+
 .card p::before {
-    content: "\203A"; /* Right single quotation mark, often used as a chevron */
+    content: "\203A";
     position: absolute;
     left: 0;
     color: #adb5bd;
@@ -180,7 +180,7 @@ main {
     line-height: 1;
 }
 
-/* Contact Support card styling */
+
 .support-card {
     background-color: #FFFFFF;
     padding: 30px;
@@ -206,7 +206,7 @@ main {
     margin-bottom: 10px;
 }
 
-/* Buttons styling */
+
 .start-chat, .email-us {
     display: flex;
     align-items: center;
@@ -222,7 +222,7 @@ main {
     transition: background-color 0.2s;
 }
 
-/* Blue button (Start Live Chat) */
+
 .start-chat {
     background-color: #3b82f6;
     color: #FFFFFF;
@@ -232,7 +232,7 @@ main {
     background-color: #2563eb;
 }
 
-/* Gray button (Email Us) */
+
 .email-us {
     background-color: #f8f9fa;
     color: #212529;
@@ -243,7 +243,7 @@ main {
     background-color: #e9ecef;
 }
 
-/* Small span with response time */
+
 .support-card .response-time {
     display: block;
     font-size: 0.8rem;
@@ -251,20 +251,20 @@ main {
     text-align: center;
 }
 
-/* Bold strong tag within the span */
+
 .support-card .response-time strong {
     font-weight: 600;
     color: #495057;
 }
 
-/* Styling for the hr inside the support card */
+
 .support-card hr {
     border: none;
     border-top: 1px solid #E9ECEF;
     margin: 10px 0;
 }
 
-/* Icon wrapper inside buttons */
+
 .btn-icon {
     display: flex;
     align-items: center;
@@ -272,16 +272,16 @@ main {
     font-size: 1.1rem;
 }
 
-/* Placeholder content for icons */
+
 .btn-icon-chat::before {
-    content: "\1F4AC"; /* Speech bubble emoji */
+    content: "\1F4AC";
 }
 
 .btn-icon-email::before {
-    content: "\2709"; /* Envelope emoji */
+    content: "\2709";
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 900px) {
     main {
         padding-top: 88px;

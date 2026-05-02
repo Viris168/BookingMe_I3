@@ -1,8 +1,6 @@
-/* ============================================
-   Confirmation Page Styles
-   ============================================ */
 
-/* --- Base / Reset --- */
+
+
 *,
 *::before,
 *::after {
@@ -29,16 +27,14 @@ img {
   max-width: 100%;
 }
 
-/* --- Material Symbols --- */
+
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   font-size: 18px;
   vertical-align: middle;
 }
 
-/* ============================================
-   Confirmation Main Layout
-   ============================================ */
+
 .confirmation-main {
   max-width: 860px;
   margin: 0 auto;
@@ -52,9 +48,7 @@ img {
   }
 }
 
-/* ============================================
-   Success Header (Check Icon + Title)
-   ============================================ */
+
 .success-header {
   text-align: center;
   margin-bottom: 36px;
@@ -96,9 +90,7 @@ img {
   color: #94a3b8;
 }
 
-/* ============================================
-   Booking Detail Card
-   ============================================ */
+
 .booking-card {
   background: #fff;
   border: 1px solid #e2e8f0;
@@ -183,7 +175,7 @@ img {
   align-items: flex-start;
 }
 
-/* --- Booking Details Grid (Check-in, Check-out, Room, Guests) --- */
+
 .booking-details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -222,9 +214,7 @@ img {
   margin-top: 1px;
 }
 
-/* ============================================
-   Two-Column: Payment Summary + Map
-   ============================================ */
+
 .confirmation-columns {
   display: grid;
   grid-template-columns: 1fr;
@@ -238,7 +228,7 @@ img {
   }
 }
 
-/* --- Payment Summary Card --- */
+
 .payment-summary-card {
   background: #fff;
   border: 1px solid #e2e8f0;
@@ -324,7 +314,7 @@ img {
   font-weight: 400;
 }
 
-/* --- Map / Location Card --- */
+
 .location-card {
   background: #fff;
   border: 1px solid #e2e8f0;
@@ -395,9 +385,7 @@ img {
   font-size: 15px;
 }
 
-/* ============================================
-   Action Buttons
-   ============================================ */
+
 .confirmation-actions {
   display: flex;
   justify-content: center;
