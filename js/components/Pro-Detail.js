@@ -23,6 +23,10 @@ function populatePage(p) {
     document.getElementById("serviceVal").textContent = `$${p.serviceFee}`;
     document.getElementById("title").textContent = p.title;
     document.getElementById("type").textContent = p.type;
+    const reviewsLink = document.getElementById("reviewsLink");
+    if (reviewsLink) {
+        reviewsLink.href = `/component/partials/Reviews.html?id=${p.id}`;
+    }
 
     // 4. Update the Gallery Images dynamically
     const galleryImages = document.querySelectorAll(".gallery img");
@@ -88,7 +92,7 @@ function populatePage(p) {
         sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
 
         // Then navigate
-        window.location.href = `Payment.html?id=${p.id}`;
+        window.location.href = `/component/partials/Payment.html?id=${p.id}`;
     });
 
 }

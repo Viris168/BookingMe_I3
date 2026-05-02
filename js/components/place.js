@@ -6,7 +6,7 @@ let listProduct = [];
 const itemsPerPage = 4;
 let currentPage = 1;
 let activeFilter = 'all'; // 'all' | 'affordable' | 'campus'
-let activeLocation = '';
+let activeLocation = new URLSearchParams(window.location.search).get('place') || '';
 let activeId = null;
 let mapFlightToken = 0;
 
@@ -164,6 +164,17 @@ const initPlaceFilter = () => {
     const placeSelect = document.getElementById('place-select');
     if (!placeSelect) return;
 
+    if (activeLocation) {
+        placeSelect.value = activeLocation;
+        const selected = document.querySelector(`.custom-place-option[data-value="${activeLocation}"]`);
+        if (selected) {
+            document.querySelectorAll(".custom-place-option").forEach(opt => opt.classList.remove("selected"));
+            selected.classList.add("selected");
+            const placeValue = document.getElementById("placeValue");
+            if (placeValue) placeValue.innerText = selected.innerText;
+        }
+    }
+
     placeSelect.addEventListener('change', () => {
         activeLocation = placeSelect.value;
         currentPage = 1;
@@ -188,6 +199,10 @@ const placeCameras = {
     'kampot': { center: [10.6104, 104.1810], zoom: 13 },
     'kampong-cham': { center: [11.9934, 105.4635], zoom: 13 },
     'kep': { center: [10.4829, 104.3167], zoom: 13 },
+    'battambang': { center: [13.0957, 103.2022], zoom: 13 },
+    'mondulkiri': { center: [12.4558, 107.1881], zoom: 12 },
+    'ratanakiri': { center: [13.7394, 106.9873], zoom: 12 },
+    'preah-vihear': { center: [14.3904, 104.6806], zoom: 12 },
 };
 
 const initMapToggle = () => {
@@ -396,6 +411,9 @@ const initProductList = async () => {
         initFilterTabs();
         initPlaceFilter();
         initMarkers();
+        if (activeLocation) {
+            window.requestAnimationFrame(() => flyToPlace(activeLocation));
+        }
     } catch (error) {
         console.error('Failed to load products:', error);
         if (listProductHTML) {

@@ -11,6 +11,11 @@ fetch("/data/product.json")
     });
 
 const bookingData = savedBookingData;
+const detailUrl = `/component/partials/Property-Detai.html?id=${productId}`;
+document.getElementById("payment-back-link")?.setAttribute("href", detailUrl);
+document.querySelectorAll("[data-property-edit]").forEach((link) => {
+    link.href = detailUrl;
+});
 
 function pay(data) {
     // data.image is a string like "./assets/images/Image.png"; load it from the project root.
@@ -46,5 +51,5 @@ function pay(data) {
 document.getElementById('confirm-pay-btn').addEventListener('click', () => {
 
     // Then navigate
-    window.location.href = 'Comfirmation.html';
+    window.location.href = `/component/partials/Comfirmation.html?id=${productId}`;
 });

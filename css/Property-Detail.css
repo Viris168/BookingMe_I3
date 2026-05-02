@@ -16,7 +16,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-sans, 'Inter', 'Kantumruy Pro', system-ui, sans-serif);
     background: var(--bg);
     color: var(--text-main);
     min-height: 100vh;
@@ -84,7 +84,7 @@
 
   /* ── Typography ── */
   .prop-title {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-sans, 'Inter', 'Kantumruy Pro', system-ui, sans-serif);
     font-size: 28px;
     font-weight: 700;
     color: var(--text-main);
@@ -135,7 +135,7 @@
 
   /* ── Section headings ── */
   .section-title {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-sans, 'Inter', 'Kantumruy Pro', system-ui, sans-serif);
     font-size: 18px;
     font-weight: 600;
     color: var(--text-main);
@@ -223,7 +223,7 @@
     margin-bottom: 20px;
   }
   .price-amount {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-sans, 'Inter', 'Kantumruy Pro', system-ui, sans-serif);
     font-size: 26px;
     font-weight: 700;
     color: var(--text-main);
@@ -270,7 +270,7 @@
     background: transparent;
     cursor: pointer;
     border: none;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-sans, 'Inter', 'Kantumruy Pro', system-ui, sans-serif);
   }
   .date-input::placeholder { color: #b0aba3; }
 
@@ -301,7 +301,7 @@
     display: block;
     font-size: 13px;
     color: #4a4641;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-sans, 'Inter', 'Kantumruy Pro', system-ui, sans-serif);
   }
   .guests-chevron {
     color: var(--text-muted);
@@ -341,7 +341,7 @@
   .guests-option {
     padding: 10px 16px;
     font-size: 13.5px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-sans, 'Inter', 'Kantumruy Pro', system-ui, sans-serif);
     color: #4a4641;
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
@@ -375,7 +375,7 @@
     transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
     box-shadow: 0 4px 16px rgba(26,34,51,0.20);
     margin-bottom: 10px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-sans, 'Inter', 'Kantumruy Pro', system-ui, sans-serif);
   }
   .reserve-btn:hover {
     background: var(--primary-hover);
@@ -402,7 +402,7 @@
   .total-row { display: flex; justify-content: space-between; }
   .total-label { font-size: 14px; font-weight: 700; color: var(--text-main); }
   .total-val {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-sans, 'Inter', 'Kantumruy Pro', system-ui, sans-serif);
     font-size: 16px;
     font-weight: 700;
     color: var(--text-main);
