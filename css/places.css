@@ -7,10 +7,19 @@
   font-size: 18px;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Inter', 'Kantumruy Pro', sans-serif;
   background: #f6f7f8;
   margin: 0;
+  overflow-x: hidden;
 }
 
 /* ── Back button ─────────────────────────────────── */
@@ -48,6 +57,7 @@ body {
   max-height: calc(100vh - 64px);
   background: #fff;
   border-right: 1px solid #e5e7eb;
+  min-width: 0;
 }
 
 .places-right {
@@ -63,13 +73,33 @@ body {
   font-weight: 500;
 }
 
-/* Leaflet map container */
-#map {
+.map-panel {
   position: sticky;
   top: 64px;
-  height: calc(100vh - 64px);
   width: 100%;
+  height: calc(100vh - 64px);
   z-index: 1;
+}
+
+.map-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #e2e8f0;
+  transition: height 0.3s ease;
+}
+
+/* Leaflet map container */
+#map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.map-toggle {
+  display: none;
 }
 
 /* Hide scrollbar on left panel */
@@ -465,19 +495,89 @@ body {
 @media (max-width: 900px) {
   .places-layout {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
-  .places-right {
+  .map-panel {
     position: relative;
     top: 0;
-    height: 280px;
     order: -1;
+    height: auto;
+  }
+
+  .map-frame {
+    height: 220px;
+  }
+
+  #map {
+    height: 220px;
+  }
+
+  .map-panel.is-collapsed .map-frame {
+    height: 0;
+  }
+
+  .map-toggle {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 500;
+    display: inline-flex;
+    min-height: 44px;
+    min-width: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.94);
+    color: #0f172a;
+    padding: 0 14px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+    cursor: pointer;
+  }
+
+  .map-panel.is-collapsed .map-toggle {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    display: flex;
+    width: max-content;
+    margin: 8px 14px 0 auto;
   }
 
   .places-left {
     max-height: none;
     overflow-y: visible;
     border-right: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .places-heading-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .custom-place-box {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .filter-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .filter-tab {
+    flex: 0 0 auto;
+  }
+
+  #pagination-controls {
+    flex-wrap: wrap;
   }
 }
 
@@ -497,6 +597,15 @@ body {
   .card-img {
     width: 100%;
     height: 160px;
+  }
+
+  .price-row {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .view-btn {
+    width: 100%;
   }
 }
 
@@ -587,9 +696,7 @@ input[type="checkbox"]:focus {
 }
 
 /* ── MAP ── */
-    #map {
-      flex: 1;
-      height: 100%;
+    .places-layout > .map-panel {
       z-index: 0;
     }
 
@@ -609,4 +716,3 @@ input[type="checkbox"]:focus {
       font-size: 12px; font-weight: 500; cursor: pointer;
       border-radius: 0 0 10px 10px; margin-top: 8px;
     }
-    

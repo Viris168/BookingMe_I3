@@ -430,3 +430,120 @@
     border-radius: 2px;
     margin-bottom: 20px;
   }
+
+  @media (max-width: 960px) {
+    .page-wrapper {
+      max-width: 760px;
+      padding: 96px 20px 56px !important;
+    }
+
+    .gallery {
+      grid-template-columns: 1.5fr 1fr;
+      grid-template-rows: 170px 170px;
+      margin-bottom: 28px;
+    }
+
+    .gallery .card:nth-child(5) {
+      display: none;
+    }
+
+    .two-col {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .right-col {
+      position: static;
+      width: 100%;
+    }
+
+    .booking-card {
+      box-shadow: var(--shadow-card);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-wrapper {
+      padding: 84px 16px 44px !important;
+    }
+
+    .back-btn {
+      height: 36px;
+      width: 36px;
+      margin-bottom: 16px;
+    }
+
+    .gallery {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 220px 112px 112px;
+      gap: 8px;
+      border-radius: 14px;
+      margin-bottom: 28px;
+    }
+
+    .gallery .big {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+
+    .gallery .card:nth-child(5) {
+      display: block;
+    }
+
+    .prop-title {
+      font-size: 24px;
+    }
+
+    .amenities-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .booking-card {
+      padding: 20px;
+      border-radius: 16px;
+    }
+
+    .price-row,
+    .breakdown-row,
+    .total-row {
+      gap: 12px;
+    }
+
+    .map-wrap iframe {
+      height: 240px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .gallery {
+      grid-template-rows: 190px 100px 100px;
+    }
+
+    .booking-card {
+      padding: 16px;
+    }
+
+    .price-row {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .rating-row {
+      flex-wrap: wrap;
+    }
+
+    .dates-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .date-cell {
+      border-left: none !important;
+      border-right: none;
+      border-bottom: 1.5px solid #b0aba3;
+    }
+
+    .date-cell:last-child {
+      border-bottom: none;
+    }
+  }

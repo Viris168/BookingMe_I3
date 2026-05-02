@@ -6,6 +6,7 @@ const paginationControls = document.querySelector('#pagination-controls');
 let listProduct = [];
 const itemsPerPage = 3;
 let currentPage = 1;
+let l = '';
 
 const normalizeAssetPath = (path, fallback = '/assets/images/Image.png') => {
     if (!path) {
@@ -26,8 +27,16 @@ const updatePropertyCount = (count) => {
     propertyCount.textContent = `${count} ${roomLabel} available near Phnom Penh campuses`;
 };
 
+const updateFilterResultCount = (count) => {
+    document.querySelectorAll('[data-filter-result-count]').forEach(el => {
+        el.textContent = `${count} ${count === 1 ? 'result' : 'results'}`;
+    });
+};
+
 const getSortedProducts = () => {
     let products = [...listProduct];
+    const filters = getFilters();
+    products = products.filter(product => matchesFilters(product, filters));
     
     // 1. Get the current value from the dropdown
     const sortSelectValue = sortSelect ? sortSelect.value : 'campus';
@@ -40,7 +49,14 @@ const getSortedProducts = () => {
         return productCategory === sortSelectValue;
     });
 
-    // 3. Sort them as usual
+    // 3. Filter by location if one is selected
+    if (l) {
+        products = products.filter(product =>
+            product.location.toLowerCase().replace(/\s/g, '-') === l.toLowerCase()
+        );
+    }
+
+    // 4. Sort them as usual
     return products.sort((a, b) => a.id - b.id);
 };
 
@@ -60,6 +76,7 @@ const addDataToHTML = () => {
     listProductHTML.innerHTML = '';
     const productsToRender = getSortedProducts();
     updatePropertyCount(productsToRender.length);
+    updateFilterResultCount(productsToRender.length);
 
     if (!productsToRender.length) {
         listProductHTML.innerHTML = `
@@ -89,7 +106,7 @@ const addDataToHTML = () => {
                 </button>
             </div>
 
-            <div class="flex flex-1 flex-col justify-between p-3.5">
+            <div class="flex min-w-0 flex-1 flex-col justify-between p-3.5">
                 <div>
                     <div class="mb-1 flex items-center justify-between gap-4">
                         <p class="text-[10px] font-semibold uppercase tracking-wide text-gray-400">${product.type}</p>
@@ -100,7 +117,7 @@ const addDataToHTML = () => {
                     </div>
 
                     <div class="mb-2 flex items-start justify-between">
-                        <h3 class="text-sm font-bold text-gray-800 leading-snug">${product.title}</h3>
+                        <h3 class="text-sm font-bold text-gray-800 leading-snug break-words">${product.title}</h3>
                     </div>
 
                     <div class="flex flex-wrap gap-1">
@@ -108,7 +125,7 @@ const addDataToHTML = () => {
                     </div>
                 </div>
 
-                <div class="mt-3 flex items-center justify-between gap-2">
+                <div class="mt-3 flex flex-wrap items-center justify-between gap-2">
                     <p class="text-lg font-bold text-gray-800">
                         $${product.price} <span class="text-[10px] font-normal text-gray-400">/ month</span>
                     </p>
@@ -265,8 +282,15 @@ window.selectHotelPlace = function(event, el) {
         nativeSelect.value = value;
         nativeSelect.dispatchEvent(new Event('change'));
     }
+
+    // Update location filter and re-render the list
+    l = value;
+    currentPage = 1;
+    addDataToHTML();
 }
 
+
+//aside
 document.addEventListener("click", function(event) {
     const box = document.getElementById("hotelPlaceBox");
     if (box && !box.contains(event.target)) {
@@ -276,3 +300,183 @@ document.addEventListener("click", function(event) {
         if (chevron) chevron.classList.remove("rotate-180");
     }
 });
+
+    // ─── Slider ───────────────────────────────────────────────
+const updatePriceSliderDisplay = (slider, display) => {
+    if (!slider || !display) {
+        return;
+    }
+
+    const min = Number(slider.min);
+    const max = Number(slider.max);
+    const val = Number(slider.value);
+    const pct = ((val - min) / (max - min)) * 100;
+
+    slider.style.setProperty('--pct', `${pct}%`);
+    display.textContent = val >= 1000 ? '$1000+' : `$${val}`;
+};
+
+    // ─── Read filters ─────────────────────────────────────────
+    // Returns a clean object you can use anywhere in your app:
+    // {
+    //   price: 525,                          // number
+    //   university: ['itc', 'rupp'],         // string[]
+    //   roomType: ['private'],               // string[]
+    //   amenity: ['wifi'],                   // string[]
+    //   leaseTerm: ['semester'],             // string[]
+    // }
+function getFilters() {
+    const slider = document.getElementById('price-range');
+    const filters = {
+        price: slider ? Number(slider.value) : Infinity,
+        university: [],
+        roomType: [],
+        amenity: [],
+        leaseTerm: [],
+    };
+
+    document.querySelectorAll('#aside input[type="checkbox"]:checked').forEach(cb => {
+        const key = cb.dataset.filter;
+        const val = cb.dataset.value;
+        if (key && val && filters[key] !== undefined) {
+            filters[key].push(val);
+        }
+    });
+
+    return filters;
+}
+
+    // ─── Match a single listing against filters ───────────────
+    // listing shape expected:
+    // { price, university, roomType, amenities: [], leaseTerm }
+function matchesFilters(product, filters) {
+    if (product.price > filters.price && filters.price < 1000) {
+        return false;
+    }
+
+    if (filters.university.length && !filters.university.includes(product.nearUniversity)) {
+        return false;
+    }
+
+    const productType = `${product.type || ''} ${product.title || ''}`.toLowerCase().replace(/[\s-]/g, '');
+    if (filters.roomType.length && !filters.roomType.some(type =>
+        productType.includes(type.toLowerCase().replace(/[\s-]/g, ''))
+    )) {
+        return false;
+    }
+
+    const featureText = (product.features || [])
+        .map(feature => `${feature.icon || ''} ${feature.label || ''}`)
+        .join(' ')
+        .toLowerCase();
+
+    if (filters.amenity.length && !filters.amenity.every(amenity => featureText.includes(amenity))) {
+        return false;
+    }
+
+    const productLeaseTerm = (product.leaseTerm || '').toLowerCase().replace(/[\s-]/g, '');
+    if (filters.leaseTerm.length && productLeaseTerm && !filters.leaseTerm.some(term =>
+        productLeaseTerm.includes(term.toLowerCase().replace(/[\s-]/g, ''))
+    )) {
+        return false;
+    }
+
+    return true;
+}
+
+
+    // ─── Apply filters (called on every change) ───────────────
+function applyFilters() {
+    currentPage = 1;
+    addDataToHTML();
+}
+
+function setFilterSheetOpen(open) {
+    const sheet = document.getElementById('filter-sheet');
+    const backdrop = document.getElementById('filter-backdrop');
+
+    if (!sheet || !backdrop) {
+        return;
+    }
+
+    sheet.classList.toggle('translate-y-full', !open);
+    sheet.classList.toggle('translate-y-0', open);
+    backdrop.classList.toggle('opacity-0', !open);
+    backdrop.classList.toggle('opacity-100', open);
+    backdrop.classList.toggle('pointer-events-none', !open);
+    document.body.classList.toggle('overflow-hidden', open && window.innerWidth < 1024);
+}
+
+function initFilterSheetControls() {
+    const openBtn = document.getElementById('open-filter-sheet');
+    const closeBtn = document.getElementById('close-filter-sheet');
+    const showBtn = document.getElementById('show-filter-results');
+    const backdrop = document.getElementById('filter-backdrop');
+
+    [
+        [openBtn, () => setFilterSheetOpen(true)],
+        [closeBtn, () => setFilterSheetOpen(false)],
+        [showBtn, () => setFilterSheetOpen(false)],
+        [backdrop, () => setFilterSheetOpen(false)],
+    ].forEach(([el, handler]) => {
+        if (!el || el.dataset.sheetBound) {
+            return;
+        }
+        el.dataset.sheetBound = 'true';
+        el.addEventListener('click', handler);
+    });
+}
+
+    // ─── Checkbox listeners ───────────────────────────────────
+function initProductFilterControls() {
+    const slider = document.getElementById('price-range');
+    const display = document.getElementById('price-display');
+    initFilterSheetControls();
+
+    if (slider && display && !slider.dataset.filterBound) {
+        slider.dataset.filterBound = 'true';
+        updatePriceSliderDisplay(slider, display);
+        slider.addEventListener('input', () => {
+            updatePriceSliderDisplay(slider, display);
+            applyFilters();
+        });
+    }
+
+    document.querySelectorAll('#aside input[type="checkbox"]').forEach(cb => {
+        if (cb.dataset.filterBound) {
+            return;
+        }
+        cb.dataset.filterBound = 'true';
+        cb.addEventListener('change', applyFilters);
+    });
+
+    // ─── Reset ────────────────────────────────────────────────
+    const resetBtn = document.getElementById('reset-btn');
+    if (resetBtn && !resetBtn.dataset.filterBound) {
+        resetBtn.dataset.filterBound = 'true';
+        resetBtn.addEventListener('click', () => {
+            document.querySelectorAll('#aside input[type="checkbox"]').forEach(cb => {
+                cb.checked = false;
+            });
+
+            if (slider) {
+                slider.value = 525;
+                updatePriceSliderDisplay(slider, display);
+            }
+
+            applyFilters();
+        });
+    }
+
+    const applyBtn = document.getElementById('apply-btn');
+    if (applyBtn && !applyBtn.dataset.filterBound) {
+        applyBtn.dataset.filterBound = 'true';
+        applyBtn.addEventListener('click', applyFilters);
+    }
+}
+
+window.applyProductFilters = applyFilters;
+window.initProductFilterControls = initProductFilterControls;
+window.setFilterSheetOpen = setFilterSheetOpen;
+
+initProductFilterControls();

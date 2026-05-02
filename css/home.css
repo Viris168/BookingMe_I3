@@ -6,9 +6,13 @@
 }
 body{
     background-color: #f4f4f4;
+    margin: 0;
+}
+main {
+    padding-top: 64px;
 }
 .InterfacePage{
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
                 url('/img/background-interface.jpg') center/cover no-repeat;
     height: 60vh;
     display: flex;
@@ -17,7 +21,7 @@ body{
     align-items: center;
     color: white;
     padding: 0 20px;
-    margin-top: 60px;
+    margin-top: 0;
 }
 
 .InterfacePage h1 {
@@ -35,10 +39,10 @@ body{
     align-items: center;
     background-color: #ffffff;
     border-radius: 50px;
-    padding: 8px 10px 8px 30px;
+    padding: 6px 8px 6px 22px;
     width: 100%;
-    max-width: 650px;
-    margin-top: 30px;
+    max-width: 520px;
+    margin-top: 24px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     transition: outline 0.2s ease, outline-offset 0.2s ease;
 }
@@ -54,11 +58,11 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-right: 10px;
+    padding-right: 8px;
 }
 
 .search-label {
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     font-weight: 800;
     color: #1e3a8a;
     letter-spacing: 0.05em;
@@ -71,7 +75,7 @@ body{
     outline: none;
     background: transparent;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 0.86rem;
     color: #1e293b;
     padding: 0;
 }
@@ -91,12 +95,12 @@ body{
     color: white;
     border: none;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
     flex-shrink: 0;
@@ -445,13 +449,33 @@ h3{
 @media (max-width: 768px) {
     .InterfacePage {
         text-align: center;
-        padding: 0 15px;
+        min-height: 360px;
+        height: auto;
+        justify-content: center;
+        padding: 34px 18px 32px;
+        background-position: center top;
     }
     .InterfacePage h1 {
-        font-size: 2em;
+        max-width: 340px;
+        font-size: clamp(1.85rem, 8vw, 2.1rem);
+        line-height: 1.25;
+        margin-bottom: 22px;
     }
     .InterfacePage p {
-        font-size: 1em;
+        max-width: 330px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        line-height: 1.55;
+    }
+    .search-pill {
+        max-width: 335px;
+        margin-top: 22px;
+        padding: 8px 8px 8px 20px;
+    }
+    .search-submit {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
     }
     .Destination-place,
     .student-house,

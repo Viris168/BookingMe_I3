@@ -24,6 +24,11 @@ main {
     padding: 120px 20px 40px;
 }
 
+#footer {
+    width: 100%;
+    clear: both;
+}
+
 /* Header Section styling */
 .header {
     text-align: center;
@@ -278,6 +283,10 @@ main {
 
 /* Responsive adjustments */
 @media (max-width: 900px) {
+    main {
+        padding-top: 88px;
+    }
+
     .main-column {
         grid-template-columns: 1fr;
     }

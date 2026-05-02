@@ -633,3 +633,77 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@media (max-width: 720px) {
+  .payment-main {
+    padding: 84px 16px 40px;
+  }
+
+  .page-header {
+    margin-bottom: 24px;
+  }
+
+  .card,
+  .summary-card {
+    padding: 20px;
+  }
+
+  .payment-option-label {
+    align-items: flex-start;
+  }
+
+  .payment-option-icons {
+    flex-shrink: 0;
+  }
+
+  .property-info {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-main {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .card,
+  .summary-card {
+    padding: 16px;
+  }
+
+  .card-details-row {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-group {
+    align-items: stretch;
+  }
+
+  .phone-prefix {
+    padding: 0 10px;
+  }
+
+  .property-info {
+    flex-direction: column;
+  }
+
+  .property-thumb {
+    width: 100%;
+    height: 160px;
+  }
+
+  .trip-row,
+  .price-row,
+  .total-row {
+    gap: 10px;
+  }
+
+  .payment-option {
+    padding: 14px;
+  }
+
+  .payment-option-icons {
+    display: none;
+  }
+}
