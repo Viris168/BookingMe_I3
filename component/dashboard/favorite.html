@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Favorites | BookingME</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -33,16 +34,57 @@
     body { font-family: "Kantumruy Pro", sans-serif; }
     .glass-panel { @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-700/50 shadow-soft-multi; }
     .dashboard-shell { @apply max-w-[1720px] mx-auto w-full px-4 py-5 md:px-6 xl:px-8 2xl:px-10 gap-5 xl:gap-9 items-start; }
-    .dashboard-sidebar { @apply w-[280px] xl:w-[320px] rounded-[2rem] hidden md:flex shrink-0 min-h-[calc(100vh-40px)] py-10 px-6 xl:px-7 sticky top-5; }
+    .dashboard-sidebar {
+      @apply hidden md:flex flex-col shrink-0 sticky top-5 overflow-hidden;
+      width: 320px;
+      min-height: calc(100vh - 40px);
+      gap: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.09);
+      backdrop-filter: blur(18px);
+      padding: 30px 26px;
+    }
+    .dashboard-sidebar::before, .dashboard-sidebar::after {
+      content: ""; position: absolute; border-radius: 999px; filter: blur(36px); opacity: 0.42; pointer-events: none;
+    }
+    .dashboard-sidebar::before {
+      width: 140px; height: 140px; top: -38px; right: -34px; background: #ffb800;
+    }
+    .dashboard-sidebar::after {
+      width: 180px; height: 180px; bottom: -56px; left: -48px; background: #3b82f6; opacity: 0.22;
+    }
+    .dark .dashboard-sidebar {
+      background: rgba(15, 23, 42, 0.72); border-color: rgba(148, 163, 184, 0.15); box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+    }
     .dashboard-main { @apply flex-1 min-w-0 min-h-[calc(100vh-40px)] rounded-[2rem] pb-10 xl:pb-14 pt-2; }
     .dashboard-content-wide { @apply w-full max-w-[1220px] 2xl:max-w-[1280px] mx-auto; }
-    .dashboard-nav-link { @apply flex items-center gap-4 px-5 py-4 rounded-2xl text-slate-500 dark:text-slate-400 hover:bg-white/70 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white transition-all; }
-    .dashboard-nav-link-active { @apply bg-white/85 dark:bg-slate-800/85 text-mekong-blue dark:text-white border-l-4 border-mekong-blue shadow-md; }
-    .dashboard-logout { @apply flex items-center justify-center gap-3 py-4 px-5 rounded-2xl bg-red-50/80 dark:bg-red-900/20 text-red-500 hover:text-red-600 border border-red-100 dark:border-red-900/40 transition-all font-semibold shadow-sm; }
+    .dashboard-nav-link { 
+      @apply flex items-center gap-3 min-h-[54px] px-4 rounded-[16px] text-slate-500 dark:text-slate-400 font-[800] transition-all;
+    }
+    .dashboard-nav-link:hover, .dashboard-nav-link-active { 
+      background: rgba(255, 255, 255, 0.88) !important; color: #1e3a8a !important; border-left: 4px solid #1e3a8a !important; box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important; 
+    }
+    .dark .dashboard-nav-link:hover, .dark .dashboard-nav-link-active {
+      background: rgba(30, 41, 59, 0.88); color: #ffffff; border-left: 4px solid #3b82f6; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+    .dashboard-logout { 
+      @apply relative z-10 min-h-[50px] flex items-center justify-center gap-[10px] rounded-[16px] bg-[#fef2f2] text-[#dc2626] font-[850] transition-all border border-[#fecaca]; 
+    }
+    .dashboard-logout:hover {
+      transform: translateY(-1px); background: #fee2e2;
+    }
+    .dark .dashboard-logout {
+      background: rgba(127, 29, 29, 0.2); border-color: rgba(153, 27, 27, 0.4); color: #f87171;
+    }
+    .dark .dashboard-logout:hover {
+      background: rgba(127, 29, 29, 0.3);
+    }
     .dashboard-sidebar-brand { position: relative; z-index: 10; display: flex; align-items: center; width: 100%; padding: 0 0.25rem; margin-bottom: 1.5rem; }
     .dashboard-sidebar-brand img { width: 124px; height: auto; object-fit: contain; }
-    .dashboard-profile-card { position: relative; z-index: 10; display: grid; place-items: center; gap: 12px; width: 100%; margin-bottom: 1.5rem; padding: 20px; border-radius: 26px; background: rgba(255,255,255,0.68); border: 1px solid rgba(255,255,255,0.62); text-align: center; box-shadow: 0 12px 30px rgba(15,23,42,0.08); overflow: hidden; }
-    .dashboard-profile-card::before { content: ""; position: absolute; width: 120px; height: 120px; top: -42px; right: -42px; border-radius: 999px; background: rgba(255,184,0,0.18); filter: blur(28px); pointer-events: none; }
+    .dashboard-profile-card { position: relative; z-index: 10; display: grid; place-items: center; gap: 12px; width: 100%; margin-bottom: 1.5rem; padding: 20px; border-radius: 26px; background: rgba(255,255,255,0.68); border: 1px solid rgba(255,255,255,0.62); text-align: center; box-shadow: 0 12px 30px rgba(15,23,42,0.08); overflow: visible; }
+    .dashboard-profile-card::before { content: none; }
     .dashboard-profile-avatar-wrap { position: relative; z-index: 1; }
     .dashboard-profile-avatar-wrap::before { content: none; }
     .dashboard-profile-avatar { width: 76px; height: 76px; border-radius: 9999px; background-size: cover; background-position: center; border: 4px solid #fff; box-shadow: 0 12px 28px rgba(26,54,93,0.18); }
@@ -52,20 +94,57 @@
     .dark .dashboard-profile-card { background: rgba(15,23,42,0.72); border-color: rgba(148,163,184,0.18); box-shadow: 0 16px 32px rgba(0,0,0,0.22); }
     .dark .dashboard-profile-name { color: #ffffff; }
     .dark .dashboard-member-pill { background: rgba(20,83,45,0.45); border-color: rgba(74,222,128,0.22); color: #86efac; }
-    .listing-card { @apply p-6 xl:p-7 rounded-[2rem] flex flex-col lg:flex-row gap-6 xl:gap-8 items-center relative overflow-hidden; }
-    .listing-card-media { @apply w-full lg:w-[250px] xl:w-[280px] h-40 xl:h-44 rounded-[1.6rem] bg-cover bg-center shrink-0 shadow-md; }
+    .listing-card { @apply p-5 xl:p-7 rounded-[2rem] flex flex-col lg:flex-row gap-5 xl:gap-8 items-center relative overflow-hidden; }
+    .listing-card-media { @apply w-full lg:w-[250px] xl:w-[280px] h-44 xl:h-44 rounded-[1.6rem] bg-cover bg-center shrink-0 shadow-md; }
     .listing-card-actions { @apply flex flex-row lg:flex-col gap-3 w-full lg:w-auto mt-2 lg:mt-0 pt-4 lg:pt-0 border-t lg:border-t-0 lg:border-l border-slate-200/50 dark:border-slate-700/50 lg:pl-6 xl:pl-7 justify-center; }
+
+    /* Mobile topbar & drawer */
+    .bme-mobile-topbar { display: none; position: sticky; top: 0; z-index: 400; width: 100%; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; min-height: 60px; background: rgba(255,255,255,0.92); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(219,229,240,0.7); box-shadow: 0 2px 12px rgba(15,23,42,0.07); }
+    .bme-mobile-topbar img { height: 32px; width: auto; object-fit: contain; }
+    .bme-hamburger { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1.5px solid rgba(219,229,240,0.9); border-radius: 12px; background: #fff; cursor: pointer; color: #1e3a8a; transition: background 160ms ease; }
+    .bme-hamburger:hover { background: #eff6ff; }
+    .bme-hamburger .material-symbols-outlined { font-size: 24px; line-height: 1; }
+    .bme-sidebar-overlay { display: none; position: fixed; inset: 0; z-index: 450; background: rgba(11,17,32,0.45); backdrop-filter: blur(4px); opacity: 0; transition: opacity 280ms ease; }
+    .bme-sidebar-overlay.is-open { opacity: 1; display: block; }
+
+    @media (max-width: 767px) {
+      .bme-mobile-topbar { display: flex !important; }
+      .dashboard-shell { padding-top: 0 !important; padding-bottom: 20px !important; }
+      .dashboard-sidebar {
+        position: fixed !important; top: 0 !important; left: 0 !important;
+        width: 300px !important; max-width: calc(100vw - 48px) !important;
+        height: 100vh !important; min-height: 100vh !important;
+        z-index: 500 !important; display: flex !important;
+        transform: translateX(-110%) !important;
+        transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+        border-radius: 0 2rem 2rem 0 !important;
+        overflow-y: auto !important;
+      }
+      .dashboard-sidebar.is-open { transform: translateX(0) !important; }
+      .dashboard-main { min-height: auto !important; padding-top: 20px !important; }
+    }
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display min-h-screen bg-gradient-to-br from-background-light to-[#E2E8F0] dark:from-background-dark dark:to-slate-900">
+
+  <!-- Mobile topbar (hidden on md+) -->
+  <div class="bme-mobile-topbar" role="banner">
+    <img src="../../assets/icons/BookingME-logo-transparent.png" alt="BookingME">
+    <button class="bme-hamburger" id="bme-hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+  <!-- Overlay -->
+  <div class="bme-sidebar-overlay" id="bme-sidebar-overlay" aria-hidden="true"></div>
+
   <div class="dashboard-shell flex flex-1 overflow-visible">
 
-    <aside class="dashboard-sidebar glass-panel flex-col relative z-10 overflow-hidden">
+    <aside class="dashboard-sidebar glass-panel flex-col relative z-10 overflow-hidden" id="bme-sidebar-drawer">
       <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
       <div class="absolute bottom-0 left-0 w-40 h-40 bg-mekong-blue-light/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
 
-      <a class="dashboard-sidebar-brand" href="/index.html" aria-label="BookingME home">
-        <img src="/assets/icons/BookingME-logo-transparent.png" alt="BookingME">
+      <a class="dashboard-sidebar-brand" href="../../index.html" aria-label="BookingME home">
+        <img src="../../assets/icons/BookingME-logo-transparent.png" alt="BookingME">
       </a>
 
       <div class="dashboard-profile-card">
@@ -80,31 +159,31 @@
       </div>
 
       <nav class="flex flex-col gap-3 flex-1 relative z-10">
-        <a href="/component/dashboard/profile.html" class="dashboard-nav-link">
+        <a href="profile.html" class="dashboard-nav-link">
           <span class="material-symbols-outlined text-xl">person</span>
           <span class="text-base font-medium leading-normal">Profile Detail</span>
         </a>
-        <a href="/component/dashboard/Booking-status.html" class="dashboard-nav-link">
+        <a href="Booking-status.html" class="dashboard-nav-link">
           <span class="material-symbols-outlined">today</span>
           <span class="text-base font-medium leading-normal">Booking Status</span>
         </a>
-        <a href="/component/dashboard/Booking-history.html" class="dashboard-nav-link">
+        <a href="Booking-history.html" class="dashboard-nav-link">
           <span class="material-symbols-outlined text-xl">history</span>
           <span class="text-base font-medium leading-normal">Booking History</span>
         </a>
-        <a href="/component/dashboard/favorite.html" class="dashboard-nav-link dashboard-nav-link-active">
+        <a href="favorite.html" class="dashboard-nav-link dashboard-nav-link-active">
           <span class="material-symbols-outlined text-xl">favorite</span>
           <span class="text-base font-semibold leading-normal">Favorites</span>
         </a>
-        <a href="/component/dashboard/account-setting.html" class="dashboard-nav-link">
+        <a href="account-setting.html" class="dashboard-nav-link">
           <span class="material-symbols-outlined text-xl">settings</span>
           <span class="text-base font-medium leading-normal">Settings</span>
         </a>
-        <a href="/component/host/host-dashboard.html" class="dashboard-nav-link">
+        <a href="../host/host-dashboard.html" class="dashboard-nav-link">
           <span class="material-symbols-outlined text-xl">home_work</span>
           <span class="text-base font-medium leading-normal">Host Dashboard</span>
         </a>
-        <a href="/index.html" class="dashboard-nav-link">
+        <a href="../../index.html" class="dashboard-nav-link">
           <span class="material-symbols-outlined text-xl">home</span>
           <span class="text-base font-medium leading-normal">Back to Home</span>
         </a>
@@ -120,9 +199,9 @@
 
     <main class="dashboard-main overflow-y-auto">
       <div class="dashboard-content-wide">
-        <div class="mb-10 px-2 lg:px-4">
-          <h1 class="text-slate-900 dark:text-white tracking-tight text-4xl font-extrabold leading-tight mb-2">Favorites</h1>
-          <p class="text-slate-500 dark:text-slate-400 text-lg">Your saved homestays and destinations. Revisit anytime.</p>
+        <div class="mb-8 px-2 lg:px-4">
+          <h1 class="text-slate-900 dark:text-white tracking-tight text-3xl md:text-4xl font-extrabold leading-tight mb-2">Favorites</h1>
+          <p class="text-slate-500 dark:text-slate-400 text-base md:text-lg">Your saved homestays and destinations. Revisit anytime.</p>
         </div>
 
         <div class="flex flex-col gap-6">
@@ -130,7 +209,7 @@
             <div class="listing-card-media"
                  style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBMZNrQSI4PUV8SOnJXHblnA7NjmKEvDOcxn14kwfW1i94wiMltiPWwOvdphWilUKLurj6SFx3pwk2Z_dpGZaU3IVXS757qp0p7YbTLvQCt76Cy2duAbalNc_fMzOxOxnu2l90RJWGeZVFl346WPV6ExgJ6OFjECntFtSh1yFwAHmJEi_1078UwVYVZbOXzQhpC_t4ADZ5TSiuSypKFSJsep82cDwBti6O0CM2Og2loIgN1RtrBUB-MgfX2R19YT5I4IBJLEo82dnOR');"></div>
             <div class="flex-1 w-full">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-2">
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-2">
                 <div>
                   <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Angkor Village Resort</h3>
                   <p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-1">
@@ -138,9 +217,9 @@
                     Siem Reap, Cambodia
                   </p>
                 </div>
-                <div class="text-right">
+                <div class="text-left sm:text-right shrink-0">
                   <p class="text-xl font-bold text-mekong-blue dark:text-primary">$240 / night</p>
-                  <div class="flex items-center justify-end gap-1 text-amber-400 mt-1">
+                  <div class="flex items-center sm:justify-end gap-1 text-amber-400 mt-1">
                     <span class="material-symbols-outlined text-[18px]">star</span>
                     <span class="material-symbols-outlined text-[18px]">star</span>
                     <span class="material-symbols-outlined text-[18px]">star</span>
@@ -150,7 +229,7 @@
                   </div>
                 </div>
               </div>
-              <div class="grid grid-cols-2 gap-4 mt-5">
+              <div class="grid grid-cols-2 gap-4 mt-4">
                 <div>
                   <p class="text-xs text-slate-400 dark:text-slate-500 uppercase font-bold tracking-wider mb-1">Type</p>
                   <p class="text-slate-800 dark:text-slate-200 font-semibold text-sm">Luxury Resort</p>
@@ -177,7 +256,7 @@
             <div class="listing-card-media"
                  style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBRLEZ17ktw9cViOnRDK4ZxWegmICOmAFTBDDQxLyKRuJA4Z3jdsWka6BLcumsccV_2ywjCrd2laDm77oGYPvc41sUJYCZRMEgcnjw2NpPgWOapO88yy6VWQXgpN1aI_aBY3QnY6QUtvRUubK4JQ28PZIddxtimoOIzR8qm-s0XFTj9NeNFhskgJ4qyLfky2Qg-BNMj6xJoeP-CdazFztQCa1OkrzmvyWjziqKppea72DR_QYX5GXWsZkC7z-V_CFVKOl4VlbkV0G5U');"></div>
             <div class="flex-1 w-full">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-2">
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-2">
                 <div>
                   <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Mekong River Homestay</h3>
                   <p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-1">
@@ -185,9 +264,9 @@
                     Phnom Penh, Cambodia
                   </p>
                 </div>
-                <div class="text-right">
+                <div class="text-left sm:text-right shrink-0">
                   <p class="text-xl font-bold text-mekong-blue dark:text-primary">$85 / night</p>
-                  <div class="flex items-center justify-end gap-1 text-amber-400 mt-1">
+                  <div class="flex items-center sm:justify-end gap-1 text-amber-400 mt-1">
                     <span class="material-symbols-outlined text-[18px]">star</span>
                     <span class="material-symbols-outlined text-[18px]">star</span>
                     <span class="material-symbols-outlined text-[18px]">star</span>
@@ -197,7 +276,7 @@
                   </div>
                 </div>
               </div>
-              <div class="grid grid-cols-2 gap-4 mt-5">
+              <div class="grid grid-cols-2 gap-4 mt-4">
                 <div>
                   <p class="text-xs text-slate-400 dark:text-slate-500 uppercase font-bold tracking-wider mb-1">Type</p>
                   <p class="text-slate-800 dark:text-slate-200 font-semibold text-sm">Homestay</p>
@@ -223,7 +302,41 @@
       </div>
     </main>
   </div>
-  <script src="/js/dashboard.js"></script>
-  <script src="/js/i18n.js"></script>
+
+  <script src="../../js/dashboard.js"></script>
+  <script src="../../js/i18n.js"></script>
+  <script>
+    // Mobile sidebar toggle (inline for reliability without server)
+    (function() {
+      var btn = document.getElementById('bme-hamburger-btn');
+      var overlay = document.getElementById('bme-sidebar-overlay');
+      var sidebar = document.getElementById('bme-sidebar-drawer');
+      if (!btn || !overlay || !sidebar) return;
+      function open() {
+        sidebar.classList.add('is-open');
+        overlay.style.display = 'block';
+        setTimeout(function() { overlay.classList.add('is-open'); }, 10);
+        document.body.style.overflow = 'hidden';
+        btn.setAttribute('aria-expanded', 'true');
+        btn.querySelector('.material-symbols-outlined').textContent = 'close';
+      }
+      function close() {
+        sidebar.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        setTimeout(function() { overlay.style.display = ''; }, 280);
+        document.body.style.overflow = '';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.querySelector('.material-symbols-outlined').textContent = 'menu';
+      }
+      btn.addEventListener('click', function() {
+        sidebar.classList.contains('is-open') ? close() : open();
+      });
+      overlay.addEventListener('click', close);
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+      sidebar.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() { if (window.innerWidth < 768) close(); });
+      });
+    })();
+  </script>
 </body>
 </html>

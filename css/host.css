@@ -148,6 +148,7 @@ select {
   display: flex;
   align-items: flex-start;
   gap: 28px;
+  position: relative;
 }
 
 .host-sidebar {
@@ -1442,6 +1443,32 @@ a.booking-row:hover {
   padding: 14px;
 }
 
+/* ── Tablet (768px – 1100px) ─────────────────────────── */
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .host-upgrade-banner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .host-upgrade-banner .btn {
+    width: fit-content;
+    margin: 0 auto;
+  }
+}
+
+/* ── Wizard layout ───────────────────────────────────── */
 @media (max-width: 900px) {
   .host-header-inner,
   .host-hero,
@@ -1454,26 +1481,11 @@ a.booking-row:hover {
     flex-wrap: wrap;
   }
 
-  .stats-grid,
-  .dashboard-grid,
-  .host-dashboard-shell,
   .wizard-layout,
   .location-layout,
   .review-grid,
-  .amenity-grid,
-  .action-grid {
+  .amenity-grid {
     grid-template-columns: 1fr;
-  }
-
-  .host-dashboard-shell {
-    display: block;
-  }
-
-  .host-sidebar {
-    position: static;
-    width: 100%;
-    min-height: auto;
-    margin-bottom: 20px;
   }
 
   .wizard-aside {
@@ -1573,19 +1585,18 @@ a.booking-row:hover {
 
   .stats-grid,
   .form-grid,
-  .media-grid,
-  .media-heavy .media-grid,
-  .media-heavy .photo-checklist,
-  .media-heavy .location-layout .form-grid,
   .next-steps,
   .success-preview,
   .wizard-step-grid,
-  .preview-metrics,
-  .booking-card,
-  .choice-grid,
-  .amenity-grid,
-  .action-grid,
-  .location-utility-grid {
+  .preview-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .booking-card {
     grid-template-columns: 1fr;
   }
 
@@ -1640,53 +1651,25 @@ a.booking-row:hover {
     padding: 20px;
   }
 
-  .map-card,
-  .map-card img,
-  .map-card iframe {
-    min-height: 300px;
-  }
-
-  .media-heavy .media-tile.cover,
-  .media-tile.cover {
-    min-height: 220px;
-  }
-
-  .booking-card {
-    align-items: stretch;
-  }
-
-  .booking-card .card-actions,
-  .card-actions {
-    width: 100%;
-  }
-
-  .card-actions .btn,
-  .host-upgrade-banner .btn,
-  .wizard-footer .btn {
-    width: 100%;
-  }
-}
-
-@media (max-width: 420px) {
-  .host-header-inner,
-  .host-dashboard-shell,
-  .host-shell {
-    width: min(100% - 16px, 1180px);
-  }
-
-  .host-nav {
+  .action-grid {
     grid-template-columns: 1fr;
   }
 
-  .stat-card strong {
-    font-size: 28px;
+  .host-hero {
+    padding: 4px 2px;
   }
 
-  .property-card img {
-    height: 160px;
+  .host-hero h1 {
+    font-size: clamp(24px, 8vw, 36px);
   }
 
-  .success-card {
-    padding: 16px;
+  .panel {
+    padding: 18px;
+  }
+
+  .btn {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 14px;
   }
 }
