@@ -285,6 +285,7 @@ body {
 
 .card-img {
   width: 110px;
+  height: 110px;
   min-height: 100px;
   flex-shrink: 0;
   overflow: hidden;
@@ -490,7 +491,7 @@ body {
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 1180px) {
   .places-layout {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -504,11 +505,11 @@ body {
   }
 
   .map-frame {
-    height: 220px;
+    height: 300px;
   }
 
   #map {
-    height: 220px;
+    height: 300px;
   }
 
   .map-panel.is-collapsed .map-frame {
@@ -550,10 +551,44 @@ body {
     max-height: none;
     overflow-y: visible;
     border-right: none;
+    padding: 18px 24px 32px;
+  }
+
+  #ListProduct {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-card {
+    min-width: 0;
+  }
+
+  .card-img {
+    width: 124px;
+    height: 118px;
+    min-height: 118px;
   }
 }
 
 @media (max-width: 640px) {
+  .map-frame,
+  #map {
+    height: 220px;
+  }
+
+  #ListProduct {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .card-img {
+    width: 110px;
+    height: 110px;
+    min-height: 100px;
+  }
+
   .places-heading-row {
     align-items: stretch;
     flex-direction: column;

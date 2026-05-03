@@ -15,8 +15,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -176,7 +174,7 @@
 
           <a href="/component/partials/booking.html?place=siem-reap" class="dest-link">
             <div class="siemreab">
-              <img src="/img/angkorwat.jpg" alt="">
+              <img src="assets/images/angkorwat.jpg" alt="">
               <h3>Siem Reap</h3>
               <p>Gateway to Angkor Wat</p>
             </div>
@@ -184,7 +182,7 @@
 
           <a href="/component/partials/booking.html?place=kampot" class="dest-link">
             <div class="kampot">
-              <img src="/img/kompot.jpg" alt="">
+              <img src="assets/images/kompot.jpg" alt="">
               <h3>Kampot</h3>
               <p>Riverside & Mountains</p>
             </div>
@@ -192,7 +190,7 @@
 
           <a href="/component/partials/booking.html?place=phnom-penh" class="dest-link">
             <div class="phnompenh">
-              <img src="/img/phnompenh.jpg" alt="">
+              <img src="assets/images/phnompenh.jpg" alt="">
               <h3>Phnom Penh</h3>
               <p>Cultural & Capital City</p>
             </div>
@@ -200,7 +198,7 @@
 
           <a href="/component/partials/booking.html" class="dest-link">
             <div class="koh-rong">
-              <img src="/img/kohrong.jpg" alt="">
+              <img src="assets/images/kohrong.jpg" alt="">
               <h3>Koh Rong</h3>
               <p>Island Paradise</p>
             </div>
@@ -208,7 +206,7 @@
 
           <a href="/component/partials/booking.html" class="dest-link">
             <div class="sihanoukville">
-              <img src="/img/sihanoukville.jpg" alt="">
+              <img src="assets/images/sihanoukville.jpg" alt="">
               <h3>Sihanoukville</h3>
               <p>Island Paradise</p>
             </div>
@@ -216,7 +214,7 @@
 
           <a href="/component/partials/booking.html" class="dest-link">
             <div class="koh-ker">
-              <img src="/img/Koh-Ker.jpg" alt="">
+              <img src="assets/images/Koh-Ker.jpg" alt="">
               <h3>Koh Ker Temple</h3>
               <p>Historic Temple</p>
             </div>
@@ -224,7 +222,7 @@
 
           <a href="/component/partials/booking.html" class="dest-link">
             <div class="koh-kong">
-              <img src="/img/Koh-Kong.jpg" alt="">
+              <img src="assets/images/Koh-Kong.jpg" alt="">
               <h3>Koh Kong</h3>
               <p>Riverside Retreat & Beach</p>
             </div>
@@ -263,19 +261,19 @@
       <div class="Top-Destination-List" id="top-container">
         <a href="/component/partials/booking.html?place=siem-reap" class="dest-link">
         <div class="Top1">
-          <img src="/img/siemreapTop.jpg" alt="" height="200">
+          <img src="assets/images/siemreapTop.jpg" alt="" height="200">
           <p>Siem Reap Province</p>
         </div>
         </a>
         <a href="/component/partials/booking.html?place=phnom-penh" class="dest-link">
         <div class="Top2">
-          <img src="/img/PhnompenhTop.jpg" alt="" height="200">
+          <img src="assets/images/PhnompenhTop.jpg" alt="" height="200">
           <p>Phnom Penh City</p>
         </div>
         </a>
         <a href="/component/partials/booking.html?place=kampot" class="dest-link">
         <div class="Top3">
-          <img src="/img/kampotTop.jpg" alt="" height="200">
+          <img src="assets/images/kompot.jpg" alt="" height="200">
           <p>Kampot Province</p>
         </div>
         </a>
@@ -305,42 +303,7 @@
     </section>
   </main>
   <script>
-    const container = document.getElementById('dest-container');
-    const leftBtn = document.getElementById('dest-left');
-    const rightBtn = document.getElementById('dest-right');
-    const scrollStep = 320;
 
-    leftBtn.addEventListener('click', () => {
-      container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-    });
-
-    rightBtn.addEventListener('click', () => {
-      container.scrollBy({ left: scrollStep, behavior: 'smooth' });
-    });
-
-    const studentContainer = document.getElementById('student-container');
-    const studentLeftBtn = document.getElementById('student-left');
-    const studentRightBtn = document.getElementById('student-right');
-
-    studentLeftBtn.addEventListener('click', () => {
-      studentContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-    });
-
-    studentRightBtn.addEventListener('click', () => {
-      studentContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
-    });
-
-    const topContainer = document.getElementById('top-container');
-    const topLeftBtn = document.getElementById('top-left');
-    const topRightBtn = document.getElementById('top-right');
-
-    topLeftBtn.addEventListener('click', () => {
-      topContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-    });
-
-    topRightBtn.addEventListener('click', () => {
-      topContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
-    });
   </script>
 
   <div id="footer"></div>

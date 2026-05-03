@@ -1485,7 +1485,83 @@ a.booking-row:hover {
   }
 }
 
+@media (max-width: 1100px) {
+  .host-dashboard-shell,
+  .host-shell {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid,
+  .wizard-layout,
+  .wizard-layout.media-heavy,
+  .location-layout,
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wizard-aside {
+    position: static;
+  }
+
+  .choice-grid,
+  .amenity-grid,
+  .action-grid,
+  .wizard-step-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
+  body.host-page {
+    overflow-x: hidden;
+  }
+
+  .host-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .host-header-inner {
+    width: min(100% - 20px, 1180px);
+    min-height: auto;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .host-brand {
+    justify-content: space-between;
+  }
+
+  .host-brand img {
+    height: 32px;
+  }
+
+  .host-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .host-nav a {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .host-dashboard-shell {
+    width: min(100% - 20px, 1180px);
+    padding: 0 0 28px;
+  }
+
   .host-shell {
     width: min(100% - 20px, 1180px);
     padding-top: 22px;
@@ -1498,12 +1574,54 @@ a.booking-row:hover {
   .stats-grid,
   .form-grid,
   .media-grid,
+  .media-heavy .media-grid,
+  .media-heavy .photo-checklist,
+  .media-heavy .location-layout .form-grid,
   .next-steps,
   .success-preview,
   .wizard-step-grid,
   .preview-metrics,
-  .booking-card {
+  .booking-card,
+  .choice-grid,
+  .amenity-grid,
+  .action-grid,
+  .location-utility-grid {
     grid-template-columns: 1fr;
+  }
+
+  .host-hero,
+  .host-upgrade-banner,
+  .panel-head,
+  .map-info,
+  .wizard-footer {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .host-hero {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+
+  .host-hero h1,
+  .wizard-title h1 {
+    font-size: clamp(28px, 12vw, 38px);
+    line-height: 1.05;
+  }
+
+  .host-hero p,
+  .wizard-title p {
+    font-size: 14px;
+  }
+
+  .panel,
+  .wizard-card,
+  .success-card,
+  .stat-card,
+  .host-upgrade-banner {
+    border-radius: 18px;
+    padding: 18px;
   }
 
   .health-row {
@@ -1520,5 +1638,55 @@ a.booking-row:hover {
 
   .success-preview div {
     padding: 20px;
+  }
+
+  .map-card,
+  .map-card img,
+  .map-card iframe {
+    min-height: 300px;
+  }
+
+  .media-heavy .media-tile.cover,
+  .media-tile.cover {
+    min-height: 220px;
+  }
+
+  .booking-card {
+    align-items: stretch;
+  }
+
+  .booking-card .card-actions,
+  .card-actions {
+    width: 100%;
+  }
+
+  .card-actions .btn,
+  .host-upgrade-banner .btn,
+  .wizard-footer .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .host-header-inner,
+  .host-dashboard-shell,
+  .host-shell {
+    width: min(100% - 16px, 1180px);
+  }
+
+  .host-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card strong {
+    font-size: 28px;
+  }
+
+  .property-card img {
+    height: 160px;
+  }
+
+  .success-card {
+    padding: 16px;
   }
 }

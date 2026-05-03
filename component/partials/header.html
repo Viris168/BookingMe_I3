@@ -55,7 +55,7 @@
           <span data-language-current-label>EN</span>
           <span class="material-symbols-outlined text-[18px] text-slate-400 transition group-hover:rotate-180">expand_more</span>
         </button>
-        <div class="absolute right-0 top-full z-[70] hidden w-52 overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl shadow-slate-900/12 group-hover:block" data-language-menu>
+        <div class="absolute right-0 top-full z-[70] mt-2 hidden w-52 overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl shadow-slate-900/12" data-language-menu>
           <button type="button" class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary" data-language="en">
             <img src="/assets/flag/England.png" alt="English" class="h-5 w-7 rounded-sm object-cover shadow-sm">
             <span>English</span>
@@ -74,47 +74,27 @@
       </button>
 
       <div class="relative group" data-profile-menu-root>
-        <button type="button" class="flex h-9 items-center gap-2 rounded-full border border-slate-200 bg-white pl-1 pr-2 shadow-sm transition hover:border-primary/40 hover:shadow-md" aria-label="Open account menu" aria-expanded="false" data-profile-menu-button>
-          <span class="h-8 w-8 rounded-full ring-2 ring-primary/30 overflow-hidden flex-shrink-0">
+        <button type="button" class="flex h-10 items-center gap-1 rounded-full border border-slate-200/80 bg-white px-1.5 pr-2.5 shadow-sm shadow-slate-900/5 ring-1 ring-white/80 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-blue-50/50 hover:shadow-lg hover:shadow-primary/10 focus:outline-none focus:ring-2 focus:ring-primary/20" aria-label="Open account menu" aria-expanded="false" data-profile-menu-button>
+          <span class="h-8 w-8 rounded-full border-2 border-white bg-slate-100 shadow-sm ring-1 ring-primary/30 overflow-hidden flex-shrink-0">
             <img src="/assets/icons/icon.png" alt="User" class="h-full w-full object-cover" />
           </span>
-          <span class="material-symbols-outlined hidden sm:inline text-slate-400 text-[18px] transition group-hover:rotate-180">expand_more</span>
+          <span class="material-symbols-outlined hidden h-6 w-6 items-center justify-center rounded-full text-[18px] text-slate-400 transition-all duration-200 group-hover:rotate-180 group-hover:bg-white group-hover:text-primary sm:flex">expand_more</span>
         </button>
 
-        <div class="absolute right-0 top-full z-[70] hidden w-72 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/12 group-hover:block" data-profile-menu>
-          <div class="flex items-center gap-3 border-b border-slate-100 bg-slate-50 px-4 py-4">
-            <img src="/assets/icons/icon.png" alt="User" class="h-11 w-11 rounded-full object-cover ring-2 ring-primary/25">
+        <div class="absolute right-0 top-full z-[70] mt-2 hidden w-72 overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-2xl shadow-slate-900/15" data-profile-menu>
+          <div class="flex items-center gap-3 border-b border-slate-100 bg-gradient-to-r from-blue-50 to-white px-4 py-4">
+            <img src="/assets/icons/icon.png" alt="User" class="h-11 w-11 rounded-full border-2 border-white object-cover shadow-sm ring-1 ring-primary/25">
             <div class="min-w-0">
-              <p class="truncate text-sm font-extrabold text-slate-900">Sokha Chea</p>
-              <p class="truncate text-xs font-medium text-slate-500">sokha.chea@example.com</p>
+              <p class="truncate text-sm font-extrabold text-slate-900">Guest</p>
+              <p class="truncate text-xs font-medium text-slate-500">Login to continue</p>
             </div>
           </div>
-          <div class="grid gap-1 p-2">
-            <a href="/component/dashboard/profile.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
-              <span class="material-symbols-outlined text-[20px]">dashboard</span>
-              <span data-i18n="account.dashboard">Dashboard</span>
+          <div class="grid gap-2 p-3">
+            <a href="/component/Login/index-login.html" class="flex items-center justify-center rounded-xl bg-primary px-3 py-2.5 text-sm font-extrabold text-white transition hover:bg-blue-600">
+              Login
             </a>
-            <a href="/component/dashboard/Booking-history.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
-              <span class="material-symbols-outlined text-[20px]">history</span>
-              <span data-i18n="account.orderHistory">Order History</span>
-            </a>
-            <a href="/component/dashboard/favorite.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
-              <span class="material-symbols-outlined text-[20px]">favorite</span>
-              <span data-i18n="account.favorites">Favorites</span>
-            </a>
-            <a href="/component/dashboard/account-setting.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
-              <span class="material-symbols-outlined text-[20px]">settings</span>
-              <span data-i18n="account.settings">Settings</span>
-            </a>
-            <a href="/component/host/host-dashboard.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-amber-50 hover:text-amber-700">
-              <span class="material-symbols-outlined text-[20px]">home_work</span>
-              <span data-i18n="account.hostMode">Host Mode</span>
-            </a>
-          </div>
-          <div class="border-t border-slate-100 p-2">
-            <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-extrabold text-red-600 transition hover:bg-red-50" data-logout>
-              <span class="material-symbols-outlined text-[20px]">logout</span>
-              <span data-i18n="account.logout">Log Out</span>
+            <a href="/component/Login/index-login.html" class="flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-slate-50">
+              Create Account
             </a>
           </div>
         </div>
@@ -141,17 +121,9 @@
       <a href="/component/support/support.html" class="px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100" data-i18n="nav.support">Support</a>
       <div class="mt-1 border-t border-slate-100 pt-2">
         <p class="px-3 pb-1 text-[11px] font-extrabold uppercase tracking-widest text-slate-400" data-i18n="account.menu">Account</p>
-        <a href="/component/dashboard/profile.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
-          <span class="material-symbols-outlined text-[18px]">dashboard</span>
-          <span data-i18n="account.dashboard">Dashboard</span>
-        </a>
-        <a href="/component/dashboard/Booking-history.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
-          <span class="material-symbols-outlined text-[18px]">history</span>
-          <span data-i18n="account.orderHistory">Order History</span>
-        </a>
-        <a href="/component/host/host-dashboard.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
-          <span class="material-symbols-outlined text-[18px]">home_work</span>
-          <span data-i18n="account.hostMode">Host Mode</span>
+        <a href="/component/Login/index-login.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
+          <span class="material-symbols-outlined text-[18px]">login</span>
+          <span>Login</span>
         </a>
       </div>
       <div class="mt-1 pt-2 border-t border-slate-100">
