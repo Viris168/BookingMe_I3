@@ -378,6 +378,7 @@ function getFilters() {
         roomType: [],
         amenity: [],
         leaseTerm: [],
+        rating: [],
     };
 
     document.querySelectorAll('#aside input[type="checkbox"]:checked').forEach(cb => {
@@ -416,6 +417,13 @@ function matchesFilters(product, filters) {
         .toLowerCase();
 
     if (filters.amenity.length && !filters.amenity.every(amenity => featureText.includes(amenity))) {
+        return false;
+    }
+
+    const minRating = filters.rating.length
+        ? Math.max(...filters.rating.map(Number).filter(Number.isFinite))
+        : 0;
+    if (minRating && Number(product.rating || 0) < minRating) {
         return false;
     }
 

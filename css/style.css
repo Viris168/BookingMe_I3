@@ -7,21 +7,26 @@
 }
 
 body{
-  background: linear-gradient(90deg, #e2e2e2, #c9d6ff);
+  background: linear-gradient(135deg, var(--color-bg), var(--color-primary-50));
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-height: 100dvh;
+  padding: 24px;
+  overflow-x: hidden;
 }
 
 .container{
   position: relative;
   width: 850px;
+  max-width: 100%;
   height: 550px;
-  background: #fff;
-  border-radius: 30px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-xl);
 }
 
 
@@ -42,13 +47,13 @@ body{
   right: 0;
   width: 50%;
   height: 100%;
-  background: #fff;
+  background: var(--color-surface);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px;
   text-align: center;
-  color: #333;
+  color: var(--color-text);
   z-index: 1;
 
   transition: 0.6s ease-in-out;
@@ -97,17 +102,24 @@ body{
 .input-box input{
   width: 100%;
   padding: 13px 50px 13px 20px;
-  background: #eee;
-  border: none;
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-border);
   outline: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-size: 16px;
-  color: #333;
+  color: var(--color-text);
   font-weight: 500;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.input-box input:focus{
+  background: var(--color-surface);
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 4px rgba(43, 141, 238, 0.14);
 }
 
 .input-box input::placeholder{
-  color: #888;
+  color: var(--color-text-muted);
   font-weight: 400;
 }
 
@@ -117,7 +129,7 @@ body{
   top: 50%;
   transform: translateY(-50%);
   font-size: 18px;
-  color: #555;
+  color: var(--color-text-muted);
 }
 
 
@@ -127,25 +139,28 @@ body{
 
 .forget-link a{
   font-size: 14px;
-  color: #333;
+  color: var(--color-primary-600);
 }
 
 
 .btn{
   width: 100%;
   height: 48px;
-  background: #7494ec;
+  background: var(--color-primary-500);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   font-size: 16px;
   color: #fff;
   font-weight: 600;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 22px rgba(43, 141, 238, 0.22);
+  transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
 }
 
 .btn:hover{
   filter: brightness(0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(43, 141, 238, 0.26);
 }
 
 
@@ -161,18 +176,19 @@ body{
   align-items: center;
   width: 44px;
   height: 44px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   font-size: 22px;
-  color: #333;
+  color: var(--color-text);
   margin: 0 6px;
+  transition: transform 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
 .social-icons a:hover{
-    transform: scale(1.3)translate(-5px);
-    color: black;
-    background-color: #ffffff;
-    box-shadow: 0 0 25px #ffffff;
+    transform: translateY(-2px);
+    color: var(--color-primary-600);
+    background-color: var(--color-primary-50);
+    box-shadow: var(--shadow-md);
 }
 
 
@@ -194,7 +210,7 @@ body{
   left: -250%;
   width: 300%;
   height: 100%;
-  background: #7494ec;
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-500));
   border-radius: 150px;
   transition: 1.8s ease-in-out;
 }
@@ -240,4 +256,187 @@ body{
   background: transparent;
   border: 2px solid #fff;
   box-shadow: none;
+}
+
+@media (max-width: 900px){
+  body{
+    padding: 18px;
+  }
+
+  .container{
+    width: min(100%, 760px);
+    height: 540px;
+  }
+
+  .form-box{
+    padding: 34px;
+  }
+
+  .container h1{
+    font-size: 32px;
+  }
+
+  .toggle-panel{
+    padding: 32px;
+  }
+}
+
+@media (max-width: 720px){
+  body{
+    align-items: flex-start;
+    padding: 14px;
+  }
+
+  .container{
+    width: min(100%, 430px);
+    min-height: 680px;
+    height: calc(100dvh - 28px);
+    border-radius: 22px;
+  }
+
+  .form-box{
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 180px);
+    padding: 28px 24px;
+  }
+
+  .container.active .form-box{
+    right: 0;
+  }
+
+  .container h1{
+    font-size: 30px;
+  }
+
+  .container p{
+    margin: 12px 0;
+    font-size: 13.5px;
+  }
+
+  .input-box{
+    margin: 15px 0;
+  }
+
+  .input-box input{
+    padding: 12px 46px 12px 16px;
+    font-size: 15px;
+  }
+
+  .btn{
+    height: 46px;
+  }
+
+  .social-icons{
+    gap: 8px;
+  }
+
+  .social-icons a{
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .toggle-box{
+    top: auto;
+    bottom: 0;
+    height: 180px;
+  }
+
+  .toggle-box::before{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 32px 32px 0 0;
+  }
+
+  .container.active .toggle-box::before{
+    left: 0;
+  }
+
+  .toggle-panel{
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+  }
+
+  .toggle-panel.toggle-left{
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .container.active .toggle-panel.toggle-left{
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+  }
+
+  .toggle-panel.toggle-right{
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+  }
+
+  .container.active .toggle-panel.toggle-right{
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 420px){
+  body{
+    padding: 10px;
+  }
+
+  .container{
+    min-height: 650px;
+    height: calc(100dvh - 20px);
+    border-radius: 18px;
+  }
+
+  .form-box{
+    height: calc(100% - 166px);
+    padding: 22px 18px;
+  }
+
+  .container h1{
+    font-size: 28px;
+  }
+
+  .input-box{
+    margin: 13px 0;
+  }
+
+  .input-box input{
+    font-size: 14px;
+  }
+
+  .social-icons a{
+    width: 39px;
+    height: 39px;
+    font-size: 18px;
+  }
+
+  .toggle-box{
+    height: 166px;
+  }
+
+  .toggle-panel{
+    padding: 20px;
+  }
+
+  .toggle-panel .btn{
+    width: 148px;
+    height: 42px;
+  }
 }

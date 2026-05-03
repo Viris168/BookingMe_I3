@@ -160,6 +160,7 @@
   document.addEventListener("click", handleLogout);
   document.addEventListener("DOMContentLoaded", () => {
     injectDashboardStyles();
+    initResponsiveSidebar();
     setActiveNav();
     bindActionFeedback();
     bindSettingsPersistence();

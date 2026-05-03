@@ -6,8 +6,161 @@ document.addEventListener("DOMContentLoaded", () => {
         return doc.querySelector(selector)?.outerHTML || html;
     };
 
+    const setMenuOpen = (root, menu, button, open) => {
+        menu.classList.toggle("hidden", !open);
+        button.setAttribute("aria-expanded", String(open));
 
+        const icon = button.querySelector(".material-symbols-outlined:last-child");
+        if (icon) {
+            icon.classList.toggle("rotate-180", open);
+            icon.classList.toggle("bg-white", open);
+            icon.classList.toggle("text-primary", open);
+        }
+    };
 
+    const closeMenus = (scope = document) => {
+        scope.querySelectorAll("[data-profile-menu-root], [data-language-menu-root]").forEach((root) => {
+            const menu = root.querySelector("[data-profile-menu], [data-language-menu]");
+            const button = root.querySelector("[data-profile-menu-button], [data-language-menu-button]");
+            if (menu && button) {
+                setMenuOpen(root, menu, button, false);
+            }
+        });
+    };
+
+    const getDemoUser = () => {
+        const storedUser = localStorage.getItem("bookingme_user");
+        if (!storedUser) return null;
+
+        try {
+            const user = JSON.parse(storedUser);
+            if (user && typeof user === "object") return user;
+        } catch (error) {
+            return { name: "Sokha Chea", email: "sokha.chea@example.com" };
+        }
+
+        return null;
+    };
+
+    const applyProfileState = (headerContainer) => {
+        const user = getDemoUser();
+        if (!user) return;
+
+        headerContainer.querySelectorAll("[data-profile-menu]").forEach((menu) => {
+            const name = user.name || "Sokha Chea";
+            const email = user.email || "sokha.chea@example.com";
+
+            menu.innerHTML = `
+                <div class="flex items-center gap-3 border-b border-slate-100 bg-gradient-to-r from-blue-50 to-white px-4 py-4">
+                    <img src="/assets/icons/icon.png" alt="User" class="h-11 w-11 rounded-full border-2 border-white object-cover shadow-sm ring-1 ring-primary/25">
+                    <div class="min-w-0">
+                        <p class="truncate text-sm font-extrabold text-slate-900">${name}</p>
+                        <p class="truncate text-xs font-medium text-slate-500">${email}</p>
+                    </div>
+                </div>
+                <div class="grid gap-1 p-2">
+                    <a href="/component/dashboard/profile.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+                        <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                        <span data-i18n="account.dashboard">Dashboard</span>
+                    </a>
+                    <a href="/component/dashboard/Booking-history.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+                        <span class="material-symbols-outlined text-[20px]">history</span>
+                        <span data-i18n="account.orderHistory">Order History</span>
+                    </a>
+                    <a href="/component/dashboard/favorite.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+                        <span class="material-symbols-outlined text-[20px]">favorite</span>
+                        <span data-i18n="account.favorites">Favorites</span>
+                    </a>
+                    <a href="/component/dashboard/account-setting.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+                        <span class="material-symbols-outlined text-[20px]">settings</span>
+                        <span data-i18n="account.settings">Settings</span>
+                    </a>
+                    <a href="/component/host/host-dashboard.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-amber-50 hover:text-amber-700">
+                        <span class="material-symbols-outlined text-[20px]">home_work</span>
+                        <span data-i18n="account.hostMode">Host Mode</span>
+                    </a>
+                </div>
+                <div class="border-t border-slate-100 p-2">
+                    <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-extrabold text-red-600 transition hover:bg-red-50" data-logout>
+                        <span class="material-symbols-outlined text-[20px]">logout</span>
+                        <span data-i18n="account.logout">Log Out</span>
+                    </a>
+                </div>
+            `;
+        });
+
+        const mobileAccount = headerContainer.querySelector("#mobile-menu .mt-1.border-t.border-slate-100.pt-2");
+        if (mobileAccount) {
+            mobileAccount.innerHTML = `
+                <p class="px-3 pb-1 text-[11px] font-extrabold uppercase tracking-widest text-slate-400" data-i18n="account.menu">Account</p>
+                <a href="/component/dashboard/profile.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
+                    <span class="material-symbols-outlined text-[18px]">dashboard</span>
+                    <span data-i18n="account.dashboard">Dashboard</span>
+                </a>
+                <a href="/component/dashboard/Booking-history.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
+                    <span class="material-symbols-outlined text-[18px]">history</span>
+                    <span data-i18n="account.orderHistory">Order History</span>
+                </a>
+                <a href="/component/host/host-dashboard.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
+                    <span class="material-symbols-outlined text-[18px]">home_work</span>
+                    <span data-i18n="account.hostMode">Host Mode</span>
+                </a>
+                <a href="#" class="flex items-center gap-2 px-3 py-2 text-sm font-bold text-red-600 rounded-md hover:bg-red-50" data-logout>
+                    <span class="material-symbols-outlined text-[18px]">logout</span>
+                    <span data-i18n="account.logout">Log Out</span>
+                </a>
+            `;
+        }
+    };
+
+    const initDropdownMenu = (headerContainer, rootSelector, buttonSelector, menuSelector) => {
+        headerContainer.querySelectorAll(rootSelector).forEach((root) => {
+            const button = root.querySelector(buttonSelector);
+            const menu = root.querySelector(menuSelector);
+            if (!button || !menu) return;
+
+            button.addEventListener("click", (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                const willOpen = menu.classList.contains("hidden");
+                closeMenus(headerContainer);
+                setMenuOpen(root, menu, button, willOpen);
+            });
+        });
+    };
+
+    const initProfileMenu = (headerContainer) => {
+        initDropdownMenu(headerContainer, "[data-profile-menu-root]", "[data-profile-menu-button]", "[data-profile-menu]");
+    };
+
+    const initLanguageMenu = (headerContainer) => {
+        initDropdownMenu(headerContainer, "[data-language-menu-root]", "[data-language-menu-button]", "[data-language-menu]");
+    };
+
+    const handleLogout = (event) => {
+        const logoutButton = event.target.closest("[data-logout]");
+        if (!logoutButton) return;
+
+        event.preventDefault();
+        if (!window.confirm("Are you sure you want to log out?")) return;
+
+        localStorage.removeItem("bookingme_user");
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        sessionStorage.clear();
+        window.location.href = "/index.html";
+    };
+
+    document.addEventListener("click", (event) => {
+        if (event.target.closest("[data-profile-menu-root], [data-language-menu-root]")) return;
+        closeMenus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeMenus();
+        }
+    });
 
     fetch("/component/partials/header.html")
         .then(res => res.text())
@@ -31,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 initProfileMenu(headerContainer);
                 initLanguageMenu(headerContainer);
+                applyProfileState(headerContainer);
                 headerContainer.addEventListener("click", handleLogout);
 
                 if (window.BookingMEI18n) {

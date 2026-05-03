@@ -263,16 +263,14 @@
     "id": 7,
     "category": "hotel",
     "type": "Private Room",
-    "title": "Luxury Hotel Suite",
+    "title": "Where to Stay in Phnom Penh",
     "nearUniversity": "num",
     "rating": 4.9,
     "reviews": 15,
     "price": 140,
-    "image": "./assets/images/Luxury Hotel Suite.jpg",
+    "image": "./assets/images/Where to Stay in Phnom Penh.jpg",
     "images": [
-      "./assets/images/(1).png",
-      "./assets/images/Ima.png",
-      "./assets/images/(2).png"
+      "./assets/images/Where to Stay in Phnom Penh.jpg"
     ],
     "features": [
       {
@@ -306,16 +304,14 @@
     "id": 8,
     "category": "hotel",
     "type": "Shared Room",
-    "title": "Riverside Boutique Hotel",
+    "title": "Somerset Norodom Phnom Penh",
     "nearUniversity": "itc",
     "rating": 4.4,
     "reviews": 38,
     "price": 75,
-    "image": "./assets/images/qw.png",
+    "image": "./assets/images/Somerset Norodom Phnom Penh.jpg",
     "images": [
-      "./assets/images/(2).png",
-      "./assets/images/ToulKork_3.png",
-      "./assets/images/(3).png"
+      "./assets/images/Somerset Norodom Phnom Penh.jpg"
     ],
     "features": [
       {
@@ -349,16 +345,14 @@
     "id": 9,
     "category": "hotel",
     "type": "Shared Room",
-    "title": "Urban Modern Hotel",
+    "title": "Sokha Phnom Penh",
     "nearUniversity": "num",
     "rating": 4.2,
     "reviews": 22,
     "price": 95,
-    "image": "./assets/images/Urban Modern Hotel.jpg",
+    "image": "./assets/images/Sokha Phnom Penh.jpg",
     "images": [
-      "./assets/images/Riverside_3.png",
-      "./assets/images/(4).png",
-      "./assets/images/(1).png"
+      "./assets/images/Sokha Phnom Penh.jpg"
     ],
     "features": [
       {
@@ -392,16 +386,14 @@
     "id": 10,
     "category": "hotel",
     "type": "Private Room",
-    "title": "BKK Vintage Room",
+    "title": "Sofitel Phnom Penh Phokeethra",
     "nearUniversity": "rupp",
     "rating": 4.6,
     "reviews": 25,
     "price": 120,
-    "image": "./assets/images/(3).png",
+    "image": "./assets/images/Sofitel Phnom Penh Phokeethra.jpg",
     "images": [
-      "./assets/images/(3).png",
-      "./assets/images/Image.png",
-      "./assets/images/Techno_2.png"
+      "./assets/images/Sofitel Phnom Penh Phokeethra.jpg"
     ],
     "features": [
       {
@@ -435,16 +427,14 @@
     "id": 11,
     "category": "hotel",
     "type": "Shared Room",
-    "title": "Chroy Changvar Premium Apartment",
+    "title": "Hyaatt Regency Phnom Penh",
     "nearUniversity": "uea",
     "rating": 4.7,
     "reviews": 14,
     "price": 105,
-    "image": "./assets/images/(4).png",
+    "image": "./assets/images/Hyaatt Regency Phnom Penh.jpg",
     "images": [
-      "./assets/images/(4).png",
-      "./assets/images/(2).png",
-      "./assets/images/(1).png"
+      "./assets/images/Hyaatt Regency Phnom Penh.jpg"
     ],
     "features": [
       {
@@ -569,11 +559,9 @@
     "rating": 4.5,
     "reviews": 28,
     "price": 60,
-    "image": "./assets/images/siemreapTop.jpg",
+    "image": "./assets/images/room1.jpg",
     "images": [
-      "./assets/images/siemreapTop.jpg",
-      "./assets/images/angkorwat.jpg",
-      "./assets/images/33104092.jpg"
+      "./assets/images/room1.jpg"
     ],
     "features": [
       {
@@ -607,15 +595,13 @@
     "id": 15,
     "category": "hotel",
     "type": "Private Room",
-    "title": "Pub Street Loft",
+    "title": "Tara Angkor Hotel",
     "rating": 4.6,
     "reviews": 62,
     "price": 85,
-    "image": "./assets/images/angkorwat.jpg",
+    "image": "./assets/images/Tara Angkor Hotel.jpg",
     "images": [
-      "./assets/images/angkorwat.jpg",
-      "./assets/images/33105752.jpg",
-      "./assets/images/408895964.jpg"
+      "./assets/images/Tara Angkor Hotel.jpg"
     ],
     "features": [
       {
@@ -653,11 +639,9 @@
     "rating": 4.9,
     "reviews": 17,
     "price": 130,
-    "image": "./assets/images/33104092.jpg",
+    "image": "./assets/images/room2.jpg",
     "images": [
-      "./assets/images/33104092.jpg",
-      "./assets/images/408894962.jpg",
-      "./assets/images/33104080.jpg"
+      "./assets/images/room2.jpg"
     ],
     "features": [
       {
@@ -691,15 +675,13 @@
     "id": 17,
     "category": "hotel",
     "type": "Shared Room",
-    "title": "Angkor Backpacker Haven",
+    "title": "Rafles Grand Hotel dÁngkor, Siem Reab",
     "rating": 4.4,
     "reviews": 89,
     "price": 45,
-    "image": "./assets/images/siemreapTop.jpg",
+    "image": "./assets/images/Rafles Grand Hotel dÁngkor, Siem Reab.jpg",
     "images": [
-      "./assets/images/siemreapTop.jpg",
-      "./assets/images/(2).png",
-      "./assets/images/(3).png"
+      "./assets/images/Rafles Grand Hotel dÁngkor, Siem Reab.jpg"
     ],
     "features": [
       {
@@ -733,15 +715,13 @@
     "id": 18,
     "category": "hotel",
     "type": "Private Room",
-    "title": "French Quarter Boutique Suite",
+    "title": "Where to Drink in Siem Reab",
     "rating": 4.9,
     "reviews": 34,
     "price": 160,
-    "image": "./assets/images/33105752.jpg",
+    "image": "./assets/images/Where to Drink in Siem Reab.jpg",
     "images": [
-      "./assets/images/33105752.jpg",
-      "./assets/images/(1).png",
-      "./assets/images/(4).png"
+      "./assets/images/Where to Drink in Siem Reab.jpg"
     ],
     "features": [
       {
@@ -779,11 +759,9 @@
     "rating": 4.2,
     "reviews": 15,
     "price": 55,
-    "image": "./assets/images/408894962.jpg",
+    "image": "./assets/images/room3.jpg",
     "images": [
-      "./assets/images/408894962.jpg",
-      "./assets/images/Image.png",
-      "./assets/images/Ima.png"
+      "./assets/images/room3.jpg"
     ],
     "features": [
       {
@@ -817,15 +795,13 @@
     "id": 20,
     "category": "hotel",
     "type": "Private Room",
-    "title": "Kruos Village Eco Lodge",
+    "title": "sala siem ream hotel",
     "rating": 4.7,
     "reviews": 51,
     "price": 95,
-    "image": "./assets/images/koh-sdach.jpg",
+    "image": "./assets/images/sala siem ream hotel.jpg",
     "images": [
-      "./assets/images/koh-sdach.jpg",
-      "./assets/images/Techno_2.png",
-      "./assets/images/(2).png"
+      "./assets/images/sala siem ream hotel.jpg"
     ],
     "features": [
       {
@@ -863,11 +839,9 @@
     "rating": 4.6,
     "reviews": 22,
     "price": 115,
-    "image": "./assets/images/33104080.jpg",
+    "image": "./assets/images/room4.jpg",
     "images": [
-      "./assets/images/33104080.jpg",
-      "./assets/images/(3).png",
-      "./assets/images/(4).png"
+      "./assets/images/room4.jpg"
     ],
     "features": [
       {
@@ -901,15 +875,13 @@
     "id": 22,
     "category": "hotel",
     "type": "Shared Room",
-    "title": "Temple Town Co-Living",
+    "title": "Two Seasons Siem Reab Hotel",
     "rating": 4.5,
     "reviews": 41,
     "price": 65,
-    "image": "./assets/images/408895964.jpg",
+    "image": "./assets/images/Two Seasons Siem Reab Hotel.jpg",
     "images": [
-      "./assets/images/408895964.jpg",
-      "./assets/images/Ima.png",
-      "./assets/images/Image.png"
+      "./assets/images/Two Seasons Siem Reab Hotel.jpg"
     ],
     "features": [
       {
@@ -943,15 +915,13 @@
     "id": 23,
     "category": "hotel",
     "type": "Private Room",
-    "title": "Kampot Riverfront Bungalow",
+    "title": "Sokchea Kampot Hote';",
     "rating": 4.8,
     "reviews": 55,
     "price": 125,
-    "image": "./assets/images/kampotTop.jpg",
+    "image": "./assets/images/Sokchea Kampot Hote';.jpg",
     "images": [
-      "./assets/images/kampotTop.jpg",
-      "./assets/images/kompot.jpg",
-      "./assets/images/(2).png"
+      "./assets/images/Sokchea Kampot Hote';.jpg"
     ],
     "features": [
       {
@@ -1027,15 +997,13 @@
     "id": 25,
     "category": "hotel",
     "type": "Private Room",
-    "title": "Pepper Garden Villa",
+    "title": "Amber Kampot",
     "rating": 4.9,
     "reviews": 38,
     "price": 145,
-    "image": "./assets/images/kampotTop.jpg",
+    "image": "./assets/images/Amber Kampot.jpg",
     "images": [
-      "./assets/images/kampotTop.jpg",
-      "./assets/images/Image.png",
-      "./assets/images/Techno_2.png"
+      "./assets/images/Amber Kampot.jpg"
     ],
     "features": [
       {
@@ -1073,11 +1041,9 @@
     "rating": 4.7,
     "reviews": 19,
     "price": 110,
-    "image": "./assets/images/Koh-Ker.jpg",
+    "image": "./assets/images/room5.jpg",
     "images": [
-      "./assets/images/Koh-Ker.jpg",
-      "./assets/images/(1).png",
-      "./assets/images/Ima.png"
+      "./assets/images/room5.jpg"
     ],
     "features": [
       {
@@ -1111,15 +1077,13 @@
     "id": 27,
     "category": "hotel",
     "type": "Shared Room",
-    "title": "The French Quarter Bunkhouse",
+    "title": "Kampot Luxury Hotel",
     "rating": 4.6,
     "reviews": 73,
     "price": 40,
-    "image": "./assets/images/Koh-Kong.jpg",
+    "image": "./assets/images/Kampot Luxury Hotel.jpg",
     "images": [
-      "./assets/images/Koh-Kong.jpg",
-      "./assets/images/(2).png",
-      "./assets/images/(4).png"
+      "./assets/images/Kampot Luxury Hotel.jpg"
     ],
     "features": [
       {
@@ -1153,15 +1117,13 @@
     "id": 28,
     "category": "hotel",
     "type": "Private Room",
-    "title": "Salt Field Sunrise Room",
+    "title": "Southeast Asia Hotel Kampot",
     "rating": 4.5,
     "reviews": 29,
     "price": 90,
-    "image": "./assets/images/koh-sdach.jpg",
+    "image": "./assets/images/Southeast Asia Hotel Kampot.jpg",
     "images": [
-      "./assets/images/koh-sdach.jpg",
-      "./assets/images/(3).png",
-      "./assets/images/Image.png"
+      "./assets/images/Southeast Asia Hotel Kampot.jpg"
     ],
     "features": [
       {
@@ -1283,11 +1245,9 @@
     "rating": 4.6,
     "reviews": 11,
     "price": 115,
-    "image": "./assets/images/Koh-Ker.jpg",
+    "image": "./assets/images/room6.jpg",
     "images": [
-      "./assets/images/Koh-Ker.jpg",
-      "./assets/images/Image.png",
-      "./assets/images/(3).png"
+      "./assets/images/room6.jpg"
     ],
     "features": [
       {
@@ -1321,15 +1281,13 @@
     "id": 32,
     "category": "hotel",
     "type": "Shared Room",
-    "title": "Lotus Pond Co-Living",
+    "title": "Kampot View Boutique",
     "rating": 4.8,
     "reviews": 33,
     "price": 75,
-    "image": "./assets/images/kampotTop.jpg",
+    "image": "./assets/images/Kampot View Boutique.jpg",
     "images": [
-      "./assets/images/kampotTop.jpg",
-      "./assets/images/(1).png",
-      "./assets/images/Ima.png"
+      "./assets/images/Kampot View Boutique.jpg"
     ],
     "features": [
       {

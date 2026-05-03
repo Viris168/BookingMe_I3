@@ -5,8 +5,8 @@ fetch('/data/product.json')
     const featured = product.slice(0, 6);
     container.innerHTML = featured.map(p => `
         <div class="room1">
-        <img src="${p.image.replace('./', '/')}" alt="${p.title}" height="200"
-             onerror="this.src='/assets/images/Image.png'">
+        <img src="${p.image.replace('./', '')}" alt="${p.title}" height="200"
+             onerror="this.src='assets/images/Image.png'">
         <div class="room1-info" style="padding: 0 15px;">
           <h3 style="font-size: 1.2em; margin: 0 0 5px 0; display: block; text-align: left;">${p.title}</h3>
           <p style="font-size: 0.9em; color: #666; margin: 0 0 5px 0;">$${p.price}/month</p>
@@ -35,3 +35,40 @@ fetch('/data/product.json')
       </div>
     `).join('');
 });
+
+    const container = document.getElementById('dest-container');
+    const leftBtn = document.getElementById('dest-left');
+    const rightBtn = document.getElementById('dest-right');
+    const scrollStep = 320;
+
+    leftBtn.addEventListener('click', () => {
+      container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    rightBtn.addEventListener('click', () => {
+      container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+
+    const studentContainer = document.getElementById('student-container');
+    const studentLeftBtn = document.getElementById('student-left');
+    const studentRightBtn = document.getElementById('student-right');
+
+    studentLeftBtn.addEventListener('click', () => {
+      studentContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    studentRightBtn.addEventListener('click', () => {
+      studentContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+
+    const topContainer = document.getElementById('top-container');
+    const topLeftBtn = document.getElementById('top-left');
+    const topRightBtn = document.getElementById('top-right');
+
+    topLeftBtn.addEventListener('click', () => {
+      topContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    topRightBtn.addEventListener('click', () => {
+      topContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });

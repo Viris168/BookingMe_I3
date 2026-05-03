@@ -25,8 +25,12 @@ const getFilteredProducts = () => {
     }
 
     if (activeLocation) {
-        products = products.filter(p => slugifyLocation(p.location) === activeLocation);
+    products = products.filter(p =>
+        slugifyLocation(p.location) === activeLocation &&
+        p.category === 'campus'
+    );
     }
+
 
     return products;
 };
@@ -234,6 +238,12 @@ const initMapToggle = () => {
             if (event.propertyName === 'height') map.invalidateSize();
         });
     }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => map.invalidateSize(), 160);
+    });
 
     window.setTimeout(() => map.invalidateSize(), 0);
 };

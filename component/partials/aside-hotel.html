@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filters</title>
+    <title>Hotel Filters</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Kantumruy+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
@@ -22,7 +22,6 @@
         }
     </script>
     <style>
-
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             font-size: 18px;
@@ -38,33 +37,40 @@
             cursor: pointer;
             width: 100%;
         }
+
         .price-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 18px; height: 18px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: #fff;
             border: 2.5px solid #2b8dee;
-            box-shadow: 0 2px 8px rgba(43,141,238,.3);
+            box-shadow: 0 2px 8px rgba(43, 141, 238, .3);
             cursor: grab;
             transition: box-shadow .2s;
         }
+
         .price-slider::-webkit-slider-thumb:active {
             cursor: grabbing;
-            box-shadow: 0 0 0 6px rgba(43,141,238,.15);
+            box-shadow: 0 0 0 6px rgba(43, 141, 238, .15);
         }
+
         .price-slider::-moz-range-thumb {
-            width: 18px; height: 18px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: #fff;
             border: 2.5px solid #2b8dee;
-            box-shadow: 0 2px 8px rgba(43,141,238,.3);
+            box-shadow: 0 2px 8px rgba(43, 141, 238, .3);
             cursor: grab;
         }
 
         input[type="checkbox"] {
             appearance: none;
             -webkit-appearance: none;
-            width: 18px; height: 18px; min-width: 18px;
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
             border-radius: 5px;
             border: 2px solid #cbd5e1;
             background: #fff;
@@ -72,22 +78,28 @@
             transition: all .2s;
             position: relative;
         }
+
         input[type="checkbox"]:checked {
             background: #2b8dee;
             border-color: #2b8dee;
         }
+
         input[type="checkbox"]:checked::after {
             content: '';
             position: absolute;
-            left: 4px; top: 1px;
-            width: 6px; height: 10px;
+            left: 4px;
+            top: 1px;
+            width: 6px;
+            height: 10px;
             border: 2px solid #fff;
-            border-top: none; border-left: none;
+            border-top: none;
+            border-left: none;
             transform: rotate(45deg);
         }
+
         input[type="checkbox"]:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(43,141,238,.18);
+            box-shadow: 0 0 0 3px rgba(43, 141, 238, .18);
         }
     </style>
 </head>
@@ -133,22 +145,22 @@
                 <hr class="border-slate-100">
 
                 <section class="space-y-0.5">
-                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Near University</p>
+                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Area / Location</p>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
                         <input type="checkbox" data-filter="university" data-value="rupp"/>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">RUPP Area</span>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Independence Monument</span>
                     </label>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
                         <input type="checkbox" data-filter="university" data-value="itc"/>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">ITC (Techno)</span>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Riverside</span>
                     </label>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
                         <input type="checkbox" data-filter="university" data-value="num"/>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">NUM</span>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Central Market</span>
                     </label>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
                         <input type="checkbox" data-filter="university" data-value="uea"/>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">UEA</span>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Aeon Mall Area</span>
                     </label>
                 </section>
 
@@ -157,55 +169,59 @@
                 <section class="space-y-0.5">
                     <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Room Type</p>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
-                        <input type="checkbox" data-filter="roomType" data-value="sharedroom"/>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Shared Room (Dorm)</span>
-                    </label>
-                    <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
                         <input type="checkbox" data-filter="roomType" data-value="privateroom"/>
                         <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Private Room</span>
                     </label>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
-                        <input type="checkbox" data-filter="roomType" data-value="studioroom"/>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Studio Apartment</span>
+                        <input type="checkbox" data-filter="roomType" data-value="sharedroom"/>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Shared Room</span>
+                    </label>
+                    <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
+                        <input type="checkbox" data-filter="roomType" data-value="suite"/>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Suite / Deluxe</span>
+                    </label>
+                    <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
+                        <input type="checkbox" data-filter="roomType" data-value="apartment"/>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Apartment Stay</span>
                     </label>
                 </section>
 
                 <hr class="border-slate-100">
 
                 <section class="space-y-0.5">
-                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Student Essentials</p>
+                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Hotel Essentials</p>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
                         <input type="checkbox" data-filter="amenity" data-value="wifi"/>
                         <span class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary transition-colors">wifi</span>
                         <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Wi-Fi</span>
                     </label>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
-                        <input type="checkbox" data-filter="amenity" data-value="kitchen"/>
-                        <span class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary transition-colors">kitchen</span>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Kitchen</span>
+                        <input type="checkbox" data-filter="amenity" data-value="pool"/>
+                        <span class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary transition-colors">pool</span>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Swimming Pool</span>
                     </label>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
-                        <input type="checkbox" data-filter="amenity" data-value="laundry"/>
-                        <span class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary transition-colors">laundry</span>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Laundry Machine</span>
+                        <input type="checkbox" data-filter="amenity" data-value="restaurant"/>
+                        <span class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary transition-colors">restaurant</span>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Breakfast Incl.</span>
                     </label>
                 </section>
 
                 <hr class="border-slate-100">
 
                 <section class="space-y-0.5">
-                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Lease Term</p>
+                    <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Guest Rating</p>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
-                        <input type="checkbox" data-filter="leaseTerm" data-value="monthly"/>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Monthly</span>
+                        <input type="checkbox" data-filter="rating" data-value="3.5"/>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">3.5+ rating</span>
                     </label>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
-                        <input type="checkbox" data-filter="leaseTerm" data-value="semester"/>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Semester</span>
+                        <input type="checkbox" data-filter="rating" data-value="4.0"/>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">4.0+ rating</span>
                     </label>
                     <label class="flex items-center gap-2 px-1.5 py-1 lg:py-0.5 rounded-lg cursor-pointer group hover:bg-primary/5 transition-colors">
-                        <input type="checkbox" data-filter="leaseTerm" data-value="yearly"/>
-                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">Yearly</span>
+                        <input type="checkbox" data-filter="rating" data-value="4.5"/>
+                        <span class="text-xs font-medium text-slate-600 group-hover:text-primary transition-colors">4.5+ rating</span>
                     </label>
                 </section>
 
