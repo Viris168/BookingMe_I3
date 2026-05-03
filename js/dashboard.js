@@ -1,10 +1,12 @@
 (function () {
+  /* ── Style injection ──────────────────────────────────────── */
   function injectDashboardStyles() {
     if (document.getElementById("bookingme-dashboard-js-styles")) return;
 
     const style = document.createElement("style");
     style.id = "bookingme-dashboard-js-styles";
     style.textContent = `
+      /* ── Toast ──────────────────────────────────── */
       .toast-root {
         position: fixed;
         right: 20px;
@@ -23,10 +25,16 @@
         font-weight: 800;
       }
       .toast-success { background: #047857; }
+
+      @media (min-width: 768px) {
+        .bme-mobile-topbar { display: none !important; }
+        .bme-sidebar-overlay { display: none !important; }
+      }
     `;
     document.head.appendChild(style);
   }
 
+  /* ── Toast ──────────────────────────────────────────────── */
   function showToast(message, type = "default") {
     injectDashboardStyles();
     let root = document.getElementById("toast-root");
@@ -47,6 +55,7 @@
     }, 3000);
   }
 
+  /* ── Logout ─────────────────────────────────────────────── */
   function handleLogout(event) {
     const logoutButton = event.target.closest("[data-logout]");
     if (!logoutButton) return;
@@ -66,6 +75,7 @@
     }, 450);
   }
 
+  /* ── Active nav ─────────────────────────────────────────── */
   function setActiveNav() {
     const currentPath = window.location.pathname.replace(/\/+$/, "");
     const links = document.querySelectorAll(".dashboard-nav-link, .host-side-nav a");
@@ -78,10 +88,14 @@
       const isActive = linkPath === currentPath;
 
       link.classList.toggle("is-active", isActive);
-      link.classList.toggle("dashboard-nav-link-active", isActive && link.classList.contains("dashboard-nav-link"));
+      link.classList.toggle(
+        "dashboard-nav-link-active",
+        isActive && link.classList.contains("dashboard-nav-link")
+      );
     });
   }
 
+  /* ── Action feedback ────────────────────────────────────── */
   function bindActionFeedback() {
     document.addEventListener("click", (event) => {
       const approve = event.target.closest("[data-approve-request]");
@@ -116,6 +130,7 @@
     });
   }
 
+  /* ── Settings persistence ───────────────────────────────── */
   function bindSettingsPersistence() {
     document.querySelectorAll("[data-setting]").forEach((input) => {
       const key = `bookingme.setting.${input.dataset.setting}`;
@@ -128,11 +143,19 @@
       }
 
       input.addEventListener("change", () => {
-        localStorage.setItem(key, input.type === "checkbox" ? String(input.checked) : input.value);
+        localStorage.setItem(
+          key,
+          input.type === "checkbox" ? String(input.checked) : input.value
+        );
         showToast("Preference updated.", "success");
       });
     });
   }
+
+  /* ── Mobile Sidebar Drawer ──────────────────────────────── */
+  // NOTE: Mobile topbar HTML is now hardcoded in each page's HTML.
+  // The inline <script> at the bottom of each page handles toggle logic.
+  // No injection needed here.
 
   document.addEventListener("click", handleLogout);
   document.addEventListener("DOMContentLoaded", () => {
