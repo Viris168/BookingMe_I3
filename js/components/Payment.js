@@ -50,9 +50,39 @@ function pay(data) {
 
 document.getElementById('confirm-pay-btn').addEventListener('click', () => {
     if (typeof AuthStorage !== 'undefined' && !AuthStorage.getCurrentUser()) {
-        alert('Please log in to complete payment.');
-        window.location.href = '/component/Login/index-login.html';
+        if (typeof BMEAlert !== 'undefined') {
+            BMEAlert.show('Please log in to complete your payment.', {
+                title: 'Login Required', type: 'warn', icon: 'lock',
+                buttonText: 'Go to Login',
+                redirectUrl: '/component/Login/index-login.html'
+            });
+        } else {
+            window.location.href = '/component/Login/index-login.html';
+        }
         return;
+    }
+
+    // --- Payment Validation ---
+    const selectedPayment = document.querySelector('input[name="payment"]:checked');
+    if (!selectedPayment) {
+        showPaymentError('Please select a payment method.');
+        return;
+    }
+
+    if (selectedPayment.value === 'card') {
+        const cardNum = document.getElementById('cardnum');
+        const cardExpiry = document.getElementById('carddate');
+        const cardCvv = document.getElementById('cardcvv');
+
+        var errors = [];
+        if (!cardNum || cardNum.value.replace(/\s/g, '').length < 13) errors.push('Card number');
+        if (!cardExpiry || cardExpiry.value.trim().length < 4) errors.push('Expiry date');
+        if (!cardCvv || cardCvv.value.trim().length < 3) errors.push('CVV');
+
+        if (errors.length > 0) {
+            showPaymentError('Please fill in: ' + errors.join(', '));
+            return;
+        }
     }
 
     if (bookingData && typeof UserStorage !== 'undefined') {
@@ -62,3 +92,17 @@ document.getElementById('confirm-pay-btn').addEventListener('click', () => {
 
     window.location.href = 'Comfirmation.html';
 });
+
+function showPaymentError(msg) {
+    // Remove existing error toast
+    var old = document.getElementById('payment-error-toast');
+    if (old) old.remove();
+
+    var toast = document.createElement('div');
+    toast.id = 'payment-error-toast';
+    toast.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:9999;padding:16px 24px;border-radius:16px;background:#0f172a;color:#fff;font-weight:700;font-size:14px;box-shadow:0 18px 35px rgba(15,23,42,0.22);display:flex;align-items:center;gap:10px;animation:slideUp .3s ease;';
+    toast.innerHTML = '<span class="material-symbols-outlined" style="color:#f87171;font-size:20px;">error</span>' + msg;
+    document.body.appendChild(toast);
+
+    setTimeout(function() { toast.remove(); }, 4000);
+}

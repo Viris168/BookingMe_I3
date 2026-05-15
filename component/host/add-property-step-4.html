@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/host.css">
+  <script src="../../js/bme-alert.js"></script>
   <script src="../../js/auth-storage.js"></script>
   <script src="../../js/guard-host.js"></script>
 </head>
@@ -34,11 +35,11 @@
 
   <main class="host-shell">
     <section class="wizard-title">
-      <p class="eyebrow">Step 4 of 4</p>
-      <h1>Review & Publish</h1>
-      <p>Double-check the listing summary before making the property visible to guests.</p>
+      <p class="eyebrow" data-i18n="Step 4 of 4">Step 4 of 4</p>
+      <h1 data-i18n="Review & Publish">Review &amp; Publish</h1>
+      <p data-i18n="Double-check the listing summary before making the property visible to guests.">Double-check the listing summary before making the property visible to guests.</p>
       <div class="progress-wrap">
-        <div class="progress-label"><span>Final review</span><span>100%</span></div>
+        <div class="progress-label"><span data-i18n="Final review">Final review</span><span>100%</span></div>
         <div class="progress-bar"><span style="width:100%"></span></div>
       </div>
     </section>
@@ -48,13 +49,13 @@
         <!-- Populated dynamically from localStorage draft -->
       </div>
 
-      <div class="tip-card" style="margin-top:22px">
+      <div class="tip-card" style="margin-top:22px" data-i18n="Once published, your listing appears in host dashboard as active. You can edit photos, rates, and availability later.">
         Once published, your listing appears in host dashboard as active. You can edit photos, rates, and availability later.
       </div>
 
       <div class="wizard-footer">
-        <a class="btn btn-secondary" href="add-property-step-3.html"><span class="material-symbols-outlined">arrow_back</span>Back to Pricing</a>
-        <button id="btn-publish" class="btn btn-primary" type="button"><span class="material-symbols-outlined">publish</span>Finish & Publish Listing</button>
+        <a class="btn btn-secondary" href="add-property-step-3.html" data-i18n="Back to Pricing"><span class="material-symbols-outlined">arrow_back</span>Back to Pricing</a>
+        <button id="btn-publish" class="btn btn-primary" type="button" data-i18n="Finish & Publish Listing"><span class="material-symbols-outlined">publish</span>Finish &amp; Publish Listing</button>
       </div>
     </section>
   </main>

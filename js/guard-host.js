@@ -12,12 +12,28 @@
     
     if (!user) {
         // Not logged in at all -> send to login
-        alert('Please log in to access the Host Portal.');
-        window.location.href = '/component/Login/index-login.html';
+        if (typeof BMEAlert !== 'undefined') {
+            BMEAlert.show('You need to log in to access the Host Portal.', {
+                title: 'Login Required', type: 'warn', icon: 'lock',
+                buttonText: 'Go to Login',
+                redirectUrl: '/component/Login/index-login.html'
+            });
+        } else {
+            window.location.href = '/component/Login/index-login.html';
+        }
+        return;
     } else if (user.role !== 'host') {
         // Logged in, but not a host -> send back to normal profile
-        alert('You must be a Host to view this page.');
-        window.location.href = '/component/dashboard/profile.html';
+        if (typeof BMEAlert !== 'undefined') {
+            BMEAlert.show('You must have a Host account to view this page.', {
+                title: 'Access Denied', type: 'error', icon: 'block',
+                buttonText: 'Go to Profile',
+                redirectUrl: '/component/dashboard/profile.html'
+            });
+        } else {
+            window.location.href = '/component/dashboard/profile.html';
+        }
+        return;
     }
 
     document.addEventListener("DOMContentLoaded", function() {

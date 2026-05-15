@@ -82,8 +82,15 @@ function populatePage(p) {
 
     document.getElementById('reserveBtn').addEventListener('click', () => {
         if (typeof AuthStorage !== 'undefined' && !AuthStorage.getCurrentUser()) {
-            alert('Please log in to reserve this property.');
-            window.location.href = '/component/Login/index-login.html';
+            if (typeof BMEAlert !== 'undefined') {
+                BMEAlert.show('Please log in to reserve this property.', {
+                    title: 'Login Required', type: 'warn', icon: 'lock',
+                    buttonText: 'Go to Login',
+                    redirectUrl: '/component/Login/index-login.html'
+                });
+            } else {
+                window.location.href = '/component/Login/index-login.html';
+            }
             return;
         }
 
@@ -124,8 +131,15 @@ function populatePage(p) {
 
         favBtn.addEventListener('click', () => {
             if (typeof AuthStorage !== 'undefined' && !AuthStorage.getCurrentUser()) {
-                alert('Please log in to save to favorites.');
-                window.location.href = '/component/Login/index-login.html';
+                if (typeof BMEAlert !== 'undefined') {
+                    BMEAlert.show('Please log in to save to favorites.', {
+                        title: 'Login Required', type: 'warn', icon: 'favorite',
+                        buttonText: 'Go to Login',
+                        redirectUrl: '/component/Login/index-login.html'
+                    });
+                } else {
+                    window.location.href = '/component/Login/index-login.html';
+                }
                 return;
             }
             UserStorage.toggleFavorite(p);

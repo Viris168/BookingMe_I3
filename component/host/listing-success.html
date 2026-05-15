@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/host.css">
+  <script src="../../js/bme-alert.js"></script>
   <script src="../../js/auth-storage.js"></script>
   <script src="../../js/guard-host.js"></script>
 </head>
@@ -34,8 +35,8 @@
       <div class="success-icon">
         <span class="material-symbols-outlined">check_circle</span>
       </div>
-      <h1>Property Published Successfully!</h1>
-      <p>Your property is now live and visible to potential guests on BookingME.</p>
+      <h1 data-i18n="Property Published Successfully!">Property Published Successfully!</h1>
+      <p data-i18n="Your property is now live and visible to potential guests on BookingME.">Your property is now live and visible to potential guests on BookingME.</p>
 
       <article class="success-preview">
         <img src="../../assets/images/Riverside_3.png" alt="Published property preview">
@@ -48,23 +49,23 @@
       </article>
 
       <div class="card-actions" style="justify-content:center">
-        <a class="btn btn-primary" href="host-dashboard.html"><span class="material-symbols-outlined">dashboard</span>Go to Dashboard</a>
-        <a class="btn btn-secondary" href="host-properties.html"><span class="material-symbols-outlined">visibility</span>View My Listing</a>
+        <a class="btn btn-primary" href="host-dashboard.html" data-i18n="Go to Dashboard"><span class="material-symbols-outlined">dashboard</span>Go to Dashboard</a>
+        <a class="btn btn-secondary" href="host-properties.html" data-i18n="View My Listing"><span class="material-symbols-outlined">visibility</span>View My Listing</a>
       </div>
 
       <div class="next-steps">
         <div class="step-note">
           <span class="material-symbols-outlined">calendar_month</span>
           <div>
-            <strong>Update availability</strong>
-            <p>Keep your calendar accurate before guests book.</p>
+            <strong data-i18n="Update availability">Update availability</strong>
+            <p data-i18n="Keep your calendar accurate before guests book.">Keep your calendar accurate before guests book.</p>
           </div>
         </div>
         <div class="step-note">
           <span class="material-symbols-outlined">share</span>
           <div>
-            <strong>Share listing</strong>
-            <p>Promote your new property to bring early traffic.</p>
+            <strong data-i18n="Share listing">Share listing</strong>
+            <p data-i18n="Promote your new property to bring early traffic.">Promote your new property to bring early traffic.</p>
           </div>
         </div>
       </div>

@@ -23,6 +23,7 @@ const UserStorage = (function () {
     const allData = _getAllData();
     if (!allData[user.id]) {
       allData[user.id] = { favorites: [], bookings: [] };
+      localStorage.setItem(DATA_KEY, JSON.stringify(allData));
     }
     return allData[user.id];
   }
