@@ -203,7 +203,10 @@
         </div>
 
 
-        <button class="reserve-btn" id="reserveBtn">Reserve Now</button>
+        <button class="reserve-btn" id="reserveBtn" style="margin-bottom: 10px;">Reserve Now</button>
+        <button class="reserve-btn" id="favoriteBtn" style="background: white; border: 1px solid #ddd; color: #222; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span class="material-symbols-outlined" id="favoriteIcon">favorite_border</span> <span id="favoriteText">Save to Favorites</span>
+        </button>
         <p class="not-charged">You won't be charged yet</p>
 
 
@@ -245,6 +248,9 @@
 
 <div id="footer"></div>
 
+<script src="/js/auth-storage.js"></script>
+<script src="/js/user-storage.js"></script>
+<script src="/js/property-storage.js"></script>
 <script src="/js/components/Pro-Detail.js"></script>
 <script src="/js/components/layout.js"></script>
 

@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/host.css">
+  <script src="../../js/auth-storage.js"></script>
+  <script src="../../js/guard-host.js"></script>
 </head>
 <body class="host-page">
   <header class="host-header">
@@ -117,7 +119,7 @@
 
         <div class="wizard-footer">
           <a class="btn btn-secondary" href="host-dashboard.html"><span class="material-symbols-outlined">arrow_back</span>Back to Dashboard</a>
-          <a class="btn btn-primary" href="add-property-step-2.html">Next: Location & Media<span class="material-symbols-outlined">arrow_forward</span></a>
+          <button id="btn-next-step2" class="btn btn-primary" type="button">Next: Location & Media<span class="material-symbols-outlined">arrow_forward</span></button>
         </div>
       </form>
 
@@ -147,5 +149,83 @@
   </main>
   <script src="../../js/dashboard.js"></script>
   <script src="../../js/i18n.js"></script>
+  <script src="../../js/property-storage.js"></script>
+  <script>
+  (function () {
+    // ── Restore draft on page load ──
+    var draft = PropertyStorage.getDraft();
+    if (draft.title) document.getElementById('property-name').value = draft.title;
+    if (draft.description) document.getElementById('description').value = draft.description;
+    if (draft.maxGuests) document.getElementById('guests').value = draft.maxGuests;
+    if (draft.bedrooms) document.getElementById('bedrooms').value = draft.bedrooms;
+    if (draft.baths) document.getElementById('bathrooms').value = draft.baths;
+    if (draft.type) document.getElementById('property-type').value = draft.type;
+    if (draft.category) {
+      document.querySelectorAll('input[name="category"]').forEach(function (r) {
+        r.checked = (r.value === draft.category);
+        var card = r.closest('.choice-card');
+        if (card) card.classList.toggle('is-selected', r.checked);
+      });
+    }
+
+    // ── Category card selection UX ──
+    document.querySelectorAll('.category-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        document.querySelectorAll('.category-card').forEach(function (c) {
+          c.classList.remove('is-selected');
+        });
+        card.classList.add('is-selected');
+        updatePreview();
+      });
+    });
+
+    // ── Live preview update ──
+    var previewName = document.querySelector('.preview-card h3');
+    var previewDesc = document.querySelector('.preview-card p');
+    var previewPill = document.querySelector('.preview-card .pill');
+    var previewGuests = document.querySelectorAll('.preview-metric strong');
+
+    function updatePreview() {
+      var name = document.getElementById('property-name').value.trim();
+      var desc = document.getElementById('description').value.trim();
+      var cat = document.querySelector('input[name="category"]:checked');
+      if (previewName) previewName.textContent = name || 'Property Name Preview';
+      if (previewDesc) previewDesc.textContent = desc || 'Short description will appear here for guests browsing BookingME.';
+      if (previewPill && cat) previewPill.textContent = cat.value.charAt(0).toUpperCase() + cat.value.slice(1);
+      if (previewGuests[0]) previewGuests[0].textContent = document.getElementById('guests').value;
+      if (previewGuests[1]) previewGuests[1].textContent = document.getElementById('bedrooms').value;
+      if (previewGuests[2]) previewGuests[2].textContent = document.getElementById('bathrooms').value;
+    }
+
+    ['property-name', 'description', 'guests', 'bedrooms', 'bathrooms', 'property-type'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('input', updatePreview);
+    });
+    updatePreview();
+
+    // ── Save draft and navigate ──
+    document.getElementById('btn-next-step2').addEventListener('click', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('property-name').value.trim();
+      if (!name) {
+        alert('Please enter a property name before continuing.');
+        document.getElementById('property-name').focus();
+        return;
+      }
+      var cat = document.querySelector('input[name="category"]:checked');
+      PropertyStorage.saveDraft({
+        category: cat ? cat.value : 'hotel',
+        title: name,
+        type: document.getElementById('property-type').value,
+        maxGuests: Number(document.getElementById('guests').value),
+        guests: Number(document.getElementById('guests').value),
+        bedrooms: Number(document.getElementById('bedrooms').value),
+        baths: Number(document.getElementById('bathrooms').value),
+        description: document.getElementById('description').value.trim(),
+      });
+      window.location.href = 'add-property-step-2.html';
+    });
+  })();
+  </script>
 </body>
 </html>

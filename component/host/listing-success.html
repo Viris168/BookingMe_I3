@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/host.css">
+  <script src="../../js/auth-storage.js"></script>
+  <script src="../../js/guard-host.js"></script>
 </head>
 <body class="host-page">
   <header class="host-header">
@@ -70,5 +72,36 @@
   </main>
   <script src="../../js/dashboard.js"></script>
   <script src="../../js/i18n.js"></script>
+  <script src="../../js/property-storage.js"></script>
+  <script>
+  (function () {
+    var raw = sessionStorage.getItem('bookingme_last_published');
+    if (!raw) return;
+    try {
+      var prop = JSON.parse(raw);
+      var preview = document.querySelector('.success-preview');
+      var titleEl = document.querySelector('.success-card h1');
+      if (!preview) return;
+
+      var coverImg = prop.image || '../../assets/images/Image.png';
+      var amenities = (prop.amenities || []).slice(0, 4).join(' · ');
+      var loc = prop.location || 'Cambodia';
+
+      preview.innerHTML = '\
+        <img src="' + coverImg + '" alt="' + prop.title + '">\
+        <div>\
+          <span class="pill pill-success">Active</span>\
+          <h2>' + prop.title + '</h2>\
+          <p>' + (prop.guests || 1) + ' guests · ' + loc + (amenities ? ' · ' + amenities : '') + '</p>\
+          <strong>$' + (prop.price || 0) + ' / night</strong>\
+        </div>';
+
+      // Clean up sessionStorage
+      sessionStorage.removeItem('bookingme_last_published');
+    } catch (e) {
+      console.error('Error parsing published property:', e);
+    }
+  })();
+  </script>
 </body>
 </html>

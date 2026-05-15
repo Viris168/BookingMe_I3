@@ -15,18 +15,14 @@
     <div class="container">
 
          <div class="form-box login">
-            <form action="/index.html">
+            <form id="login-form">
                 <h1>Login</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Username" autocomplete="username">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-                <div class="input-box">
-                    <input type="email" placeholder="Email" autocomplete="email">
+                    <input type="email" id="login-email" placeholder="Email" autocomplete="email" required>
                     <i class="fa-solid fa-envelope"></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Password" autocomplete="current-password">
+                    <input type="password" id="login-password" placeholder="Password" autocomplete="current-password" required>
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 <div class="forget-link">
@@ -35,41 +31,99 @@
                 <button type="submit" class="btn">Login</button>
                 <p>or login with social platforms</p>
                 <div class="social-icons">
-                    <a href="/index.html"><i class="fa-brands fa-google"></i></a>
-                    <a href="/index.html"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="/index.html"><i class="fa-brands fa-github"></i></a>
-                    <a href="/index.html"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
             </form>
          </div>
 
          <div class="form-box register">
-            <form action="/index.html">
+            <form id="register-form">
     <h1>Register</h1>
 
     <div class="input-box">
-      <input type="text" placeholder="Username" autocomplete="username">
+      <input type="text" id="reg-name" placeholder="Full Name" autocomplete="name" required>
       <i class="fa-solid fa-user"></i>
     </div>
 
     <div class="input-box">
-      <input type="email" placeholder="Email" autocomplete="email">
+      <input type="email" id="reg-email" placeholder="Email" autocomplete="email" required>
       <i class="fa-solid fa-envelope"></i>
     </div>
 
     <div class="input-box">
-      <input type="password" placeholder="Password" autocomplete="new-password">
+      <input type="password" id="reg-password" placeholder="Password" autocomplete="new-password" required>
       <i class="fa-solid fa-lock"></i>
+    </div>
+    
+    <style>
+      .premium-role-toggle {
+        display: flex;
+        background: #f1f5f9;
+        border-radius: 12px;
+        padding: 4px;
+        margin-bottom: 24px;
+        position: relative;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+      }
+      .premium-role-toggle input[type="radio"] {
+        display: none;
+      }
+      .premium-role-toggle label {
+        flex: 1;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: #64748b;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: color 0.3s ease;
+        z-index: 2;
+        margin: 0;
+      }
+      .premium-role-toggle .slider {
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 4px;
+        width: calc(50% - 4px);
+        background: #2b8dee;
+        border-radius: 8px;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 12px rgba(43, 141, 238, 0.3);
+        z-index: 1;
+      }
+      #role-guest:checked ~ .label-guest,
+      #role-host:checked ~ .label-host {
+        color: #fff;
+      }
+      #role-guest:checked ~ .slider {
+        transform: translateX(0);
+      }
+      #role-host:checked ~ .slider {
+        transform: translateX(100%);
+      }
+    </style>
+
+    <div class="premium-role-toggle">
+        <input type="radio" id="role-guest" name="reg-role" value="user" checked>
+        <input type="radio" id="role-host" name="reg-role" value="host">
+        <label for="role-guest" class="label-guest">Traveler</label>
+        <label for="role-host" class="label-host">Host</label>
+        <div class="slider"></div>
     </div>
 
     <button type="submit" class="btn">Register</button>
 
     <p>or register with social platforms</p>
     <div class="social-icons">
-      <a href="/index.html"><i class="fa-brands fa-google"></i></a>
-      <a href="/index.html"><i class="fa-brands fa-facebook"></i></a>
-      <a href="/index.html"><i class="fa-brands fa-github"></i></a>
-      <a href="/index.html"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="#"><i class="fa-brands fa-google"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-github"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin"></i></a>
     </div>
   </form>
          </div>
@@ -91,5 +145,35 @@
     </div>
   <script src="/js/i18n.js"></script>
   <script src="../../js/script-login.js"></script>
+  <script src="../../js/auth-storage.js"></script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('login-email').value;
+      var pass = document.getElementById('login-password').value;
+      
+      var res = AuthStorage.login(email, pass);
+      if (res.success) {
+        window.location.href = res.user.role === 'host' ? '../host/host-dashboard.html' : '../../index.html';
+      } else {
+        alert(res.message);
+      }
+    });
+
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('reg-name').value;
+      var email = document.getElementById('reg-email').value;
+      var pass = document.getElementById('reg-password').value;
+      var role = document.querySelector('input[name="reg-role"]:checked').value;
+      
+      var res = AuthStorage.register(name, email, pass, role);
+      if (res.success) {
+        window.location.href = res.user.role === 'host' ? '../host/host-dashboard.html' : '../../index.html';
+      } else {
+        alert(res.message);
+      }
+    });
+  </script>
 </body>
 </html>

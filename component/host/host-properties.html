@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/host.css">
+  <script src="../../js/auth-storage.js"></script>
+  <script src="../../js/guard-host.js"></script>
 </head>
 <body class="host-page">
 
@@ -114,6 +116,103 @@
   </div>
   <script src="../../js/dashboard.js"></script>
   <script src="../../js/i18n.js"></script>
+  <script src="../../js/property-storage.js"></script>
+  <script>
+  // ── Render user-created properties from localStorage ──
+  (function () {
+    var container = document.querySelector('.property-list');
+    var panelHead = document.querySelector('.panel-head .pill');
+    if (!container) return;
+
+    var userProps = PropertyStorage.getAll();
+    if (!userProps.length) return;
+
+    // Update stats
+    var statCards = document.querySelectorAll('.stat-card strong');
+    var activeCount = userProps.filter(function (p) { return p.status === 'active'; }).length;
+    if (statCards[0]) statCards[0].textContent = Number(statCards[0].textContent) + activeCount;
+
+    // Update panel badge
+    if (panelHead) {
+      var totalCount = container.querySelectorAll('.property-card').length + userProps.length;
+      panelHead.textContent = totalCount + ' properties';
+    }
+
+    userProps.forEach(function (prop) {
+      var statusClass = prop.status === 'active' ? 'pill-success'
+        : prop.status === 'paused' ? 'pill-warning' : 'pill-muted';
+      var statusLabel = prop.status === 'active' ? 'Active'
+        : prop.status === 'paused' ? 'Paused' : 'Draft';
+      var coverImg = prop.image || '../../assets/images/Image.png';
+      var toggleLabel = prop.status === 'active' ? 'Pause' : 'Activate';
+      var toggleClass = prop.status === 'active' ? 'btn-danger' : 'btn-primary';
+
+      var card = document.createElement('article');
+      card.className = 'property-card';
+      card.dataset.propertyId = prop.id;
+      card.innerHTML = '\
+        <img src="' + coverImg + '" alt="' + prop.title + '">\
+        <div>\
+          <span class="pill ' + statusClass + '">' + statusLabel + '</span>\
+          <h3>' + prop.title + '</h3>\
+          <div class="property-meta">\
+            <span>' + (prop.location || 'Cambodia') + '</span>\
+            <span>$' + (prop.price || 0) + ' / night</span>\
+            <span>' + (prop.reviews || 0) + ' bookings</span>\
+            <span>' + (prop.guests || 1) + ' guests</span>\
+          </div>\
+          <div class="property-health">\
+            <div class="health-row"><span>Listing quality</span><div class="health-bar"><span style="width:85%"></span></div><span>85%</span></div>\
+            <div class="health-row"><span>Availability</span><div class="health-bar"><span style="width:100%"></span></div><span>100%</span></div>\
+          </div>\
+          <div class="card-actions">\
+            <button class="btn btn-secondary" data-edit="' + prop.id + '">Edit</button>\
+            <button class="btn ' + toggleClass + '" data-toggle="' + prop.id + '">' + toggleLabel + '</button>\
+            <button class="btn btn-danger" data-delete="' + prop.id + '">Delete</button>\
+          </div>\
+        </div>';
+      container.appendChild(card);
+    });
+
+    // ── Event delegation for actions ──
+    container.addEventListener('click', function (e) {
+      var delBtn = e.target.closest('[data-delete]');
+      var toggleBtn = e.target.closest('[data-toggle]');
+      var editBtn = e.target.closest('[data-edit]');
+
+      if (delBtn) {
+        if (confirm('Delete this property permanently?')) {
+          PropertyStorage.remove(Number(delBtn.dataset.delete));
+          delBtn.closest('.property-card').remove();
+          if (window.BookingMEDashboard) {
+            window.BookingMEDashboard.showToast('Property deleted.', 'success');
+          }
+        }
+      }
+
+      if (toggleBtn) {
+        var id = Number(toggleBtn.dataset.toggle);
+        var prop = PropertyStorage.getById(id);
+        if (prop) {
+          var newStatus = prop.status === 'active' ? 'paused' : 'active';
+          PropertyStorage.updateStatus(id, newStatus);
+          // Reload to reflect changes
+          window.location.reload();
+        }
+      }
+
+      if (editBtn) {
+        var id = Number(editBtn.dataset.edit);
+        var prop = PropertyStorage.getById(id);
+        if (prop) {
+          // Load property into draft for editing
+          PropertyStorage.saveDraft(prop);
+          window.location.href = 'add-property-step-1.html';
+        }
+      }
+    });
+  })();
+  </script>
   <script>
     (function(){
       var topbar=document.querySelector('.bme-mobile-topbar'),btn=document.getElementById('bme-hamburger-btn'),overlay=document.getElementById('bme-sidebar-overlay'),sidebar=document.getElementById('bme-sidebar-drawer');

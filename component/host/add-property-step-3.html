@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/host.css">
+  <script src="../../js/auth-storage.js"></script>
+  <script src="../../js/guard-host.js"></script>
 </head>
 <body class="host-page">
   <header class="host-header">
@@ -96,7 +98,7 @@
 
         <div class="wizard-footer">
           <a class="btn btn-secondary" href="add-property-step-2.html"><span class="material-symbols-outlined">arrow_back</span>Back to Location</a>
-          <a class="btn btn-primary" href="add-property-step-4.html">Review Listing<span class="material-symbols-outlined">arrow_forward</span></a>
+          <button id="btn-next-step4" class="btn btn-primary" type="button">Review Listing<span class="material-symbols-outlined">arrow_forward</span></button>
         </div>
       </section>
 
@@ -119,5 +121,59 @@
   </main>
   <script src="../../js/dashboard.js"></script>
   <script src="../../js/i18n.js"></script>
+  <script src="../../js/property-storage.js"></script>
+  <script>
+  (function () {
+    var draft = PropertyStorage.getDraft();
+
+    // ── Restore pricing fields ──
+    if (draft.price) document.getElementById('usd').value = draft.price;
+    if (draft.priceKHR) document.getElementById('khr').value = draft.priceKHR;
+    if (draft.cleaningFee) document.getElementById('cleaning').value = draft.cleaningFee;
+    if (draft.extraGuestFee) document.getElementById('extra').value = draft.extraGuestFee;
+
+    // ── Restore amenities checkboxes ──
+    if (draft.amenities && draft.amenities.length) {
+      document.querySelectorAll('.check-list input[type="checkbox"]').forEach(function (cb) {
+        var label = cb.parentElement.textContent.trim();
+        cb.checked = draft.amenities.indexOf(label) !== -1;
+      });
+    }
+
+    // ── Live update the aside tag list ──
+    var tagList = document.querySelector('.tag-list');
+    function updateTagList() {
+      if (!tagList) return;
+      var selected = [];
+      document.querySelectorAll('.check-list input[type="checkbox"]:checked').forEach(function (cb) {
+        selected.push(cb.parentElement.textContent.trim());
+      });
+      tagList.innerHTML = selected.length
+        ? selected.map(function (a) { return '<span class="pill">' + a + '</span>'; }).join('')
+        : '<span class="pill">None selected</span>';
+    }
+    document.querySelectorAll('.check-list input[type="checkbox"]').forEach(function (cb) {
+      cb.addEventListener('change', updateTagList);
+    });
+    updateTagList();
+
+    // ── Save and navigate ──
+    document.getElementById('btn-next-step4').addEventListener('click', function (e) {
+      e.preventDefault();
+      var amenities = [];
+      document.querySelectorAll('.check-list input[type="checkbox"]:checked').forEach(function (cb) {
+        amenities.push(cb.parentElement.textContent.trim());
+      });
+      PropertyStorage.saveDraft({
+        price: Number(document.getElementById('usd').value),
+        priceKHR: Number(document.getElementById('khr').value),
+        cleaningFee: Number(document.getElementById('cleaning').value),
+        extraGuestFee: Number(document.getElementById('extra').value),
+        amenities: amenities,
+      });
+      window.location.href = 'add-property-step-4.html';
+    });
+  })();
+  </script>
 </body>
 </html>
