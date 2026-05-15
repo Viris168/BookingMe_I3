@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/host.css">
+  <script src="../../js/auth-storage.js"></script>
+  <script src="../../js/guard-host.js"></script>
 </head>
 <body class="host-page">
   <header class="host-header">
@@ -42,37 +44,8 @@
     </section>
 
     <section class="wizard-card">
-      <div class="review-grid">
-        <article class="review-card">
-          <img src="../../assets/images/Riverside_3.png" alt="Mekong Riverside Apartment">
-          <h2>Mekong Riverside Apartment</h2>
-          <p>Entire apartment near the riverside with city access, secure entry, and comfortable rooms for student or family stays.</p>
-          <div class="property-meta">
-            <span>Hotel</span>
-            <span>4 guests</span>
-            <span>$85 / night</span>
-          </div>
-        </article>
-
-        <article class="review-card">
-          <div class="section-title">
-            <span class="material-symbols-outlined">location_on</span>
-            <h2>Location</h2>
-          </div>
-          <p><strong>Street 110, Riverside</strong></p>
-          <p>Daun Penh, Phnom Penh</p>
-          <div class="section-title" style="margin-top:22px">
-            <span class="material-symbols-outlined">hotel_class</span>
-            <h2>Amenities</h2>
-          </div>
-          <div class="tag-list">
-            <span class="pill">WiFi</span>
-            <span class="pill">Kitchen</span>
-            <span class="pill">Parking</span>
-            <span class="pill">Air Conditioning</span>
-            <span class="pill">Security</span>
-          </div>
-        </article>
+      <div class="review-grid" id="review-content">
+        <!-- Populated dynamically from localStorage draft -->
       </div>
 
       <div class="tip-card" style="margin-top:22px">
@@ -81,11 +54,92 @@
 
       <div class="wizard-footer">
         <a class="btn btn-secondary" href="add-property-step-3.html"><span class="material-symbols-outlined">arrow_back</span>Back to Pricing</a>
-        <a class="btn btn-primary" href="listing-success.html"><span class="material-symbols-outlined">publish</span>Finish & Publish Listing</a>
+        <button id="btn-publish" class="btn btn-primary" type="button"><span class="material-symbols-outlined">publish</span>Finish & Publish Listing</button>
       </div>
     </section>
   </main>
   <script src="../../js/dashboard.js"></script>
   <script src="../../js/i18n.js"></script>
+  <script src="../../js/property-storage.js"></script>
+  <script>
+  (function () {
+    var draft = PropertyStorage.getDraft();
+    var reviewEl = document.getElementById('review-content');
+
+    if (!reviewEl) return;
+
+    // ── If no draft data, show a fallback message ──
+    if (!draft.title) {
+      reviewEl.innerHTML = '<article class="review-card"><h2>No draft found</h2><p>Please start from <a href="add-property-step-1.html">Step 1</a> to create a property listing.</p></article>';
+      return;
+    }
+
+    // ── Render the review from draft data ──
+    var coverImg = draft.image || '../../assets/images/Image.png';
+    var amenityPills = (draft.amenities || []).map(function (a) {
+      return '<span class="pill">' + a + '</span>';
+    }).join('');
+    var category = draft.category || 'hotel';
+    category = category.charAt(0).toUpperCase() + category.slice(1);
+
+    // Photo gallery
+    var photoGallery = '';
+    if (draft.images && draft.images.length > 1) {
+      photoGallery = '<div class="media-grid" style="margin-top:12px">';
+      draft.images.forEach(function (src, i) {
+        photoGallery += '<div class="media-tile' + (i === 0 ? ' cover' : '') + '"><img src="' + src + '" alt="Photo ' + (i + 1) + '"></div>';
+      });
+      photoGallery += '</div>';
+    }
+
+    reviewEl.innerHTML = '\
+      <article class="review-card">\
+        <img src="' + coverImg + '" alt="' + draft.title + '">\
+        <h2>' + draft.title + '</h2>\
+        <p>' + (draft.description || 'No description provided.') + '</p>\
+        <div class="property-meta">\
+          <span>' + category + '</span>\
+          <span>' + (draft.guests || 1) + ' guests</span>\
+          <span>' + (draft.bedrooms || 1) + ' bedrooms</span>\
+          <span>$' + (draft.price || 0) + ' / night</span>\
+        </div>\
+        ' + photoGallery + '\
+      </article>\
+      <article class="review-card">\
+        <div class="section-title">\
+          <span class="material-symbols-outlined">location_on</span>\
+          <h2>Location</h2>\
+        </div>\
+        <p><strong>' + (draft.street || 'Not specified') + '</strong></p>\
+        <p>' + (draft.district || '') + ', ' + (draft.location || '') + '</p>\
+        <div class="section-title" style="margin-top:22px">\
+          <span class="material-symbols-outlined">hotel_class</span>\
+          <h2>Amenities</h2>\
+        </div>\
+        <div class="tag-list">' + (amenityPills || '<span class="pill">None selected</span>') + '</div>\
+        <div class="section-title" style="margin-top:22px">\
+          <span class="material-symbols-outlined">payments</span>\
+          <h2>Pricing</h2>\
+        </div>\
+        <div class="property-meta">\
+          <span>Base: $' + (draft.price || 0) + '/night</span>\
+          <span>Cleaning: $' + (draft.cleaningFee || 0) + '</span>\
+          <span>Extra guest: $' + (draft.extraGuestFee || 0) + '</span>\
+        </div>\
+      </article>';
+
+    // ── Publish handler ──
+    document.getElementById('btn-publish').addEventListener('click', function (e) {
+      e.preventDefault();
+      var published = PropertyStorage.publish();
+      if (published) {
+        sessionStorage.setItem('bookingme_last_published', JSON.stringify(published));
+        window.location.href = 'listing-success.html';
+      } else {
+        alert('Please complete all required fields before publishing.');
+      }
+    });
+  })();
+  </script>
 </body>
 </html>

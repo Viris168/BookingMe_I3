@@ -1,6 +1,10 @@
 fetch('/data/product.json')
 .then(res => res.json())
 .then(product => {
+    // Merge user-created properties from localStorage
+    if (typeof PropertyStorage !== 'undefined') {
+        product = PropertyStorage.mergeWithSeed(product);
+    }
     const container = document.getElementById('student-container');
     const featured = product.slice(0, 6);
     container.innerHTML = featured.map(p => `

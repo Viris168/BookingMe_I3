@@ -172,8 +172,54 @@
   <div id="footer"></div>
 
 
+  <script src="/js/user-storage.js"></script>
+  <script src="/js/auth-storage.js"></script>
   <script src="/js/components/layout.js"></script>
 
   <script src="/js/i18n.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const bookingStr = sessionStorage.getItem('bookingData');
+        const lastBookingId = sessionStorage.getItem('lastBookingId');
+        
+        if (bookingStr) {
+            const data = JSON.parse(bookingStr);
+            const prop = data.property || {};
+            
+            // Populate Property
+            const propImg = document.querySelector('.booking-card-image');
+            if (propImg && prop.image) propImg.src = prop.image.replace('./', '/');
+            
+            const propName = document.querySelector('.booking-property-name');
+            if (propName) propName.textContent = prop.title || 'Property Name';
+            
+            // Populate Booking ID
+            const bkId = document.querySelector('.booking-id-value');
+            if (bkId && lastBookingId) bkId.textContent = '#' + lastBookingId;
+            
+            // Details grid
+            const detailValues = document.querySelectorAll('.detail-item-value');
+            if (detailValues.length >= 4) {
+                detailValues[0].textContent = data.checkIn;
+                detailValues[1].textContent = data.checkOut;
+                detailValues[2].textContent = prop.type || 'Room';
+                detailValues[3].textContent = data.guests;
+            }
+            
+            // Summary
+            const summaryValues = document.querySelectorAll('.summary-row-value');
+            const summaryLabels = document.querySelectorAll('.summary-row-label');
+            if (summaryValues.length >= 3) {
+                summaryLabels[0].textContent = (data.nights || 1) + ' Nights x $' + data.pricePerNight;
+                summaryValues[0].textContent = '$' + (data.nights * data.pricePerNight).toFixed(2);
+                summaryValues[1].textContent = '$' + (data.serviceFee || 0).toFixed(2);
+                summaryValues[2].textContent = '$' + (data.cleaningFee || 0).toFixed(2);
+                
+                const totalVal = document.querySelector('.summary-total-value');
+                if (totalVal) totalVal.textContent = '$' + data.totalPrice.toFixed(2);
+            }
+        }
+    });
+  </script>
 </body>
 </html>

@@ -7,6 +7,10 @@ const productId = Number.parseInt(urlParams.get("id") || "1", 10);
 fetch("/data/product.json")
     .then(res => res.json())
     .then(products => {
+        // Merge user-created properties from localStorage
+        if (typeof PropertyStorage !== 'undefined') {
+            products = PropertyStorage.mergeWithSeed(products);
+        }
         const product = products.find(p => p.id === productId);
         if (product) populatePage(product);
     });
@@ -77,9 +81,15 @@ function populatePage(p) {
     out.addEventListener('change', update);
 
     document.getElementById('reserveBtn').addEventListener('click', () => {
+        if (typeof AuthStorage !== 'undefined' && !AuthStorage.getCurrentUser()) {
+            alert('Please log in to reserve this property.');
+            window.location.href = '/component/Login/index-login.html';
+            return;
+        }
 
         const bookingData = {
             productId: p.id,
+            property: p,
             checkIn: document.getElementById('checkInDate').value,
             checkOut: document.getElementById('checkOutDate').value,
             guests: document.getElementById('guestsValue').textContent,
@@ -87,13 +97,41 @@ function populatePage(p) {
             nights: nights,
             cleaningFee: p.cleaningFee,
             serviceFee: p.serviceFee,
-            total: totals
+            totalPrice: totals
         };
         sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
 
-
         window.location.href = `Payment.html?id=${p.id}`;
     });
+
+    const favBtn = document.getElementById('favoriteBtn');
+    if (favBtn && typeof UserStorage !== 'undefined') {
+        const favIcon = document.getElementById('favoriteIcon');
+        const favText = document.getElementById('favoriteText');
+        
+        function updateFavUI() {
+            if (UserStorage.isFavorite(p.id)) {
+                favIcon.textContent = 'favorite';
+                favIcon.style.color = '#ff385c';
+                favText.textContent = 'Saved';
+            } else {
+                favIcon.textContent = 'favorite_border';
+                favIcon.style.color = 'inherit';
+                favText.textContent = 'Save to Favorites';
+            }
+        }
+        updateFavUI();
+
+        favBtn.addEventListener('click', () => {
+            if (typeof AuthStorage !== 'undefined' && !AuthStorage.getCurrentUser()) {
+                alert('Please log in to save to favorites.');
+                window.location.href = '/component/Login/index-login.html';
+                return;
+            }
+            UserStorage.toggleFavorite(p);
+            updateFavUI();
+        });
+    }
 
 }
 

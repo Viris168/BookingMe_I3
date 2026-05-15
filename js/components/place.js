@@ -75,12 +75,40 @@ const createProductCard = (product) => {
 
     const wishBtn = card.querySelector('.wishlist-btn');
     if (wishBtn) {
+        const icon = wishBtn.querySelector('i');
+        
+        // Initial state from UserStorage
+        if (typeof UserStorage !== 'undefined' && UserStorage.isFavorite(product.id)) {
+            icon.classList.remove('fa-regular');
+            icon.classList.add('fa-solid', 'liked');
+            icon.style.color = '#ff385c';
+        }
+
         wishBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const icon = wishBtn.querySelector('i');
-            icon.classList.toggle('fa-regular');
-            icon.classList.toggle('fa-solid');
-            icon.classList.toggle('liked');
+            if (typeof AuthStorage !== 'undefined' && !AuthStorage.getCurrentUser()) {
+                alert('Please log in to save to favorites.');
+                window.location.href = '/component/Login/index-login.html';
+                return;
+            }
+
+            if (typeof UserStorage !== 'undefined') {
+                const isFav = UserStorage.toggleFavorite(product);
+                if (isFav) {
+                    icon.classList.remove('fa-regular');
+                    icon.classList.add('fa-solid', 'liked');
+                    icon.style.color = '#ff385c';
+                } else {
+                    icon.classList.add('fa-regular');
+                    icon.classList.remove('fa-solid', 'liked');
+                    icon.style.color = 'inherit';
+                }
+            } else {
+                // Fallback UI
+                icon.classList.toggle('fa-regular');
+                icon.classList.toggle('fa-solid');
+                icon.classList.toggle('liked');
+            }
         });
     }
 

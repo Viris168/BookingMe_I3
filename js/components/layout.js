@@ -29,56 +29,79 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const getDemoUser = () => {
-        const storedUser = localStorage.getItem("bookingme_user");
-        if (!storedUser) return null;
-
-        try {
-            const user = JSON.parse(storedUser);
-            if (user && typeof user === "object") return user;
-        } catch (error) {
-            return { name: "Sokha Chea", email: "sokha.chea@example.com" };
+        if (typeof AuthStorage !== 'undefined') {
+            return AuthStorage.getCurrentUser();
         }
-
         return null;
     };
 
     const applyProfileState = (headerContainer) => {
         const user = getDemoUser();
-        if (!user) return;
-
+        
         headerContainer.querySelectorAll("[data-profile-menu]").forEach((menu) => {
-            const name = user.name || "Sokha Chea";
-            const email = user.email || "sokha.chea@example.com";
+            if (!user) {
+                // Not logged in state
+                menu.innerHTML = `
+                    <div class="flex items-center gap-3 border-b border-slate-100 bg-gradient-to-r from-blue-50 to-white px-4 py-4">
+                        <img src="/assets/icons/icon.png" alt="User" class="h-11 w-11 rounded-full border-2 border-white object-cover shadow-sm ring-1 ring-primary/25">
+                        <div class="min-w-0">
+                            <p class="truncate text-sm font-extrabold text-slate-900">Guest</p>
+                            <p class="truncate text-xs font-medium text-slate-500">Login to continue</p>
+                        </div>
+                    </div>
+                    <div class="grid gap-2 p-3">
+                        <a href="/component/Login/index-login.html" class="flex items-center justify-center rounded-xl bg-primary px-3 py-2.5 text-sm font-extrabold text-white transition hover:bg-blue-600">
+                            Login
+                        </a>
+                        <a href="/component/Login/index-login.html" class="flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-slate-50">
+                            Create Account
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            const name = user.name || "User";
+            const email = user.email || "user@example.com";
+            const isHost = user.role === 'host';
+
+            let linksHtml = `
+                <a href="/component/dashboard/profile.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+                    <span class="material-symbols-outlined text-[20px]">person</span>
+                    <span data-i18n="account.profile">My Profile</span>
+                </a>
+                <a href="/component/dashboard/Booking-history.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
+                    <span class="material-symbols-outlined text-[20px]">history</span>
+                    <span data-i18n="account.orderHistory">My Bookings</span>
+                </a>
+            `;
+
+            if (isHost) {
+                linksHtml += `
+                    <a href="/component/host/host-dashboard.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-amber-50 hover:text-amber-700">
+                        <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                        <span data-i18n="account.hostDashboard">Host Dashboard</span>
+                    </a>
+                `;
+            } else {
+                linksHtml += `
+                    <a href="#" onclick="alert('Upgrade feature coming soon!')" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-green-50 hover:text-green-700">
+                        <span class="material-symbols-outlined text-[20px]">home_work</span>
+                        <span data-i18n="account.becomeHost">Become a Host</span>
+                    </a>
+                `;
+            }
 
             menu.innerHTML = `
                 <div class="flex items-center gap-3 border-b border-slate-100 bg-gradient-to-r from-blue-50 to-white px-4 py-4">
-                    <img src="/assets/icons/icon.png" alt="User" class="h-11 w-11 rounded-full border-2 border-white object-cover shadow-sm ring-1 ring-primary/25">
+                    <img src="${user.avatar || '/assets/icons/icon.png'}" alt="User" class="h-11 w-11 rounded-full border-2 border-white object-cover shadow-sm ring-1 ring-primary/25">
                     <div class="min-w-0">
                         <p class="truncate text-sm font-extrabold text-slate-900">${name}</p>
                         <p class="truncate text-xs font-medium text-slate-500">${email}</p>
                     </div>
                 </div>
                 <div class="grid gap-1 p-2">
-                    <a href="/component/dashboard/profile.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
-                        <span class="material-symbols-outlined text-[20px]">dashboard</span>
-                        <span data-i18n="account.dashboard">Dashboard</span>
-                    </a>
-                    <a href="/component/dashboard/Booking-history.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
-                        <span class="material-symbols-outlined text-[20px]">history</span>
-                        <span data-i18n="account.orderHistory">Order History</span>
-                    </a>
-                    <a href="/component/dashboard/favorite.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
-                        <span class="material-symbols-outlined text-[20px]">favorite</span>
-                        <span data-i18n="account.favorites">Favorites</span>
-                    </a>
-                    <a href="/component/dashboard/account-setting.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-blue-50 hover:text-primary">
-                        <span class="material-symbols-outlined text-[20px]">settings</span>
-                        <span data-i18n="account.settings">Settings</span>
-                    </a>
-                    <a href="/component/host/host-dashboard.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-amber-50 hover:text-amber-700">
-                        <span class="material-symbols-outlined text-[20px]">home_work</span>
-                        <span data-i18n="account.hostMode">Host Mode</span>
-                    </a>
+                    ${linksHtml}
                 </div>
                 <div class="border-t border-slate-100 p-2">
                     <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-extrabold text-red-600 transition hover:bg-red-50" data-logout>
@@ -89,28 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         });
 
-        const mobileAccount = headerContainer.querySelector("#mobile-menu .mt-1.border-t.border-slate-100.pt-2");
-        if (mobileAccount) {
-            mobileAccount.innerHTML = `
-                <p class="px-3 pb-1 text-[11px] font-extrabold uppercase tracking-widest text-slate-400" data-i18n="account.menu">Account</p>
-                <a href="/component/dashboard/profile.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
-                    <span class="material-symbols-outlined text-[18px]">dashboard</span>
-                    <span data-i18n="account.dashboard">Dashboard</span>
-                </a>
-                <a href="/component/dashboard/Booking-history.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
-                    <span class="material-symbols-outlined text-[18px]">history</span>
-                    <span data-i18n="account.orderHistory">Order History</span>
-                </a>
-                <a href="/component/host/host-dashboard.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100">
-                    <span class="material-symbols-outlined text-[18px]">home_work</span>
-                    <span data-i18n="account.hostMode">Host Mode</span>
-                </a>
-                <a href="#" class="flex items-center gap-2 px-3 py-2 text-sm font-bold text-red-600 rounded-md hover:bg-red-50" data-logout>
-                    <span class="material-symbols-outlined text-[18px]">logout</span>
-                    <span data-i18n="account.logout">Log Out</span>
-                </a>
-            `;
-        }
+        // Skip mobile account injection for now to keep things simple
     };
 
     const initDropdownMenu = (headerContainer, rootSelector, buttonSelector, menuSelector) => {
@@ -142,13 +144,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!logoutButton) return;
 
         event.preventDefault();
-        if (!window.confirm("Are you sure you want to log out?")) return;
-
-        localStorage.removeItem("bookingme_user");
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
-        sessionStorage.clear();
-        window.location.href = "/index.html";
+        if (typeof AuthStorage !== 'undefined' && AuthStorage.confirmLogout) {
+            AuthStorage.confirmLogout();
+        } else {
+            if (!window.confirm("Are you sure you want to log out?")) return;
+            sessionStorage.clear();
+            window.location.href = "/index.html";
+        }
     };
 
     document.addEventListener("click", (event) => {

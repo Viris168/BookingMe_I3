@@ -40,7 +40,7 @@ function pay(data) {
         document.getElementById("price-stay-total").textContent = `$${subtotal}`;
         document.getElementById("cleaning-fee").textContent = `$${bookingData.cleaningFee}`;
         document.getElementById("service-fee").textContent = `$${bookingData.serviceFee}`;
-        document.getElementById("total-amount").textContent = `$${bookingData.total}`;
+        document.getElementById("total-amount").textContent = `$${bookingData.totalPrice || bookingData.total || 0}`;
         document.getElementById("trip-guests").textContent = `${bookingData.guests}`;
         document.getElementById("trip-dates").textContent = bookingData.checkOut
             ? `${bookingData.checkIn} - ${bookingData.checkOut}`
@@ -49,7 +49,16 @@ function pay(data) {
 }
 
 document.getElementById('confirm-pay-btn').addEventListener('click', () => {
+    if (typeof AuthStorage !== 'undefined' && !AuthStorage.getCurrentUser()) {
+        alert('Please log in to complete payment.');
+        window.location.href = '/component/Login/index-login.html';
+        return;
+    }
 
+    if (bookingData && typeof UserStorage !== 'undefined') {
+        const booking = UserStorage.addBooking(bookingData);
+        sessionStorage.setItem('lastBookingId', booking.bookingId);
+    }
 
     window.location.href = 'Comfirmation.html';
 });

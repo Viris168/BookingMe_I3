@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/host.css">
+  <script src="../../js/auth-storage.js"></script>
+  <script src="../../js/guard-host.js"></script>
 </head>
 <body class="host-page">
   <header class="host-header">
@@ -126,7 +128,7 @@
 
         <div class="wizard-footer">
           <a class="btn btn-secondary" href="add-property-step-1.html"><span class="material-symbols-outlined">arrow_back</span>Back to Details</a>
-          <a class="btn btn-primary" href="add-property-step-3.html">Next: Pricing<span class="material-symbols-outlined">arrow_forward</span></a>
+          <button id="btn-next-step3" class="btn btn-primary" type="button">Next: Pricing<span class="material-symbols-outlined">arrow_forward</span></button>
         </div>
       </section>
 
@@ -136,7 +138,7 @@
           <h2>Photos & Media</h2>
         </div>
         <label class="upload-box">
-          <input type="file" name="photos" accept="image/*" hidden>
+          <input type="file" name="photos" accept="image/*" multiple hidden>
           <span>
             <span class="material-symbols-outlined" style="font-size:42px;color:var(--host-primary)">cloud_upload</span><br>
             <strong>Upload or replace property photos</strong><br>
@@ -160,5 +162,78 @@
   </main>
   <script src="../../js/dashboard.js"></script>
   <script src="../../js/i18n.js"></script>
+  <script src="../../js/property-storage.js"></script>
+  <script>
+  (function () {
+    var draft = PropertyStorage.getDraft();
+
+    // ── Restore location fields ──
+    if (draft.street) document.getElementById('street').value = draft.street;
+    if (draft.location) document.getElementById('city').value = draft.location;
+    if (draft.district) document.getElementById('district').value = draft.district;
+    if (draft.nearby) document.getElementById('nearby').value = draft.nearby;
+    if (draft.areaType) document.getElementById('area').value = draft.areaType;
+
+    // ── Photo upload with compression ──
+    var uploadedImages = draft.images ? draft.images.slice() : [];
+    var fileInput = document.querySelector('input[name="photos"]');
+    var mediaGrid = document.querySelector('.media-grid');
+
+    // Show previously uploaded images in grid
+    if (uploadedImages.length && mediaGrid) {
+      mediaGrid.innerHTML = '';
+      uploadedImages.forEach(function (src, i) {
+        var tile = document.createElement('div');
+        tile.className = 'media-tile' + (i === 0 ? ' cover' : '');
+        tile.innerHTML = '<img src="' + src + '" alt="Uploaded photo">';
+        mediaGrid.appendChild(tile);
+      });
+    }
+
+    if (fileInput) {
+      fileInput.addEventListener('change', function () {
+        var files = Array.from(this.files);
+        var maxPhotos = 5;
+        if (uploadedImages.length + files.length > maxPhotos) {
+          alert('Maximum ' + maxPhotos + ' photos allowed. Only the first ' + (maxPhotos - uploadedImages.length) + ' will be used.');
+          files = files.slice(0, maxPhotos - uploadedImages.length);
+        }
+        var promises = files.map(function (file) {
+          return PropertyStorage.compressImage(file, 800, 0.6);
+        });
+        Promise.all(promises).then(function (results) {
+          results.forEach(function (dataUrl) {
+            uploadedImages.push(dataUrl);
+          });
+          // Re-render grid
+          if (mediaGrid) {
+            mediaGrid.innerHTML = '';
+            uploadedImages.forEach(function (src, i) {
+              var tile = document.createElement('div');
+              tile.className = 'media-tile' + (i === 0 ? ' cover' : '');
+              tile.innerHTML = '<img src="' + src + '" alt="Uploaded photo">';
+              mediaGrid.appendChild(tile);
+            });
+          }
+        });
+      });
+    }
+
+    // ── Save and navigate ──
+    document.getElementById('btn-next-step3').addEventListener('click', function (e) {
+      e.preventDefault();
+      PropertyStorage.saveDraft({
+        street: document.getElementById('street').value.trim(),
+        location: document.getElementById('city').value.trim(),
+        district: document.getElementById('district').value.trim(),
+        nearby: document.getElementById('nearby').value.trim(),
+        areaType: document.getElementById('area').value,
+        images: uploadedImages.length ? uploadedImages : [],
+        image: uploadedImages.length ? uploadedImages[0] : '',
+      });
+      window.location.href = 'add-property-step-3.html';
+    });
+  })();
+  </script>
 </body>
 </html>

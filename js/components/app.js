@@ -57,7 +57,13 @@ const getSortedProducts = () => {
     }
 
 
-    return products.sort((a, b) => a.id - b.id);
+    return products.sort((a, b) => {
+        // User properties always come first
+        if (a.source === 'user' && b.source !== 'user') return -1;
+        if (a.source !== 'user' && b.source === 'user') return 1;
+        // Then sort by ID
+        return a.id - b.id;
+    });
 };
 
 const createFeaturesHTML = (features = []) =>
@@ -210,6 +216,12 @@ const initApp = async () => {
         }
 
         listProduct = await response.json();
+
+        // Merge user-created properties from localStorage
+        if (typeof PropertyStorage !== 'undefined') {
+            listProduct = PropertyStorage.mergeWithSeed(listProduct);
+        }
+
         addDataToHTML();
 
         const urlParams = new URLSearchParams(window.location.search);
