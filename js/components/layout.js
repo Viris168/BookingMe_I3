@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
             } else {
                 linksHtml += `
-                    <a href="#" onclick="alert('Upgrade feature coming soon!')" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-green-50 hover:text-green-700">
+                    <a href="#" onclick="if(typeof BMEAlert!=='undefined'){BMEAlert.show('Host upgrade feature is coming soon! Stay tuned.',{title:'Coming Soon',type:'info',icon:'rocket_launch',buttonText:'Got it'})}; return false;" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-green-50 hover:text-green-700">
                         <span class="material-symbols-outlined text-[20px]">home_work</span>
                         <span data-i18n="account.becomeHost">Become a Host</span>
                     </a>

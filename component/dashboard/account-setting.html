@@ -187,7 +187,7 @@
         </a>
         <a href="account-setting.html" class="dashboard-nav-link dashboard-nav-link-active">
           <span class="material-symbols-outlined text-xl">settings</span>
-          <span class="text-base font-semibold leading-normal">Settings</span>
+          <span class="text-base font-semibold leading-normal" data-i18n="Settings">Settings</span>
         </a>
         <a href="../host/host-dashboard.html" class="dashboard-nav-link">
           <span class="material-symbols-outlined text-xl">home_work</span>
@@ -210,35 +210,35 @@
 
     <main class="dashboard-main overflow-y-auto">
       <div class="dashboard-content-wide">
-        <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Settings</h1>
-        <p class="text-slate-500 mt-1 mb-8 text-base md:text-lg">Manage your app preferences and security.</p>
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight" data-i18n="Settings">Settings</h1>
+        <p class="text-slate-500 mt-1 mb-8 text-base md:text-lg" data-i18n="Manage your app preferences and security.">Manage your app preferences and security.</p>
 
 
         <div class="glass-panel rounded-3xl p-8 mb-8">
           <div class="flex items-center gap-3 mb-6">
             <span class="material-symbols-outlined text-3xl text-blue-600">notifications</span>
-            <h2 class="text-2xl font-semibold">Notification Preferences</h2>
+            <h2 class="text-2xl font-semibold" data-i18n="Notification Preferences">Notification Preferences</h2>
           </div>
 
           <div class="space-y-6">
             <div class="flex justify-between items-center">
               <div>
-                <p class="font-semibold">Email Notifications</p>
-                <p class="text-sm text-slate-500">Receive booking confirmations and updates via email.</p>
+                <p class="font-semibold" data-i18n="Email Notifications">Email Notifications</p>
+                <p class="text-sm text-slate-500" data-i18n="Receive booking confirmations and updates via email.">Receive booking confirmations and updates via email.</p>
               </div>
               <input type="checkbox" checked class="custom-checkbox" data-setting="emailNotifications">
             </div>
             <div class="flex justify-between items-center">
               <div>
-                <p class="font-semibold">SMS Alerts</p>
-                <p class="text-sm text-slate-500">Get text messages for important security alerts.</p>
+                <p class="font-semibold" data-i18n="SMS Alerts">SMS Alerts</p>
+                <p class="text-sm text-slate-500" data-i18n="Get text messages for important security alerts.">Get text messages for important security alerts.</p>
               </div>
               <input type="checkbox" class="custom-checkbox" data-setting="smsAlerts">
             </div>
             <div class="flex justify-between items-center">
               <div>
-                <p class="font-semibold">Promotional Offers</p>
-                <p class="text-sm text-slate-500">Receive exclusive deals and discounts from homestays.</p>
+                <p class="font-semibold" data-i18n="Promotional Offers">Promotional Offers</p>
+                <p class="text-sm text-slate-500" data-i18n="Receive exclusive deals and discounts from homestays.">Receive exclusive deals and discounts from homestays.</p>
               </div>
               <input type="checkbox" checked class="custom-checkbox" data-setting="promotionalOffers">
             </div>
@@ -250,19 +250,19 @@
           <div class="glass-panel rounded-3xl p-8">
             <div class="flex items-center gap-3 mb-6">
               <span class="material-symbols-outlined text-3xl text-blue-600">lock</span>
-              <h2 class="text-2xl font-semibold">Security Settings</h2>
+              <h2 class="text-2xl font-semibold" data-i18n="Security Settings">Security Settings</h2>
             </div>
             <div class="space-y-6">
               <div>
-                <label class="block text-sm font-medium text-slate-500 mb-2">Current Password</label>
+                <label class="block text-sm font-medium text-slate-500 mb-2" data-i18n="Current Password">Current Password</label>
                 <input type="password" value="••••••••" class="w-full px-5 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:border-blue-500 bg-slate-50">
               </div>
               <div>
-                <label class="block text-sm font-medium text-slate-500 mb-2">New Password</label>
+                <label class="block text-sm font-medium text-slate-500 mb-2" data-i18n="New Password">New Password</label>
                 <input type="password" placeholder="••••••••" class="w-full px-5 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:border-blue-500">
               </div>
               <button class="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl hover:brightness-110 transition-all">
-                Update Password
+                <span data-i18n="Update Password">Update Password</span>
               </button>
             </div>
           </div>
@@ -271,26 +271,26 @@
           <div class="glass-panel rounded-3xl p-8">
             <div class="flex items-center gap-3 mb-6">
               <span class="material-symbols-outlined text-3xl text-blue-600">language</span>
-              <h2 class="text-2xl font-semibold">Preferences</h2>
+              <h2 class="text-2xl font-semibold" data-i18n="Preferences">Preferences</h2>
             </div>
             <div class="space-y-6">
               <div>
-                <label class="block text-sm font-medium text-slate-500 mb-2">Language</label>
+                <label class="block text-sm font-medium text-slate-500 mb-2" data-i18n="Language">Language</label>
                 <select class="w-full px-5 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:border-blue-500 bg-white" data-setting="language">
-                  <option>English (US)</option>
-                  <option>Khmer (ភាសាខ្មែរ)</option>
-                  <option>French (Français)</option>
+                  <option data-i18n="English (US)">English (US)</option>
+                  <option data-i18n="Khmer (ភាសាខ្មែរ)">Khmer (ភាសាខ្មែរ)</option>
+                  <option data-i18n="French (Français)">French (Français)</option>
                 </select>
               </div>
               <div>
-                <label class="block text-sm font-medium text-slate-500 mb-2">Currency</label>
+                <label class="block text-sm font-medium text-slate-500 mb-2" data-i18n="Currency">Currency</label>
                 <select class="w-full px-5 py-3.5 border-2 border-blue-500 rounded-2xl focus:outline-none focus:border-blue-600 bg-white" data-setting="currency">
                   <option>USD ($)</option>
                   <option>KHR (៛)</option>
                 </select>
               </div>
               <button class="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl hover:brightness-110 transition-all" data-save-preferences>
-                Save Preferences
+                <span data-i18n="Save Preferences">Save Preferences</span>
               </button>
             </div>
           </div>
@@ -298,8 +298,50 @@
       </div>
     </main>
   </div>
+  <script src="../../js/bme-alert.js"></script>
+  <script src="../../js/auth-storage.js"></script>
+  <script src="../../js/user-storage.js"></script>
+  <script src="../../js/user-dashboard-render.js"></script>
   <script src="../../js/dashboard.js"></script>
   <script src="../../js/i18n.js"></script>
+  <script>
+    // --- Account Settings Persistence ---
+    (function() {
+      if (typeof AuthStorage === 'undefined') return;
+      var user = AuthStorage.getCurrentUser();
+      if (!user) return;
+
+      // Populate sidebar profile
+      var profileName = document.querySelector('.dashboard-profile-name');
+      var profileAvatar = document.querySelector('.dashboard-profile-avatar');
+      var memberPill = document.querySelector('.dashboard-member-pill');
+      if (profileName) profileName.textContent = user.name;
+      if (profileAvatar && user.avatar) profileAvatar.style.backgroundImage = 'url("' + user.avatar + '")';
+      if (memberPill) {
+        memberPill.innerHTML = '<span class="material-symbols-outlined text-[16px]">' + (user.role === 'host' ? 'verified' : 'stars') + '</span>' + (user.role === 'host' ? 'Host Account' : 'Traveler');
+      }
+
+      // --- Password Update ---
+      var updatePwdBtn = document.querySelector('.glass-panel:has([type="password"]) button');
+      if (updatePwdBtn) {
+        updatePwdBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var inputs = document.querySelectorAll('.glass-panel input[type="password"]');
+          if (inputs.length >= 2 && inputs[1].value && inputs[1].value.length >= 4) {
+            if (typeof BookingMEDashboard !== 'undefined') {
+              BookingMEDashboard.showToast('Password updated successfully.', 'success');
+            }
+            inputs[0].value = '••••••••';
+            inputs[1].value = '';
+          } else {
+            if (typeof BookingMEDashboard !== 'undefined') {
+              BookingMEDashboard.showToast('New password must be at least 4 characters.', 'default');
+            }
+          }
+        });
+      }
+    })();
+  </script>
   <script>
     (function() {
       var btn = document.getElementById('bme-hamburger-btn');

@@ -1,16 +1,19 @@
 /**
  * User Dashboard Render Logic
- * Dynamically replaces hardcoded favorites and bookings with real data from UserStorage.
+ * Appends dynamic bookings/favorites from UserStorage alongside the static HTML cards.
+ * The static cards in the HTML stay untouched; new data is injected after them.
  */
 function initUserDashboard() {
     // Check which page we're on
-    var isFavoritesPage = document.querySelector('h1')?.textContent.includes('Favorites');
-    var isBookingHistoryPage = document.querySelector('h1')?.textContent.includes('Booking History');
-    var isBookingStatusPage = document.querySelector('h1')?.textContent.includes('Booking Status');
-    
-    // Find the container holding the cards
-    var cardsContainer = document.querySelector('.dashboard-content-wide .flex.flex-col.gap-6') || document.querySelector('.dashboard-content-wide .flex.flex-col.gap-8');
-    
+    var mainTitle = document.querySelector('.dashboard-content-wide h1');
+    var isFavoritesPage = mainTitle && mainTitle.textContent.indexOf('Favorites') !== -1;
+    var isBookingHistoryPage = mainTitle && mainTitle.textContent.indexOf('Booking History') !== -1;
+    var isBookingStatusPage = mainTitle && mainTitle.textContent.indexOf('Booking Status') !== -1;
+
+    // Find the @container div that holds the cards — it has gap-8 or gap-6 AND @container
+    var cardsContainer = document.querySelector('.dashboard-content-wide .flex.flex-col.gap-8')
+                      || document.querySelector('.dashboard-content-wide .flex.flex-col.gap-6');
+
     if (!cardsContainer) return;
 
     if (isFavoritesPage) {
@@ -19,17 +22,16 @@ function initUserDashboard() {
         renderBookings(cardsContainer, 'completed');
     } else if (isBookingStatusPage) {
         renderBookings(cardsContainer, 'upcoming');
-        
+
         // Setup filter buttons
         var filterBtns = document.querySelectorAll('.dashboard-content-wide .flex.flex-wrap.gap-3 button');
         filterBtns.forEach(function(btn) {
             btn.addEventListener('click', function() {
-                // Update active state
                 filterBtns.forEach(function(b) {
                     b.className = "px-5 py-2 rounded-full text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-medium transition-all";
                 });
                 btn.className = "px-5 py-2 rounded-full bg-white dark:bg-slate-800 text-mekong-blue dark:text-mekong-blue-light font-semibold shadow-sm border border-slate-200 dark:border-slate-700";
-                
+
                 var status = btn.textContent.toLowerCase().trim();
                 if (status === 'past stays') status = 'completed';
                 renderBookings(cardsContainer, status);
@@ -52,39 +54,56 @@ function initUserDashboard() {
     }
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initUserDashboard);
-} else {
-    initUserDashboard();
+// --- Helper: format a date string for display ---
+function formatDateForDisplay(dateStr) {
+    if (!dateStr) return 'N/A';
+    // Try to parse — works for YYYY-MM-DD and most date formats
+    var d = new Date(dateStr);
+    if (isNaN(d.getTime())) {
+        // If it can't be parsed, just return the original string
+        return dateStr;
+    }
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
 }
+
+// --- Helper: normalize image path for dashboard depth ---
+function normalizeDashboardImage(image) {
+    if (!image) return '../../assets/images/room1.jpg';
+    if (image.startsWith('./assets/')) return '../../' + image.substring(2);
+    if (image.startsWith('/assets/')) return '../../' + image.substring(1);
+    return image;
+}
+
+// ---- FAVORITES ----
 function renderFavorites(container) {
     if (typeof UserStorage === 'undefined') return;
     var favorites = UserStorage.getFavorites();
 
-    if (favorites.length === 0) {
-        container.innerHTML = '<div class="glass-panel p-8 text-center text-slate-500 font-medium rounded-[2rem]">You have no saved favorites yet.</div>';
-        return;
-    }
+    // Remove any previously injected dynamic cards
+    var oldDyn = container.querySelectorAll('.bme-dynamic');
+    oldDyn.forEach(function(el) { el.remove(); });
 
-    container.innerHTML = favorites.map(function(prop) {
-        var image = prop.image || (prop.images && prop.images[0]) || '../../assets/images/room1.jpg';
-        // Normalize path
-        if (image.startsWith('./')) image = image.replace('./', '/');
-        
-        return '\
-          <div class="glass-panel listing-card group">\
+    if (favorites.length === 0) return;
+
+    favorites.forEach(function(prop) {
+        var image = normalizeDashboardImage(prop.image || (prop.images && prop.images[0]));
+
+        var card = document.createElement('div');
+        card.className = 'glass-panel listing-card group bme-dynamic';
+        card.innerHTML = '\
             <div class="listing-card-media" style="background-image: url(\'' + image + '\');"></div>\
             <div class="flex-1 w-full">\
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-2">\
                 <div>\
-                  <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">' + prop.title + '</h3>\
+                  <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">' + (prop.title || 'Property') + '</h3>\
                   <p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-1">\
                     <span class="material-symbols-outlined text-[16px]">location_on</span>\
-                    ' + prop.location + '\
+                    ' + (prop.location || 'Unknown') + '\
                   </p>\
                 </div>\
                 <div class="text-left sm:text-right shrink-0">\
-                  <p class="text-xl font-bold text-mekong-blue dark:text-primary">$' + prop.price + ' / night</p>\
+                  <p class="text-xl font-bold text-mekong-blue dark:text-primary">$' + (prop.price || 0) + ' / night</p>\
                 </div>\
               </div>\
               <div class="grid grid-cols-2 gap-4 mt-4">\
@@ -105,39 +124,72 @@ function renderFavorites(container) {
               <button onclick="UserStorage.removeFavorite(' + prop.id + '); window.location.reload();" class="flex-1 lg:flex-none px-6 py-3 bg-white/50 dark:bg-slate-800/50 border border-red-200 dark:border-red-700 rounded-2xl text-sm font-semibold hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors shadow-sm flex items-center justify-center gap-2 whitespace-nowrap text-red-600 dark:text-red-400">\
                 <span class="material-symbols-outlined text-[18px]">delete</span> Remove\
               </button>\
-            </div>\
-          </div>';
-    }).join('');
+            </div>';
+        container.appendChild(card);
+    });
 }
 
+// ---- BOOKINGS ----
 function renderBookings(container, statusFilter) {
     if (typeof UserStorage === 'undefined') return;
     var allBookings = UserStorage.getBookings();
-    
-    // For Booking Status page, default to upcoming, but we might want to handle past stays tabs
-    var bookings = allBookings.filter(b => statusFilter === 'upcoming' ? b.status === 'upcoming' : b.status !== 'upcoming');
 
-    if (bookings.length === 0) {
-        container.innerHTML = '<div class="glass-panel p-8 text-center text-slate-500 font-medium rounded-[2rem]">No ' + statusFilter + ' bookings found.</div>';
-        return;
-    }
+    var bookings = allBookings.filter(function(b) {
+        if (statusFilter === 'upcoming') return b.status === 'upcoming';
+        if (statusFilter === 'completed') return b.status === 'completed';
+        if (statusFilter === 'cancelled') return b.status === 'cancelled';
+        return true;
+    });
 
-    container.innerHTML = bookings.map(function(b) {
+    // Remove any previously injected dynamic cards
+    var oldDyn = container.querySelectorAll('.bme-dynamic');
+    oldDyn.forEach(function(el) { el.remove(); });
+
+    if (bookings.length === 0) return;
+
+    bookings.forEach(function(b) {
         var prop = b.property || {};
-        var image = prop.image || (prop.images && prop.images[0]) || '../../assets/images/room1.jpg';
-        // Normalize path
-        if (image.startsWith('./')) image = image.replace('./', '/');
-        
-        var isUpcoming = b.status === 'upcoming';
-        var badgeColor = isUpcoming ? 'bg-blue-100 text-blue-700' : (b.status === 'completed' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700');
-        var badgeIcon = isUpcoming ? 'pending_actions' : (b.status === 'completed' ? 'event_available' : 'cancel');
-        
-        var actionButtons = isUpcoming 
-            ? '<button onclick="UserStorage.cancelBooking(\'' + b.bookingId + '\'); window.location.reload();" class="px-6 py-2.5 rounded-full bg-white dark:bg-slate-800 border border-red-200 text-red-600 font-semibold hover:bg-red-50 transition-colors shadow-sm text-sm flex items-center gap-2">Cancel</button>'
-            : '<button onclick="window.location.href=\'/component/partials/Property-Detai.html?id=' + prop.id + '\'" class="bg-gradient-to-r from-primary to-[#FF9900] text-white px-6 py-3 rounded-2xl font-bold shadow-glow hover:-translate-y-0.5 flex gap-2"><span class="material-symbols-outlined text-[18px]">replay</span> Rebook</button>';
+        var image = normalizeDashboardImage(prop.image || (prop.images && prop.images[0]));
+        var hostImage = normalizeDashboardImage(prop.hostImage);
 
-        return '\
-          <div class="glass-panel rounded-3xl p-6 flex flex-col @[800px]:flex-row gap-8 items-start @[800px]:items-center relative overflow-hidden group hover:shadow-lg transition-all duration-300">\
+        var isUpcoming = b.status === 'upcoming';
+        var badgeColor, badgeIcon, badgeLabel;
+        if (isUpcoming) {
+            badgeColor = 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400';
+            badgeIcon = 'pending_actions';
+            badgeLabel = 'Upcoming';
+        } else if (b.status === 'completed') {
+            badgeColor = 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400';
+            badgeIcon = 'event_available';
+            badgeLabel = 'Confirmed';
+        } else {
+            badgeColor = 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400';
+            badgeIcon = 'cancel';
+            badgeLabel = 'Cancelled';
+        }
+
+        var actionBtns = '';
+        if (isUpcoming) {
+            actionBtns = '\
+                <button class="px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm text-sm flex items-center gap-2">\
+                    <span class="material-symbols-outlined text-[18px]">chat</span> Contact\
+                </button>\
+                <button onclick="UserStorage.cancelBooking(\'' + b.bookingId + '\'); window.location.reload();" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold hover:shadow-lg transition-all hover:-translate-y-0.5 text-sm flex items-center gap-2 shadow-md">\
+                    Cancel <span class="material-symbols-outlined text-[18px]">close</span>\
+                </button>';
+        } else {
+            actionBtns = '\
+                <button class="px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm text-sm flex items-center gap-2">\
+                    <span class="material-symbols-outlined text-[18px]">chat</span> Contact\
+                </button>\
+                <button class="px-6 py-2.5 rounded-full bg-gradient-to-r from-mekong-blue to-mekong-blue-light text-white font-semibold hover:shadow-glow-blue transition-all hover:-translate-y-0.5 text-sm flex items-center gap-2 shadow-md">\
+                    Manage <span class="material-symbols-outlined text-[18px]">arrow_forward</span>\
+                </button>';
+        }
+
+        var card = document.createElement('div');
+        card.className = 'glass-panel rounded-3xl p-6 flex flex-col @[800px]:flex-row gap-8 items-start @[800px]:items-center relative overflow-hidden group hover:shadow-lg transition-all duration-300 bme-dynamic';
+        card.innerHTML = '\
             <div class="absolute inset-0 bg-gradient-to-br from-white/60 to-transparent dark:from-slate-800/60 pointer-events-none"></div>\
             <div class="w-full @[800px]:w-1/3 aspect-[4/3] rounded-2xl bg-cover bg-center shadow-inner relative z-10 overflow-hidden" style="background-image: url(\'' + image + '\');"></div>\
             <div class="flex-1 flex flex-col gap-4 relative z-10">\
@@ -145,24 +197,48 @@ function renderBookings(container, statusFilter) {
                 <div>\
                   <div class="flex items-center gap-2 mb-2">\
                     <span class="' + badgeColor + ' px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">\
-                      <span class="material-symbols-outlined text-[14px]">' + badgeIcon + '</span> ' + b.status + '\
+                      <span class="material-symbols-outlined text-[14px]">' + badgeIcon + '</span> ' + badgeLabel + '\
                     </span>\
-                    <span class="text-slate-400 text-sm font-medium">Booking ID: ' + b.bookingId + '</span>\
+                    <span class="text-slate-400 text-sm font-medium">Booking ID: #' + b.bookingId + '</span>\
                   </div>\
                   <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">' + (prop.title || 'Unknown Property') + '</h2>\
                   <p class="text-slate-500 dark:text-slate-400 flex items-center gap-1 text-sm font-medium">\
                     <span class="material-symbols-outlined text-[18px]">location_on</span>\
-                    ' + (prop.location || 'Unknown Location') + '\
+                    ' + (prop.location || 'Unknown') + '\
                   </p>\
                 </div>\
-                <div class="text-right">\
-                  <p class="text-xl font-bold text-mekong-blue dark:text-primary">$' + (b.totalPrice || prop.price || 0) + '</p>\
+              </div>\
+              <div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-200/50 dark:border-slate-700/50">\
+                <div>\
+                  <p class="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">Check-in</p>\
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold">' + formatDateForDisplay(b.checkIn) + '</p>\
+                  <p class="text-sm text-slate-500">2:00 PM</p>\
+                </div>\
+                <div>\
+                  <p class="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">Check-out</p>\
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold">' + formatDateForDisplay(b.checkOut) + '</p>\
+                  <p class="text-sm text-slate-500">11:00 AM</p>\
                 </div>\
               </div>\
-              <div class="flex justify-between items-center pt-2">\
-                  ' + actionButtons + '\
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 pt-2">\
+                <div class="flex items-center gap-3">\
+                  <div class="bg-cover bg-center size-10 rounded-full border-2 border-white shadow-sm" style="background-image: url(\'' + hostImage + '\');"></div>\
+                  <div>\
+                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Hosted by ' + (prop.host || 'BookingME') + '</p>\
+                    <p class="text-xs text-slate-500">Superhost</p>\
+                  </div>\
+                </div>\
+                <div class="flex gap-3">\
+                  ' + actionBtns + '\
+                </div>\
               </div>\
-            </div>\
-          </div>';
-    }).join('');
+            </div>';
+        container.appendChild(card);
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initUserDashboard);
+} else {
+    initUserDashboard();
 }

@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/host.css">
+  <script src="../../js/bme-alert.js"></script>
   <script src="../../js/auth-storage.js"></script>
   <script src="../../js/guard-host.js"></script>
 </head>
@@ -72,12 +73,12 @@
       <section class="host-hero">
         <div>
           <p class="eyebrow">Host overview</p>
-          <h1>Welcome back, Sokha.</h1>
-          <p>Track your properties, booking requests, earnings, and guest activity from one place.</p>
+          <h1 data-i18n="Welcome back, Sokha.">Welcome back, Sokha.</h1>
+          <p data-i18n="Track your properties, booking requests, earnings, and guest activity from one place.">Track your properties, booking requests, earnings, and guest activity from one place.</p>
         </div>
         <a class="btn btn-primary" href="add-property-step-1.html">
           <span class="material-symbols-outlined">add_home</span>
-          Add Property
+          <span data-i18n="Add Property">Add Property</span>
         </a>
       </section>
 
@@ -90,10 +91,10 @@
       </section>
 
       <section class="stats-grid" aria-label="Host statistics">
-        <article class="stat-card"><span class="material-symbols-outlined">apartment</span><span>Active Listings</span><strong>6</strong><small class="trend-up">+2 this month</small></article>
-        <article class="stat-card"><span class="material-symbols-outlined">pending_actions</span><span>Pending Requests</span><strong>4</strong><small class="trend-up">Needs action today</small></article>
-        <article class="stat-card"><span class="material-symbols-outlined">payments</span><span>Monthly Revenue</span><strong>$4.8k</strong><small class="trend-up">+12% this month</small></article>
-        <article class="stat-card"><span class="material-symbols-outlined">star</span><span>Average Rating</span><strong>4.9</strong><small class="trend-up">Top rated host</small></article>
+        <article class="stat-card"><span class="material-symbols-outlined">apartment</span><span data-i18n="Active Listings">Active Listings</span><strong>6</strong><small class="trend-up">+2 this month</small></article>
+        <article class="stat-card"><span class="material-symbols-outlined">pending_actions</span><span data-i18n="Pending Requests">Pending Requests</span><strong>4</strong><small class="trend-up">Needs action today</small></article>
+        <article class="stat-card"><span class="material-symbols-outlined">payments</span><span data-i18n="Monthly Revenue">Monthly Revenue</span><strong>$4.8k</strong><small class="trend-up">+12% this month</small></article>
+        <article class="stat-card"><span class="material-symbols-outlined">star</span><span data-i18n="Average Rating">Average Rating</span><strong>4.9</strong><small class="trend-up">Top rated host</small></article>
       </section>
 
       <div class="dashboard-grid">
@@ -141,20 +142,20 @@
       <section class="action-grid" aria-label="Host quick actions">
         <article class="action-card">
           <span class="material-symbols-outlined">edit_calendar</span>
-          <h3>Update Calendar</h3>
-          <p>Block unavailable dates and keep guests from requesting busy nights.</p>
+          <h3 data-i18n="Update Calendar">Update Calendar</h3>
+          <p data-i18n="Block unavailable dates and keep guests from requesting busy nights.">Block unavailable dates and keep guests from requesting busy nights.</p>
           <a class="btn btn-secondary" href="host-properties.html">Manage Dates</a>
         </article>
         <article class="action-card">
           <span class="material-symbols-outlined">rate_review</span>
-          <h3>Review Requests</h3>
-          <p>Four booking requests are waiting for approval or a quick message.</p>
+          <h3 data-i18n="Review Requests">Review Requests</h3>
+          <p data-i18n="Four booking requests are waiting for approval or a quick message.">Four booking requests are waiting for approval or a quick message.</p>
           <a class="btn btn-primary" href="host-bookings.html">Open Requests</a>
         </article>
         <article class="action-card">
           <span class="material-symbols-outlined">add_photo_alternate</span>
-          <h3>Improve Listings</h3>
-          <p>Add more photos and complete missing details to increase trust.</p>
+          <h3 data-i18n="Improve Listings">Improve Listings</h3>
+          <p data-i18n="Add more photos and complete missing details to increase trust.">Add more photos and complete missing details to increase trust.</p>
           <a class="btn btn-secondary" href="host-properties.html">Check Quality</a>
         </article>
       </section>

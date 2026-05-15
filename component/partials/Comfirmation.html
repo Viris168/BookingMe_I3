@@ -43,8 +43,8 @@
       <div class="success-icon-wrap">
         <span class="material-symbols-outlined">check</span>
       </div>
-      <h1 class="success-title">Booking Confirmed!</h1>
-      <p class="success-subtitle">Your reservation is all set. We've sent the details to your email.</p>
+      <h1 class="success-title" data-i18n="Booking Confirmed!">Booking Confirmed!</h1>
+      <p class="success-subtitle" data-i18n="Your reservation is all set. We've sent the details to your email.">Your reservation is all set. We've sent the details to your email.</p>
     </div>
 
 
@@ -54,11 +54,11 @@
         <div class="booking-card-info">
           <div class="booking-info-header">
             <div>
-              <span class="confirmed-badge">Confirmed</span>
+              <span class="confirmed-badge" data-i18n="Confirmed">Confirmed</span>
               <h2 class="booking-property-name">Lakeside Serenity Villa</h2>
             </div>
             <div class="booking-id-wrap">
-              <span class="booking-id-label">Booking ID</span>
+              <span class="booking-id-label" data-i18n="Booking ID">Booking ID</span>
               <p class="booking-id-value">#BK-88291</p>
             </div>
           </div>
@@ -68,28 +68,28 @@
             <div class="detail-item">
               <span class="material-symbols-outlined">calendar_today</span>
               <div>
-                <span class="detail-item-label">Check-in</span>
+                <span class="detail-item-label" data-i18n="Check-in">Check-in</span>
                 <p class="detail-item-value">Oct 12, 2023</p>
               </div>
             </div>
             <div class="detail-item">
               <span class="material-symbols-outlined">exit_to_app</span>
               <div>
-                <span class="detail-item-label">Check-out</span>
+                <span class="detail-item-label" data-i18n="Check-out">Check-out</span>
                 <p class="detail-item-value">Oct 15, 2023</p>
               </div>
             </div>
             <div class="detail-item">
               <span class="material-symbols-outlined">bed</span>
               <div>
-                <span class="detail-item-label">Room Type</span>
+                <span class="detail-item-label" data-i18n="Room Type">Room Type</span>
                 <p class="detail-item-value">Deluxe King Suite</p>
               </div>
             </div>
             <div class="detail-item">
               <span class="material-symbols-outlined">group</span>
               <div>
-                <span class="detail-item-label">Guests</span>
+                <span class="detail-item-label" data-i18n="Guests">Guests</span>
                 <p class="detail-item-value">2 Adults</p>
               </div>
             </div>
@@ -104,22 +104,22 @@
 
 
       <div class="payment-summary-card">
-        <h3 class="payment-summary-title">Payment Summary</h3>
+        <h3 class="payment-summary-title" data-i18n="Payment Summary">Payment Summary</h3>
         <div class="summary-row">
           <span class="summary-row-label">3 Nights x $250.00</span>
           <span class="summary-row-value">$750.00</span>
         </div>
         <div class="summary-row">
-          <span class="summary-row-label">Service Fee</span>
+          <span class="summary-row-label" data-i18n="Service Fee">Service Fee</span>
           <span class="summary-row-value">$45.00</span>
         </div>
         <div class="summary-row">
-          <span class="summary-row-label">Occupancy Taxes</span>
+          <span class="summary-row-label" data-i18n="Occupancy Taxes">Occupancy Taxes</span>
           <span class="summary-row-value">$32.50</span>
         </div>
         <hr class="summary-divider">
         <div class="summary-total-row">
-          <span class="summary-total-label">Total Paid</span>
+          <span class="summary-total-label" data-i18n="Total Paid">Total Paid</span>
           <span class="summary-total-value">$827.50</span>
         </div>
         <div class="payment-method">
@@ -139,10 +139,10 @@
           style="border:0; border-radius: 14px 14px 0 0;" allowfullscreen="" loading="lazy">
         </iframe>
         <div class="location-info">
-          <h4 class="location-title">Location</h4>
+          <h4 class="location-title" data-i18n="Location">Location</h4>
           <p class="location-address">R 42, Toul Kuk, Phnom Penh, Cambodia</p>
           <a href="https://www.google.com/maps/search/?api=1&query=Siem%20Reap%20Cambodia" class="location-link" target="_blank" rel="noopener">
-            Get Directions
+            <span data-i18n="Get Directions">Get Directions</span>
             <span class="material-symbols-outlined">open_in_new</span>
           </a>
         </div>
@@ -154,15 +154,15 @@
     <div class="confirmation-actions">
       <button class="btn-download" id="download-receipt-btn" type="button" onclick="window.print()">
         <span class="material-symbols-outlined">download</span>
-        Download Receipt
+        <span data-i18n="Download Receipt">Download Receipt</span>
       </button>
       <button class="btn-home" id="return-home-btn" onclick="window.location.href='/index.html'">
         <span class="material-symbols-outlined">home</span>
-        Return to Home
+        <span data-i18n="Return to Home">Return to Home</span>
       </button>
       <button class="btn-home" type="button" onclick="window.location.href='/component/dashboard/Booking-status.html'">
         <span class="material-symbols-outlined">event_available</span>
-        View Booking Status
+        <span data-i18n="View Booking Status">View Booking Status</span>
       </button>
     </div>
 
@@ -173,6 +173,7 @@
 
 
   <script src="/js/user-storage.js"></script>
+  <script src="/js/bme-alert.js"></script>
   <script src="/js/auth-storage.js"></script>
   <script src="/js/components/layout.js"></script>
 

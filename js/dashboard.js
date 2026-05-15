@@ -61,18 +61,16 @@
     if (!logoutButton) return;
 
     event.preventDefault();
-    const confirmed = window.confirm("Are you sure you want to log out?");
-    if (!confirmed) return;
-
-    localStorage.removeItem("bookingme_user");
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    sessionStorage.clear();
-    showToast("You have been logged out.", "success");
-
-    window.setTimeout(() => {
+    
+    // Use AuthStorage's beautiful modal if available, otherwise fallback
+    if (typeof AuthStorage !== 'undefined' && AuthStorage.confirmLogout) {
+      AuthStorage.confirmLogout();
+    } else {
+      const confirmed = window.confirm("Are you sure you want to log out?");
+      if (!confirmed) return;
+      sessionStorage.clear();
       window.location.href = "/index.html";
-    }, 450);
+    }
   }
 
   /* ── Active nav ─────────────────────────────────────────── */
@@ -104,17 +102,29 @@
       const deleteAction = event.target.closest("[data-delete-account], [data-delete-listing]");
 
       if (approve) {
-        if (window.confirm("Approve this booking request?")) {
-          approve.closest(".booking-card, .request-card")?.classList.add("is-approved");
-          showToast("Booking request approved.", "success");
-        }
+        BMEAlert.ask("Are you sure you want to approve this booking request?", {
+          title: "Approve Booking",
+          type: "success",
+          icon: "check_circle",
+          confirmText: "Yes, Approve",
+          onConfirm: function() {
+            approve.closest(".booking-card, .request-card")?.classList.add("is-approved");
+            showToast("Booking request approved.", "success");
+          }
+        });
       }
 
       if (decline) {
-        if (window.confirm("Decline this booking request?")) {
-          decline.closest(".booking-card, .request-card")?.classList.add("is-declined");
-          showToast("Booking request declined.", "default");
-        }
+        BMEAlert.ask("Are you sure you want to decline this booking request?", {
+          title: "Decline Booking",
+          type: "error",
+          icon: "cancel",
+          confirmText: "Yes, Decline",
+          onConfirm: function() {
+            decline.closest(".booking-card, .request-card")?.classList.add("is-declined");
+            showToast("Booking request declined.", "default");
+          }
+        });
       }
 
       if (save) {
@@ -122,10 +132,15 @@
       }
 
       if (deleteAction) {
-        const confirmed = window.confirm("This action cannot be undone. Continue?");
-        if (confirmed) {
-          showToast("Action confirmed.", "default");
-        }
+        BMEAlert.ask("This action cannot be undone. Are you sure you want to continue?", {
+          title: "Danger Zone",
+          type: "error",
+          icon: "delete_forever",
+          confirmText: "Yes, Delete",
+          onConfirm: function() {
+            showToast("Action confirmed.", "default");
+          }
+        });
       }
     });
   }
@@ -160,7 +175,6 @@
   document.addEventListener("click", handleLogout);
   document.addEventListener("DOMContentLoaded", () => {
     injectDashboardStyles();
-    initResponsiveSidebar();
     setActiveNav();
     bindActionFeedback();
     bindSettingsPersistence();

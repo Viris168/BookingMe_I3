@@ -146,9 +146,41 @@ const addDataToHTML = () => {
         const wishlistBtn = newProduct.querySelector('.wishlistBtn');
         const wishlistIcon = newProduct.querySelector('.wishlistIcon');
         if (wishlistBtn && wishlistIcon) {
-            wishlistBtn.addEventListener('click', () => {
-                wishlistIcon.classList.toggle('text-red-500');
-                wishlistIcon.classList.toggle('text-gray-400');
+            // Initial state from UserStorage
+            if (typeof UserStorage !== 'undefined' && UserStorage.isFavorite(product.id)) {
+                wishlistIcon.classList.remove('text-gray-400');
+                wishlistIcon.classList.add('text-red-500');
+            }
+
+            wishlistBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (typeof AuthStorage !== 'undefined' && !AuthStorage.getCurrentUser()) {
+                    if (typeof BMEAlert !== 'undefined') {
+                        BMEAlert.show('Please log in to save to favorites.', {
+                            title: 'Login Required', type: 'warn', icon: 'favorite',
+                            buttonText: 'Go to Login',
+                            redirectUrl: '/component/Login/index-login.html'
+                        });
+                    } else {
+                        window.location.href = '/component/Login/index-login.html';
+                    }
+                    return;
+                }
+
+                if (typeof UserStorage !== 'undefined') {
+                    const isFav = UserStorage.toggleFavorite(product);
+                    if (isFav) {
+                        wishlistIcon.classList.remove('text-gray-400');
+                        wishlistIcon.classList.add('text-red-500');
+                    } else {
+                        wishlistIcon.classList.remove('text-red-500');
+                        wishlistIcon.classList.add('text-gray-400');
+                    }
+                } else {
+                    // Fallback UI
+                    wishlistIcon.classList.toggle('text-red-500');
+                    wishlistIcon.classList.toggle('text-gray-400');
+                }
             });
         }
 

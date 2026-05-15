@@ -124,60 +124,21 @@ const AuthStorage = (function () {
   }
 
   function confirmLogout() {
-    if (document.getElementById('custom-logout-modal')) {
-      document.getElementById('custom-logout-modal').remove();
-    }
-
-    var modalHTML = '\
-      <div id="custom-logout-modal" style="position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; background:rgba(15,23,42,0.4); backdrop-filter:blur(4px); opacity:0; transition:opacity 0.25s ease;">\
-          <div id="logout-modal-content" style="width:100%; max-width:380px; background:#fff; padding:24px; border-radius:20px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25); transform:scale(0.95); opacity:0; transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1); margin:0 16px;">\
-              <div style="display:flex; align-items:flex-start; gap:16px;">\
-                  <div style="display:flex; flex-shrink:0; align-items:center; justify-content:center; width:48px; height:48px; border-radius:100px; background:#fee2e2; color:#dc2626;">\
-                      <span class="material-symbols-outlined" style="font-size:24px;">logout</span>\
-                  </div>\
-                  <div>\
-                      <h3 style="margin:0; font-size:18px; font-weight:800; color:#0f172a; font-family:\'Inter\', sans-serif;">Log out</h3>\
-                      <p style="margin:6px 0 0; font-size:14px; color:#64748b; font-family:\'Inter\', sans-serif; line-height:1.5;">Are you sure you want to log out of your account?</p>\
-                  </div>\
-              </div>\
-              <div style="margin-top:24px; display:flex; gap:12px; justify-content:flex-end;">\
-                  <button id="btn-cancel-logout" style="padding:10px 16px; border-radius:12px; border:1px solid #e2e8f0; background:#fff; color:#475569; font-weight:700; font-size:14px; cursor:pointer; font-family:\'Inter\', sans-serif; transition:all 0.2s;">Cancel</button>\
-                  <button id="btn-confirm-logout" style="padding:10px 16px; border-radius:12px; border:none; background:#dc2626; color:#fff; font-weight:700; font-size:14px; cursor:pointer; font-family:\'Inter\', sans-serif; box-shadow:0 4px 12px rgba(220,38,38,0.2); transition:all 0.2s;">Yes, log out</button>\
-              </div>\
-          </div>\
-      </div>';
-
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    var modal = document.getElementById('custom-logout-modal');
-    var content = document.getElementById('logout-modal-content');
-    
-    // Animate in
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
-        modal.style.opacity = '1';
-        content.style.opacity = '1';
-        content.style.transform = 'scale(1)';
+    if (typeof BMEAlert !== 'undefined') {
+      BMEAlert.ask("Are you sure you want to log out of your account?", {
+        title: "Log out",
+        type: "logout",
+        icon: "logout",
+        confirmText: "Yes, log out",
+        cancelText: "Cancel",
+        onConfirm: function() { logout(); }
       });
-    });
-
-    function closeAnd(callback) {
-      modal.style.opacity = '0';
-      content.style.opacity = '0';
-      content.style.transform = 'scale(0.95)';
-      setTimeout(function() {
-        modal.remove();
-        if (callback) callback();
-      }, 250);
+    } else {
+      // Fallback if BMEAlert isn't loaded
+      if (window.confirm("Are you sure you want to log out?")) {
+        logout();
+      }
     }
-
-    document.getElementById('btn-cancel-logout').addEventListener('click', function() { closeAnd(); });
-    document.getElementById('btn-confirm-logout').addEventListener('click', function() { closeAnd(logout); });
-    
-    // Hover effects
-    document.getElementById('btn-cancel-logout').onmouseover = function() { this.style.background = '#f8fafc'; this.style.color = '#0f172a'; };
-    document.getElementById('btn-cancel-logout').onmouseout = function() { this.style.background = '#fff'; this.style.color = '#475569'; };
-    document.getElementById('btn-confirm-logout').onmouseover = function() { this.style.background = '#b91c1c'; };
-    document.getElementById('btn-confirm-logout').onmouseout = function() { this.style.background = '#dc2626'; };
   }
 
   return {
