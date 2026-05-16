@@ -148,13 +148,92 @@
       <h1 class="title" data-i18n="home.hero.title">Discover Cambodia's Best Stays</h1>
       <p data-i18n="home.hero.subtitle">Experience the warmth of Khmer hospitality, from riverfront villas in Kampot to
         ancient temple retreats in Siem Reap</p>
-      <div class="search-pill">
-        <div class="search-text-wrapper">
-          <label for="destination-search" class="search-label">WHERE</label>
-          <input type="text" id="destination-search" placeholder="Search destinations"
-            data-i18n-placeholder="common.searchDestinations" class="search-input">
+      <!-- ===== SEARCH BAR ===== -->
+      <div class="search-bar" id="searchBar">
+        <!-- TYPE field -->
+        <div class="search-field" id="typeField" onclick="toggleTypeDropdown(event)">
+          <span class="search-field-label">TYPE</span>
+          <span class="search-field-value" id="typeValue">Select Type</span>
+          <span class="material-symbols-outlined search-field-chevron" id="typeChevron">expand_more</span>
+          <ul class="search-dropdown" id="typeDropdown">
+            <li class="search-dropdown-item active" data-value="" onclick="selectType(event, this)">All Types</li>
+            <li class="search-dropdown-item" data-value="campus" onclick="selectType(event, this)">Campus</li>
+            <li class="search-dropdown-item" data-value="hotel" onclick="selectType(event, this)">Hotel</li>
+          </ul>
+          <select id="type-select" style="display:none;">
+            <option value="">All Types</option>
+            <option value="campus">Campus</option>
+            <option value="hotel">Hotel</option>
+          </select>
         </div>
-        <button class="search-submit" aria-label="Search">
+
+        <div class="search-divider"></div>
+
+        <!-- PLACE field -->
+        <div class="search-field" id="placeField" onclick="togglePlaceDropdown(event)">
+          <span class="search-field-label">PLACE</span>
+          <span class="search-field-value" id="placeValue">Select Place</span>
+          <span class="material-symbols-outlined search-field-chevron" id="placeChevron">expand_more</span>
+          <ul class="search-dropdown" id="placeDropdown">
+            <li class="search-dropdown-item active" data-value="" onclick="selectPlace(event, this)">All Places</li>
+            <li class="search-dropdown-item" data-value="phnom-penh" onclick="selectPlace(event, this)">Phnom Penh</li>
+            <li class="search-dropdown-item" data-value="siem-reap" onclick="selectPlace(event, this)">Siem Reap</li>
+            <li class="search-dropdown-item" data-value="kampot" onclick="selectPlace(event, this)">Kampot</li>
+            <li class="search-dropdown-item" data-value="kampong-cham" onclick="selectPlace(event, this)">Kampong Cham</li>
+            <li class="search-dropdown-item" data-value="kep" onclick="selectPlace(event, this)">Kep</li>
+            <li class="search-dropdown-item" data-value="battambang" onclick="selectPlace(event, this)">Battambang</li>
+            <li class="search-dropdown-item" data-value="mondulkiri" onclick="selectPlace(event, this)">Mondulkiri</li>
+            <li class="search-dropdown-item" data-value="ratanakiri" onclick="selectPlace(event, this)">Ratanakiri</li>
+            <li class="search-dropdown-item" data-value="preah-vihear" onclick="selectPlace(event, this)">Preah Vihear</li>
+          </ul>
+          <select id="place-select" style="display:none;">
+            <option value="">All Places</option>
+            <option value="phnom-penh">Phnom Penh</option>
+            <option value="siem-reap">Siem Reap</option>
+            <option value="kampot">Kampot</option>
+            <option value="kampong-cham">Kampong Cham</option>
+            <option value="kep">Kep</option>
+            <option value="battambang">Battambang</option>
+            <option value="mondulkiri">Mondulkiri</option>
+            <option value="ratanakiri">Ratanakiri</option>
+            <option value="preah-vihear">Preah Vihear</option>
+          </select>
+        </div>
+
+        <div class="search-divider"></div>
+
+        <!-- CHECK-IN field -->
+        <div class="search-field search-field--date" id="checkinField">
+          <span class="search-field-label">CHECK-IN</span>
+          <input type="date" id="checkinDate" class="search-date-input" />
+        </div>
+
+        <div class="search-divider"></div>
+
+        <!-- CHECK-OUT field -->
+        <div class="search-field search-field--date" id="checkoutField">
+          <span class="search-field-label">CHECK-OUT</span>
+          <input type="date" id="checkoutDate" class="search-date-input" />
+        </div>
+
+        <div class="search-divider"></div>
+
+        <!-- GUESTS field -->
+        <div class="search-field" id="guestsField" onclick="toggleGuestsDropdown(event)">
+          <span class="search-field-label">GUESTS</span>
+          <span class="search-field-value" id="guestsValue">1 guest</span>
+          <span class="material-symbols-outlined search-field-chevron" id="guestsChevron">expand_more</span>
+          <ul class="search-dropdown" id="guestsDropdown">
+            <li class="search-dropdown-item active" data-value="1" onclick="selectGuest(event, this)">1 guest</li>
+            <li class="search-dropdown-item" data-value="2" onclick="selectGuest(event, this)">2 guests</li>
+            <li class="search-dropdown-item" data-value="3" onclick="selectGuest(event, this)">3 guests</li>
+            <li class="search-dropdown-item" data-value="4" onclick="selectGuest(event, this)">4 guests</li>
+            <li class="search-dropdown-item" data-value="5" onclick="selectGuest(event, this)">5 guests</li>
+          </ul>
+        </div>
+
+        <!-- SEARCH button -->
+        <button class="search-bar-btn" id="searchSubmitBtn" aria-label="Search" onclick="handleSearch()">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
@@ -303,16 +382,109 @@
     </section>
   </main>
   <script>
+    // ===== Search Bar Dropdown Logic =====
 
+    function closeAllDropdowns() {
+      document.querySelectorAll('.search-dropdown').forEach(d => d.classList.remove('show'));
+      document.querySelectorAll('.search-field-chevron').forEach(c => c.classList.remove('open'));
+    }
+
+    // --- TYPE dropdown ---
+    function toggleTypeDropdown(e) {
+      e.stopPropagation();
+      const dd = document.getElementById('typeDropdown');
+      const ch = document.getElementById('typeChevron');
+      const isOpen = dd.classList.contains('show');
+      closeAllDropdowns();
+      if (!isOpen) { dd.classList.add('show'); ch.classList.add('open'); }
+    }
+
+    function selectType(e, el) {
+      e.stopPropagation();
+      const val = el.dataset.value;
+      const label = el.textContent;
+      document.getElementById('typeValue').textContent = label;
+      document.getElementById('type-select').value = val;
+      document.querySelectorAll('#typeDropdown .search-dropdown-item').forEach(i => i.classList.remove('active'));
+      el.classList.add('active');
+      closeAllDropdowns();
+    }
+
+    // --- PLACE dropdown ---
+    function togglePlaceDropdown(e) {
+      e.stopPropagation();
+      const dd = document.getElementById('placeDropdown');
+      const ch = document.getElementById('placeChevron');
+      const isOpen = dd.classList.contains('show');
+      closeAllDropdowns();
+      if (!isOpen) { dd.classList.add('show'); ch.classList.add('open'); }
+    }
+
+    function selectPlace(e, el) {
+      e.stopPropagation();
+      const val = el.dataset.value;
+      const label = el.textContent;
+      document.getElementById('placeValue').textContent = label;
+      document.getElementById('place-select').value = val;
+      document.querySelectorAll('#placeDropdown .search-dropdown-item').forEach(i => i.classList.remove('active'));
+      el.classList.add('active');
+      closeAllDropdowns();
+    }
+
+    // --- GUESTS dropdown ---
+    function toggleGuestsDropdown(e) {
+      e.stopPropagation();
+      const dd = document.getElementById('guestsDropdown');
+      const ch = document.getElementById('guestsChevron');
+      const isOpen = dd.classList.contains('show');
+      closeAllDropdowns();
+      if (!isOpen) { dd.classList.add('show'); ch.classList.add('open'); }
+    }
+
+    function selectGuest(e, el) {
+      e.stopPropagation();
+      const val = el.dataset.value;
+      const label = el.textContent;
+      document.getElementById('guestsValue').textContent = label;
+      document.querySelectorAll('#guestsDropdown .search-dropdown-item').forEach(i => i.classList.remove('active'));
+      el.classList.add('active');
+      closeAllDropdowns();
+    }
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-field')) {
+        closeAllDropdowns();
+      }
+    });
+
+    // --- SEARCH action ---
+    function handleSearch() {
+      const type = document.getElementById('type-select').value;
+      const place = document.getElementById('place-select').value;
+      const checkin = document.getElementById('checkinDate').value;
+      const checkout = document.getElementById('checkoutDate').value;
+      const guests = document.getElementById('guestsValue').textContent.trim();
+
+      const params = new URLSearchParams();
+      if (type) params.set('type', type);
+      if (place) params.set('place', place);
+      // if (checkin) params.set('checkin', checkin);
+      // if (checkout) params.set('checkout', checkout);
+      // if (guests) params.set('guests', guests);
+
+      window.location.href = '/component/partials/booking.html?' + params.toString();
+    }
   </script>
 
   <div id="footer"></div>
+  <script src="/js/components/layout.js"></script>
+  <script src="/js/components/home.js"></script>
   <script src="/js/i18n.js"></script>
   <script src="/js/auth-storage.js"></script>
   <script src="/js/user-storage.js"></script>
-  <script src="/js/components/layout.js"></script>
   <script src="/js/property-storage.js"></script>
-  <script src="/js/components/home.js"></script>
+  
 
 </body>
 

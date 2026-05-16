@@ -225,21 +225,29 @@ const initApp = async () => {
         addDataToHTML();
 
         const urlParams = new URLSearchParams(window.location.search);
+        const typeParam = urlParams.get('type');
         const placeParam = urlParams.get('place');
-        if (placeParam) {
-            // Re-query sortSelect live (it's from section.html, injected before app.js)
+
+        // Switch to the correct category (hotel/campus) based on URL param
+        if (typeParam || placeParam) {
             const sortSelectLive = document.getElementById('property-sort');
             if (sortSelectLive) {
-                sortSelectLive.value = 'hotel';
+                // If type param exists use it, otherwise default to 'hotel' when place is set
+                sortSelectLive.value = typeParam || 'hotel';
                 sortSelectLive.dispatchEvent(new Event('change'));
             }
 
-            // Show the place selector immediately
-            const placeSelector = document.getElementById('hotel-place-selector');
-            if (placeSelector) {
-                placeSelector.classList.remove('hidden');
+            // Show the place selector for hotel type
+            const effectiveType = typeParam || 'hotel';
+            if (effectiveType === 'hotel') {
+                const placeSelector = document.getElementById('hotel-place-selector');
+                if (placeSelector) {
+                    placeSelector.classList.remove('hidden');
+                }
             }
+        }
 
+        if (placeParam) {
             // Wait for DOM to settle, then select the place
             setTimeout(() => {
                 const option = document.querySelector(
@@ -339,7 +347,6 @@ window.selectHotelPlace = function(event, el) {
         nativeSelect.value = value;
         nativeSelect.dispatchEvent(new Event('change'));
     }
-
 
     l = value;
     currentPage = 1;
