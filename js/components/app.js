@@ -133,7 +133,7 @@ const addDataToHTML = () => {
 
                 <div class="mt-3 flex flex-wrap items-center justify-between gap-2">
                     <p class="text-lg font-bold text-gray-800">
-                        $${product.price} <span class="text-[10px] font-normal text-gray-400">/ month</span>
+                        $${product.price} <span class="text-[10px] font-normal text-gray-400">/ ${sortSelect && sortSelect.value === 'hotel' ? 'day' : 'month'}</span>
                     </p>
                     <button id="btn_detail" type="button" class="rounded-lg bg-slate-800 px-3 py-1.5 text-[11px] font-semibold text-white transition-colors hover:bg-primary">
                         View Detail
@@ -300,6 +300,29 @@ if (sortSelect) {
                 placeSelector.classList.add('hidden');
             }
         }
+
+        // Reset all aside filters when switching categories
+        document.querySelectorAll('#aside input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+        });
+        const slider = document.getElementById('price-range');
+        const display = document.getElementById('price-display');
+        if (slider) {
+            slider.value = 1000;
+            updatePriceSliderDisplay(slider, display);
+        }
+
+        // Reset location filter and pagination
+        l = '';
+        currentPage = 1;
+
+        // Reset place selector display
+        const placeValueEl = document.getElementById('hotelPlaceValue');
+        if (placeValueEl) placeValueEl.innerText = 'All Places';
+        document.querySelectorAll('.hotel-place-option').forEach(opt => {
+            opt.classList.remove('bg-[#1e293b]', 'text-white', 'font-semibold');
+            opt.classList.add('text-[#4a4641]');
+        });
 
         addDataToHTML();
     });
@@ -532,7 +555,7 @@ function initProductFilterControls() {
             });
 
             if (slider) {
-                slider.value = 525;
+                slider.value = 1000;
                 updatePriceSliderDisplay(slider, display);
             }
 
