@@ -59,7 +59,7 @@ function loadAside(type) {
                 "rating-btn px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200 text-slate-500 bg-white hover:border-primary hover:text-primary transition-all";
             });
             if (slider && display) {
-                slider.value = 525;
+                slider.value = 1000;
                 updateSlider();
             }
           }
